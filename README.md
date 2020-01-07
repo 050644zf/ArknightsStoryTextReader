@@ -2,6 +2,8 @@
 
 A simple python program that help you convert Arknights raw story data into other readable format.
 
+You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)
+
 ## v1.0 CSV Convertor 
 usage:
 ```
