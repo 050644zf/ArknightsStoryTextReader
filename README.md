@@ -11,7 +11,7 @@ py csvconvert.py p
 Convert arknights story raw data into csv file.
 
 positional arguments:
-  p           The path of raw story file
+  `p`           The path of raw story file
 
 
 **To-do list: (maybe never)**
