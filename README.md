@@ -5,7 +5,7 @@ A simple python program that help you convert Arknights raw story data into othe
 ## v1.0 CSV Convertor 
 usage:
 ```
-csvconvert.py p
+py csvconvert.py p
 ```
 
 Convert arknights story raw data into csv file.
