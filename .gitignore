@@ -2,3 +2,4 @@
 *.txt
 __pycache__
 .vscode
+.csv
