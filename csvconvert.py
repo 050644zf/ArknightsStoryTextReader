@@ -6,9 +6,9 @@ import csv
 import argparse
 
 def reader(rawstorypath):
-    optre=r"^\[Decision\(options=\"(?P<options>.+)\","
-    indre=r"^\[Predicate\(references=\"(?P<index>.+)\""
-    imgre=r"\[(?P<type>.+)\(image=\"(?P<image>.*?)\""
+    optre=r"^\[Decision\(.*options=\"(?P<options>.+)\","
+    indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
+    imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
     namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
     with open(rawstorypath,encoding='utf-8') as rawstory:
         rawstorytext=rawstory.read()
