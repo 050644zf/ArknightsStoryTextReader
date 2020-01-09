@@ -43,9 +43,15 @@ def reader(rawstorypath):
         [name,text]=re.match(namere,line).group('name',"text")
         outputlist.append([name,text])
 
-    with open(rawstorypath.replace('.txt','.csv'),'w',newline='') as csvfile:
-        writer=csv.writer(csvfile,dialect='excel')
-        writer.writerows(outputlist)
+    try:
+        with open(rawstorypath.replace('.txt','.csv'),'w',newline='') as csvfile:
+            writer=csv.writer(csvfile,dialect='excel')
+            writer.writerows(outputlist)
+    except UnicodeEncodeError:
+        with open(rawstorypath.replace('.txt','.csv'),'w',newline='',encoding='utf-8') as csvfile:
+            writer=csv.writer(csvfile,dialect='excel')
+            writer.writerows(outputlist)
+
         
         
 

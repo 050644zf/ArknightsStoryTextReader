@@ -7,6 +7,9 @@ You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/
 **CN/JP/EN server files tested**, UnicodeEncodeError occoured when converting KR server files. Waiting for fixing.
 Only support story. Guides, tutorial and pop-up msg in battle are not supported yet.
 
+## v1.2
+Fix the encoding issue, now will force encode with utf-8 if UnicodeEncodeError orrured, so there may have some coding problem when open the csv files with Microsoft Excel.
+
 ## v1.1 
 Fix the regex to fully match the image in EN server
 
