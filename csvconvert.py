@@ -47,10 +47,12 @@ def reader(rawstorypath):
         with open(rawstorypath.replace('.txt','.csv'),'w',newline='') as csvfile:
             writer=csv.writer(csvfile,dialect='excel')
             writer.writerows(outputlist)
+            print('Exported to:'+rawstorypath.replace('.txt','.csv'))
     except UnicodeEncodeError:
         with open(rawstorypath.replace('.txt','.csv'),'w',newline='',encoding='utf-8') as csvfile:
             writer=csv.writer(csvfile,dialect='excel')
             writer.writerows(outputlist)
+            print('Exported to:'+rawstorypath.replace('.txt','.csv'))
 
         
         
@@ -58,6 +60,7 @@ def reader(rawstorypath):
 
 if __name__ == "__main__":
     parser=argparse.ArgumentParser(description='Convert arknights story raw data into csv file.')
-    parser.add_argument('rawpath',metavar='p',type=str,help='The path of raw story file')
+    parser.add_argument('rawpath',metavar='path',nargs='+',type=str,help='The paths of raw story file, separate with space')
     args=parser.parse_args()
-    reader(args.rawpath)
+    for path in args.rawpath:
+        reader(path)
