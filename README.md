@@ -19,6 +19,9 @@ Convert arknights story raw data into csv file.
 positional arguments:
   `path`        The paths of raw story file, separate with space
 
+## v1.4
+Fix some issues
+
 ## v1.3
 Now support multiple arguments
 

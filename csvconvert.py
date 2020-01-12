@@ -29,9 +29,13 @@ def reader(rawstorypath):
                         i=i+1
                     rawlist.append('[name="--Decision End--"]  ----')
                     continue
-                if '[Predicate' in line:
-                    index=re.match(indre,line).group('index').replace(';','&')
-                    line='[name="--Branch--"]  >Option_'+index
+                try:
+                    if '[Predicate' in line:
+                        index=re.match(indre,line).group('index').replace(';','&')
+                        line='[name="--Branch--"]  >Option_'+index
+                except AttributeError:
+                    if '[Predicate]' in line:
+                        line='[name="--Branch--"]  >Option_All'
                 if 'image=' in line:
                     [imgtype,image]=re.match(imgre,line).group('type','image')
                     line='[name="--'+imgtype+'--"]  '+image+'.png'
