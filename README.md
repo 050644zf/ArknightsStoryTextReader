@@ -17,7 +17,11 @@ csvconvert.py path [path ...]
 Convert arknights story raw data into csv file.
 
 positional arguments:
-  `path`        The paths of raw story file, separate with space
+  `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
+  
+## v1.5
+Now automatically link the image and background to the mooncell wiki (doesn't support for earlier event like Grani)
+Now support folder path, which will convert all .txt file in the folder
 
 ## v1.4
 Fix some issues
