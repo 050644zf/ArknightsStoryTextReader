@@ -4,6 +4,11 @@
 import re
 import csv
 import argparse
+from pathlib import Path
+import os
+
+def getFile(p): #获取p路径下所有文件路径
+    return [x for x in p.iterdir() if not x.is_dir()]
 
 def reader(rawstorypath):
     optre=r"^\[Decision\(.*options=\"(?P<options>.+)\","
@@ -38,7 +43,7 @@ def reader(rawstorypath):
                         line='[name="--Branch--"]  >Option_All'
                 if 'image=' in line:
                     [imgtype,image]=re.match(imgre,line).group('type','image')
-                    line='[name="--'+imgtype+'--"]  '+image+'.png'
+                    line='[name="--'+imgtype+'--"]  http://ak.mooncell.wiki/w/File:Avg_'+image+'.png'
                 if '[name' in line:
                     rawlist.append(line)
 
@@ -48,15 +53,15 @@ def reader(rawstorypath):
         outputlist.append([name,text])
 
     try:
-        with open(rawstorypath.replace('.txt','.csv'),'w',newline='') as csvfile:
+        with open(str(rawstorypath).replace('.txt','.csv'),'w',newline='') as csvfile:
             writer=csv.writer(csvfile,dialect='excel')
             writer.writerows(outputlist)
-            print('Exported to:'+rawstorypath.replace('.txt','.csv'))
+            print('Exported to:'+str(rawstorypath).replace('.txt','.csv'))
     except UnicodeEncodeError:
-        with open(rawstorypath.replace('.txt','.csv'),'w',newline='',encoding='utf-8') as csvfile:
+        with open(str(rawstorypath).replace('.txt','.csv'),'w',newline='',encoding='utf-8') as csvfile:
             writer=csv.writer(csvfile,dialect='excel')
             writer.writerows(outputlist)
-            print('Exported to:'+rawstorypath.replace('.txt','.csv'))
+            print('Exported to:'+str(rawstorypath).replace('.txt','.csv'))
 
         
         
@@ -66,5 +71,11 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser(description='Convert arknights story raw data into csv file.')
     parser.add_argument('rawpath',metavar='path',nargs='+',type=str,help='The paths of raw story file, separate with space')
     args=parser.parse_args()
+    #rawpath=['.//en05']
     for path in args.rawpath:
-        reader(path)
+        if Path(path).is_dir():
+            for csvFile in getFile(Path(path)):
+                if csvFile.suffix=='.txt':
+                    reader(csvFile)
+        else:
+            reader(path)
