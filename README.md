@@ -21,6 +21,7 @@ positional arguments:
   
 ## v1.5
 Now automatically link the image and background to the mooncell wiki (doesn't support for earlier event like Grani)
+
 Now support folder path, which will convert all .txt file in the folder
 
 ## v1.4
