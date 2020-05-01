@@ -10,14 +10,38 @@ Only support story. Guides, tutorial and pop-up msg in battle are not supported 
 
 usage:
 
+**New: Method 1**
+
 ```
-csvconvert.py path [path ...]
+py xlsxconvert.py folderpath
+```
+
+Convert all arknights story raw data in given folder into xlsx file.
+
+positional arguments:
+  `folderpath`        The folder path of raw story files
+
+**Require openpyxl module, if you haven't installed openpyxl, run the following command first**
+
+```
+pip install openpyxl
+```
+
+**Method 2 (No extra module required)**
+
+```
+py csvconvert.py path [path ...]
 ```
 
 Convert arknights story raw data into csv file.
 
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
+
+## v1.6
+New command to convert all raw story files into one xlsx file.
+
+Now automatically link the image and background to the ![Aceship Toolbox CG Gallery](https://aceship.github.io/AN-EN-Tags/akgallery.html)
   
 ## v1.5
 Now automatically link the image and background to the mooncell wiki (doesn't support for earlier event like Grani)
