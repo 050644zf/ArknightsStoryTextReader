@@ -8,9 +8,9 @@ You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/
 
 Only support story. Guides, tutorial and pop-up msg in battle are not supported yet.
 
-usage:
+## usage:
 
-**New: Method 1**
+### **New: Method 1**
 
 ```
 py xlsxconvert.py folderpath
@@ -27,7 +27,7 @@ positional arguments:
 pip install openpyxl
 ```
 
-**Method 2 (No extra module required)**
+### **Method 2 (No extra module required)**
 
 ```
 py csvconvert.py path [path ...]
@@ -41,7 +41,7 @@ positional arguments:
 ## v1.6
 New command to convert all raw story files into one xlsx file.
 
-Now automatically link the image and background to the ![Aceship Toolbox CG Gallery](https://aceship.github.io/AN-EN-Tags/akgallery.html)
+Now automatically link the image and background to the [Aceship Toolbox CG Gallery](https://aceship.github.io/AN-EN-Tags/akgallery.html)
   
 ## v1.5
 Now automatically link the image and background to the mooncell wiki (doesn't support for earlier event like Grani)
