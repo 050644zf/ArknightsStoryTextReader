@@ -38,6 +38,11 @@ Convert arknights story raw data into csv file.
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
 
+## v1.7
+Fix the issue that a syntax error in raw story txt cause an unhandled exception
+
+Now automatically record all characters' name appear in the whole textsheet and append them to the end of the textsheet named "Characters" (Method 1 only)
+
 ## v1.6
 New command to convert all raw story files into one xlsx file.
 

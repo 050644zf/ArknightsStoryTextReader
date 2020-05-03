@@ -8,6 +8,8 @@ optre=r"^\[Decision\(.*options=\"(?P<options>.+)\","
 indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
+characters=[]
+codes=[]
 
 def getFile(p): #获取p路径下所有文件路径
     return [x for x in p.iterdir() if not x.is_dir()]
@@ -18,6 +20,10 @@ def reader(sheet,rawstorypath):
         rawstorylist=rawstorytext.split('\n')[2:-3]
         rawlist=[]
         for line in rawstorylist:
+            if '//' in line:
+                line='[name="//Comment//"]  '+line
+                rawlist.append(line)
+
             if '//' not in line and line!='':
                 if '[' not in line:
                     line='[name=""]  '+line
@@ -46,8 +52,17 @@ def reader(sheet,rawstorypath):
                     rawlist.append(line)
 
     for line in rawlist:
-        [name,text]=re.match(namere,line).group('name',"text")
-        sheet.append([name,text])
+        try:
+            [name,text]=re.match(namere,line).group('name',"text")
+            sheet.append([name,text])
+            if (not name in characters) and (not name in codes):
+                if '--' in name or '//' in name or 'Option_' in name:
+                    codes.append(name)
+                else:
+                    characters.append(name)
+                
+        except AttributeError:
+            pass
 
     
 
@@ -59,7 +74,7 @@ if __name__ == "__main__":
     parser=argparse.ArgumentParser(description='Convert arknights story raw data into xlsx file.')
     parser.add_argument('rawpath',metavar='path',nargs=1,type=str,help='The folder path of raw story files')
     args=parser.parse_args()
-    #rawpath=['.//en05']
+    #rawpath=['.//cn07']
 
     if Path(args.rawpath[0]).is_dir():
         txtList=[]
@@ -72,6 +87,16 @@ if __name__ == "__main__":
         for txtFile in txtList:
             ws=wb.create_sheet(title=txtFile.stem)
             reader(ws,txtFile)
+
+        ws=wb.create_sheet(title='Characters')
+        ws.append(['<Characters>'])
+        for name in characters:
+            ws.append([name])
+
+        ws.append(['<Codes>'])
+        for name in codes:
+            ws.append([name])
+
 
         wb.save(filename=str(Path(args.rawpath[0])/'story.xlsx'))
 
