@@ -9,7 +9,7 @@ indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
 charre=r"^\[Character\(name=\"(?P<name>[^\"]+)\"(?!,name2=)"
-char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?name2=\"(?P<name2>[^\"]+)\".?focus=(?P<focus>\d).?"
+char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?name2=\"(?P<name2>[^\"]+)\".?(focus=(?P<focus>\d?))?.?"
 characters=[]
 codes=[]
 characterFlag=False
@@ -55,15 +55,25 @@ def reader(sheet,rawstorypath):
                         imgtype="Background"
                     line='[name="--'+imgtype+'--"]  https://aceship.github.io/AN-EN-Tags/img/avg/'+imgtype.lower()+'s/'+image+'.png'
                 if '[Character' in line and 'name' in line and characterFlag:
-                    if 'focus=' in line:
+                    if 'focus=' in line and 'name2' in line:
                         [cg1,cg2,focus]=re.match(char2re,line).group('name','name2','focus')
                         if focus=='1':
                             line='[name="--Character--"]  {}'.format(cg1)
                         elif focus=='2':
                             line='[name="--Character--"]  {}'.format(cg2)
                     else:
-                        cg=re.match(charre,line).group('name')
-                        line='[name="--Character--"]  {}'.format(cg)
+                        try:
+                            cg=re.match(charre,line).group('name')
+                            line='[name="--Character--"]  {}'.format(cg)
+                        except AttributeError:
+                            [cg1,cg2]=re.match(char2re,line).group('name','name2')
+                            line='[name="--Character--"]  {}'.format(cg1)
+                            rawlist.append(line)
+                            line='[name="--Character--"]  {}'.format(cg2)
+                            rawlist.append(line)
+                            continue
+
+                        
 
                 
                 if '[name' in line:
