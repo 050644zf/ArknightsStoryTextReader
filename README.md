@@ -49,7 +49,7 @@ positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
 
 ## v1.8
-Fix the issue that the regex misread `BackgroundTween` as a image type (Credit: Biscuits#4183)
+Fix the issue that the regex misread `BackgroundTween` as an image type (Credit: Biscuits#4183)
 Add single file support to `xlsxconvert.py`
 Add optional args to show Character CG file names or Code Comment in raw story files (Some comments in CN chapter 7 are very interesting you know)
 
