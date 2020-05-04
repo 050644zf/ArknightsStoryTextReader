@@ -22,8 +22,11 @@ positional arguments:
   path             The file path or folder path of raw story files
 
 optional arguments:
+
   -h, --help       show this help message and exit
+
   -C, --Character  Show Character CG file name
+  
   -c, --comment    Show Code Comment in raw story file
 
 **Require openpyxl module, if you haven't installed openpyxl, run the following command first**
