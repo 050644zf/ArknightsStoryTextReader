@@ -35,6 +35,8 @@ Convert arknights story raw data into xlsx file.
 pip install openpyxl
 ```
 
+====
+
 ### **Method 2 (No extra module required)**
 
 ```
