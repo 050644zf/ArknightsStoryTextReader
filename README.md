@@ -50,7 +50,9 @@ positional arguments:
 
 ## v1.8
 Fix the issue that the regex misread `BackgroundTween` as an image type (Credit: Biscuits#4183)
+
 Add single file support to `xlsxconvert.py`
+
 Add optional args to show Character CG file names or Code Comment in raw story files (Some comments in CN chapter 7 are very interesting you know)
 
 ## v1.7
