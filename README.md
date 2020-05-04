@@ -10,16 +10,21 @@ Only support story. Guides, tutorial and pop-up msg in battle are not supported 
 
 ## usage:
 
-### **New: Method 1**
+### **New: Method 1 (Recommended, require openpyxl module)**
 
 ```
-py xlsxconvert.py folderpath
+py xlsxconvert.py [-h] [-C] [-c] path
 ```
 
-Convert all arknights story raw data in given folder into xlsx file.
+Convert arknights story raw data into xlsx file.
 
 positional arguments:
-  `folderpath`        The folder path of raw story files
+  path             The file path or folder path of raw story files
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -C, --Character  Show Character CG file name
+  -c, --comment    Show Code Comment in raw story file
 
 **Require openpyxl module, if you haven't installed openpyxl, run the following command first**
 
@@ -37,6 +42,11 @@ Convert arknights story raw data into csv file.
 
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
+
+## v1.8
+Fix the issue that the regex misread `BackgroundTween` as a image type (Credit: Biscuits#4183)
+Add single file support to `xlsxconvert.py`
+Add optional args to show Character CG file names or Code Comment in raw story files (Some comments in CN chapter 7 are very interesting you know)
 
 ## v1.7
 Fix the issue that a syntax error in raw story txt cause an unhandled exception
