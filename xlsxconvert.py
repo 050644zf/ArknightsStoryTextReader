@@ -9,7 +9,7 @@ indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
 charre=r"^\[Character\(name=\"(?P<name>[^\"]+)\"(?!,name2=)"
-char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?name2=\"(?P<name2>[^\"]+)\".?(focus=(?P<focus>\d?))?.?"
+char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
 characters=[]
 codes=[]
 characterFlag=False
