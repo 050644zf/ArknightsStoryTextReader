@@ -8,7 +8,7 @@ optre=r"^\[Decision\(.*options=\"(?P<options>.+)\","
 indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
-charre=r"^\[Character\(name=\"(?P<name>[^\"]+)\"(?!,name2=)"
+charre=r"^\[Character.*\(.*name=\"(?P<name>[^\"]+)\"(?!,name2=)"
 char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
 characters=[]
 codes=[]
@@ -101,7 +101,7 @@ def reader(sheet,rawstorypath):
 if __name__ == "__main__":
     parser=argparse.ArgumentParser(description='Convert arknights story raw data into xlsx file.',epilog='By Nightsky#3319 in RIHQ')
     parser.add_argument('rawpath',metavar='path',nargs=1,type=str,help='The file path or folder path of raw story files')
-    parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='Show Character CG file name')
+    parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='(beta, may not work properly) Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
     args=parser.parse_args()
     #args=parser.parse_args(['level_act3d0_st01.txt'])

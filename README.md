@@ -25,7 +25,7 @@ Convert arknights story raw data into xlsx file.
 
   `-h`, `--help`       show this help message and exit
 
-  `-C`, `--Character`  Show Character CG file name
+  `-C`, `--Character`  (may not work properly, submit an issue if you run into exception!) Show Character CG file name
   
   `-c`, `--comment`    Show Code Comment in raw story file
 
@@ -48,8 +48,8 @@ Convert arknights story raw data into csv file.
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
 
-## v1.8.2
-Fix the issue that the regex can't match other Character scheme
+## v1.8.3
+Fix the issue that the regex can't match other Character syntax
 
 ## v1.8
 Fix the issue that the regex misread `BackgroundTween` as an image type (Credit: Biscuits#4183)
