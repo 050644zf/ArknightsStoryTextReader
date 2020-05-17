@@ -53,6 +53,8 @@ def reader(sheet,rawstorypath):
                     [imgtype,image]=re.match(imgre,line).group('type','image')
                     if imgtype=="BackgroundTween":
                         imgtype="Background"
+                    elif imgtype=='showitem'
+                        imgtype='items'
                     line='[name="--'+imgtype+'--"]  https://aceship.github.io/AN-EN-Tags/img/avg/'+imgtype.lower()+'s/'+image+'.png'
                 if '[Character' in line and 'name' in line and characterFlag:
                     if 'focus=' in line and 'name2' in line:
