@@ -43,7 +43,11 @@ def reader(rawstorypath):
                         line='[name="--Branch--"]  >Option_All'
                 if 'image=' in line:
                     [imgtype,image]=re.match(imgre,line).group('type','image')
-                    line='[name="--'+imgtype+'--"]  http://ak.mooncell.wiki/w/File:Avg_'+image+'.png'
+                    if imgtype=="BackgroundTween":
+                        imgtype="Background"
+                    elif imgtype=='showitem':
+                        imgtype='items'
+                    line='[name="--'+imgtype+'--"]  https://aceship.github.io/AN-EN-Tags/img/avg/'+imgtype.lower()+'s/'+image+'.png'
                 if '[name' in line:
                     rawlist.append(line)
 

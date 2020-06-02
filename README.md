@@ -48,8 +48,11 @@ Convert arknights story raw data into csv file.
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
 
-## v1.8.3
+## v1.8.5
 Fix the issue that the regex can't match other Character syntax
+
+Change the CG source of csvconvert.py to aceship toolbox
+
 
 ## v1.8
 Fix the issue that the regex misread `BackgroundTween` as an image type (Credit: Biscuits#4183)
