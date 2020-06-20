@@ -37,7 +37,7 @@ pip install openpyxl
 
 ====
 
-### **Method 2 (No extra module required)**
+### **Method 2 (No extra module required, deprecated)**
 
 ```
 py csvconvert.py path [path ...]
@@ -48,7 +48,7 @@ Convert arknights story raw data into csv file.
 positional arguments:
   `path`        The filepaths or folder of raw story file, separate with space, if the path is folder path, it will try to convert all .txt files into csv
 
-## v1.8.5
+## v1.8.6
 Fix the issue that the regex can't match other Character syntax
 
 Change the CG source of csvconvert.py to aceship toolbox
