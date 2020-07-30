@@ -9,7 +9,7 @@ indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
 charre=r"^\[Character.*\(.*name=\"(?P<name>[^\"]+)\"(?!,name2=)"
-char2re=r"^\[Character\(name=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
+char2re=r"^\[Character\((name|nameage)=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
 characters=[]
 codes=[]
 characterFlag=False
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='(beta, may not work properly) Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
     args=parser.parse_args()
-    #args=parser.parse_args(['level_act3d0_st01.txt'])
+    #args=parser.parse_args(['.\\ArknightsGameData\\en_US\\gamedata\\story\\activities\\act6d5','-C'])
 
     characterFlag=args.Character
     commentFlag=args.comment
