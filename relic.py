@@ -1,8 +1,8 @@
 import openpyxl
 import json
 
-path = "ArknightsGameData\\zh_CN\\gamedata\\excel\\roguelike_table.json"
-items = ['id','name','usage','description','rarity']
+path = "roguelike_table.json"
+items = ['id','name','usage','description','rarity','unlockCondDesc']
 
 if __name__ == "__main__":
     with open(path, encoding='utf-8') as relicsfile:
