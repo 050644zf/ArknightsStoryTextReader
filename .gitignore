@@ -9,3 +9,4 @@ __pycache__
 en05
 ./ArknightsGameData
 ArknightsGameData/
+roguelike_table.json
