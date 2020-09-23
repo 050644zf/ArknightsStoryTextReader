@@ -1,7 +1,10 @@
 import openpyxl
 import json
 
-path = "roguelike_table.json"
+#the file path to roguelike_table.json
+path = "ArknightsGameData\\zh_CN\\gamedata\\excel\\roguelike_table.json"
+
+#the properties of relics in the out put
 items = ['id','name','usage','description','rarity','unlockCondDesc']
 
 if __name__ == "__main__":
