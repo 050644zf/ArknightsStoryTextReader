@@ -7,7 +7,7 @@ import os
 optre=r"^\[Decision\(.*options=\"(?P<options>.+)\","
 indre=r"^\[Predicate\(.*references=\"(?P<index>.+)\""
 imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
-namere=r"^\[name=\"(?P<name>.*?)\"\]\s+(?P<text>.+)"
+namere=r"^\[name=\"(?P<name>.*?)\"\]\s*(?P<text>.+)"
 charre=r"^\[Character.*\(.*name=\"(?P<name>[^\"]+)\"(?!,name2=)"
 char2re=r"^\[Character\((name|nameage)=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
 characters=[]
