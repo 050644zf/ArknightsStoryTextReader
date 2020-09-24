@@ -22,8 +22,10 @@ def reader(sheet,rawstorypath):
     with open(rawstorypath,encoding='utf-8') as rawstory:
         rawstorytext=rawstory.read()
         rawstorylist=rawstorytext.split('\n')[2:-3]
+        storylines = len(rawstorylist)
         rawlist=[]
-        for line in rawstorylist:
+        for (index,line) in enumerate(rawstorylist):
+            print("\rExporting {} : Line {}/{} ... ".format(rawstorypath.name,index+3,storylines+3),end='')
             if '//' in line and commentFlag:
                 line='[name="//Comment//"]  '+line
                 rawlist.append(line)
@@ -111,17 +113,27 @@ if __name__ == "__main__":
     characterFlag=args.Character
     commentFlag=args.comment
 
+    print("==========================")
+    print("Status:")
+    print("     Character CG output: {}".format(str(characterFlag)))
+    print("     Code Comment output: {}".format(str(commentFlag)))
+    print("==========================")
+
     if Path(args.rawpath[0]).is_dir():
+        print("Target path type: Folder")
         txtList=[]
         for txtFile in getFile(Path(args.rawpath[0])):
             if txtFile.suffix=='.txt':
                 txtList.append(txtFile)
+        
+        print("{} txt files dectected".format(str(len(txtList))))
 
         wb=xl.Workbook()
 
-        for txtFile in txtList:
+        for (txtindex,txtFile) in enumerate(txtList):
             ws=wb.create_sheet(title=txtFile.stem)
             reader(ws,txtFile)
+            print("\rTxt file {} exported ({}/{})                 ".format(txtFile.name,txtindex+1,str(len(txtList))))
 
         ws=wb.create_sheet(title='Characters')
         ws.append(['<Characters>'])
@@ -132,11 +144,14 @@ if __name__ == "__main__":
         for name in codes:
             ws.append([name])
 
+        print("Character sheet exported")
+
 
         wb.save(filename=str(Path(args.rawpath[0])/'story.xlsx'))
 
         print("Exported to {}".format(str(Path(args.rawpath[0])/'story.xlsx')))
     else:
+        print("Target path type: File")
         wb=xl.Workbook()
         ws=wb.active
         ws.title=Path(args.rawpath[0]).stem

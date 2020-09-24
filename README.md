@@ -52,6 +52,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.9.1
+
+Add command line output to help user locate the problem
+
 ## v1.9.0
 
 Add a new python program `relic.py` to export the info about the relics in Integrated Strategies
