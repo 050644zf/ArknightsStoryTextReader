@@ -101,7 +101,7 @@ def reader(sheet,rawstorypath):
 
 
 if __name__ == "__main__":
-    parser=argparse.ArgumentParser(description='Convert arknights story raw data into xlsx file.',epilog='By Nightsky#3319 in RIHQ')
+    parser=argparse.ArgumentParser(description='Convert arknights story raw data into xlsx file.',epilog='By Nightsky#3319 in RIHQ: discord.gg/rihq')
     parser.add_argument('rawpath',metavar='path',nargs=1,type=str,help='The file path or folder path of raw story files')
     parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='(beta, may not work properly) Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
