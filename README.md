@@ -52,6 +52,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.9.3
+
+Add colored font in command line output (Based on Powershell scheme on Windows 10)
+
 ## v1.9.2
 
 Fix the issue that the regex can't match line without space

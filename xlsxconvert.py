@@ -103,9 +103,12 @@ def reader(sheet,rawstorypath):
 
 
 if __name__ == "__main__":
-    parser=argparse.ArgumentParser(description='Convert arknights story raw data into xlsx file.',epilog='By Nightsky#3319 in RIHQ: discord.gg/rihq')
+
+    os.system("")
+
+    parser=argparse.ArgumentParser(description='\033[1mConvert arknights story raw data into xlsx file.\033[m',epilog='\033[1mBy Nightsky#3319 in RIHQ: discord.gg/rihq\033[m')
     parser.add_argument('rawpath',metavar='path',nargs=1,type=str,help='The file path or folder path of raw story files')
-    parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='(beta, may not work properly) Show Character CG file name')
+    parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='\033[31;1m(beta, may not work properly)\033[m Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
     args=parser.parse_args()
     #args=parser.parse_args(['.\\ArknightsGameData\\en_US\\gamedata\\story\\activities\\act6d5','-C'])
@@ -113,14 +116,15 @@ if __name__ == "__main__":
     characterFlag=args.Character
     commentFlag=args.comment
 
+
     print("==========================")
     print("Status:")
-    print("     Character CG output: {}".format(str(characterFlag)))
-    print("     Code Comment output: {}".format(str(commentFlag)))
+    print("     Character CG output: \033[{}m{}\033[m".format('33;1' if characterFlag else '90',str(characterFlag)))
+    print("     Code Comment output: \033[{}m{}\033[m".format('33;1' if commentFlag else '90',str(commentFlag)))
     print("==========================")
 
     if Path(args.rawpath[0]).is_dir():
-        print("Target path type: Folder")
+        print("Target path type: \033[33;1mFolder\033[m")
         txtList=[]
         for txtFile in getFile(Path(args.rawpath[0])):
             if txtFile.suffix=='.txt':
@@ -133,7 +137,7 @@ if __name__ == "__main__":
         for (txtindex,txtFile) in enumerate(txtList):
             ws=wb.create_sheet(title=txtFile.stem)
             reader(ws,txtFile)
-            print("\rTxt file {} exported ({}/{})                 ".format(txtFile.name,txtindex+1,str(len(txtList))))
+            print("\rTxt file {} exported \033[1m({}/{})\033[m                 ".format(txtFile.name,txtindex+1,str(len(txtList))))
 
         ws=wb.create_sheet(title='Characters')
         ws.append(['<Characters>'])
@@ -149,15 +153,15 @@ if __name__ == "__main__":
 
         wb.save(filename=str(Path(args.rawpath[0])/'story.xlsx'))
 
-        print("Exported to {}".format(str(Path(args.rawpath[0])/'story.xlsx')))
+        print("\033[92mExported to \033[1m{}\033[m".format(str(Path(args.rawpath[0])/'story.xlsx')))
     else:
-        print("Target path type: File")
+        print("Target path type: \033[33;1mFile\033[m")
         wb=xl.Workbook()
         ws=wb.active
         ws.title=Path(args.rawpath[0]).stem
         reader(ws,args.rawpath[0])
         wb.save(filename=args.rawpath[0].replace('.txt','.xlsx'))
-        print("Exported to {}".format(args.rawpath[0].replace('.txt','.xlsx')))
+        print("\033[92mExported to \033[1m{}\033[m".format(args.rawpath[0].replace('.txt','.xlsx')))
 
         
 
