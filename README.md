@@ -52,6 +52,12 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.10.0
+
+Now support `Subtitle` type text in ch8, presented as bold text with blank rows around in sheet
+
+Add `news.py` to export rawtext of Rosebud News in Maria Nearl event
+
 ## v1.9.3
 
 Add colored font in command line output (Based on Powershell scheme on Windows 10)

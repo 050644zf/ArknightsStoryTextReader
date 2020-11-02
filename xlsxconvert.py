@@ -10,10 +10,13 @@ imgre=r"\[(?P<type>.+)\(.*image=\"(?P<image>.*?)\""
 namere=r"^\[name=\"(?P<name>.*?)\"\]\s*(?P<text>.+)"
 charre=r"^\[Character.*\(.*name=\"(?P<name>[^\"]+)\"(?!,name2=)"
 char2re=r"^\[Character\((name|nameage)=\"(?P<name>[^\"]+)\".?\s?name2=\"(?P<name2>[^\"]+)\".?\s?(focus=(?P<focus>\d?))?.?"
+subre=r"^\[Subtitle\(text=\"(?P<subtitle>.*?)\""
 characters=[]
 codes=[]
 characterFlag=False
 commentFlag=False
+
+bold = xl.styles.Font(b=True)
 
 def getFile(p): #获取p路径下所有文件路径
     return [x for x in p.iterdir() if not x.is_dir()]
@@ -44,6 +47,15 @@ def reader(sheet,rawstorypath):
                         i=i+1
                     rawlist.append('[name="--Decision End--"]  ----')
                     continue
+                if '[Subtitle(' in line:
+                    if 'text=' in line:
+                        if not rawlist[-1]=='[name=""]  ':
+                            rawlist.append('[name=""]  ')
+                        subtitle = re.match(subre,line).group('subtitle')
+                        rawlist.append('[name="--Subtitle--"]  '+subtitle)
+                        rawlist.append('[name=""]  ')
+
+
                 try:
                     if '[Predicate' in line:
                         index=re.match(indre,line).group('index').replace(';','&')
@@ -83,10 +95,15 @@ def reader(sheet,rawstorypath):
                 if '[name' in line:
                     rawlist.append(line)
 
-    for line in rawlist:
+    for index,line in enumerate(rawlist):
         try:
             [name,text]=re.match(namere,line).group('name',"text")
-            sheet.append([name,text])
+            if name == '--Subtitle--':
+                sheet.append(['',text])
+                cell = sheet['B{}'.format(1+index)]
+                cell.font = bold
+            else:
+                sheet.append([name,text])
             if (not name in characters) and (not name in codes):
                 if '--' in name or '//' in name or 'Option_' in name:
                     codes.append(name)
@@ -111,7 +128,7 @@ if __name__ == "__main__":
     parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='\033[31;1m(beta, may not work properly)\033[m Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
     args=parser.parse_args()
-    #args=parser.parse_args(['.\\ArknightsGameData\\en_US\\gamedata\\story\\activities\\act6d5','-C'])
+    #args=parser.parse_args(['.\\cn08','-c'])
 
     characterFlag=args.Character
     commentFlag=args.comment
