@@ -128,7 +128,7 @@ if __name__ == "__main__":
     parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='\033[31;1m(beta, may not work properly)\033[m Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
     args=parser.parse_args()
-    #args=parser.parse_args(['.\\cn08','-c'])
+    #args=parser.parse_args(['cn08\\level_main_08-09_end.txt','-c'])
 
     characterFlag=args.Character
     commentFlag=args.comment
@@ -176,7 +176,7 @@ if __name__ == "__main__":
         wb=xl.Workbook()
         ws=wb.active
         ws.title=Path(args.rawpath[0]).stem
-        reader(ws,args.rawpath[0])
+        reader(ws,Path(args.rawpath[0]))
         wb.save(filename=args.rawpath[0].replace('.txt','.xlsx'))
         print("\033[92mExported to \033[1m{}\033[m".format(args.rawpath[0].replace('.txt','.xlsx')))
 
