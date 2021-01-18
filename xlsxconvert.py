@@ -133,7 +133,7 @@ if __name__ == "__main__":
     parser.add_argument('path',metavar='path',nargs='?',type=str,default=['ArknightsGameData'], help='The file path or folder path. If no -E or -e option provided, convert all file in path or selected path to xlsx file')
     parser.add_argument('-C','--Character',action='store_const',const=True,default=False,help='\033[31;1m(beta, may not work properly)\033[m Show Character CG file name')
     parser.add_argument('-c','--comment',action='store_const',const=True,default=False,help='Show Code Comment in raw story file')
-    parser.add_argument('-L','--Lang',metavar='Langcode', nargs=1, default='zh_CN',help='Config the language of the following command, default is zh_CN')
+    parser.add_argument('-L','--Lang',metavar='Langcode', nargs=1, default=['zh_CN'],help='Config the language of the following command, default is zh_CN')
     parser.add_argument('-E', '--EventList',action='store_const',const=True,default=False, help='Show available index: eventid in corresponding language, config the path to change the ArknightsGameData path from default (./ArknightsGameData)')
     parser.add_argument('-e', '--event', metavar='Eventid',nargs=1, help='Export all stories in corresponding index or eventid, config the path to change the ArknightsGameData path from default (./ArknightsGameData). You can get available index or eventid from --EventList command.')
     args=parser.parse_args()
@@ -141,8 +141,8 @@ if __name__ == "__main__":
 
     try:
         if args.EventList:
-            print('\033[1mList of Events in {}:\033[m (Index: Eventid Eventname)'.format(args.Lang))
-            for idx,event in enumerate(func.getEvents(Path(args.path[0]), args.Lang)):
+            print('\033[1mList of Events in {}:\033[m (Index: Eventid Eventname)'.format(args.Lang[0]))
+            for idx,event in enumerate(func.getEvents(Path(args.path[0]), args.Lang[0])):
                 print('{:<2}: {:<20} {:<}'.format(idx, event.eventid, event.name))
             exit()
     except IndexError:
@@ -160,13 +160,13 @@ if __name__ == "__main__":
 
     if args.event:
         try:
-            eventid = list(func.getEvents(Path(args.path[0]), args.Lang))[int(args.event[0])].eventid
+            eventid = list(func.getEvents(Path(args.path[0]), args.Lang[0]))[int(args.event[0])].eventid
         except ValueError:
             eventid = args.event[0]
 
         print("Loading event: \033[33;1m{}\033[m".format(eventid))
 
-        event = func.Event(Path(args.path[0]), args.Lang, eventid)
+        event = func.Event(Path(args.path[0]), args.Lang[0], eventid)
 
         filename = '{}_{}.xlsx'.format(event.eventid, event.name)
 

@@ -62,6 +62,8 @@ config the `path` in the `relic.py` and the properties you want to export and ru
 
 Add new feature to export story with given eventid and sorted in ingame order.
 
+Add new option to switch to different language server
+
 Automatically generate menu (didn't work for googlesheet currently)
 
 Automatically apply text warpping and column width adjustment
