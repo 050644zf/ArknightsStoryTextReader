@@ -29,7 +29,7 @@ Convert arknights story raw data into xlsx file.
   
   `-c`, `--comment`    Show Code Comment in raw story file
 
-  `-L Langcode`, `--Lang Langcode`    Config the language of the following command, defaultis zh_CN
+  `-L Langcode`, `--Lang Langcode`    Config the language of the following command, default is zh_CN
 
   `-E`, `--EventList`       Show available index: eventid in corresponding language, config the path to change the ArknightsGameData path from default (./ArknightsGameData)
 
