@@ -13,7 +13,7 @@ Only support story. Guides, tutorial and pop-up msg in battle are not supported 
 ### **New: Method 1 (Recommended, require openpyxl module)**
 
 ```bash
-usage: xlsxconvert.py [-h] [-C] [-c] [-L Langcode] [-E] [-e Eventid] [path]
+py xlsxconvert.py [-h] [-C] [-c] [-L Langcode] [-E] [-e Eventid] [path]
 ```
 
 Convert arknights story raw data into xlsx file.
