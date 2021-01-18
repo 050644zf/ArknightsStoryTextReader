@@ -13,13 +13,13 @@ Only support story. Guides, tutorial and pop-up msg in battle are not supported 
 ### **New: Method 1 (Recommended, require openpyxl module)**
 
 ```bash
-py xlsxconvert.py [-h] [-C] [-c] path
+usage: xlsxconvert.py [-h] [-C] [-c] [-L Langcode] [-E] [-e Eventid] [path]
 ```
 
 Convert arknights story raw data into xlsx file.
 
 **positional arguments:**
-  `path`             The file path or folder path of raw story files
+  `path`             The file path or folder path. If no -E or -e option provided, convert all file in path or selected path to xlsx file.
 
 **optional arguments:**
 
@@ -28,6 +28,12 @@ Convert arknights story raw data into xlsx file.
   `-C`, `--Character`  (may not work properly, submit an issue if you run into exception!) Show Character CG file name
   
   `-c`, `--comment`    Show Code Comment in raw story file
+
+  `-L Langcode`, `--Lang Langcode`    Config the language of the following command, defaultis zh_CN
+
+  `-E`, `--EventList`       Show available index: eventid in corresponding language, config the path to change the ArknightsGameData path from default (./ArknightsGameData)
+
+  `-e Eventid`, `--event Eventid`   Export all stories in corresponding index or eventid, config the path to change the ArknightsGameData path from default (./ArknightsGameData). You can get available index or eventid from --EventList command.
 
 **Require openpyxl module**, if you haven't installed openpyxl, run the following command first
 
@@ -51,6 +57,14 @@ positional arguments:
 ## usage of relic reader
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
+
+## v1.11.0
+
+Add new feature to export story with given eventid and sorted in ingame order.
+
+Automatically generate menu (didn't work for googlesheet currently)
+
+Automatically apply text warpping and column width adjustment
 
 ## v1.10.1
 
