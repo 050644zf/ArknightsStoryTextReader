@@ -30,6 +30,24 @@ def getEvents(data_dir:Path, lang:str):
     
     return events
 
+def getRecords(data_dir:Path, lang:str):
+    events = getEvents(data_dir, lang)
+    records = []
+    for event in events:
+        if 'story' in event.eventid:
+            records.append(event)
+    
+    return records
+
+def getMainline(data_dir:Path, lang:str):
+    events = getEvents(data_dir, lang)
+    records = []
+    for event in events:
+        if event.entryType == "MAINLINE":
+            records.append(event)
+    
+    return records
+
 
 
 class Event():
@@ -66,6 +84,6 @@ class Story():
         self.storyCode = storyData['storyCode']
         self.avgTag = storyData['avgTag'] if storyData['avgTag'] else ''
         self.storyName = storyData['storyName']
-        self.storyInfo = self.root_dir/'gamedata/story/[uc]{}'.format(storyData['storyInfo'])
+        self.storyInfo = self.root_dir/'gamedata/story/[uc]{}.txt'.format(storyData['storyInfo'])
         self.storyTxt = self.root_dir/'gamedata/story/{}.txt'.format(storyData['storyTxt'])
 

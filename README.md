@@ -35,6 +35,8 @@ Convert arknights story raw data into xlsx file.
 
   `-e Eventid`, `--event Eventid`   Export all stories in corresponding index or eventid, config the path to change the ArknightsGameData path from default (./ArknightsGameData). You can get available index or eventid from --EventList command.
 
+  `-i`, `--info`            Show story info in menu
+
 **Require openpyxl module**, if you haven't installed openpyxl, run the following command first
 
 ```bash
@@ -57,6 +59,12 @@ positional arguments:
 ## usage of relic reader
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
+
+## v1.11.1
+
+Add an option to export all mainline stories at once
+
+Add an option to show story info in menu
 
 ## v1.11.0
 
