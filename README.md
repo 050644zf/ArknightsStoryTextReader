@@ -60,6 +60,12 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.11.2
+
+Fix the hyperlink properties (credit: VaDiM#5824)
+
+Remove unnecessary codes
+
 ## v1.11.1
 
 Add an option to export all mainline stories at once

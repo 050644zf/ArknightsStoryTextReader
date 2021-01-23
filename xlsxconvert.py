@@ -5,6 +5,7 @@ from pathlib import Path
 import os
 from func import getFile
 import func
+from openpyxl.worksheet.hyperlink import Hyperlink
 
 optre = r"^\[Decision\(.*options=\"(?P<options>.+)\","
 indre = r"^\[Predicate\(.*references=\"(?P<index>.+)\""
@@ -164,270 +165,180 @@ if __name__ == "__main__":
     print("     Story Info output: \033[{}m{}\033[m".format('33;1' if infoFlag else '90',str(infoFlag)))
     print("==========================")
 
-    if args.main:
 
-        records = func.getMainline(Path(args.path), args.Lang[0])
+    if Path(args.path).is_dir():
 
-        filename = 'Mainline.xlsx'
+        if args.main:   #Mainline stories
 
-        storyList = []
-        txtList=[]
-        for event in records:
+            records = func.getMainline(Path(args.path), args.Lang[0])
+
+            filename = 'Mainline.xlsx'
+
+            storyList = []
+            txtList=[]
+            for event in records:
+                for story in event:
+                    storyList.append(story)
+                    txtList.append(story.storyTxt)
+
+            wb=xl.Workbook()
+            ws = wb.active
+            ws.title = 'Menu'
+            ws.column_dimensions['A'].width = 20
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['D'].width = 25
+            ws.column_dimensions['E'].width = 80
+
+            ws.append([None,"Mainline"])
+            ws['B1'].font = bold
+            ws.append([])
+            ws.append(['storyCode','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
+            for cell in ws['A3':'E3'][0]:
+                cell.font = bold
+
+            for idx,story in enumerate(storyList):
+                if infoFlag:
+                    with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
+                        storyInfo = storyInfoFile.read()
+                else:
+                    storyInfo = None
+
+                ws.append([story.storyCode, story.storyName, story.avgTag, story.storyTxt.stem, storyInfo])
+                loc = f"'{story.storyTxt.stem}'!A1"
+                cell = ws.cell(idx+4,4)
+                cell.font = underline
+                cell.hyperlink = Hyperlink(ref='', location=loc, display=story.storyTxt.stem)
+                for i in range(1,5):
+                    ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center')
+                if ws.cell(idx+3,1).value == story.storyCode:
+                    ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
+                    ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
+
+                for row in ws[ws.dimensions]:
+                    row[4].alignment = xl.styles.Alignment(wrap_text=True)
+
+        elif args.records:    #Operators' Records
+
+            records = func.getRecords(Path(args.path), args.Lang[0])
+
+            filename = 'Operators_Records.xlsx'
+
+            storyList = []
+            txtList=[]
+            for event in records:
+                for story in event:
+                    storyList.append(story)
+                    txtList.append(story.storyTxt)
+
+            wb=xl.Workbook()
+            ws = wb.active
+            ws.title = 'Menu'
+            ws.column_dimensions['A'].width = 20
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['D'].width = 25
+            ws.column_dimensions['E'].width = 80
+
+            ws.append([None,"Operactors' Records"])
+            ws['B1'].font = bold
+            ws.append([])
+            ws.append(['eventid','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
+            for cell in ws['A3':'E3'][0]:
+                cell.font = bold
+
+            for idx,story in enumerate(storyList):
+                if infoFlag:
+                    with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
+                        storyInfo = storyInfoFile.read()
+                else:
+                    storyInfo = None
+
+                ws.append([story.eventid, story.storyName, story.avgTag, story.storyTxt.stem, storyInfo])
+                loc = f"'{story.storyTxt.stem}'!A1"
+                cell = ws.cell(idx+4,4)
+                cell.font = underline
+                cell.hyperlink = Hyperlink(ref='', location=loc, display=story.storyTxt.stem)
+
+                for i in range(1,5):
+                    ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center') 
+                if ws.cell(idx+3,1).value == story.eventid:
+                    ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
+                    ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
+
+                for row in ws[ws.dimensions]:
+                    row[4].alignment = xl.styles.Alignment(wrap_text=True)
+ 
+        elif args.event:    #Single Event
+            try:
+                eventid = list(func.getEvents(Path(args.path), args.Lang[0]))[int(args.event[0])].eventid
+            except ValueError:
+                eventid = args.event[0]
+
+            event = func.Event(Path(args.path), args.Lang[0], eventid)
+
+            filename = f'{event.eventid}_{event.name}.xlsx'
+
+            txtList=[]
             for story in event:
-                storyList.append(story)
                 txtList.append(story.storyTxt)
-        
-        print(f"{str(len(txtList))} txt files dectected")
+            
 
-        wb=xl.Workbook()
-        ws = wb.active
-        ws.title = 'Menu'
-        ws.column_dimensions['A'].width = 20
-        ws.column_dimensions['B'].width = 20
-        ws.column_dimensions['D'].width = 25
-        ws.column_dimensions['E'].width = 80
+            wb=xl.Workbook()
+            ws = wb.active
+            ws.title = 'Menu'
+            ws.column_dimensions['A'].width = 10
+            ws.column_dimensions['B'].width = 20
+            ws.column_dimensions['D'].width = 25
+            ws.column_dimensions['E'].width = 80
 
-        ws.append([None,"Mainline"])
-        ws['B1'].font = bold
-        ws.append([])
-        ws.append(['storyCode','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
-        for cell in ws['A3':'E3'][0]:
-            cell.font = bold
+            ws.append([event.eventid,event.name])
+            ws['B1'].font = bold
+            ws.append([])
+            ws.append(['storyCode','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
+            for cell in ws['A3':'E3'][0]:
+                cell.font = bold
 
-        for idx,story in enumerate(storyList):
-            if infoFlag:
-                with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
-                    storyInfo = storyInfoFile.read()
-            else:
-                storyInfo = None
+            for idx,story in enumerate(event):
+                if infoFlag:
+                    with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
+                        storyInfo = storyInfoFile.read()
+                else:
+                    storyInfo = None
 
-            storyLink = f'=HYPERLINK("#\'{story.storyTxt.stem}\'!A1","{story.storyTxt.stem}")'
-            ws.append([story.storyCode, story.storyName, story.avgTag, storyLink, storyInfo])
-            #link = "{}#'{}'!A1".format(filename, story.storyTxt.stem)
-            cell = ws.cell(idx+4,4)
-            cell.font = underline
-            #cell.hyperlink = (link)
-            for i in range(1,5):
-                ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center')
-            if ws.cell(idx+3,1).value == story.storyCode:
-                ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
-                ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
+                ws.append([story.storyCode, story.storyName, story.avgTag, story.storyTxt.stem, storyInfo])
+                loc = f"'{story.storyTxt.stem}'!A1"
+                cell = ws.cell(idx+4,4)
+                cell.font = underline
+                cell.hyperlink = Hyperlink(ref='', location=loc, display=story.storyTxt.stem)
 
-            for row in ws[ws.dimensions]:
-                row[4].alignment = xl.styles.Alignment(wrap_text=True)
+                for i in range(1,5):
+                    ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center')
+                if ws.cell(idx+3,1).value == story.storyCode:
+                    ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
+                    ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
 
 
-
-
-        for (txtindex,txtFile) in enumerate(txtList):
-            ws=wb.create_sheet(title=txtFile.stem)
-            ws.column_dimensions['A'].width = 15
-            ws.column_dimensions['B'].width = 70
-            reader(ws,txtFile)
-
-            for row in ws[ws.dimensions]:
-                for cell in row:
-                    cell.alignment = xl.styles.Alignment(wrap_text=True)
-
-            print(f"\rTxt file {txtFile.name} exported \033[1m({txtindex+1}/{str(len(txtList))})\033[m                 ")
-
-        ws=wb.create_sheet(title='Characters')
-        ws.append(['<Characters>'])
-        for name in characters:
-            ws.append([name])
-
-        ws.append(['<Codes>'])
-        for name in codes:
-            ws.append([name])
-
-        print("Character sheet exported")
-
-
-        wb.save(filename=filename)
-
-        print(f"\033[92mExported to \033[1m{filename}\033[m")
-
-    elif args.records:    #Operators' Records
-
-        records = func.getRecords(Path(args.path), args.Lang[0])
-
-        filename = 'Operators_Records.xlsx'
-
-        storyList = []
-        txtList=[]
-        for event in records:
-            for story in event:
-                storyList.append(story)
-                txtList.append(story.storyTxt)
-        
-        print(f"{str(len(txtList))} txt files dectected")
-
-        wb=xl.Workbook()
-        ws = wb.active
-        ws.title = 'Menu'
-        ws.column_dimensions['A'].width = 20
-        ws.column_dimensions['B'].width = 20
-        ws.column_dimensions['D'].width = 25
-        ws.column_dimensions['E'].width = 80
-
-        ws.append([None,"Operactors' Records"])
-        ws['B1'].font = bold
-        ws.append([])
-        ws.append(['eventid','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
-        for cell in ws['A3':'E3'][0]:
-            cell.font = bold
-
-        for idx,story in enumerate(storyList):
-            if infoFlag:
-                with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
-                    storyInfo = storyInfoFile.read()
-            else:
-                storyInfo = None
-
-            ws.append([story.eventid, story.storyName, story.avgTag, story.storyTxt.stem, storyInfo])
-            link = "{}#'{}'!A1".format(filename, story.storyTxt.stem)
-            cell = ws.cell(idx+4,4)
-            cell.font = underline
-            cell.hyperlink = (link)
-
-            for i in range(1,5):
-                ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center') 
-            if ws.cell(idx+3,1).value == story.eventid:
-                ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
-                ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
-
-            for row in ws[ws.dimensions]:
-                row[4].alignment = xl.styles.Alignment(wrap_text=True)
-
-
-
-
-        for (txtindex,txtFile) in enumerate(txtList):
-            ws=wb.create_sheet(title=txtFile.stem)
-            ws.column_dimensions['A'].width = 15
-            ws.column_dimensions['B'].width = 70
-            reader(ws,txtFile)
-
-            for row in ws[ws.dimensions]:
-                for cell in row:
-                    cell.alignment = xl.styles.Alignment(wrap_text=True)
-
-            print(f"\rTxt file {txtFile.name} exported \033[1m({txtindex+1}/{str(len(txtList))})\033[m                 ")
-
-        ws=wb.create_sheet(title='Characters')
-        ws.append(['<Characters>'])
-        for name in characters:
-            ws.append([name])
-
-        ws.append(['<Codes>'])
-        for name in codes:
-            ws.append([name])
-
-        print("Character sheet exported")
-
-
-        wb.save(filename=filename)
-
-        print(f"\033[92mExported to \033[1m{filename}\033[m")
-
-    elif args.event:    #Single Event
-        try:
-            eventid = list(func.getEvents(Path(args.path), args.Lang[0]))[int(args.event[0])].eventid
-        except ValueError:
-            eventid = args.event[0]
-
-        print(f"Loading event: \033[33;1m{eventid}\033[m")
-
-        event = func.Event(Path(args.path), args.Lang[0], eventid)
-
-        filename = f'{event.eventid}_{event.name}.xlsx'
-
-        txtList=[]
-        for story in event:
-            txtList.append(story.storyTxt)
-        
-        print(f"{str(len(txtList))} txt files dectected")
-
-        wb=xl.Workbook()
-        ws = wb.active
-        ws.title = 'Menu'
-        ws.column_dimensions['A'].width = 10
-        ws.column_dimensions['B'].width = 20
-        ws.column_dimensions['D'].width = 25
-        ws.column_dimensions['E'].width = 80
-
-        ws.append([event.eventid,event.name])
-        ws['B1'].font = bold
-        ws.append([])
-        ws.append(['storyCode','storyName','avgTag','storyTxt.stem', 'storyInfo' if infoFlag else None])
-        for cell in ws['A3':'E3'][0]:
-            cell.font = bold
-
-        for idx,story in enumerate(event):
-            if infoFlag:
-                with open(story.storyInfo, encoding='utf-8') as storyInfoFile:
-                    storyInfo = storyInfoFile.read()
-            else:
-                storyInfo = None
-
-            ws.append([story.storyCode, story.storyName, story.avgTag, story.storyTxt.stem, storyInfo])
-            link = "{}#'{}'!A1".format(filename, story.storyTxt.stem)
-            cell = ws.cell(idx+4,4)
-            cell.font = underline
-            cell.hyperlink = (link)
-            for i in range(1,5):
-                ws.cell(idx+3,i).alignment = xl.styles.Alignment(vertical='center')
-            if ws.cell(idx+3,1).value == story.storyCode:
-                ws.merge_cells(start_column=1, end_column=1, start_row=idx+3, end_row=idx+4)
-                ws.merge_cells(start_column=2, end_column=2, start_row=idx+3, end_row=idx+4)
-
-
-            for row in ws[ws.dimensions]:
-                row[4].alignment = xl.styles.Alignment(wrap_text=True)
-
-
-        for (txtindex,txtFile) in enumerate(txtList):
-            ws=wb.create_sheet(title=txtFile.stem)
-            ws.column_dimensions['A'].width = 15
-            ws.column_dimensions['B'].width = 70
-            reader(ws,txtFile)
-
-            for row in ws[ws.dimensions]:
-                for cell in row:
-                    cell.alignment = xl.styles.Alignment(wrap_text=True)
-
-            print(f"\rTxt file {txtFile.name} exported \033[1m({txtindex+1}/{str(len(txtList))})\033[m                 ")
-
-        ws=wb.create_sheet(title='Characters')
-        ws.append(['<Characters>'])
-        for name in characters:
-            ws.append([name])
-
-        ws.append(['<Codes>'])
-        for name in codes:
-            ws.append([name])
-
-        print("Character sheet exported")
-
-
-        wb.save(filename=filename)
-
-        print(f"\033[92mExported to \033[1m{filename}\033[m")
-
-    elif Path(args.path).is_dir():
-        print("Target path type: \033[33;1mFolder\033[m")
-        txtList=[]
-        for txtFile in getFile(Path(args.path)):
-            if txtFile.suffix=='.txt':
-                txtList.append(txtFile)
+                for row in ws[ws.dimensions]:
+                    row[4].alignment = xl.styles.Alignment(wrap_text=True)
+        else:
+            filename = 'story.xlsx'
+            print("Target path type: \033[33;1mFolder\033[m")
+            wb=xl.Workbook()
+            txtList=[]
+            for txtFile in getFile(Path(args.path)):
+                if txtFile.suffix=='.txt':
+                    txtList.append(txtFile)
         
         print("{} txt files dectected".format(str(len(txtList))))
 
-        wb=xl.Workbook()
-
         for (txtindex,txtFile) in enumerate(txtList):
             ws=wb.create_sheet(title=txtFile.stem)
+            ws.column_dimensions['A'].width = 15
+            ws.column_dimensions['B'].width = 70
             reader(ws,txtFile)
+
+            for row in ws[ws.dimensions]:
+                for cell in row:
+                    cell.alignment = xl.styles.Alignment(wrap_text=True)
             print("\rTxt file {} exported \033[1m({}/{})\033[m                 ".format(txtFile.name,txtindex+1,str(len(txtList))))
 
         ws=wb.create_sheet(title='Characters')
@@ -442,9 +353,9 @@ if __name__ == "__main__":
         print("Character sheet exported")
 
 
-        wb.save(filename=str(Path(args.path)/'story.xlsx'))
+        wb.save(filename=filename)
 
-        print("\033[92mExported to \033[1m{}\033[m".format(str(Path(args.path)/'story.xlsx')))
+        print(f"\033[92mExported to \033[1m{filename}\033[m")
     else:
         print("Target path type: \033[33;1mFile\033[m")
         wb=xl.Workbook()
