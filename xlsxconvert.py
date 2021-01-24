@@ -32,7 +32,7 @@ def reader(sheet,rawstorypath:Path):
         storylines = len(rawstorylist)
         rawlist=[]
         for (index,line) in enumerate(rawstorylist):
-            print(f"\rExporting {rawstorypath.name} : Line {index+3}/{storylines+3} ... ".format(rawstorypath.name,index+3,storylines+3),end='')
+            print(f"\rExporting {rawstorypath.name} : Line {index+3}/{storylines+3} ... ",end='')
             if '//' in line and commentFlag:
                 line=f'[name="//Comment//"]  {line}'
                 rawlist.append(line)
@@ -328,7 +328,7 @@ if __name__ == "__main__":
                 if txtFile.suffix=='.txt':
                     txtList.append(txtFile)
         
-        print("{} txt files dectected".format(str(len(txtList))))
+        print(f"{len(txtList)} txt files dectected")
 
         for (txtindex,txtFile) in enumerate(txtList):
             ws=wb.create_sheet(title=txtFile.stem)
@@ -339,7 +339,7 @@ if __name__ == "__main__":
             for row in ws[ws.dimensions]:
                 for cell in row:
                     cell.alignment = xl.styles.Alignment(wrap_text=True)
-            print("\rTxt file {} exported \033[1m({}/{})\033[m                 ".format(txtFile.name,txtindex+1,str(len(txtList))))
+            print(f"\rTxt file {txtFile.name} exported \033[1m({txtindex+1}/{len(txtList)})\033[m                 ")
 
         ws=wb.create_sheet(title='Characters')
         ws.append(['<Characters>'])
