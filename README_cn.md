@@ -8,6 +8,10 @@
 
 仅支持剧情，教程、教学关卡以及战斗中的弹出对话暂时不受支持
 
+## 教程
+
+在[这里](https://github.com/050644zf/ArknightsStoryReader/blob/master/Tutorial_cn.md)查看关于本程序的教程
+
 ## 使用方法
 
 ### **New: 方式 1 (推荐, 需要 openpyxl 模块)**
