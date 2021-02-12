@@ -146,9 +146,24 @@ if __name__ == "__main__":
 
     try:
         if args.EventList:
-            print(f'\033[1mList of Events in {args.Lang[0]}:\033[m (Index: Eventid Eventname)')
-            for idx,event in enumerate(func.getEvents(Path(args.path), args.Lang[0])):
-                print(f'{idx:<2}: {event.eventid:<20} {event.name:<}')
+            actList = func.getAct(Path(args.path), args.Lang[0])
+            mainList = func.getMainline(Path(args.path), args.Lang[0])
+            recList = func.getRecords(Path(args.path), args.Lang[0])
+            idx = 0
+            print(f'\033[1mList of Events in {args.Lang[0]}:\033[m \n| Index: Eventid        Eventname')
+            print('===ACTIVITY===')
+            for event in actList:
+                print(f'| {idx:<2}: {event.eventid:<20} {event.name:<}')
+                idx += 1
+            print('===MAINLINE===')
+            for event in mainList:
+                print(f'| {idx:<2}: {event.eventid:<20} {event.name:<}')
+                idx += 1
+            if len(recList):
+                print('===RECORDS===')
+                for event in recList:
+                    print(f'| {idx:<2}: {event.eventid:<20} {event.name:<}')
+                    idx += 1                        
             exit()
     except IndexError:
         pass

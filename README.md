@@ -1,6 +1,6 @@
-# Arknights Story Reader
+# Arknights Story Text Reader
 
-A simple python program that help you convert Arknights raw story data into other readable format.
+A simple python program that help you convert Arknights raw story data into other readable format like Excel or csv.
 
 You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)
 
@@ -60,7 +60,9 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
-## v1.11.3
+## v1.11.4
+
+Update tutorial and CN version README
 
 Fix the hyperlink properties (credit: VaDiM#5824)
 

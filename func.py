@@ -45,6 +45,14 @@ def getMainline(data_dir:Path, lang:str):
     
     return records
 
+def getAct(data_dir:Path, lang:str):
+    events = getEvents(data_dir, lang)
+    records = []
+    for event in events:
+        if event.entryType == "ACTIVITY":
+            records.append(event)
+    
+    return records
 
 
 class Event():
