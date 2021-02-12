@@ -4,7 +4,7 @@ Assuming you have downloaded the ArknightsGameData repository from [Kengxxiao/Ar
 
 Open powershell (Recommended) or cmd at the folder of this repo
 
-1. Get the help message:
+## Get the help message:
 
 The first path is the path to the script
 
@@ -12,7 +12,7 @@ The first path is the path to the script
 py .\xlsxconvert.py -h
 ```
 
-1. List all event in en_US:
+## List all event in en_US:
 
 The second path is the path to the GameData
 
@@ -37,7 +37,7 @@ List of Events in en_US:
 ...
 ```
 
-1. Export a specific event, and enable Code Comment & Story Info output
+## Export a specific event, and enable Code Comment & Story Info output
 
 From the event list above we can get the eventid, for example `1stact` is the eventid of  `Grani and the Knights' Treasure`, so we put it after `-e` command
 
@@ -72,7 +72,7 @@ Exported to act5d0_Code of Brawl.xlsx
 
 Then you can find the file named `act5d0_Code of Brawl.xlsx` under the same folder
 
-1. Export file(s) in given path
+## Export file(s) in given path
 
 Sometimes you don't need to download the whole GameData folder, you can also config the second path to the path of raw story file:
 
