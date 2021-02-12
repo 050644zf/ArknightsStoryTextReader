@@ -4,7 +4,7 @@
 
 在本repo文件夹打开 Powershell (推荐) 或 CMD
 
-1. 得到帮助消息：
+## 得到帮助消息：
 
 第一个路径是程序路径
 
@@ -12,7 +12,7 @@
 py .\xlsxconvert.py -h
 ```
 
-1. 列出en_US服务器下的所有 event ：
+## 列出en_US服务器下的所有 event ：
 
 第二个路径是 GameData 的路径
 
@@ -37,7 +37,7 @@ List of Events in en_US:
 ...
 ```
 
-1. 导出特定活动的剧情，并启用代码注释输出和故事简介输出
+## 导出特定活动的剧情，并启用代码注释输出和故事简介输出
 
 从上述活动列表我们可以找到对应的 eventid ，例如 `1stact` 是活动 `Grani and the Knights' Treasure` 的 eventid ，所以我们将它放在 `-e` 指令的后面
 
@@ -71,7 +71,7 @@ Exported to 1stact_Grani and the Knights' Treasure.xlsx
 
 接下来您就可以在相同文件夹下找到名为 `1stact_Grani and the Knights' Treasure.xlsx` 的导出文件了
 
-1. 导出给定路径的文件/文件夹
+## 导出给定路径的文件/文件夹
 
 有时您并不需要将整个 GameData 下载下来，您可能只需要导出一个特定的文件：
 
