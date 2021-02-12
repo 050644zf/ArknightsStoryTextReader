@@ -1,6 +1,6 @@
 # Arknights Story Text Reader
 
-[中文](https://github.com/050644zf/ArknightsStoryReader/blob/master/README_cn.md)
+[中文README](https://github.com/050644zf/ArknightsStoryReader/blob/master/README_cn.md)
 
 A simple python program that help you convert Arknights raw story data into other readable format like Excel or csv.
 
