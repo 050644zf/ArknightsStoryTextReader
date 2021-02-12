@@ -1,5 +1,7 @@
 # Arknights Story Text Reader
 
+[中文](https://github.com/050644zf/ArknightsStoryReader/blob/master/README_cn.md)
+
 A simple python program that help you convert Arknights raw story data into other readable format like Excel or csv.
 
 You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)
@@ -7,6 +9,10 @@ You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/
 **CN/JP/EN/KR** server files tested
 
 Only support story. Guides, tutorial and pop-up msg in battle are not supported yet.
+
+## Tutorial
+
+Read the tutorial about the script here: [Tutorial](https://github.com/050644zf/ArknightsStoryReader/blob/master/Tutorial.md)
 
 ## usage of story reader
 
