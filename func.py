@@ -49,7 +49,7 @@ def getAct(data_dir:Path, lang:str):
     events = getEvents(data_dir, lang)
     records = []
     for event in events:
-        if event.entryType == "ACTIVITY":
+        if "ACTIVITY" in event.entryType:
             records.append(event)
     
     return records

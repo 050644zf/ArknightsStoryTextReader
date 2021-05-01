@@ -10,3 +10,6 @@ en05
 ./ArknightsGameData
 ArknightsGameData/
 roguelike_table.json
+ArknightsData/
+*.nb
+*.zip

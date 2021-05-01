@@ -66,6 +66,12 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.11.5
+
+Fix the issue that missing heading or ending lines
+
+Fix the issue that can't recognize storyset event in event list
+
 ## v1.11.4
 
 Update tutorial and CN version README
