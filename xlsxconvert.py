@@ -148,8 +148,8 @@ if __name__ == "__main__":
                         const=True, default=False, help="Export all mainline story")
     parser.add_argument('-i', '--info', action='store_const',
                         const=True, default=False, help="Show story info in menu")
-    #args = parser.parse_args()
-    args=parser.parse_args(['-e','16'])
+    args = parser.parse_args()
+    #args=parser.parse_args(['-e','16'])
 
     try:
         if args.EventList:
