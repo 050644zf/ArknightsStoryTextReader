@@ -148,8 +148,8 @@ if __name__ == "__main__":
                         const=True, default=False, help="Export all mainline story")
     parser.add_argument('-i', '--info', action='store_const',
                         const=True, default=False, help="Show story info in menu")
-    args = parser.parse_args()
-    #args=parser.parse_args(['test.txt'])
+    #args = parser.parse_args()
+    args=parser.parse_args(['-e','16'])
 
     try:
         if args.EventList:
@@ -352,7 +352,7 @@ if __name__ == "__main__":
                 for i in range(1, 5):
                     ws.cell(
                         idx+3, i).alignment = xl.styles.Alignment(vertical='center')
-                if ws.cell(idx+3, 1).value == story.storyCode:
+                if ws.cell(idx+3, 1).value == story.storyCode and len(story.storyCode):
                     ws.merge_cells(start_column=1, end_column=1,
                                    start_row=idx+3, end_row=idx+4)
                     ws.merge_cells(start_column=2, end_column=2,

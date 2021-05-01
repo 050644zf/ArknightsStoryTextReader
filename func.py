@@ -85,6 +85,7 @@ class Story():
         self.root_dir = event.root_dir
         self.lang = event.lang
         self.eventid = event.eventid
+        self.entryType = event.entryType
         self.storyData = storyData
         self.storyCode = storyData['storyCode']
         self.avgTag = storyData['avgTag'] if storyData['avgTag'] else ''

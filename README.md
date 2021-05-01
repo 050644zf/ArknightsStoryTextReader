@@ -66,6 +66,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.11.6
+
+Fix the incorrect cells merging in menu of storyset
+
 ## v1.11.5
 
 Fix the issue that missing heading or ending lines
