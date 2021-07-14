@@ -66,6 +66,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v1.12.0
+
+Add square bracket in option text to match the ingame log style
+
 ## v1.11.6
 
 Fix the incorrect cells merging in menu of storyset

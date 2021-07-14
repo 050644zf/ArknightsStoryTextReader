@@ -47,7 +47,7 @@ def reader(sheet, rawstorypath: Path):
                     i = 1
                     rawlist.append('[name="--Decision--"]  ----')
                     for option in options:
-                        rawlist.append(f'[name="Option_{i}"]  {option}')
+                        rawlist.append(f'[name="Option_{i}"]  【{option}】')
                         i = i+1
                     rawlist.append('[name="--Decision End--"]  ----')
                     continue
