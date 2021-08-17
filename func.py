@@ -2,11 +2,11 @@ from pathlib import Path
 import json
 
 
-actTablePath = Path('gamedata\\excel\\activity_table.json')
-stgTablePath = Path('gamedata\\excel\\stage_table.json')
-zoneTablePath = Path('gamedata\\excel\\zone_table.json')
-mainStoryPath = Path('gamedata\\story\\obt\\main')
-reviewPath = Path('gamedata\\excel\\story_review_table.json')
+actTablePath = Path('gamedata/excel/activity_table.json')
+stgTablePath = Path('gamedata/excel/stage_table.json')
+zoneTablePath = Path('gamedata/excel/zone_table.json')
+mainStoryPath = Path('gamedata/story/obt/main')
+reviewPath = Path('gamedata/excel/story_review_table.json')
 
 def getFile(p:Path): #获取p路径下所有文件路径
     return [x for x in p.iterdir() if not x.is_dir()]
