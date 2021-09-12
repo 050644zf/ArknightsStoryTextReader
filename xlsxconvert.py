@@ -72,7 +72,7 @@ def xlc(sheet, rawlist):
             sheet.append([''])
             sheet.append([index,
             '',
-            attrs['text']])
+            attrs.get('text','')])
             sheet.append([''])
 
         if 'image' in attrs.keys():
@@ -111,8 +111,8 @@ if __name__ == "__main__":
                         const=True, default=False, help="Export all mainline story")
     parser.add_argument('-i', '--info', action='store_const',
                         const=True, default=False, help="Show story info in menu")
-    args = parser.parse_args()
-    #args=parser.parse_args(['-e','16'])
+    #args = parser.parse_args()
+    args=parser.parse_args(['-e','12'])
 
     try:
         if args.EventList:
@@ -139,14 +139,11 @@ if __name__ == "__main__":
     except IndexError:
         pass
 
-    characterFlag = args.Character
     commentFlag = args.comment
     infoFlag = args.info
 
     print("==========================")
     print("Status:")
-    print("     Character CG output: \033[{}m{}\033[m".format(
-        '33;1' if characterFlag else '90', str(characterFlag)))
     print("     Code Comment output: \033[{}m{}\033[m".format(
         '33;1' if commentFlag else '90', str(commentFlag)))
     print("     Story Info output: \033[{}m{}\033[m".format(
