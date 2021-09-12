@@ -68,6 +68,7 @@ config the `path` in the `relic.py` and the properties you want to export and ru
 
 - Add Converting into Json Feature (under development) in `jsonconvert.py`
 - Rewrote the code of `xlsxconvert.py` based on the new json feature, completely get rid of a bunch of shitty regular expressions
+- Add a column of line index before each line, the index column is hidden in sheets
 
 ## v1.12.1
 
