@@ -28,8 +28,6 @@ py xlsxconvert.py [-h] [-C] [-c] [-L Langcode] [-E] [-e Eventid] [path]
 **可选变量:**
 
   `-h`, `--help`       显示帮助信息并退出
-
-  `-C`, `--Character`  (可能不能正常运行，如果出现问题请提交issue!) 显示角色CG文件名
   
   `-c`, `--comment`    显示原文件代码注释（yj可能会藏一些东西进去）
 

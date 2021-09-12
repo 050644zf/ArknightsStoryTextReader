@@ -19,7 +19,7 @@ Read the tutorial about the script here: [Tutorial](https://github.com/050644zf/
 ### **New: Method 1 (Recommended, require openpyxl module)**
 
 ```bash
-py xlsxconvert.py [-h] [-C] [-c] [-L Langcode] [-E] [-e Eventid] [path]
+py xlsxconvert.py [-h] [-c] [-L Langcode] [-E] [-e Eventid] [path]
 ```
 
 Convert arknights story raw data into xlsx file.
@@ -30,8 +30,6 @@ Convert arknights story raw data into xlsx file.
 **optional arguments:**
 
   `-h`, `--help`       show this help message and exit
-
-  `-C`, `--Character`  (may not work properly, submit an issue if you run into exception!) Show Character CG file name
   
   `-c`, `--comment`    Show Code Comment in raw story file
 
@@ -65,6 +63,11 @@ positional arguments:
 ## usage of relic reader
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
+
+## v2.0.0
+
+- Add Converting into Json Feature (under development) in `jsonconvert.py`
+- Rewrote the code of `xlsxconvert.py` based on the new json feature, completely get rid of a bunch of shitty regular expressions
 
 ## v1.12.1
 
