@@ -64,6 +64,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v2.0.1
+
+- Fixed some issues
+
 ## v2.0.0
 
 - Add Converting into Json Feature (under development) in `jsonconvert.py`

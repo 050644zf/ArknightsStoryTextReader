@@ -361,10 +361,11 @@ if __name__ == "__main__":
         print("Character sheet exported")
         try:
             wb.save(filename=filename)
+            print(f"\033[92mExported to \033[1m{filename}\033[m")
         except PermissionError:
-            print('PermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.')
+            print('\033[91mPermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.\033[m')
 
-        print(f"\033[92mExported to \033[1m{filename}\033[m")
+        
     else:
         print("Target path type: \033[33;1mFile\033[m")
         wb = xl.Workbook()
@@ -377,7 +378,8 @@ if __name__ == "__main__":
         xlc(ws,rawList)
         try:
             wb.save(filename=args.path.replace('.txt', '.xlsx'))
-        except PermissionError:
-            print('PermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.')
-        print("\033[92mExported to \033[1m{}\033[m".format(
+            print("\033[92mExported to \033[1m{}\033[m".format(
             args.path.replace('.txt', '.xlsx')))
+        except PermissionError:
+            print('\033[91mPermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.\033[m')
+

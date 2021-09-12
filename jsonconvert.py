@@ -20,8 +20,8 @@ def reader(rawstorytext:str):
     rawstorylist = rawstorytext.split('\n')
     storylines = len(rawstorylist)
     rawlist = []
-    currentDecision = 0
-    currentOptions = []
+    currentOptions = {}
+    usedOptions = {}
     for (index, line) in enumerate(rawstorylist):
         d = {}
         d['id'] = index
@@ -56,22 +56,26 @@ def reader(rawstorytext:str):
                         imgtype = 'item'
 
         if prop == 'Decision':
-            currentDecision = index
             d['targetLine'] = {}
-            currentOptions = [f'option{value}' for value in d['attributes']['values'].split(';')]
-            for value in currentOptions:
+            options = d['attributes']['options'].split(';')
+            values = [f"option{value}" for value in d['attributes']['values'].split(';')]
+            for idx,value in enumerate(values):
+                currentOptions[value] = {'option':options[idx], 'Decision':index}
                 d['targetLine'][value] = ''
 
         if prop == 'Predicate':
             for ref in d['attributes']['references'].split(';'):
                 if f'option{ref}' in currentOptions:
-                    rawlist[currentDecision]['targetLine'][f'option{ref}'] = f'line{index}'
-                    currentOptions.remove(f'option{ref}')
+                    dec = currentOptions[f'option{ref}']['Decision']
+                    rawlist[dec]['targetLine'][f'option{ref}'] = f'line{index}'
+                    del currentOptions[f'option{ref}']
+                    usedOptions[f'option{ref}'] = f'line{index}'
                     d['endOfOpt'] = False
                 else:
-                    lastPredicate = int(rawlist[currentDecision]['targetLine'][f'option{ref}'].lstrip('line'))
+                    lastPredicate = int(usedOptions[f'option{ref}'].lstrip('line'))
                     rawlist[lastPredicate]['targetLine'] = f'line{index}'
                     d['endOfOpt'] = True
+                    del usedOptions[f'option{ref}']
 
                 
 
@@ -81,5 +85,14 @@ def reader(rawstorytext:str):
 
     return rawlist
 
+
+if __name__=='__main__':
+
+    with open(Path('ArknightsGameData/zh_CN/gamedata/story/activities/act3d0/level_act3d0_st02.txt'),encoding='utf-8') as rawStoryFile:
+        rawStoryText = rawStoryFile.read()
+        rd = reader(rawStoryText)
+
+    with open('testing.json','w', encoding='utf-8') as jsonFile:
+        json.dump(rd,jsonFile,indent=4)
                 
 
