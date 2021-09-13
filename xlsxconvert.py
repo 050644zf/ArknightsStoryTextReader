@@ -7,6 +7,7 @@ from func import getFile
 import func
 from openpyxl.worksheet.hyperlink import Hyperlink
 from jsonconvert import reader
+import sys
 
 
 characters = []
@@ -364,6 +365,7 @@ if __name__ == "__main__":
             print(f"\033[92mExported to \033[1m{filename}\033[m")
         except PermissionError:
             print('\033[91mPermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.\033[m')
+            sys.exit('PermissionError')
 
         
     else:
@@ -382,4 +384,5 @@ if __name__ == "__main__":
             args.path.replace('.txt', '.xlsx')))
         except PermissionError:
             print('\033[91mPermissionError: Fail to save the file, maybe because you have already opened the file! Close the file and rerun.\033[m')
+            sys.exit('PermissionError')
 

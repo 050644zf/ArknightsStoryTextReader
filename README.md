@@ -64,6 +64,11 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v2.0.2
+
+- Fixed some issues
+- Enable pytest for `xlsxconvert.py` to prevent from making stupid mistake and pushing buggy code again
+
 ## v2.0.1
 
 - Fixed some issues

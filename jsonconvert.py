@@ -88,7 +88,7 @@ def reader(rawstorytext:str):
 
 if __name__=='__main__':
 
-    with open(Path('ArknightsGameData/zh_CN/gamedata/story/activities/act3d0/level_act3d0_st02.txt'),encoding='utf-8') as rawStoryFile:
+    with open(Path('ArknightsGameData/zh_CN/gamedata/story/activities/act10d5/level_act10d5_st06.txt'),encoding='utf-8') as rawStoryFile:
         rawStoryText = rawStoryFile.read()
         rd = reader(rawStoryText)
 
