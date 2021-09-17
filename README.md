@@ -64,6 +64,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v2.0.3
+
+- Fixed some issues
+
 ## v2.0.2
 
 - Fixed some issues

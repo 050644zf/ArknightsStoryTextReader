@@ -19,3 +19,7 @@ def test_exportEvent():
 def test_exportFromPath():
     result = subprocess.run('py xlsxconvert.py ArknightsGameData/en_US/gamedata/story/activities/act15d0',shell=True)
     assert result.returncode == 0
+
+def test_records():
+    result = subprocess.run('py xlsxconvert.py -r -i -c',shell=True)
+    assert result.returncode == 0

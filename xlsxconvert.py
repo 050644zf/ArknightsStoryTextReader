@@ -18,6 +18,7 @@ commentFlag = False
 bold = xl.styles.Font(b=True)
 underline = xl.styles.Font(u='single')
 
+
 def xlc(sheet, rawlist):
     for idx, line in enumerate(rawlist):
         print(f"\rExporting Line {idx+1}/{len(rawlist)} ... ", end='')
@@ -51,7 +52,7 @@ def xlc(sheet, rawlist):
             '----'])
             options = attrs['options'].split(';')
             values = attrs['values'].split(';')
-            for i in range(len(options)):
+            for i in range(min(len(values),len(options))):
                 sheet.append([index,
                 f'Option_{values[i]}',
                 options[i]])
@@ -113,13 +114,13 @@ if __name__ == "__main__":
     parser.add_argument('-i', '--info', action='store_const',
                         const=True, default=False, help="Show story info in menu")
     args = parser.parse_args()
-    #args=parser.parse_args(['-e','12'])
+    #args=parser.parse_args(['-r','-i'])
 
     try:
         if args.EventList:
             actList = func.getAct(Path(args.path), args.Lang[0])
             mainList = func.getMainline(Path(args.path), args.Lang[0])
-            recList = func.getRecords(Path(args.path), args.Lang[0])
+            recList = func.getRecords(Path(args. path), args.Lang[0])
             idx = 0
             print(
                 f'\033[1mList of Events in {args.Lang[0]}:\033[m \n| Index: Eventid        Eventname')

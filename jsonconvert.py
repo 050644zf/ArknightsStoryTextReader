@@ -33,7 +33,7 @@ def reader(rawstorytext:str):
         d['prop'] = prop
         d['attributes'] = {}
         parameters = re.findall(pmRe, line)
-        if prop == 'name' or prop == '':
+        if prop == 'name' or prop == '' or prop == None:
             d['prop'] = 'name'
             d['attributes']['content'] = content
 
@@ -87,8 +87,8 @@ def reader(rawstorytext:str):
 
 
 if __name__=='__main__':
-
-    with open(Path('ArknightsGameData/zh_CN/gamedata/story/activities/act10d5/level_act10d5_st06.txt'),encoding='utf-8') as rawStoryFile:
+    #ArknightsGameData\zh_CN\gamedata\story\obt\main\level_main_09-17_end.txt
+    with open(Path('ArknightsGameData/zh_CN/gamedata/story/obt/main/level_main_09-17_end.txt'),encoding='utf-8') as rawStoryFile:
         rawStoryText = rawStoryFile.read()
         rd = reader(rawStoryText)
 
