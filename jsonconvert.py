@@ -17,6 +17,7 @@ commentFlag = False
 infoFlag = False
 
 def reader(rawstorytext:str):
+    OPTIONTRACE = True
     rawstorylist = rawstorytext.split('\n')
     storylines = len(rawstorylist)
     rawlist = []
@@ -59,23 +60,33 @@ def reader(rawstorytext:str):
             d['targetLine'] = {}
             options = d['attributes']['options'].split(';')
             values = [f"option{value}" for value in d['attributes']['values'].split(';')]
-            for idx,value in enumerate(values):
-                currentOptions[value] = {'option':options[idx], 'Decision':index}
-                d['targetLine'][value] = ''
+            if OPTIONTRACE:
+                for idx,value in enumerate(values[:len(options)]):
+                    currentOptions[value] = {'option':options[idx], 'Decision':index}
+                    d['targetLine'][value] = ''
 
         if prop == 'Predicate':
-            for ref in d['attributes']['references'].split(';'):
-                if f'option{ref}' in currentOptions:
-                    dec = currentOptions[f'option{ref}']['Decision']
-                    rawlist[dec]['targetLine'][f'option{ref}'] = f'line{index}'
-                    del currentOptions[f'option{ref}']
-                    usedOptions[f'option{ref}'] = f'line{index}'
-                    d['endOfOpt'] = False
-                else:
-                    lastPredicate = int(usedOptions[f'option{ref}'].lstrip('line'))
-                    rawlist[lastPredicate]['targetLine'] = f'line{index}'
-                    d['endOfOpt'] = True
-                    del usedOptions[f'option{ref}']
+            if not d['attributes'].get('references'):
+                d['attributes']['references'] = ';'.join([i.lstrip('option') for i in usedOptions.keys()])
+            if OPTIONTRACE:
+                try:
+                    for ref in d['attributes']['references'].split(';'):
+                        if f'option{ref}' in currentOptions:
+                            dec = currentOptions[f'option{ref}']['Decision']
+                            rawlist[dec]['targetLine'][f'option{ref}'] = f'line{index}'
+                            del currentOptions[f'option{ref}']
+                            usedOptions[f'option{ref}'] = f'line{index}'
+                            d['endOfOpt'] = False
+                        else:
+                            lastPredicate = int(usedOptions[f'option{ref}'].lstrip('line'))
+                            rawlist[lastPredicate]['targetLine'] = f'line{index}'
+                            d['endOfOpt'] = True
+                            del usedOptions[f'option{ref}']
+                except KeyError:
+                    print(f'Disable Optiontrace From Line {index}!')
+                    OPTIONTRACE = False
+                
+
 
                 
 
@@ -87,12 +98,28 @@ def reader(rawstorytext:str):
 
 
 if __name__=='__main__':
-    #ArknightsGameData\zh_CN\gamedata\story\obt\main\level_main_09-17_end.txt
-    with open(Path('ArknightsGameData/zh_CN/gamedata/story/obt/main/level_main_09-17_end.txt'),encoding='utf-8') as rawStoryFile:
-        rawStoryText = rawStoryFile.read()
-        rd = reader(rawStoryText)
+    langs = [i.stem for i in Path('ArknightsGameData').iterdir() if i.is_dir() and not '.' in i.name]
+    dataPath = Path('ArknightsGameData')
+    jsonDataPath = Path('ArknightsStoryJson')
 
-    with open('testing.json','w', encoding='utf-8') as jsonFile:
-        json.dump(rd,jsonFile,indent=4)
+    for lang in langs:
+        events = func.getEvents(dataPath, lang)
+        for event in events:
+            for story in event:
+                storyPath = Path(story.storyTxt)
+                try:
+                    with open(storyPath, encoding='utf-8') as storyText:
+                        try:
+                            storyJson = reader(storyText.read())
+                        except:
+                            print(f'Erron on reading: {str(storyPath)}')
+                except FileNotFoundError:
+                    continue
+
+                jsonPath = jsonDataPath/storyPath.relative_to(dataPath).parent/Path(str(storyPath.stem)+'.json')
+                jsonPath.parent.mkdir(exist_ok=True, parents=True)
+                with open(jsonPath, 'w', encoding='utf-8') as jsonFile:
+                    json.dump(storyJson,jsonFile, indent=4)
+    
                 
 
