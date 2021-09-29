@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <script src="test.js"></script>
+        <div id="header" class="header"></div>
+        <div id='sidebar' class="sidebar"></div>
+        <div id='content' class="content">
+            <h1>Javascript Test Page</h1>
+            <hr/>
+            <p>This is a Javascript test page.</p>
+            <style>
+                #buttom1{
+                    height: 64px;
+                    width: 64px;
+                    background-color: tomato;
+                    text-align: center;
+                    position: relative;
+                }
+                #buttom1 p{
+                    position: absolute;
+                    top: 25%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            </style>
+            <div id="buttom1" onmouseover="document.getElementById('buttom1').style.backgroundColor = 'blue'" onmouseout="document.getElementById('buttom1').style.backgroundColor = 'tomato'" onclick="this.innerHTML = '<p>Hi!</p>'">
+            <p>Click Me</p>
+            </div>
+        </div>
+        <div id="footer" class="footer"></div>
+        <script>initialize();</script>
+    </body>
+</html>

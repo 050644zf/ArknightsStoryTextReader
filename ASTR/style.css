@@ -1,0 +1,101 @@
+body{
+    background-color: rgb(41, 41, 41);
+    color: white;
+    font-family: sans-serif;
+    margin: 0px;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 200%;
+}
+a{
+    color: blanchedalmond;
+}
+canvas{
+    border: cyan 1px solid;
+}
+#header{
+    font-weight: bold;
+    background-color: teal;
+    font-size: 200%;
+    padding: 4px;
+    padding-top: 8px;
+    position: sticky;
+    width: 100%;
+    height: 42px;
+    top: 0px;
+}
+#header a{
+    text-decoration: none;
+    color: white;
+}
+.sidebar{
+    /*background-color: darkslategray;*/
+    background-color: rgb(22, 22, 22);
+    width: 50%;
+    margin-right: 4px;
+    padding: 4px;
+    max-height: 100%; 
+    overflow-y: scroll; 
+    overflow-x: clip;
+    word-wrap: normal;
+    position: fixed;
+    top: 62px;
+    transition: width 0.5s;
+    /*box-shadow: 2px 2px 2px #000000;*/
+}
+.sidebarhidden{
+    width: 0%;
+}
+#content{
+    margin: 8px;
+    margin-left: 15%;
+    width: 800px;
+}
+#footer{
+    background-color: teal;
+    clear: both;
+    text-align: center;
+}
+#ol{
+    text-decoration: overline;
+}
+#lt{
+    text-decoration: line-through;
+}
+#ul{
+    text-decoration: underline;
+}
+.linkblock{
+    display: block;
+    text-decoration: none;
+    width: 80px;
+    margin: 4px;
+}
+.linkblock a{
+    text-decoration: none;
+    color: unset;
+}
+.linkblock a:hover{
+    background-color: slategrey;
+}
+#github{
+    color: white;
+}
+#bili{
+    color: white;
+}
+@media (max-width: 1000px){
+    #content{
+        margin-left: 5%;
+        width: 90%;
+        font-size: 30px;
+    }
+    .sidebar{
+        width: 80%;
+        transition: none;
+    }
+    .sidebarhidden{
+        width: 0%;
+    }
+}

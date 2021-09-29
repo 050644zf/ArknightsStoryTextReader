@@ -16,7 +16,24 @@ characterFlag = False
 commentFlag = False
 infoFlag = False
 
-def reader(rawstorytext:str):
+def reader(story):
+    if isinstance(story,func.Story):
+        with open(story.storyTxt, encoding='utf-8') as txtFile:
+            rawstorytext = txtFile.read()
+        storydict = {}
+        storydict['lang'] = story.lang
+        storydict['eventid'] = story.eventid
+        storydict['eventName'] = story.eventName
+        storydict['entryType'] = story.entryType
+        storydict['storyCode'] = story.storyCode
+        storydict['avgTag'] = story.avgTag
+        storydict['storyName'] = story.storyName
+        with open(story.storyInfo, encoding='utf-8') as txtFile:
+            storydict['storyInfo'] = txtFile.read()
+    if isinstance(story, str):
+        rawstorytext = story
+        storydict = {}
+
     OPTIONTRACE = True
     rawstorylist = rawstorytext.split('\n')
     storylines = len(rawstorylist)
@@ -94,7 +111,9 @@ def reader(rawstorytext:str):
         
         rawlist.append(d)
 
-    return rawlist
+    storydict['storyList'] = rawlist
+    storydict['OPTIONTRACE'] = OPTIONTRACE
+    return storydict
 
 
 if __name__=='__main__':
@@ -108,18 +127,14 @@ if __name__=='__main__':
             for story in event:
                 storyPath = Path(story.storyTxt)
                 try:
-                    with open(storyPath, encoding='utf-8') as storyText:
-                        try:
-                            storyJson = reader(storyText.read())
-                        except:
-                            print(f'Erron on reading: {str(storyPath)}')
+                    storyJson = reader(story)
                 except FileNotFoundError:
                     continue
 
                 jsonPath = jsonDataPath/storyPath.relative_to(dataPath).parent/Path(str(storyPath.stem)+'.json')
                 jsonPath.parent.mkdir(exist_ok=True, parents=True)
                 with open(jsonPath, 'w', encoding='utf-8') as jsonFile:
-                    json.dump(storyJson,jsonFile, indent=4)
+                    json.dump(storyJson,jsonFile, indent=4, ensure_ascii=False)
     
                 
 

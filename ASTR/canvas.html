@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        
+        <div id="header" class="header"></div>
+        <div id='sidebar' class="sidebar"></div>
+        <div id='content' class="content">
+            <h1>Canvas Test</h1>
+            <p>This is a canvas test.</p>
+            <canvas id="mycanvas" width="200" height="100">
+            <p></p>
+
+            </canvas>
+        </div>
+        <div id="footer" class="footer"></div>
+        <script src="script.js"></script>
+        <script>
+            initialize();
+            var c = document.getElementById("mycanvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#FF0000";
+            ctx.fillRect(0,0,150,75);
+        </script>
+    </body>
+</html>

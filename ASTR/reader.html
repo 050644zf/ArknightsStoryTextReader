@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="reader.css">
+    </head>
+    <body>
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="i18n.js"></script>
+
+        <div id="header" class="header">
+            Arknights Story Text Reader 
+            <span style="font-size: medium;font-weight: normal;">v0.2 by nightsky#3319 on <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a></span>
+        </div>
+        <div id="warning" class="warning" onclick="this.style.display = 'none'">
+            Arknights Story Text Reader is currently under development. The interface and features may receive great changes in the future. If you have any issues or feedbacks please summit it <a href="https://github.com/050644zf/ArknightsStoryTextReader/issues">here.</a></br>
+            </br>
+            <b>Click this message to remove it.</b>
+        </div>
+        
+        
+           
+        <div class="topButton" onclick="document.getElementById('header').scrollIntoView({behavior: 'smooth'})">TOP</div>
+
+        <div id='content' class="content">
+
+            <div id="list-rendering">
+                <div class="storydata">
+                    {{data.eventName}}  {{data.storyCode}}  {{data.avgTag}}  {{data.storyName}}
+                </div>
+                  <div v-for="line in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
+                      <div v-if="line.prop == 'name'" class="textblock">
+                          <div class="nameblock">{{line.attributes.name}}</div>
+                          <div class="contentblock">{{line.attributes.content}}</div>
+                      </div>
+                      <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}">
+                          {{line.attributes.text}}
+                      </div>
+                      <div v-if="line.prop == 'Decision'" :class="line.prop">
+                          <div v-for="(option, index) in line.attributes.values.split(';')" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')">
+                              {{line.attributes.options.split(';')[index]}}
+                          </div>
+                      </div>
+                      <div v-if="line.prop == 'Predicate'" :class="line.prop">
+                            <div v-if="!line.endOfOpt" class="optText">Options: {{line.attributes.references.replaceAll(';',' ')}}</div>
+                            <div v-if="!line.endOfOpt" class="toEnd" @click="jumpTo(line.targetLine)" @mouseover="changeColor(line.targetLine,'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine,'rgba(0,0,0,0.4)')">End of options</div>
+                            <div v-else class="optText">End of Options</div>
+                          
+                      </div>
+
+                      <img v-if="line.prop == 'Image' && line.attributes.image" class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'"></img>
+                      <div style="clear: both;"></div>
+                  </div>
+            </div>
+        </div>
+        <div id="sidebar">
+            <div class="menuButton" @click="showMenu=!showMenu">MENU</div>
+            <div :class="{sidebar:true, sidebarhidden:!showMenu}" >
+                <div id="currentLang" class="currentLang">
+                    {{i18n.currentLang[lang]}}: {{i18n.langs[lang]}}
+                    <div id="langSelect" class="langSelect">
+                        <div  v-for="(langtext,langCode,lidx) in i18n.langs" @click="langSwitch(langCode)">
+                            {{langtext}}
+                        </div>
+                    </div>
+                </div>
+                
+                <div v-for="(events, eventType, ETidx) in eventList" class="eventType">
+                    <div class="eventtype">{{i18n[eventType][lang]}}</div>
+                    
+                    <eventmenu v-for="(event, eventid, Eidx) in events" class="event" :id="eventid" :event="event" :sl="sl" :lang="lang" @hidemenu="showMenu=false"></eventmenu>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/x-template" id="eventmenu">
+            <div class="event">
+                <div :class="{eventname:true, eventnamehl:!collapsed}" @click="collapsed = !collapsed" >{{event.name}}</div>
+                <div class="stories" v-show="!collapsed">
+                    <div v-for="(story, STidx) in event.infoUnlockDatas" class="story" @click="$emit('hidemenu');loadStory(sl, lang, story.storyTxt, showMenu)">
+                        <div class="storycode">{{story.storyCode}}  {{story.avgTag}} </div>
+                        <div class="storyname">{{story.storyName}}</div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <script>
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            var l = urlParams.get('l')
+            if(!l){l = 'zh_CN'}
+            
+            function getEventList(reviewData){
+                var eventList = {main:[], ss:[], mini:[], or:[]};
+                for(event in reviewData){
+                    if(reviewData[event].entryType == 'MAINLINE'){
+                        eventList.main.push(reviewData[event]);
+                    }
+                    else if(reviewData[event].entryType == 'ACTIVITY'){
+                        eventList.ss.push(reviewData[event]);
+                    }
+                    else if(reviewData[event].entryType == 'MINI_ACTIVITY'){
+                        eventList.mini.push(reviewData[event]);
+                    }
+                    else if(reviewData[event].entryType == 'NONE'){
+                        eventList.or.push(reviewData[event]);
+                    }
+                }
+                eventList.ss.sort(function(a,b){return a.startTime - b.startTime;});
+                eventList.mini.sort(function(a,b){return a.startTime - b.startTime;});
+                return eventList;
+            }
+            $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+l+'/gamedata/excel/story_review_table.json').done(function(s){menu.data = s;menu.eventList = getEventList(s);})
+            const lr = Vue.createApp({
+                data(){
+                    return{
+                        data: {eventName: '< - ' + i18n.selectStory[l]}
+                    }
+                },
+                methods:{
+                    jumpTo(id){
+                        var optLine = document.getElementById(id);
+                        optLine.scrollIntoView({behavior: "smooth", block: "center"});
+                    },
+                    changeColor(id,color){
+                        var optLine = document.getElementById(id);
+                        setInterval(optLine.style.setProperty("background-color", color),500);
+                    }
+                }
+            });
+            const storylist = lr.mount('#list-rendering');
+
+            $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/obt/'+urlParams.get('f')).done(function(s){storylist.data = s;})
+            const sdb = Vue.createApp({
+                data(){
+                    return{
+                        data: {},
+                        eventList: {},
+                        lang: l,
+                        sl: storylist,
+                        i18n: i18n,
+                        showMenu: true
+                    }
+                },
+                methods:{
+                    langSwitch(langCode){
+                        window.location.search = 'l='+langCode;
+                    }
+                },
+                components:{
+                    eventmenu:{
+                        template:'#eventmenu',
+                        props:['event','eventid','sl','lang','showMenu'],
+                        emits:['hidemenu'],
+                        data(){
+                            return{
+                                collapsed: true
+                            }
+                        },
+                        methods:{
+                            loadStory(sl, lang, path){
+                                storylist.data = {eventName: 'Loading...'};
+                                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+lang+'/gamedata/story/'+path+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file!'};})
+                            }
+                        }
+                    }
+                }
+            })
+            const menu = sdb.mount('#sidebar');
+
+        </script>
+              
+
+        
+
+    </body>
+</html>

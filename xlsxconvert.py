@@ -19,7 +19,8 @@ bold = xl.styles.Font(b=True)
 underline = xl.styles.Font(u='single')
 
 
-def xlc(sheet, rawlist):
+def xlc(sheet, storyJson):
+    rawlist = storyJson['storyList']
     for idx, line in enumerate(rawlist):
         print(f"\rExporting Line {idx+1}/{len(rawlist)} ... ", end='')
         index = line['id']

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://unpkg.com/vue@next"></script>
+        <div id="header" class="header"></div>
+        <div id='sidebar' class="sidebar"></div>
+           
+        </div>
+        <div id='content' class="content">
+
+            <form action="" id="langSelect">
+                <select name="langCode">
+                    <option v-for="lang in langs" :value="lang">{{lang}}</option>
+                </select>
+            </form>
+
+            <script> 
+                const langSelect = Vue.createApp({
+                    data(){
+                        return{
+                            langs:['zh_CN', 'en_US', 'ja_JP', 'ko_KR', 'zh_TW']
+                        }
+                    }
+                });
+                langSelect.mount('#langSelect');
+                var langCode = document.getElementById("langSelect")["langCode"].value
+            </script>
+
+
+        </div>
+        <div id="footer" class="footer"></div>
+        <script src="script.js"></script>
+        <script>initialize();</script>
+    </body>
+</html>

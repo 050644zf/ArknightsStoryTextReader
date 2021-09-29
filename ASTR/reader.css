@@ -1,0 +1,216 @@
+.topButton{
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    font-weight: bold;
+    background-color: rgba(0,128,128,0.2);
+    transition: background-color 0.5s;
+    padding: 10px;
+}
+.topButton:hover{
+    background-color: rgba(0,128,128,1);
+}
+.menuButton{
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    font-weight: bold;
+    background-color: rgba(0,128,128,0.2);
+    transition: background-color 0.5s;
+    padding: 10px;
+}
+.menuButton:hover{
+    background-color: rgba(0,128,128,1);
+}
+.warning{
+    position: fixed;
+    right: 5%;
+    bottom: 15%;
+    display: block;
+    width: 20%;
+    background-color: rgba(248, 160, 160, 0.2);
+    padding: 4px;
+    border-radius: 4px;
+    font-size: x-small;
+}
+.currentLang{
+    text-align: center;
+    background-color: rgb(36, 54, 153);
+    font-weight: bold;
+}
+.langSelect{
+    display: none;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+}
+.langSelect div{
+    text-align: center;
+    background-color: rgb(57, 61, 87);
+    
+}
+.langSelect div:hover{
+    background-color: rgb(114, 122, 173);
+}
+.currentLang:hover .langSelect{
+    display: block;
+}
+.eventtype{
+    text-align: center;
+    font-weight: bolder;
+    color: #ffc4c4;
+    background-color: #383838;
+    padding: 4px;
+}
+.eventname{
+    font-weight: bold;
+    background-color: rgba(42,186,255,0);
+    margin: 4px;
+    margin-left: 10px;
+    padding: 2px;
+    transition: padding 0.2s;
+}
+.eventnamehl{
+    background-color: rgba(42,186,255,0.4);
+    padding: 5px;
+}
+.eventname:hover{
+    padding: 10px;
+    background-color: rgba(42,186,255,0.2);
+}
+.story{
+    margin: 4px;
+    margin-left: 40px;
+    transition: padding 0.2s;
+}
+.story:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+}
+.storydata{
+    font-weight: bold;
+    margin: 10px;
+}
+.storycode{
+    font-size: x-small;
+    color: rgba(255, 255, 255, 0.8);
+}
+.storyname{
+    font-weight: normal;
+}
+.line{
+    background-color: rgba(0, 0, 0, 0.2);
+    height: max-content;
+}
+.textblock{
+    margin: 4px;
+}
+.nameblock{
+    background-color: unset;
+    width: 100px;
+    float: left;
+    margin: 2px;
+    margin-right: 6px;
+    text-align: right;
+    font-weight: bold;
+}
+.contentblock{
+    background-color: unset;
+    max-width: 650px;
+    float: left;
+    margin: 2px;
+}
+.Subtitle{
+    background-color: unset;
+    margin: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding: 10px;
+    clear: both;
+}
+.line img{
+    max-width: 500px;
+    margin: 4px;
+    margin-left: 114px;
+}
+.Decision{
+    margin: 4px;
+}
+.option{
+    text-align: center;
+    margin: 4px;
+    padding: 4px;
+    transition: background-color 0.5s;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.option:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.Predicate{
+    font-size: 50%;
+    margin: 4px;
+    transition: background-color 0.5s;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.optText{
+    float: left;
+    padding: 4px;
+}
+.toEnd{
+    padding: 4px;
+    padding-left: 83px;
+    width: 21px;
+    float: right;
+    background-color: rgba(58, 58, 58, 0.5);
+    transition: width 0.5s, padding-left 0.5s;
+    overflow: hidden;
+    max-height: 70px;
+    text-align: right;
+    white-space: nowrap;
+}
+.toEnd:hover{
+    width: 100px;
+    padding-left: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+@media (max-width: 1000px){
+    .warning{
+        font-size: 20px;
+        width: 300px;
+        background-color: rgb(90, 58, 58);
+    }
+    .nameblock{
+        width: 150px;
+        word-wrap: break-word;
+    }
+    .topButton{
+        font-size: 40px;
+    }
+    .menuButton{
+        font-size: 40px;
+    }
+    .eventtype{
+        font-size: 40px;
+    }
+    .eventname{
+        font-size: 40px;
+    }
+    .story{
+        font-size: 30px;
+    }
+    .storycode{
+        font-size: 10px;
+    }
+    .currentLang{
+        font-size: 40px;
+    }
+    .langSelect{
+        font-size: 40px;
+    }
+    .option{
+        font-size: 30px;
+    }
+}
