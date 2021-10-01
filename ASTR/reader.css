@@ -1,7 +1,7 @@
 .topButton{
     position: fixed;
     right: 5%;
-    bottom: 10%;
+    bottom: 15%;
     font-weight: bold;
     background-color: rgba(0,128,128,0.2);
     transition: background-color 0.5s;
@@ -12,20 +12,45 @@
 }
 .menuButton{
     position: fixed;
-    right: 5%;
-    bottom: 5%;
-    font-weight: bold;
-    background-color: rgba(0,128,128,0.2);
+    font-size: 64px;
+    background-color: #3f51b500;
     transition: background-color 0.5s;
-    padding: 10px;
+    left: 0%;
+    padding-left: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    top: 50%;
+    transform: rotate(0deg);
+    transition: background-color 0.5s, left 0.5s, transform 0.5s;
 }
 .menuButton:hover{
-    background-color: rgba(0,128,128,1);
+    background-color: #3f51b580;
+}
+.menuButtonR{
+    left: 50%;
+    transform: rotate(180deg);
+    background-color: #3f51b5ff;
+}
+.linkButton{
+    display: block;
+    position: relative;
+    color: #88888800;
+    text-decoration: none;
+    margin-left: -32px;
+    line-height: 0;
+    float: left;
+    top: 15px;
+    right: 0%;
+    padding-right: 4px;
+    transition: color 0.5s;
+}
+.line:hover .linkButton{
+    color: #888888FF;
 }
 .warning{
     position: fixed;
     right: 5%;
-    bottom: 15%;
+    bottom: 25%;
     display: block;
     width: 20%;
     background-color: rgba(248, 160, 160, 0.2);
@@ -87,6 +112,9 @@
 .story:hover{
     background-color: rgba(255, 255, 255, 0.2);
     padding: 5px;
+}
+.storyFocused{
+    background-color: #f4433633;
 }
 .storydata{
     font-weight: bold;
@@ -187,10 +215,15 @@
         word-wrap: break-word;
     }
     .topButton{
-        font-size: 40px;
+        font-size: 70px;
     }
     .menuButton{
-        font-size: 40px;
+        font-size: 100px;
+        background-color: rgba(0,128,128,0.2);
+        transition: none;
+    }
+    .menuButtonR{
+        left: 80%;
     }
     .eventtype{
         font-size: 40px;
@@ -202,7 +235,7 @@
         font-size: 30px;
     }
     .storycode{
-        font-size: 10px;
+        font-size: 20px;
     }
     .currentLang{
         font-size: 40px;

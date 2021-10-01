@@ -14,35 +14,39 @@
 
         <div id="header" class="header">
             Arknights Story Text Reader 
-            <span style="font-size: medium;font-weight: normal;">v0.2 by nightsky#3319 on <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a></span>
+            <span style="font-size: medium;font-weight: normal;">
+                 <a href="https://github.com/050644zf/050644zf.github.io/blob/main/ASTR/README.md" style="font-weight: bold;text-decoration: underline;">v0.4</a>
+                 by nightsky#3319 on 
+                 <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
+                </span>
         </div>
         <div id="warning" class="warning" onclick="this.style.display = 'none'">
-            Arknights Story Text Reader is currently under development. The interface and features may receive great changes in the future. If you have any issues or feedbacks please summit it <a href="https://github.com/050644zf/ArknightsStoryTextReader/issues">here.</a></br>
+            Arknights Story Text Reader is currently under development. The interface and features may receive great changes in the future. If you have any issues or feedbacks please summit it 
+            <a href="https://github.com/050644zf/ArknightsStoryTextReader/issues">here.</a></br>
             </br>
             <b>Click this message to remove it.</b>
         </div>
         
-        
-           
-        <div class="topButton" onclick="document.getElementById('header').scrollIntoView({behavior: 'smooth'})">TOP</div>
+        <span class="material-icons topButton" onclick="document.getElementById('storydata').scrollIntoView({behavior: 'smooth', block:'center'})">vertical_align_top</span>
 
         <div id='content' class="content">
 
             <div id="list-rendering">
-                <div class="storydata">
+                <div class="storydata" id="storydata">
                     {{data.eventName}}  {{data.storyCode}}  {{data.avgTag}}  {{data.storyName}}
                 </div>
                   <div v-for="line in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
+                    <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
                       <div v-if="line.prop == 'name'" class="textblock">
                           <div class="nameblock">{{line.attributes.name}}</div>
-                          <div class="contentblock">{{line.attributes.content}}</div>
+                          <div class="contentblock">{{line.attributes.content.replaceAll('{@nickname}',doctor)}}</div>
                       </div>
                       <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}">
-                          {{line.attributes.text}}
+                          {{line.attributes.text.replaceAll('{@nickname}',doctor)}}
                       </div>
                       <div v-if="line.prop == 'Decision'" :class="line.prop">
                           <div v-for="(option, index) in line.attributes.values.split(';')" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')">
-                              {{line.attributes.options.split(';')[index]}}
+                              {{line.attributes.options.split(';')[index].replaceAll('{@nickname}',doctor)}}
                           </div>
                       </div>
                       <div v-if="line.prop == 'Predicate'" :class="line.prop">
@@ -53,12 +57,13 @@
                       </div>
 
                       <img v-if="line.prop == 'Image' && line.attributes.image" class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'"></img>
+                      
                       <div style="clear: both;"></div>
                   </div>
             </div>
         </div>
         <div id="sidebar">
-            <div class="menuButton" @click="showMenu=!showMenu">MENU</div>
+            <div :class="{menuButton:true,'material-icons':true,menuButtonR:showMenu}" @click="showMenu=!showMenu;">chevron_right</div>
             <div :class="{sidebar:true, sidebarhidden:!showMenu}" >
                 <div id="currentLang" class="currentLang">
                     {{i18n.currentLang[lang]}}: {{i18n.langs[lang]}}
@@ -69,10 +74,10 @@
                     </div>
                 </div>
                 
-                <div v-for="(events, eventType, ETidx) in eventList" class="eventType">
-                    <div class="eventtype">{{i18n[eventType][lang]}}</div>
+                <div v-for="(events, eventType, ETidx) in eventList" class="eventType" :id="eventType">
+                    <div class="eventtype" >{{i18n[eventType][lang]}}</div>
                     
-                    <eventmenu v-for="(event, eventid, Eidx) in events" class="event" :id="eventid" :event="event" :sl="sl" :lang="lang" @hidemenu="showMenu=false"></eventmenu>
+                    <eventmenu v-for="(event, Eidx) in events" class="event" :id="event.id" :event="event" :sl="sl" :lang="lang" @hidemenu="showMenu=false"></eventmenu>
                 </div>
             </div>
         </div>
@@ -81,19 +86,28 @@
             <div class="event">
                 <div :class="{eventname:true, eventnamehl:!collapsed}" @click="collapsed = !collapsed" >{{event.name}}</div>
                 <div class="stories" v-show="!collapsed">
-                    <div v-for="(story, STidx) in event.infoUnlockDatas" class="story" @click="$emit('hidemenu');loadStory(sl, lang, story.storyTxt, showMenu)">
-                        <div class="storycode">{{story.storyCode}}  {{story.avgTag}} </div>
-                        <div class="storyname">{{story.storyName}}</div>
-                    </div>
+                    <storymenu v-for="(story, STidx) in event.infoUnlockDatas" :story="story" :sl="sl" :lang="lang" @unfoldevent="collapsed = false"></storymenu>
                 </div>
             </div>
+        </script>
+
+        <script type="text/x-template" id="storymenu">
+
+            <div :class="{story:true, storyFocused:focused}" :id="story.storyId" @click="loadStory(sl, lang, story.storyTxt, showMenu)">
+                <div class="storycode">{{story.storyCode}}  {{story.avgTag}} </div>
+                <div class="storyname">{{story.storyName}}</div>
+            </div>
+
         </script>
 
         <script>
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             var l = urlParams.get('l')
+            var doctor = urlParams.get('dr')
             if(!l){l = 'zh_CN'}
+            if(!doctor){doctor = "{@nickname}"}
+
             
             function getEventList(reviewData){
                 var eventList = {main:[], ss:[], mini:[], or:[]};
@@ -115,12 +129,32 @@
                 eventList.mini.sort(function(a,b){return a.startTime - b.startTime;});
                 return eventList;
             }
+            function focus(){
+                var foc = document.getElementsByClassName('storyFocused')[0];
+                if(foc){
+                    foc.scrollIntoView({behavior: "smooth", block: "center"});
+                }
+                console.log('focused!')
+            }
             $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+l+'/gamedata/excel/story_review_table.json').done(function(s){menu.data = s;menu.eventList = getEventList(s);})
             const lr = Vue.createApp({
                 data(){
                     return{
-                        data: {eventName: '< - ' + i18n.selectStory[l]}
+                        data: {eventName: '< - ' + i18n.selectStory[l]},
+                        path: urlParams.get('f'),
+                        lang: l,
+                        doctor: doctor
                     }
+                },
+                updated(){
+                    if(urlParams.get('warp')){
+                        var tgt = document.getElementById(urlParams.get('warp'));
+                        if(tgt){
+                            tgt.scrollIntoView({behavior: "smooth", block: "center"});
+                            tgt.style.setProperty("background-color", '#f4433633');
+                        }
+                    };
+                    focus();
                 },
                 methods:{
                     jumpTo(id){
@@ -130,12 +164,15 @@
                     changeColor(id,color){
                         var optLine = document.getElementById(id);
                         setInterval(optLine.style.setProperty("background-color", color),500);
+                    },
+                    getURL(l,path,line){
+                        return '?l=' + l + '&f=' + path + '&warp=line' + line;
                     }
                 }
             });
             const storylist = lr.mount('#list-rendering');
 
-            $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/obt/'+urlParams.get('f')).done(function(s){storylist.data = s;})
+            
             const sdb = Vue.createApp({
                 data(){
                     return{
@@ -149,29 +186,57 @@
                 },
                 methods:{
                     langSwitch(langCode){
-                        window.location.search = 'l='+langCode;
+                        req = 'l='+langCode;
+                        if(doctor != "{@nickname}"){req = req + '&dr=' + doctor}
+                        window.location.search = req;
                     }
                 },
                 components:{
                     eventmenu:{
                         template:'#eventmenu',
                         props:['event','eventid','sl','lang','showMenu'],
-                        emits:['hidemenu'],
+                        emits:['hidemenu','focusStory'],
                         data(){
                             return{
                                 collapsed: true
                             }
                         },
-                        methods:{
-                            loadStory(sl, lang, path){
-                                storylist.data = {eventName: 'Loading...'};
-                                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+lang+'/gamedata/story/'+path+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file!'};})
+                        components:{
+                            storymenu:{
+                                template:'#storymenu',
+                                props:['event','eventid','sl','lang','story'],
+                                emits:['hidemenu','focusstory','unfoldevent'],
+                                data(){
+                                    return{
+                                        focused: false
+                                    }
+                                },
+                                mounted(){
+                                    if(urlParams.get('f') == this.story.storyTxt){
+                                        this.focused = true;
+                                        this.$emit('unfoldevent');
+                                    }
+                                },
+                                methods:{
+                                    loadStory(sl, lang, path){
+                                        req = 'l='+lang;
+                                        req = req + '&f=' + path;
+                                        if(doctor != "{@nickname}"){req = req + '&dr=' + doctor};
+                                        window.location.search = req;
+                                    }
+                                }
                             }
                         }
                     }
+
                 }
             })
             const menu = sdb.mount('#sidebar');
+            if(urlParams.get('f')){
+                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '!'};});
+
+            }
+            
 
         </script>
               
