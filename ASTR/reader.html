@@ -15,7 +15,7 @@
         <div id="header" class="header">
             Arknights Story Text Reader 
             <span style="font-size: medium;font-weight: normal;">
-                 <a href="https://github.com/050644zf/050644zf.github.io/blob/main/ASTR/README.md" style="font-weight: bold;text-decoration: underline;">v0.4</a>
+                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">v0.5</a>
                  by nightsky#3319 on 
                  <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
                 </span>
@@ -109,7 +109,7 @@
             if(!doctor){doctor = "{@nickname}"}
 
             
-            function getEventList(reviewData){
+            function getEventList(reviewData, chardict){
                 var eventList = {main:[], ss:[], mini:[], or:[]};
                 for(event in reviewData){
                     if(reviewData[event].entryType == 'MAINLINE'){
@@ -122,6 +122,9 @@
                         eventList.mini.push(reviewData[event]);
                     }
                     else if(reviewData[event].entryType == 'NONE'){
+                        var cin = event.split('_')[1];
+                        var set = event.split('_')[3];
+                        reviewData[event].name = chardict[cin] + ' - ' + set;
                         eventList.or.push(reviewData[event]);
                     }
                 }
@@ -136,7 +139,7 @@
                 }
                 console.log('focused!')
             }
-            $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+l+'/gamedata/excel/story_review_table.json').done(function(s){menu.data = s;menu.eventList = getEventList(s);})
+
             const lr = Vue.createApp({
                 data(){
                     return{
@@ -177,6 +180,7 @@
                 data(){
                     return{
                         data: {},
+                        chardict: {},
                         eventList: {},
                         lang: l,
                         sl: storylist,
@@ -232,6 +236,8 @@
                 }
             })
             const menu = sdb.mount('#sidebar');
+            $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+l+'/gamedata/excel/story_review_table.json').done(function(s){menu.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/chardict.json').done(function(t){menu.chardict = t;menu.eventList = getEventList(menu.data, menu.chardict);})})
+            
             if(urlParams.get('f')){
                 $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '!'};});
 

@@ -122,6 +122,7 @@ if __name__=='__main__':
     jsonDataPath = Path('ArknightsStoryJson')
 
     for lang in langs:
+        '''
         events = func.getEvents(dataPath, lang)
         for event in events:
             for story in event:
@@ -135,6 +136,19 @@ if __name__=='__main__':
                 jsonPath.parent.mkdir(exist_ok=True, parents=True)
                 with open(jsonPath, 'w', encoding='utf-8') as jsonFile:
                     json.dump(storyJson,jsonFile, indent=4, ensure_ascii=False)
+        '''
+        with open(f'ArknightsGameData/{lang}/gamedata/excel/character_table.json', encoding='utf-8') as jsonFile:
+            characterData = json.load(jsonFile)
+
+        charDict = {}
+        for cid in characterData:
+            if cid.split('_')[0] == 'char':
+                cin = cid.split('_')[2]
+                charDict[cin] = characterData[cid]['name']
+
+        with open(f'ArknightsStoryJson/{lang}/chardict.json','w',encoding='utf-8') as jsonFile:
+            json.dump(charDict, jsonFile, indent=4, ensure_ascii=False)
+
     
                 
 

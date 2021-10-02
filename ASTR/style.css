@@ -67,7 +67,8 @@ canvas{
     width: 50%;
     margin-right: 4px;
     padding: 4px;
-    max-height: 100%; 
+    padding-bottom: 10%;
+    max-height: 90%; 
     overflow-y: scroll; 
     overflow-x: clip;
     word-wrap: normal;

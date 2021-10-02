@@ -1,5 +1,9 @@
 # Change Log
 
+## v0.5
+
+- Adding operators' names in Operators Records [#2](https://github.com/050644zf/ArknightsStoryTextReader/issues/2)
+
 ## v0.4
 
 - Auto locate the current story in menu.
