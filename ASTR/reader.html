@@ -15,7 +15,7 @@
         <div id="header" class="header">
             Arknights Story Text Reader 
             <span style="font-size: medium;font-weight: normal;">
-                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">v0.5</a>
+                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">v0.6</a>
                  by nightsky#3319 on 
                  <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
                 </span>
@@ -39,14 +39,13 @@
                     <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
                       <div v-if="line.prop == 'name'" class="textblock">
                           <div class="nameblock">{{line.attributes.name}}</div>
-                          <div class="contentblock">{{line.attributes.content.replaceAll('{@nickname}',doctor)}}</div>
+                          <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
                       </div>
-                      <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}">
-                          {{line.attributes.text.replaceAll('{@nickname}',doctor)}}
+                      <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}" v-html="parseContent(line.attributes.text)">
                       </div>
                       <div v-if="line.prop == 'Decision'" :class="line.prop">
-                          <div v-for="(option, index) in line.attributes.values.split(';')" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')">
-                              {{line.attributes.options.split(';')[index].replaceAll('{@nickname}',doctor)}}
+                          <div v-for="(option, index) in line.attributes.values.split(';')" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')" v-html="parseContent(line.attributes.options.split(';')[index])">
+                              
                           </div>
                       </div>
                       <div v-if="line.prop == 'Predicate'" :class="line.prop">
@@ -101,6 +100,8 @@
         </script>
 
         <script>
+            const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;
+            const color_sub = `<span style="color:$1">$2</span>`;
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             var l = urlParams.get('l')
@@ -170,6 +171,14 @@
                     },
                     getURL(l,path,line){
                         return '?l=' + l + '&f=' + path + '&warp=line' + line;
+                    },
+                    parseContent(content){
+                        if(content){
+                            content = content.replaceAll('{@nickname}',this.doctor);
+                            content = content.replaceAll('\\n','<br/>')
+                            content = content.replace(color_re,color_sub);
+                        }
+                        return content;
                     }
                 }
             });

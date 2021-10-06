@@ -1,5 +1,15 @@
 # Change Log
 
+## v0.6
+
+New Feature:
+
+- Color Code Text Support [#4](https://github.com/050644zf/ArknightsStoryTextReader/issues/4)
+
+Bug Fixes:
+
+- Set a maximum image height for over-high images [#5](https://github.com/050644zf/ArknightsStoryTextReader/issues/5)
+
 ## v0.5
 
 - Adding operators' names in Operators Records [#2](https://github.com/050644zf/ArknightsStoryTextReader/issues/2)
