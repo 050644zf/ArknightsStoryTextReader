@@ -117,6 +117,12 @@ def reader(story):
 
 
 if __name__=='__main__':
+    import subprocess
+    os.chdir('ArknightsGameData')
+    subprocess.run('git fetch', shell=True)
+    subprocess.run('git pull', shell=True)
+    os.chdir('..')
+
     langs = [i.stem for i in Path('ArknightsGameData').iterdir() if i.is_dir() and not '.' in i.name]
     dataPath = Path('ArknightsGameData')
     jsonDataPath = Path('ArknightsStoryJson')
@@ -148,9 +154,16 @@ if __name__=='__main__':
             json.dump(charDict, jsonFile, indent=4, ensure_ascii=False)
 
 
-    import subprocess
+    
+    import time
+
     os.chdir('ArknightsStoryJson')
-    subprocess.run('git fetch')
+    subprocess.run('git fetch', shell=True)
+    subprocess.run('git pull', shell=True)
+    subprocess.run('git add -A', shell=True)
+    subprocess.run(f'git commit -m {time.strftime("%Y%m%d")}', shell=True)
+    subprocess.run('git push')
+    os.chdir('..')
 
 
     
