@@ -15,7 +15,7 @@
         <div id="header" class="header">
             Arknights Story Text Reader 
             <span style="font-size: medium;font-weight: normal;">
-                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">v0.6</a>
+                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.7</a>
                  by nightsky#3319 on 
                  <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
                 </span>
@@ -30,6 +30,31 @@
         <span class="material-icons topButton" onclick="document.getElementById('storydata').scrollIntoView({behavior: 'smooth', block:'center'})">vertical_align_top</span>
 
         <div id='content' class="content">
+            <div id="setting">
+                <div class="warmtip" style="background-color: rgb(255, 255, 0);color: #000; padding: 5px;" v-show="!hidetip">
+                    <span style="float: left;">If you like this project, give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
+                    <span class="material-icons" style="float: right;" @click="hide()">clear</span>
+                    <div style="clear: both;"></div>
+                </div>
+                <div :class="{setting:true,settingshow:show}">
+                    <span :class="{'material-icons':true}" @click="show = !show"  id="settingbutton">
+                        settings
+                    </span>
+                    <span class="settingtitle">{{i18n.setting[lang]}}</span>
+                    
+                    <span class="material-icons" style="float: right;" v-show="show" @click="clearSetting()">delete</span>
+                    <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}}</span>
+                    <div style="clear: both;"></div>
+                    <div :class="{settingoptions:true}" v-show="show">
+                        <span style="float: left;">{{i18n.dr[lang] }}: </span>
+                        <input v-model="doctor" style="float: left;"/>
+                        <span class="material-icons" @click="saveName()" style="float: left;">save_alt</span>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                
+                
+            </div>
 
             <div id="list-rendering">
                 <div class="storydata" id="storydata">
@@ -105,10 +130,38 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             var l = urlParams.get('l')
-            var doctor = urlParams.get('dr')
+            var doctor = window.localStorage.getItem('doctor');
+            var hidetip = window.localStorage.getItem('hidetip');
             if(!l){l = 'zh_CN'}
             if(!doctor){doctor = "{@nickname}"}
+            if(!hidetip){hidetip = false};
 
+            const setApp = Vue.createApp({
+                data(){
+                    return{
+                        doctor: doctor,
+                        i18n:i18n,
+                        lang:l,
+                        show: doctor == "{@nickname}",
+                        hidetip: hidetip
+                    }
+                },
+                methods:{
+                    saveName(){
+                        window.localStorage.setItem('doctor',this.doctor);
+                        window.location.href = window.location.href;
+                    },
+                    clearSetting(){
+                        window.localStorage.clear();
+                        window.location.href = window.location.href;
+                    },
+                    hide(){
+                        this.hidetip = true;
+                        window.localStorage.setItem('hidetip', true);
+                    }
+                }
+            })
+            const setting = setApp.mount('#setting');
             
             function getEventList(reviewData, chardict){
                 var eventList = {main:[], ss:[], mini:[], or:[]};
@@ -147,7 +200,8 @@
                         data: {eventName: '< - ' + i18n.selectStory[l]},
                         path: urlParams.get('f'),
                         lang: l,
-                        doctor: doctor
+                        doctor: doctor,
+                        i18n: i18n
                     }
                 },
                 updated(){
@@ -200,7 +254,6 @@
                 methods:{
                     langSwitch(langCode){
                         req = 'l='+langCode;
-                        if(doctor != "{@nickname}"){req = req + '&dr=' + doctor}
                         window.location.search = req;
                     }
                 },
@@ -234,7 +287,6 @@
                                     loadStory(sl, lang, path){
                                         req = 'l='+lang;
                                         req = req + '&f=' + path;
-                                        if(doctor != "{@nickname}"){req = req + '&dr=' + doctor};
                                         window.location.search = req;
                                     }
                                 }

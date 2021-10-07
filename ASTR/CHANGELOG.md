@@ -1,5 +1,11 @@
 # Change Log
 
+## wv0.7
+
+New Feature:
+
+- Settings of Doctors' Name [#3](https://github.com/050644zf/ArknightsStoryTextReader/issues/3)
+
 ## v0.6
 
 New Feature:

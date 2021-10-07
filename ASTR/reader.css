@@ -47,6 +47,56 @@
 .line:hover .linkButton{
     color: #888888FF;
 }
+.setting{
+    margin: 4px;
+    transition: background-color 0.5s;    
+}
+.setting *{
+    margin: 4px;
+    
+}
+.settingshow{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#settingbutton{
+    padding: 4px;
+    float: left;
+}
+#settingbutton:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#settingbutton:hover ~ #settingtitle{
+    color:rgba(255, 255, 255, 1);
+}
+.settingtitle{
+    font-weight: bold; 
+    font-size: 18px; 
+    padding: 4px;
+    float: left;
+    color: rgba(255, 255, 255, 0);
+    transition: color 0.5s;
+}
+.settingshow .settingtitle{
+    color:rgba(255, 255, 255, 1);
+}
+
+input{
+    font-size: unset;
+    background-color: rgba(0,0,0,0);
+    margin-bottom: -2px;
+    border-radius: 0px;
+    border-width: 0px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    color:rgb(255, 255, 255);
+    transition: border-color 0.5s;
+}
+input:hover{
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+input:active{
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
 .warning{
     position: fixed;
     right: 5%;
@@ -246,6 +296,13 @@
         font-size: 40px;
     }
     .option{
+        font-size: 30px;
+    }
+    .settingtitle{
+        font-size: 30px;
+        margin: 10px 0;
+    }
+    input{
         font-size: 30px;
     }
 }

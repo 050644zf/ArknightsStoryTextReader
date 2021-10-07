@@ -131,4 +131,7 @@ canvas{
     .sidebarhidden{
         width: 0%;
     }
+    .material-icons{
+        font-size: 50px;
+    }
 }
