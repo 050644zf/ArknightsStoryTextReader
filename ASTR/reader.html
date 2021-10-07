@@ -32,7 +32,7 @@
         <div id='content' class="content">
             <div id="setting">
                 <div class="warmtip" style="background-color: rgb(255, 255, 0);color: #000; padding: 5px;" v-show="!hidetip">
-                    <span style="float: left;">If you like this project, give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
+                    <span style="float: left;">If you like this project, please give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
                     <span class="material-icons" style="float: right;" @click="hide()">clear</span>
                     <div style="clear: both;"></div>
                 </div>
@@ -42,8 +42,8 @@
                     </span>
                     <span class="settingtitle">{{i18n.setting[lang]}}</span>
                     
-                    <span class="material-icons" style="float: right;" v-show="show" @click="clearSetting()">delete</span>
-                    <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}}</span>
+                    <span class="material-icons" style="float: right;padding: 4px;" v-show="show" @click="clearSetting()">delete</span>
+                    <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}}: </span>
                     <div style="clear: both;"></div>
                     <div :class="{settingoptions:true}" v-show="show">
                         <span style="float: left;">{{i18n.dr[lang] }}: </span>
