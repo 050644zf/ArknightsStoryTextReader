@@ -29,32 +29,47 @@
         
         <span class="material-icons topButton" onclick="document.getElementById('storydata').scrollIntoView({behavior: 'smooth', block:'center'})">vertical_align_top</span>
 
-        <div id='content' class="content">
-            <div id="setting">
-                <div class="warmtip" style="background-color: rgb(255, 255, 0);color: #000; padding: 5px;" v-show="!hidetip">
-                    <span style="float: left;">If you like this project, please give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
-                    <span class="material-icons" style="float: right;" @click="hide()">clear</span>
-                    <div style="clear: both;"></div>
-                </div>
-                <div :class="{setting:true,settingshow:show}">
-                    <span :class="{'material-icons':true}" @click="show = !show"  id="settingbutton">
-                        settings
-                    </span>
-                    <span class="settingtitle">{{i18n.setting[lang]}}</span>
-                    
-                    <span class="material-icons" style="float: right;padding: 4px;" v-show="show" @click="clearSetting()">delete</span>
-                    <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}}: </span>
-                    <div style="clear: both;"></div>
-                    <div :class="{settingoptions:true}" v-show="show">
-                        <span style="float: left;">{{i18n.dr[lang] }}: </span>
-                        <input v-model="doctor" style="float: left;"/>
-                        <span class="material-icons" @click="saveName()" style="float: left;">save_alt</span>
-                        <div style="clear: both;"></div>
-                    </div>
-                </div>
-                
-                
+        <div id="setting">
+            <div class="warmtip" style="background-color: rgb(255, 255, 0);color: #000; padding: 5px;" v-show="!hidetip">
+                <span style="float: left;">If you like this project, please give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
+                <span class="material-icons" style="float: right;" @click="hide()">clear</span>
+                <div style="clear: both;"></div>
             </div>
+            <div :class="{setting:true,settingshow:show}">
+                <span :class="{'material-icons':true}" @click="show = !show"  id="settingbutton">
+                    settings
+                </span>
+                <span class="settingtitle">{{i18n.setting[lang]}}</span>
+                
+                <span class="material-icons" style="float: right;padding: 4px;" v-show="show" @click="clearSetting()">delete</span>
+                <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}}: </span>
+                <div style="clear: both;"></div>
+                <div :class="{settingoptions:true}" v-show="show">
+                    <span style="float: left;">{{i18n.dr[lang] }}: </span>
+                    <input v-model="doctor" style="float: left;"/>
+                    <div style="clear: both;"></div>
+                    
+                    <span style="float: left; font-weight: bold;">{{i18n.save[lang] }}: </span>
+                    <span class="material-icons" @click="save()" style="float: left;">save_alt</span>
+                    <div style="clear: both;"></div>
+                    <span style="font-size: 10px; font-weight: bold; color: dimgray;">
+                        Developer Info/Options (Please attach these info with your issues)
+                    </span>
+                    <div style="font-size: 5px;color: dimgray;">
+                        Current JsonFile:<br/> {{getJSONFile()}}<br/>
+                        Browser Info:<br/> {{getUserAgent()}}<br/>
+                        Browser width: {{getWidth()}}<br/>
+
+                    </div>
+
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div id='content' class="content">
+
 
             <div id="list-rendering">
                 <div class="storydata" id="storydata">
@@ -77,8 +92,8 @@
                             <div v-if="!line.endOfOpt" class="optText">Options: {{line.attributes.references.replaceAll(';',' ')}}</div>
                             <div v-if="!line.endOfOpt" class="toEnd" @click="jumpTo(line.targetLine)" @mouseover="changeColor(line.targetLine,'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine,'rgba(0,0,0,0.4)')">End of options</div>
                             <div v-else class="optText">End of Options</div>
-                          
                       </div>
+                      <div v-if="showDelay && line.prop == 'Delay'" :class="line.prop" :style="{height:line.attributes.time * 30 + 'px'}"><hr  /> </div>
 
                       <img v-if="line.prop == 'Image' && line.attributes.image" class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'"></img>
                       
@@ -132,9 +147,11 @@
             var l = urlParams.get('l')
             var doctor = window.localStorage.getItem('doctor');
             var hidetip = window.localStorage.getItem('hidetip');
+            var showDelay = window.localStorage.getItem('showdelay');
             if(!l){l = 'zh_CN'}
             if(!doctor){doctor = "{@nickname}"}
             if(!hidetip){hidetip = false};
+            if(!showDelay){showDelay = true};
 
             const setApp = Vue.createApp({
                 data(){
@@ -143,11 +160,12 @@
                         i18n:i18n,
                         lang:l,
                         show: doctor == "{@nickname}",
-                        hidetip: hidetip
+                        hidetip: hidetip,
+                        showDelay: showDelay
                     }
                 },
                 methods:{
-                    saveName(){
+                    save(){
                         window.localStorage.setItem('doctor',this.doctor);
                         window.location.href = window.location.href;
                     },
@@ -158,6 +176,15 @@
                     hide(){
                         this.hidetip = true;
                         window.localStorage.setItem('hidetip', true);
+                    },
+                    getJSONFile(){
+                        return "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json'
+                    },
+                    getUserAgent(){
+                        return window.navigator.userAgent
+                    },
+                    getWidth(){
+                        return $(window).width()
                     }
                 }
             })
@@ -201,7 +228,8 @@
                         path: urlParams.get('f'),
                         lang: l,
                         doctor: doctor,
-                        i18n: i18n
+                        i18n: i18n,
+                        showDelay: showDelay
                     }
                 },
                 updated(){
@@ -300,7 +328,7 @@
             $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+l+'/gamedata/excel/story_review_table.json').done(function(s){menu.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/chardict.json').done(function(t){menu.chardict = t;menu.eventList = getEventList(menu.data, menu.chardict);})})
             
             if(urlParams.get('f')){
-                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '!'};});
+                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '! If this is a new story, please contact the developer in github issue or discord to update the database.'};});
 
             }
             
