@@ -15,3 +15,4 @@ ArknightsData/
 *.zip
 *.json
 ArknightsStoryJson/
+reader/node_modules/*
