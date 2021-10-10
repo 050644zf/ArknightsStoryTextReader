@@ -15,7 +15,7 @@
         <div id="header" class="header">
             Arknights Story Text Reader 
             <span style="font-size: medium;font-weight: normal;">
-                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.7</a>
+                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.8</a>
                  by nightsky#3319 on 
                  <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
                 </span>
@@ -329,7 +329,6 @@
             
             if(urlParams.get('f')){
                 $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+l+'/gamedata/story/'+urlParams.get('f')+'.json').done(function(s){storylist.data = s;}).fail(function(){storylist.data = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '! If this is a new story, please contact the developer in github issue or discord to update the database.'};});
-
             }
             
 

@@ -1,4 +1,7 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import ASTR from './ASTR/ASTR.vue'
 
-createApp(App).mount('#app')
+
+
+createApp(ASTR).mount('#ASTR');
+

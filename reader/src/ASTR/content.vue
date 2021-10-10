@@ -1,14 +1,21 @@
 <script>
+import i18n from './i18n.json'
+import Nameline from './content/nameline.vue';
+import func from './func';
+
+const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;
+const color_sub = `<span style="color:$1">$2</span>`;
 export default {
     data(){
         return{
-            data: {eventName: '< - ' + i18n.selectStory[l]},
-            path: urlParams.get('f'),
-            lang: l,
-            doctor: doctor,
+            data: {eventName: '< - ' + i18n.selectStory[func.l]},
+            path: func.urlParams.get('f'),
+            lang: func.l,
+            doctor: func.doctor,
             i18n: i18n
         }
     },
+    props: ['data'],
     updated(){
         if(urlParams.get('warp')){
             var tgt = document.getElementById(urlParams.get('warp'));
@@ -38,6 +45,9 @@ export default {
                 content = content.replace(color_re,color_sub);
             }
             return content;
+        },
+        components:{
+            Nameline: Nameline
         }
     }
 }
@@ -49,10 +59,8 @@ export default {
 </div>
     <div v-for="line in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
     <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
-        <div v-if="line.prop == 'name'" class="textblock">
-            <div class="nameblock">{{line.attributes.name}}</div>
-            <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
-        </div>
+        <Nameline v-if="line.prop == 'name'" :line="line"></Nameline>
+        
         <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}" v-html="parseContent(line.attributes.text)">
         </div>
         <div v-if="line.prop == 'Decision'" :class="line.prop">
