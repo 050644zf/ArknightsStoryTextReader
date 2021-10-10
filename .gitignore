@@ -16,3 +16,4 @@ ArknightsData/
 *.json
 ArknightsStoryJson/
 reader/node_modules/*
+reader/dist/*
