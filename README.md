@@ -4,7 +4,7 @@
 
 A simple python program that help you convert Arknights raw story data into other readable format like Excel or csv.
 
-***New:*** Access the webpage application of ASTR [here](https://050644zf.github.io/ArknightsStoryTextReader/ASTR/reader.html)!
+### ***New:*** **Access the webpage application of ASTR [here](https://050644zf.github.io/ArknightsStoryTextReader/ASTR/reader.html)!**
 
 You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)
 
