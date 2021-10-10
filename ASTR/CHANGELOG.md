@@ -1,5 +1,12 @@
 # Change Log
 
+## wv0.8
+
+New Features:
+
+- Adding blank for delay [#7](https://github.com/050644zf/ArknightsStoryTextReader/issues/7)
+- Showing Developer Info in Settings
+
 ## wv0.7
 
 New Feature:

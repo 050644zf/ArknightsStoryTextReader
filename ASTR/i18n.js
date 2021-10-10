@@ -12,5 +12,6 @@ var i18n = {
     or: {zh_CN:'干员密录',en_US:"Operators' Records",ja_JP:"Operators' Records",ko_KR:"Operators' Records", zh_TW:'幹員密錄'},
     setting:{zh_CN:'设置',en_US:"Settings",ja_JP:"Settings",ko_KR:"Settings", zh_TW:'设置'},
     clear:{zh_CN:'重置所有设置',en_US:"Reset All Settings",ja_JP:"Reset All Settings",ko_KR:"Reset All Settings", zh_TW:'重置所有设置'},
-    dr:{zh_CN:'博士称呼',en_US:"Doctor's Name",ja_JP:"ドクターの名前",ko_KR:"Doctor's Name", zh_TW:'博士稱呼'}
+    dr:{zh_CN:'博士称呼',en_US:"Doctor's Name",ja_JP:"ドクターの名前",ko_KR:"Doctor's Name", zh_TW:'博士稱呼'},
+    save:{zh_CN:'应用设置',en_US:"Apply Setting",ja_JP:"Apply Setting",ko_KR:"Apply Setting", zh_TW:'应用设置'}
 }

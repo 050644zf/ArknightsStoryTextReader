@@ -179,7 +179,6 @@ input:active{
     font-weight: normal;
 }
 .line{
-    background-color: rgba(0, 0, 0, 0.2);
     height: max-content;
 }
 .textblock{
@@ -255,6 +254,16 @@ input:active{
     width: 100px;
     padding-left: 4px;
     background-color: rgba(255, 255, 255, 0.5);
+}
+.Delay{
+    max-height: 50px;
+    background-color: rgba(255, 255, 255,0);
+}
+.Delay hr{
+    border: none;
+    height: 0px;
+    background-color: slategray;
+    margin: auto;
 }
 @media (max-width: 1000px){
     .warning{
