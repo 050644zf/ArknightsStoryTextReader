@@ -314,4 +314,7 @@ input:active{
     input{
         font-size: 30px;
     }
+    .settingoptions *{
+        font-size: 30px;
+    }
 }

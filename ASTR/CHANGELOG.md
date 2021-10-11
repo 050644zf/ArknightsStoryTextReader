@@ -1,5 +1,15 @@
 # Change Log
 
+## wv0.8.1
+
+New Features:
+
+- Adding an icon
+
+Other:
+
+- Optimize header layout
+
 ## wv0.8
 
 New Features:
