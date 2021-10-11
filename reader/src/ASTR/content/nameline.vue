@@ -1,10 +1,3 @@
-<template>
-    <div class="textblock">
-        <div class="nameblock">{{line.attributes.name}}</div>
-        <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
-    </div>
-</template>
-
 <script>
 export default {
     data(){
@@ -12,7 +5,9 @@ export default {
             line: line,
         }
     },
-    props: ['line'],
+    props:{
+        line: Object
+    },
     methods:{
         parseContent(content){
             if(content){
@@ -25,6 +20,13 @@ export default {
     }
 }
 </script>
+
+<template>
+    <div class="textblock">
+        <div class="nameblock">{{line.attributes.name}}</div>
+        <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
+    </div>
+</template>
 
 <style>
 .textblock{

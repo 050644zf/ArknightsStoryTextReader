@@ -1,30 +1,32 @@
 <script>
-import Content from "./content.vue";
-import func from "./func";
-import $ from 'jquery'
+import content from './content.vue';
 
 
 
 export default {
     data(){
         return{
-            storyData: null,
-            storyFile: func.urlParams.get('f'),
-            lang: func.l,
+            storyData: {},
+            storyFile: [],
+            lang: [],
         }
     },
-    mounted(){
-        if(this.storyFile){
-                $.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.lang+'/gamedata/story/'+this.storyFile+'.json').done(function(s){this.storyData = s;}).fail(function(){this.storyData = {eventName: 'Error on loading json file: '+ urlParams.get('f') + '! If this is a new story, please contact the developer in github issue or discord to update the database.'};});
-            }
+    created(){
+        fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/zh_CN/gamedata/story/obt/guide/beg/0_welcome_to_guide.json').then(function(s){s.json();}).then(s => {this.storyData =s;this.$forceUpdate();console.log(this.storyData)});
+        
     },
     components:{
-        Content:Content
+        Content:content
+    },
+    methods:{
+        loadJson(){
+            
+        }
     }
 }
 </script>
 
 
 <template>
-<Content :data="storyData"></Content>
+<Content :story-data="storyData"></Content>
 </template>

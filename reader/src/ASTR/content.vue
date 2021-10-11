@@ -1,24 +1,24 @@
 <script>
 import i18n from './i18n.json'
-import Nameline from './content/nameline.vue';
 import func from './func';
+import Nameline from './content/nameline.vue';
 
-const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;
-const color_sub = `<span style="color:$1">$2</span>`;
 export default {
     data(){
         return{
-            data: {eventName: '< - ' + i18n.selectStory[func.l]},
-            path: func.urlParams.get('f'),
+            data: func.storyData,
+            path: func.storyFile,
             lang: func.l,
             doctor: func.doctor,
             i18n: i18n
         }
     },
-    props: ['data'],
+    props:{
+        storyData: Object
+    },
     updated(){
-        if(urlParams.get('warp')){
-            var tgt = document.getElementById(urlParams.get('warp'));
+        if(func.urlParams.get('warp')){
+            var tgt = document.getElementById(func.urlParams.get('warp'));
             if(tgt){
                 tgt.scrollIntoView({behavior: "smooth", block: "center"});
                 tgt.style.setProperty("background-color", '#f4433633');
@@ -39,17 +39,13 @@ export default {
             return '?l=' + l + '&f=' + path + '&warp=line' + line;
         },
         parseContent(content){
-            if(content){
-                content = content.replaceAll('{@nickname}',this.doctor);
-                content = content.replaceAll('\\n','<br/>')
-                content = content.replace(color_re,color_sub);
-            }
-            return content;
-        },
-        components:{
-            Nameline: Nameline
+            return func.parseContent(content);
         }
+    },
+    components:{
+        Nameline: Nameline
     }
+    
 }
 </script>
 
@@ -64,7 +60,7 @@ export default {
         <div v-if="line.prop == 'Subtitle'" :class="line.prop" :style="{'text-align': line.attributes.alignment}" v-html="parseContent(line.attributes.text)">
         </div>
         <div v-if="line.prop == 'Decision'" :class="line.prop">
-            <div v-for="(option, index) in line.attributes.values.split(';')" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')" v-html="parseContent(line.attributes.options.split(';')[index])">
+            <div v-for="(option, index) in line.attributes.values.split(';')" :key="option" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="changeColor(line.targetLine['option'+option],'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine['option'+option],'rgba(0,0,0,0.4)')" v-html="parseContent(line.attributes.options.split(';')[index])">
                 
             </div>
         </div>
