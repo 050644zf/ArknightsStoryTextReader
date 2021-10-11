@@ -5,6 +5,7 @@
         <title></title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="reader.css">
+        <link rel="icon" href="favicon.png">
     </head>
     <body>
         <script src="script.js"></script>
@@ -13,11 +14,12 @@
         <script src="i18n.js"></script>
 
         <div id="header" class="header">
-            Arknights Story Text Reader 
-            <span style="font-size: medium;font-weight: normal;">
-                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.8</a>
+            <img src="favicon.png" style="padding: 4px;margin-right: 10px;height: 32px;float: left;">
+            <span style="float: left;">Arknights Story Text Reader</span> 
+            <span style="font-size: medium;font-weight: normal;float: right; text-align: right; margin-right: 20px;">
+                 <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/ASTR/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.8.1</a><br/>
                  by nightsky#3319 on 
-                 <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">Rhodes Island HQ</a>
+                 <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">RIHQ</a>
                 </span>
         </div>
         <div id="warning" class="warning" onclick="this.style.display = 'none'">
@@ -31,7 +33,7 @@
 
         <div id="setting">
             <div class="warmtip" style="background-color: rgb(255, 255, 0);color: #000; padding: 5px;" v-show="!hidetip">
-                <span style="float: left;">If you like this project, please give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
+                <span style="float: left;margin-left: 20px;">If you like this project, please give me a star <a href="https://github.com/050644zf/ArknightsStoryTextReader" style="color: rgb(32, 32, 184);">here</a>!</span>
                 <span class="material-icons" style="float: right;" @click="hide()">clear</span>
                 <div style="clear: both;"></div>
             </div>

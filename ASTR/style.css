@@ -48,12 +48,11 @@ canvas{
 }
 #header{
     font-weight: bold;
-    background-color: teal;
+    background-color: #007575;
     font-size: 200%;
     padding: 4px;
     padding-top: 8px;
     position: sticky;
-    width: 100%;
     height: 42px;
     top: 0px;
 }
@@ -67,7 +66,7 @@ canvas{
     width: 50%;
     margin-right: 4px;
     padding: 4px;
-    padding-bottom: 10%;
+    padding-bottom: 1800px;
     max-height: 90%; 
     overflow-y: scroll; 
     overflow-x: clip;
