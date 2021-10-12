@@ -1,30 +1,28 @@
+<script>
+import func from "../func";
+export default {
+    data(){
+        return{
+            line: this.inputline,
+        }
+    },
+    props:{
+        inputline: Object
+    },
+    methods:{
+        parseContent(content){
+            return func.parseContent(content);
+        }
+    }
+}
+</script>
+
 <template>
     <div class="textblock">
         <div class="nameblock">{{line.attributes.name}}</div>
         <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
     </div>
 </template>
-
-<script>
-export default {
-    data(){
-        return{
-            line: line,
-        }
-    },
-    props: ['line'],
-    methods:{
-        parseContent(content){
-            if(content){
-                content = content.replaceAll('{@nickname}',this.doctor);
-                content = content.replaceAll('\\n','<br/>')
-                content = content.replace(color_re,color_sub);
-            }
-            return content;
-        }
-    }
-}
-</script>
 
 <style>
 .textblock{

@@ -13,7 +13,6 @@ roguelike_table.json
 ArknightsData/
 *.nb
 *.zip
-*.json
 ArknightsStoryJson/
 reader/node_modules/*
 reader/dist/*
