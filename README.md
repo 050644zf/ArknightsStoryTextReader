@@ -6,6 +6,8 @@ A simple python program that help you convert Arknights raw story data into othe
 
 ### ***New:*** **Access the webpage application of ASTR [here](https://050644zf.github.io/ArknightsStoryTextReader/ASTR/reader.html)!**
 
+Web Version Build Status ![](https://api.travis-ci.com/050644zf/ArknightsStoryTextReader.svg)
+
 You can find raw story data in [Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)
 
 **CN/JP/EN/KR** server files tested
