@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - lts/*
+install:
+  - npm ci
+script:
+  - cd reader
+  - npm run build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: dist
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master

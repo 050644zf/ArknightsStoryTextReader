@@ -6,6 +6,8 @@ import nameline from './content/nameline.vue';
 import subtitle from './content/subtitle.vue';
 import decision from './content/decision.vue';
 import predicate from './content/predicate.vue';
+import dialog from './content/dialog.vue';
+import img from './content/img.vue';
 
 export default {
     data(){
@@ -51,7 +53,9 @@ export default {
         Nameline: nameline,
         Subtitle: subtitle,
         Decision: decision,
-        Predicate: predicate
+        Predicate: predicate,
+        Dialog: dialog,
+        Showimg: img
     }
     
 }
@@ -64,14 +68,13 @@ export default {
         </div>
         <div v-for="line in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
         <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
+        
             <Nameline v-if="line.prop == 'name'" :inputline="line"></Nameline>
             <Subtitle v-if="line.prop == 'Subtitle'" :inputline="line"></Subtitle>
             <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
-            
             <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
-            <div v-if="line.prop == 'Dialog'" :class="line.prop"><hr/> </div>
-
-            <img v-if="line.prop == 'Image' && line.attributes.image" class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'">
+            <Dialog v-if="line.prop == 'Dialog'" :inputline="line"></Dialog>
+            <Showimg v-if="line.prop == 'Image' && line.attributes.image"></Showimg>
             
             <div style="clear: both;"></div>
         </div>
