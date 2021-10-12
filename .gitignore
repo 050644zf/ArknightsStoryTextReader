@@ -14,3 +14,5 @@ ArknightsData/
 *.nb
 *.zip
 ArknightsStoryJson/
+reader/node_modules/*
+reader/dist/*
