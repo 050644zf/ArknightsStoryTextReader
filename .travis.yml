@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - lts/*
 install:
+  - cd reader
   - npm ci
 script:
-  - cd reader
   - npm run build
 deploy:
   provider: pages
