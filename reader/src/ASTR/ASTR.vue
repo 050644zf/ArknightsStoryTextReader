@@ -28,5 +28,5 @@ export default {
 
 
 <template>
-<Content :story-data="storyData"></Content>
+<Content></Content>
 </template>

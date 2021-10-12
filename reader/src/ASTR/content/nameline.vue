@@ -1,21 +1,17 @@
 <script>
+import func from "../func";
 export default {
     data(){
         return{
-            line: line,
+            line: this.inputline,
         }
     },
     props:{
-        line: Object
+        inputline: Object
     },
     methods:{
         parseContent(content){
-            if(content){
-                content = content.replaceAll('{@nickname}',this.doctor);
-                content = content.replaceAll('\\n','<br/>')
-                content = content.replace(color_re,color_sub);
-            }
-            return content;
+            return func.parseContent(content);
         }
     }
 }

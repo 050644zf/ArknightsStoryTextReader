@@ -16,8 +16,6 @@ if(!showDelay){showDelay = true};
 
 
 export default {
-    color_re: /<color=([\w#]+)>(.+?)<\/color>/gm,
-    color_sub: `<span style="color:$1">$2</span>`,
     urlParams: urlParams,
     l: l,
     doctor: doctor,
@@ -27,6 +25,8 @@ export default {
     storyData: storyData,
     parseContent(content){
         if(content){
+            const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;
+            const color_sub = `<span style="color:$1">$2</span>`;
             content = content.replaceAll('{@nickname}',this.doctor);
             content = content.replaceAll('\\n','<br/>')
             content = content.replace(color_re,color_sub);
