@@ -1,6 +1,6 @@
 <template>
     <div  :class="line.prop">
-        <div v-for="(option, index) in line.attributes.values.split(';')" :key="option" class="option" @click="jumpTo(line.targetLine['option'+option])"  v-html="parseContent(line.attributes.options.split(';')[index])">
+        <div v-for="(option, index) in line.attributes.values.split(';')" :key="option" class="option" @click="jumpTo(line.targetLine['option'+option])" @mouseover="addClass(line.targetLine['option'+option], 'PredicateFocused')"   @mouseout="removeClass(line.targetLine['option'+option], 'PredicateFocused')"  v-html="parseContent(line.attributes.options.split(';')[index])">
             
         </div>
     </div>
@@ -22,13 +22,17 @@ export default {
         parseContent(content){
             return func.parseContent(content);
         },
-        changeColor(id,color){
-            var optLine = document.getElementById(id);
-            setInterval(optLine.style.setProperty("background-color", color),500);
-        },
         jumpTo(id){
             var optLine = document.getElementById(id);
             optLine.scrollIntoView({behavior: "smooth", block: "center"});
+        },
+        addClass(id, className){
+            var optLine = document.getElementById(id);
+            optLine.classList.add(className);
+        },
+        removeClass(id, className){
+            var optLine = document.getElementById(id);
+            optLine.classList.remove(className);
         }
     }
 }

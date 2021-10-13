@@ -6,7 +6,7 @@ import nameline from './content/nameline.vue';
 import subtitle from './content/subtitle.vue';
 import decision from './content/decision.vue';
 import predicate from './content/predicate.vue';
-import dialog from './content/dialog.vue';
+import delay from './content/delay.vue';
 import img from './content/img.vue';
 
 export default {
@@ -16,11 +16,17 @@ export default {
             path: func.storyFile,
             lang: func.l,
             doctor: func.doctor,
-            i18n: i18n
+            i18n: i18n,
+            showDelay: func.showDelay
         }
     },
     created(){
-        $.getJSON('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.lang+'/gamedata/story/'+this.path+'.json').done(s => this.data = s);
+        if(this.path){
+            $.getJSON('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.lang+'/gamedata/story/'+this.path+'.json').done(s => this.data = s).fail(s => {this.data = {eventName: 'Error on loading json file: '+ this.path + '! If this is a new story, please contact the developer in github issue or discord to update the database.'}});
+        }
+        else{
+            this.data = {eventName: '< - ' + i18n.selectStory[this.lang]};
+        }
         
     },
     updated(){
@@ -31,7 +37,7 @@ export default {
                 tgt.style.setProperty("background-color", '#f4433633');
             }
         };
-        focus();
+        func.focus();
     },
     methods:{
         jumpTo(id){
@@ -54,7 +60,7 @@ export default {
         Subtitle: subtitle,
         Decision: decision,
         Predicate: predicate,
-        Dialog: dialog,
+        Delay: delay,
         Showimg: img
     }
     
@@ -66,15 +72,15 @@ export default {
         <div class="storydata" id="storydata">
             {{data.eventName}}  {{data.storyCode}}  {{data.avgTag}}  {{data.storyName}}
         </div>
-        <div v-for="line in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
+        <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
         <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
         
-            <Nameline v-if="line.prop == 'name'" :inputline="line"></Nameline>
+            <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
             <Subtitle v-if="line.prop == 'Subtitle'" :inputline="line"></Subtitle>
             <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
             <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
-            <Dialog v-if="line.prop == 'Dialog'" :inputline="line"></Dialog>
-            <Showimg v-if="line.prop == 'Image' && line.attributes.image"></Showimg>
+            <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
+            <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
             
             <div style="clear: both;"></div>
         </div>
@@ -103,6 +109,7 @@ export default {
     right: 0%;
     padding-right: 4px;
     transition: color 0.5s;
+    font-size: 24px;
 }
 .line:hover .linkButton{
     color: #888888FF;

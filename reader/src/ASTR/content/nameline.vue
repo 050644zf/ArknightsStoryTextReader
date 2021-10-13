@@ -4,14 +4,37 @@ export default {
     data(){
         return{
             line: this.inputline,
+            hideName: false
         }
     },
+    mounted(){
+        this.hideName = this.isHideName();
+    },
     props:{
-        inputline: Object
+        inputline: Object,
+        story: Object,
+        lidx: Number
     },
     methods:{
         parseContent(content){
             return func.parseContent(content);
+        },
+        isHideName(){
+            if(this.lidx=='0' || func.hideName == 'n' || !this.line){
+                return false
+            }
+            else{
+                var lastLine = this.story[this.lidx-1];
+                
+                if(lastLine.prop=='name' && lastLine.attributes && this.line.attributes){
+                    console.log(lastLine);
+                    if(lastLine.attributes.name == this.line.attributes.name){
+                        return true;
+                    }
+                }
+
+                return false;
+            }
         }
     }
 }
@@ -19,7 +42,7 @@ export default {
 
 <template>
     <div class="textblock">
-        <div class="nameblock">{{line.attributes.name}}</div>
+        <div :class="{nameblock:true, hideName:hideName}">{{line.attributes.name}}</div>
         <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
     </div>
 </template>
@@ -42,5 +65,8 @@ export default {
     max-width: 650px;
     float: left;
     margin: 2px;
+}
+.hideName{
+    color:rgba(0,0,0,0);
 }
 </style>

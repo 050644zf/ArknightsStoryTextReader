@@ -14,3 +14,12 @@ export default {
     }
 }
 </script>
+
+<style>
+.line img{
+    max-width: 500px;
+    max-height: 300px;
+    margin: 4px;
+    margin-left: 114px;
+}
+</style>

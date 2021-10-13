@@ -1,0 +1,112 @@
+      /*Global CSS Configuration*/
+
+      @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Material Icons'),
+          local('MaterialIcons-Regular'),
+          url(MaterialIcons-Regular.ttf) format('truetype');
+      }
+    .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+    }
+
+    body{
+        background-color: rgb(41, 41, 41);
+        color: white;
+        font-family: sans-serif;
+        margin: 0px;
+        overflow-x: hidden;
+    }
+    a{
+        color: blanchedalmond;
+    }
+    @media (max-width: 1000px){
+  #content{
+      margin-left: 70px !important;
+      width: 90%;
+      font-size: 30px;
+  }
+  .sidebar{
+      width: 80%;
+      transition: none;
+  }
+  .sidebarhidden{
+      width: 0%;
+  }
+  .material-icons{
+      font-size: 50px !important;
+  }
+.warning{
+      font-size: 20px;
+      width: 300px;
+      background-color: rgb(90, 58, 58);
+  }
+  .nameblock{
+      width: 150px;
+      word-wrap: break-word;
+  }
+  .topButton{
+      font-size: 70px;
+  }
+  .menuButton{
+      font-size: 100px !important;
+      background-color: rgba(0,128,128,0.2);
+      transition: none;
+  }
+  .menuButtonR{
+      left: 80%;
+  }
+  .eventtype{
+      font-size: 40px;
+  }
+  .eventname{
+      font-size: 40px;
+  }
+  .story{
+      font-size: 30px;
+  }
+  .storycode{
+      font-size: 20px;
+  }
+  .currentLang{
+      font-size: 40px;
+  }
+  .langSelect{
+      font-size: 40px;
+  }
+  .option{
+      font-size: 30px;
+  }
+  .settingtitle{
+      font-size: 30px;
+      margin: 10px 0;
+  }
+  input{
+      font-size: 30px;
+  }
+  .settingoptions *{
+      font-size: 30px;
+  }
+}

@@ -1,8 +1,6 @@
 <template>
     <div :class="line.prop">
         <div v-if="!line.endOfOpt" class="optText">Options: {{line.attributes.references.replaceAll(';',' ')}}</div>
-        <div v-if="!line.endOfOpt" class="toEnd" @click="jumpTo(line.targetLine)" @mouseover="changeColor(line.targetLine,'rgba(255,255,255,0.4)')" @mouseout="changeColor(line.targetLine,'rgba(0,0,0,0.4)')">End of options</div>
-        <div v-else class="optText">End of Options</div>
     </div>
 </template>
 
@@ -32,5 +30,8 @@ export default {
 .optText{
     float: left;
     padding: 4px;
+}
+.PredicateFocused{
+    background-color: rgba(255, 255, 255, 0.4);
 }
 </style>
