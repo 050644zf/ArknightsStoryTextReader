@@ -1,5 +1,9 @@
 # Change Log
 
+## wv0.9.1
+
+- Optimized the settings
+
 ## wv0.9
 
 New Features:

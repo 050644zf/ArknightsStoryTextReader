@@ -56,7 +56,7 @@ export default {
     width: 100px;
     float: left;
     margin: 2px;
-    margin-right: 6px;
+    margin-right: 10px;
     text-align: right;
     font-weight: bold;
 }
