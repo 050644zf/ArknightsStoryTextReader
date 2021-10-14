@@ -26,7 +26,7 @@
                 <span style="float: left;">{{i18n.hideName[lang]}}(beta): </span>
                 <input class="checkbox" type="checkbox" v-model="hideName" true-value="y" false-value="n" style="float:left"/>
                 <div style="clear:both;"></div>
-                <div class="save" @click="save()">
+                <div class="save" @click="save()"> 
                     <span style="float: left; font-weight: bold;">{{i18n.save[lang] }} </span>
                     <span class="material-icons"  style="float: left;">save_alt</span>
                     <div style="clear: both;"></div>
@@ -188,6 +188,24 @@ methods:{
 }
 .save:hover{
     background-color: #008080FF;
+}
+
+@media(max-width: 1000px){
+  .settingtitle{
+      font-size: 30px;
+      margin: 10px 0;
+  }
+  input{
+      font-size: 30px;
+  }
+  .settingoptions *{
+      font-size: 30px;
+  }
+  .checkbox{
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+}
 }
 
 </style>

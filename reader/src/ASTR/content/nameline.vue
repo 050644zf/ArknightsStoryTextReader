@@ -50,10 +50,13 @@ export default {
 <style>
 .textblock{
     margin: 4px;
+    display: flex;
 }
 .nameblock{
+    display: flex;
+    flex: 1 70px;
+    justify-content: flex-end;
     background-color: unset;
-    width: 100px;
     float: left;
     margin: 2px;
     margin-right: 10px;
@@ -61,8 +64,9 @@ export default {
     font-weight: bold;
 }
 .contentblock{
+    display: flex;
+    flex: 6 300px;
     background-color: unset;
-    max-width: 650px;
     float: left;
     margin: 2px;
 }

@@ -48,13 +48,6 @@
       width: 90%;
       font-size: 30px;
   }
-  .sidebar{
-      width: 80%;
-      transition: none;
-  }
-  .sidebarhidden{
-      width: 0%;
-  }
   .material-icons{
       font-size: 50px !important;
   }
@@ -70,43 +63,7 @@
   .topButton{
       font-size: 70px;
   }
-  .menuButton{
-      font-size: 100px !important;
-      background-color: rgba(0,128,128,0.2);
-      transition: none;
-  }
-  .menuButtonR{
-      left: 80%;
-  }
-  .eventtype{
-      font-size: 40px;
-  }
-  .eventname{
-      font-size: 40px;
-  }
-  .story{
-      font-size: 30px;
-  }
-  .storycode{
-      font-size: 20px;
-  }
-  .currentLang{
-      font-size: 40px;
-  }
-  .langSelect{
-      font-size: 40px;
-  }
   .option{
-      font-size: 30px;
-  }
-  .settingtitle{
-      font-size: 30px;
-      margin: 10px 0;
-  }
-  input{
-      font-size: 30px;
-  }
-  .settingoptions *{
       font-size: 30px;
   }
 }

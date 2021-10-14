@@ -1,5 +1,10 @@
 # Change Log
 
+## wv0.9.2
+
+- Optimized the overall layout
+- Optimized the menu transition
+
 ## wv0.9.1
 
 - Optimized the settings

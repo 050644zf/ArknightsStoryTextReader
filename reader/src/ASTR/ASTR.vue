@@ -4,14 +4,16 @@ import menu from './menu.vue';
 import settings from './settings.vue';
 import content from './content.vue';
 import topbtn from './topbtn.vue';
+import menupage from './menupage.vue';
+import func from './func';
 
 
 export default {
     data(){
         return{
             storyData: {},
-            storyFile: [],
-            lang: [],
+            storyFile: func.storyFile,
+            lang: func.lang,
         }
     },
     created(){
@@ -22,7 +24,8 @@ export default {
         Menu: menu,
         Content: content,
         Settings: settings,
-        Topbtn: topbtn
+        Topbtn: topbtn,
+        Menupage: menupage
     },
     methods:{
     }
@@ -34,7 +37,8 @@ export default {
 <Header></Header>
 <Menu></Menu>
 <Settings></Settings>
-<Content></Content>
+<Menupage v-if="!storyFile"></Menupage>
+<Content v-if="storyFile"></Content>
 <Topbtn></Topbtn>
 </template>
 

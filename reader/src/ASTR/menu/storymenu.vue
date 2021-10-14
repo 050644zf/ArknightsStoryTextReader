@@ -39,6 +39,7 @@ export default {
     margin: 4px;
     margin-left: 40px;
     transition: padding 0.2s;
+    border-radius: 4px;
 }
 .story:hover{
     background-color: rgba(255, 255, 255, 0.2);

@@ -33,6 +33,7 @@ export default {
     margin-left: 10px;
     padding: 2px;
     transition: padding 0.2s;
+    border-radius: 4px;
 }
 .eventnamehl{
     background-color: rgba(42,186,255,0.4);

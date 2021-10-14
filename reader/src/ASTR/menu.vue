@@ -39,6 +39,9 @@ data(){
 created(){
     $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.lang+'/gamedata/excel/story_review_table.json').done(s => {this.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.lang+'/chardict.json').done(t => {this.chardict = t;this.eventList = this.getEventList(this.data, this.chardict);})});
 },
+mounted(){
+    func.focus();
+},
 methods:{
     langSwitch(langCode){
         var req = 'l='+langCode;
@@ -94,11 +97,12 @@ components:{
     word-wrap: normal;
     position: fixed;
     top: 50px;
-    transition: width 0.5s;
+    transition: transform 0.5s;
+    z-index: 1;
     /*box-shadow: 2px 2px 2px #000000;*/
 }
 .sidebarhidden{
-    width: 0%;
+    transform: translateX(-100%);
 }
 .currentLang{
     text-align: center;
@@ -112,6 +116,7 @@ components:{
     margin: auto;
     width: 100%;
     text-align: center;
+    border-radius: 4px;
 }
 .langSelect div{
     text-align: center;
@@ -151,5 +156,40 @@ components:{
     left: 50%;
     transform: rotate(180deg);
     background-color: #3f51b5ff;
+}
+@media(max-width: 1000px){
+    .sidebar{
+    width: 80%;
+    transition: none;
+    }
+    .sidebarhidden{
+        width: 0%;
+    }
+    .menuButton{
+    font-size: 100px !important;
+    background-color: rgba(0,128,128,0.2);
+    transition: none;
+    }
+    .menuButtonR{
+        left: 80%;
+    }
+    .eventtype{
+      font-size: 40px;
+    }
+    .eventname{
+        font-size: 40px;
+    }
+    .story{
+        font-size: 30px;
+    }
+    .storycode{
+        font-size: 20px;
+    }
+    .currentLang{
+        font-size: 40px;
+    }
+    .langSelect{
+        font-size: 40px;
+    }
 }
 </style>
