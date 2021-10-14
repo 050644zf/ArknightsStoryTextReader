@@ -17,6 +17,11 @@
             </div>
             <div style="clear: both;"></div>
             <div :class="{settingoptions:true}" v-show="show">
+                <span class="material-icons">public</span>
+                <select v-model="targetLang">
+                    <option v-for="langCode in langList" :key="langCode">{{langCode}}</option>
+                </select>
+                <div style="clear:both;"></div>
                 <span style="float: left;">{{i18n.dr[lang] }}: </span>
                 <input class="textbox" v-model="doctor" style="float: left;"/>
                 <div style="clear: both;"></div>
@@ -60,10 +65,12 @@ data(){
         doctor: func.doctor,
         i18n:i18n,
         lang:func.l,
+        targetLang: func.l,
         show: this.doctor == "{@nickname}",
         hidetip: func.hidetip,
         showDelay: func.showDelay,
-        hideName: func.hideName
+        hideName: func.hideName,
+        langList: func.langList
     }
 },
 methods:{
@@ -71,6 +78,7 @@ methods:{
         window.localStorage.setItem('doctor',this.doctor);
         window.localStorage.setItem('showDelay', this.showDelay);
         window.localStorage.setItem('hideName', this.hideName);
+        window.localStorage.setItem('lang', this.targetLang);
         window.location.href = window.location.href;
     },
     clearSetting(){
@@ -104,6 +112,9 @@ methods:{
 .setting *{
     margin: 4px;
     
+}
+.setting select{
+    font-size: 15px;
 }
 
 .setting .material-icons{
@@ -191,21 +202,24 @@ methods:{
 }
 
 @media(max-width: 1000px){
-  .settingtitle{
-      font-size: 30px;
-      margin: 10px 0;
-  }
-  input{
-      font-size: 30px;
-  }
-  .settingoptions *{
-      font-size: 30px;
-  }
-  .checkbox{
-    width: 30px;
-    height: 30px;
-    margin: 4px;
-}
+    .settingtitle{
+        font-size: 30px;
+        margin: 10px 0;
+    }
+    input{
+        font-size: 30px;
+    }
+    .settingoptions *{
+        font-size: 30px;
+    }
+    .checkbox{
+        width: 30px;
+        height: 30px;
+        margin: 4px;
+    }
+    .setting select{
+        font-size: 35px;
+    }
 }
 
 </style>

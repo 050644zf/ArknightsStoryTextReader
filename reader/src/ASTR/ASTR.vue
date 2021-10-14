@@ -13,11 +13,9 @@ export default {
         return{
             storyData: {},
             storyFile: func.storyFile,
-            lang: func.lang,
+            lang: func.l,
+            server: func.server
         }
-    },
-    created(){
-        fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/zh_CN/gamedata/story/obt/guide/beg/0_welcome_to_guide.json').then(function(s){s.json();}).then(s => {this.storyData =s;this.$forceUpdate();console.log(this.storyData)});
     },
     components:{
         Header: header,

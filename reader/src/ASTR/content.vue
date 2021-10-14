@@ -15,6 +15,7 @@ export default {
             data: func.storyData,
             path: func.storyFile,
             lang: func.l,
+            server: func.server,
             doctor: func.doctor,
             i18n: i18n,
             showDelay: func.showDelay
@@ -22,7 +23,7 @@ export default {
     },
     created(){
         if(this.path){
-            $.getJSON('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.lang+'/gamedata/story/'+this.path+'.json').done(s => this.data = s).fail(s => {this.data = {eventName: 'Error on loading json file: '+ this.path + '! If this is a new story, please contact the developer in github issue or discord to update the database.'}});
+            $.getJSON('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/gamedata/story/'+this.path+'.json').done(s => this.data = s).fail(s => {this.data = {eventName: 'Error on loading json file: '+ this.path + '! If this is a new story, please contact the developer in github issue or discord to update the database.'}});
         }
         else{
             this.data = {eventName: '< - ' + i18n.selectStory[this.lang]};
@@ -49,7 +50,7 @@ export default {
             setInterval(optLine.style.setProperty("background-color", color),500);
         },
         getURL(l,path,line){
-            return '?l=' + l + '&f=' + path + '&warp=line' + line;
+            return '?s=' + l + '&f=' + path + '&warp=line' + line;
         },
         parseContent(content){
             return func.parseContent(content);

@@ -2,6 +2,12 @@
 
 ## wv0.9.2
 
+New Feature:
+
+- Split the server and interface language settings
+
+Other:
+
 - Optimized the overall layout
 - Optimized the menu transition
 

@@ -3,9 +3,13 @@
         <div :class="{menuButton:true,'material-icons':true,menuButtonR:showMenu}" @click="showMenu=!showMenu;">chevron_right</div>
         <div :class="{sidebar:true, sidebarhidden:!showMenu}" >
             <div id="currentLang" class="currentLang">
-                {{i18n.currentLang[lang]}}: {{i18n.langs[lang]}}
-                <div id="langSelect" class="langSelect">
-                    <div  v-for="(langtext,langCode,lidx) in i18n.langs" @click="langSwitch(langCode)" :key="lidx">
+                <div style="display: flex;align-items: center;justify-content:center;" @click="showLangSelect = !showLangSelect">
+                    <span class="material-icons" style="margin-right: 5px;">language</span>
+                    <span> {{i18n['server'][server]}}</span>
+                </div>
+
+                <div id="langSelect" class="langSelect" v-show="showLangSelect">
+                    <div  v-for="(langtext,langCode,lidx) in i18n['server']" @click="serverSwitch(langCode)" :key="lidx">
                         {{langtext}}
                     </div>
                 </div>
@@ -32,19 +36,21 @@ data(){
         chardict: {},
         eventList: {},
         lang: func.l,
+        server: func.server,
         i18n: i18n,
-        showMenu: true
+        showMenu: true,
+        showLangSelect: false
     }
 },
 created(){
-    $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.lang+'/gamedata/excel/story_review_table.json').done(s => {this.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.lang+'/chardict.json').done(t => {this.chardict = t;this.eventList = this.getEventList(this.data, this.chardict);})});
+    $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').done(s => {this.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.server+'/chardict.json').done(t => {this.chardict = t;this.eventList = this.getEventList(this.data, this.chardict);})});
 },
 mounted(){
     func.focus();
 },
 methods:{
-    langSwitch(langCode){
-        var req = 'l='+langCode;
+    serverSwitch(langCode){
+        var req = 's='+langCode;
         window.location.search = req;
     },
     getEventList(reviewData, chardict){
@@ -109,25 +115,28 @@ components:{
     background-color: rgb(36, 54, 153);
     font-weight: bold;
     padding: 5px 0px;
+    border-radius: 4px;
+    transition: background-color 0.5s;
+}
+.currentLang:hover{
+    background-color: rgb(59, 73, 155);
 }
 .langSelect{
-    display: none;
+    display: block;
     position: absolute;
     margin: auto;
+    margin-top: 4px;
     width: 100%;
     text-align: center;
-    border-radius: 4px;
+    
 }
 .langSelect div{
     text-align: center;
     background-color: rgb(57, 61, 87);
-    
+    padding: 4px;
 }
 .langSelect div:hover{
     background-color: rgb(114, 122, 173);
-}
-.currentLang:hover .langSelect{
-    display: block;
 }
 .eventtype{
     text-align: center;

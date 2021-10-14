@@ -1,7 +1,8 @@
 import $ from 'jquery'
-
+const langList = ['zh_CN','en_US','ko_KR','ja_JP','zh_TW','Default'];
 var urlParams = new URLSearchParams(window.location.search);
-var l = urlParams.get('l');
+var server = urlParams.get('s');
+var l = window.localStorage.getItem('lang');
 var doctor = window.localStorage.getItem('doctor');
 var hidetip = window.localStorage.getItem('hidetip');
 var showDelay = window.localStorage.getItem('showDelay');
@@ -9,8 +10,12 @@ var hideName = window.localStorage.getItem('hideName');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
 
-if(!l){l = 'zh_CN'}
-if(!doctor){doctor = "{@nickname}"}
+if(!server){server = 'zh_CN'};
+if(!l || l == 'none' || l == 'Default'){l = navigator.language.replace('-','_')};
+if(l=='ja'){l = 'ja_JP'};
+if(langList.indexOf(l) == -1){l = 'en_US'};
+console.log('Current Language: '+l);
+if(!doctor){doctor = "{@nickname}"};
 if(!hidetip){hidetip = false};
 if(!showDelay){showDelay = 'y'};
 if(!hideName){hideName = 'n'};
@@ -20,6 +25,8 @@ if(!hideName){hideName = 'n'};
 export default {
     urlParams: urlParams,
     l: l,
+    langList:langList,
+    server: server,
     doctor: doctor,
     hidetip: hidetip,
     showDelay: showDelay,
