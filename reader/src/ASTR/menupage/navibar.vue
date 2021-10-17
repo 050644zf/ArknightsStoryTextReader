@@ -6,16 +6,17 @@
 
 <script>
 import func from '../func';
-import navitem from './navitem.vue'
+import i18n from '../i18n.json';
+import navitem from './navitem.vue';
 export default {
     data(){
         return{
             navi:{
-                maintheme:{icon:'M', title:'Maintheme'},
-                interlude:{icon:'I', title:'Interlude'},
-                sidestory:{icon:'S', title:'Sidestory'},
-                storyset:{icon:'Ss', title:'Storyset'},
-                or:{icon:'O', title:"Operators' Records"}
+                maintheme:{icon:'/src/assets/icons/icon_mainline.png', title:'Maintheme'},
+                intermezzi:{icon:'/src/assets/icons/icon_branchline.png', title:'Intermezzi'},
+                sidestory:{icon:'/src/assets/icons/icon_ss.png', title:'Sidestory'},
+                storyset:{icon:'/src/assets/icons/icon_ministory.png', title:'Storyset'},
+                or:{icon:'src/assets/icons/icon_default.png', title:"Operators' Records"}
             },
             focus: 0
         }
@@ -25,3 +26,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.navibar{
+    display: flex;
+    justify-content: space-evenly;
+}
+</style>

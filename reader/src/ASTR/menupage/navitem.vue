@@ -1,6 +1,7 @@
 <template>
         <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme')">
-            <span class="itemicon">{{item.icon}}</span>
+            <img :src="item.icon" class="itemicon"/>
+            <span class=itemname>{{item.title}}</span>
         </div>
 </template>
 
@@ -14,3 +15,15 @@ export default {
     emits:['focusme']
 }
 </script>
+
+<style>
+.navitem{
+    display:flex;
+}
+.itemname{
+    display: none;
+}
+.itemfocus .itemname{
+    display: block;
+}
+</style>

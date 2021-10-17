@@ -1,11 +1,12 @@
 <template>
     <div class="menupage">
-        <div>
+        <div style="display: flex;align-items: center;">
             <span class="material-icons">
             arrow_back
             </span>
             <span style="margin-left: 5px;">{{i18n.selectStory[lang]}}</span>
         </div>
+        <br/>
         <Navibar></Navibar>  
     </div>
 </template>
@@ -32,8 +33,7 @@ export default {
 .menupage{
     margin-left: 10%;
     font-size: 20px;
-    display: flex;
-    align-items: center;
+    width: 60%
 }
 @media (max-width: 1000px) {
     .menupage span{
