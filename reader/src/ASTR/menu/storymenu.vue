@@ -15,7 +15,8 @@ export default {
     data(){
         return{
             focused: false,
-            lang: func.l
+            lang: func.l,
+            server: func.server
         }
     },
     mounted(){
@@ -26,7 +27,7 @@ export default {
     },
     methods:{
         loadStory(lang, path){
-            var req = 'l='+lang;
+            var req = 's='+ this.server;
             req = req + '&f=' + path;
             window.location.search = req;
         }

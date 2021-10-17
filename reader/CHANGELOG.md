@@ -1,5 +1,11 @@
 # Change Log
 
+## wv0,9.3
+
+Bugfix:
+
+- Fix the bug that acutomatically switch to zh_CN when clicking story in menu [#10](https://github.com/050644zf/ArknightsStoryTextReader/issues/10)
+
 ## wv0.9.2
 
 New Feature:
