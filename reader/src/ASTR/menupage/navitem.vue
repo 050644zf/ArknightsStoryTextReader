@@ -1,5 +1,5 @@
 <template>
-        <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme')">
+        <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme');">
             <img :src="item.icon" class="itemicon"/>
             <span class=itemname>{{item.title}}</span>
         </div>
@@ -19,11 +19,22 @@ export default {
 <style>
 .navitem{
     display:flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    flex: 1;
+    background-color: rgba(255,255,255,0);
+    transition: flex 0.5s, background-color 0.5s;
 }
 .itemname{
     display: none;
+    font-size: 15px;
 }
-.itemfocus .itemname{
-    display: block;
+.itemfocused{
+    background-color: rgba(255,255,255,0.1);
+    flex: 3;
+}
+.itemfocused .itemname{
+    display: block !important;
 }
 </style>
