@@ -1,6 +1,6 @@
 <template>
         <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme');">
-            <img :src="item.icon" class="itemicon"/>
+            <div :class="[item.icon, 'itemicon']"></div>
             <span class=itemname>{{item.title}}</span>
         </div>
 </template>
@@ -23,18 +23,35 @@ export default {
     justify-items: center;
     align-items: center;
     flex: 1;
+    height: 100%;
     background-color: rgba(255,255,255,0);
     transition: flex 0.5s, background-color 0.5s;
 }
+.navitem:hover{
+    background-color: rgba(255,255,255,0.1);
+}
+.itemicon{
+    flex: 1;
+    height: max-content;
+    font-size: 32px;
+    text-shadow: none;
+    transition: font-size 0.5s, text-shawdow 0.5s;
+}
 .itemname{
-    display: none;
+    flex: 1;
+    color: rgba(255,255,255,0);
     font-size: 15px;
+    transition: color 0.5s;
 }
 .itemfocused{
     background-color: rgba(255,255,255,0.1);
     flex: 3;
 }
+.itemfocused .itemicon{
+    font-size: 48px;
+    text-shadow: 0px 0px 5px black;
+}
 .itemfocused .itemname{
-    display: block !important;
+    color: rgba(255,255,255,1);
 }
 </style>

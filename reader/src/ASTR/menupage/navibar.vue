@@ -12,14 +12,16 @@ export default {
     data(){
         return{
             navi:{
-                maintheme:{icon:'/src/assets/icons/icon_mainline.png', title:'Maintheme'},
-                intermezzi:{icon:'/src/assets/icons/icon_branchline.png', title:'Intermezzi'},
-                sidestory:{icon:'/src/assets/icons/icon_ss.png', title:'Sidestory'},
-                storyset:{icon:'/src/assets/icons/icon_ministory.png', title:'Storyset'},
-                or:{icon:'src/assets/icons/icon_default.png', title:"Operators' Records"}
-            },
-            focus: 0
+                maintheme:{icon:'terminal-maintheme', title:'Maintheme'},
+                intermezzi:{icon:'terminal-intermezzi', title:'Intermezzi'},
+                sidestory:{icon:'terminal-sidestory', title:'Sidestory'},
+                storyset:{icon:'terminal-storyset', title:'Storyset'},
+                or:{icon:'terminal-record', title:"Records"}
+            }
         }
+    },
+    props:{
+        focus: Number
     },
     components:{
         Navitem: navitem
@@ -31,5 +33,7 @@ export default {
 .navibar{
     display: flex;
     justify-content: space-evenly;
+    align-items: baseline;
+    transition: flex 0.5s;
 }
 </style>
