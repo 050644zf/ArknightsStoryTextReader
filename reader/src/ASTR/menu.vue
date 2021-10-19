@@ -69,7 +69,7 @@ methods:{
             else if(reviewData[eventid].entryType == 'NONE'){
                 var cin = eventid.split('_')[1];
                 var set = eventid.split('_')[3];
-                reviewData[eventid].name = chardict[cin] + ' - ' + set;
+                reviewData[eventid].name = chardict[cin]['name'] + ' - ' + set;
                 eventList.or.push(reviewData[eventid]);
             }
         }
