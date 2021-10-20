@@ -1,13 +1,24 @@
 <template>
     <div class="menupage">
-        <div style="display: flex;align-items: center;">
-            <span class="material-icons">
-            arrow_back
-            </span>
-            <span style="margin-left: 5px;">{{i18n.selectStory[lang]}}</span>
+        <div id="currentLang" class="currentLang">
+            <div style="display: flex;align-items: center;justify-content:center;" @click="showLangSelect = !showLangSelect">
+                <span class="material-icons" style="margin-right: 5px;">language</span>
+                <span> {{i18n['server'][server]}}</span>
+            </div>
+
+            <div id="langSelect" class="langSelect" v-show="showLangSelect">
+                <div  v-for="(langtext,langCode,lidx) in i18n['server']" @click="serverSwitch(langCode)" :key="lidx">
+                    {{langtext}}
+                </div>
+            </div>
         </div>
         <br/>
-        <Navibar :focus="focus"></Navibar>  
+        <Navibar :focus="focus" @focuson="focus=$event"></Navibar>
+        <Maintheme :eventList="eventList['maintheme']" v-show="focus==0"></Maintheme>
+        <Intermezzi :eventList="eventList['intermezzi']" v-show="focus==1"></Intermezzi>
+        <Sidestory :eventList="eventList['sidestory']" v-show="focus==2"></Sidestory>
+        <Storyset :eventList="eventList['storyset']" v-show="focus==3"></Storyset>
+        <Or :eventList="eventList['or']" v-show="focus==4"></Or>
     </div>
 </template>
 
@@ -16,6 +27,11 @@ import $ from 'jquery'
 import i18n from './i18n.json';
 import func from './func';
 import navibar from './menupage/navibar.vue'
+import or from './menupage/or.vue';
+import maintheme from './menupage/maintheme.vue';
+import intermezzi from './menupage/intermezzi.vue';
+import sidestory from './menupage/sidestory.vue';
+import storyset from './menupage/storyset.vue';
 
 export default {
     data(){
@@ -24,17 +40,29 @@ export default {
             i18n: i18n,
             lang: func.l,
             server: func.server,
+            chardict: {},
             intermezzi: func.intermezzi,
-            data: {}
+            eventList:{},
+            data: {},
+            showLangSelect: false
         }
     },
     created(){
     $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').done(s => {this.data = s;$.getJSON("https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.server+'/chardict.json').done(t => {this.chardict = t;this.eventList = this.getEventList(this.data, this.chardict);})});
     },
     components:{
-        Navibar: navibar
+        Navibar: navibar,
+        Maintheme: maintheme,
+        Intermezzi: intermezzi,
+        Sidestory: sidestory,
+        Storyset: storyset,
+        Or: or
     },
     methods:{
+        serverSwitch(langCode){
+            var req = 's='+langCode;
+            window.location.search = req;
+        },
         getEventList(reviewData, chardict){
             var eventList = {maintheme:[], intermezzi:[],sidestory:[], storyset:[], or:[]};
             var eventid;
@@ -56,7 +84,10 @@ export default {
                 else if(reviewData[eventid].entryType == 'NONE'){
                     var cin = eventid.split('_')[1];
                     var set = eventid.split('_')[3];
-                    reviewData[eventid].name = chardict[cin] + ' - ' + set;
+                    reviewData[eventid].name = chardict[cin]['name'];
+                    reviewData[eventid].cid = chardict[cin]['id'];
+                    reviewData[eventid].cin = cin;
+                    reviewData[eventid].set = set;
                     eventList.or.push(reviewData[eventid]);
                 }
             }
@@ -75,9 +106,42 @@ export default {
     font-size: 20px;
     width: 60%
 }
+.menupage .currentLang{
+    text-align: center;
+    background-color: rgb(36, 54, 153);
+    font-weight: bold;
+    padding: 5px 0px;
+    border-radius: 4px;
+    transition: background-color 0.5s;
+}
+.menupage .currentLang:hover{
+    background-color: rgb(59, 73, 155);
+}
+.menupage .langSelect{
+    display: block;
+    position: absolute;
+    margin: auto;
+    margin-top: 4px;
+    text-align: center;
+    width: 60%;
+}
+.menupage .langSelect div{
+    text-align: center;
+    background-color: rgb(57, 61, 87);
+    padding: 4px;
+}
+.menupage .langSelect div:hover{
+    background-color: rgb(114, 122, 173);
+}
 @media (max-width: 1000px) {
     .menupage span{
         font-size: 50px;
+    }
+    .currentLang{
+        font-size: 40px;
+    }
+    .langSelect{
+        font-size: 40px;
     }
 }
 </style>

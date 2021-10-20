@@ -1,6 +1,6 @@
 <template>
     <div class="navibar">
-        <Navitem v-for="(item, itemName, iidx) in navi" :key="itemName" :item="item" @focusme="focus = iidx" :focus="focus == iidx"></Navitem>
+        <Navitem v-for="(item, itemName, iidx) in navi" :key="itemName" :item="item" @focusme="focus = iidx; $emit('focuson',iidx)" :focus="focus == iidx"></Navitem>
     </div>
 </template>
 
@@ -20,6 +20,7 @@ export default {
             }
         }
     },
+    emits:['focuson'],
     props:{
         focus: Number
     },

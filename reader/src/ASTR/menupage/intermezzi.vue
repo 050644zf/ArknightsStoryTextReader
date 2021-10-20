@@ -1,5 +1,5 @@
 <template>
-    <div class="maintheme">
+    <div class="intermezzi">
         <Eventmenu  v-for="(event, eidx) in eventList" :key="eidx" :event="event" :eventid="event.id"></Eventmenu>
     </div>
 </template>
