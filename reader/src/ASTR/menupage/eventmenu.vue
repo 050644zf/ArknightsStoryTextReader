@@ -1,6 +1,6 @@
 <template>
     <div class="event">
-        <div :class="{eventname:true, eventnamehl:!collapsed}" >{{event.name}}</div>
+        <div :class="{eventname:true, eventnamehl:!collapsed}" @click="collapsed = !collapsed" >{{event.name}}</div>
         <div class="stories" v-show="!collapsed">
             <Storymenu v-for="(story, STidx) in event.infoUnlockDatas" :story="story" @unfoldevent="collapsed = false;$emit('focusStory')" :key="STidx"></Storymenu>
         </div>
@@ -26,8 +26,7 @@ export default {
 </script>
 
 <style>
-.sidebar .eventname{
-    display: none;
+.eventname{
     font-weight: bold;
     background-color: rgba(42,186,255,0);
     margin: 4px;
@@ -36,9 +35,12 @@ export default {
     transition: padding 0.2s;
     border-radius: 4px;
 }
-.sidebar .eventnamehl{
-    display: block;
+.eventnamehl{
     background-color: rgba(42,186,255,0.4);
     padding: 5px;
+}
+.eventname:hover{
+    padding: 10px;
+    background-color: rgba(42,186,255,0.2);
 }
 </style>

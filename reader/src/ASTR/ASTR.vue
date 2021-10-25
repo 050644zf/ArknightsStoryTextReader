@@ -33,7 +33,7 @@ export default {
 
 <template>
 <Header></Header>
-<Menu></Menu>
+<Menu v-if="storyFile"></Menu>
 <Settings></Settings>
 <Menupage v-if="!storyFile"></Menupage>
 <Content v-if="storyFile"></Content>

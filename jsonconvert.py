@@ -118,7 +118,8 @@ def reader(story):
 
 if __name__=='__main__':
 
-    UPDATE_ALL = True
+
+    UPDATE_ALL = False
 
     import subprocess
     os.chdir('ArknightsGameData')
@@ -131,32 +132,42 @@ if __name__=='__main__':
     jsonDataPath = Path('ArknightsStoryJson')
 
     for lang in langs:
+        print(f'Lang: {lang}')
         events = func.getEvents(dataPath, lang)
         storyInfo = {}
         for event in events:
             for story in event:
                 storyPath = Path(story.storyTxt)
+                jsonPath = jsonDataPath/storyPath.relative_to(dataPath).parent/Path(str(storyPath.stem)+'.json')
+                if jsonPath.exists() and not UPDATE_ALL:
+                    continue
+
+
+                jsonPath.parent.mkdir(exist_ok=True, parents=True)
                 try:
                     storyJson = reader(story)
                     storyInfo[str(story.storyTxt)] = storyJson['storyInfo']
                 except FileNotFoundError:
                     continue
 
-                jsonPath = jsonDataPath/storyPath.relative_to(dataPath).parent/Path(str(storyPath.stem)+'.json')
-                jsonPath.parent.mkdir(exist_ok=True, parents=True)
+                
                 with open(jsonPath, 'w', encoding='utf-8') as jsonFile:
                     json.dump(storyJson,jsonFile, indent=4, ensure_ascii=False)
+                    print(f'File {jsonPath} exported!')
+
         with open(f'ArknightsGameData/{lang}/gamedata/excel/character_table.json', encoding='utf-8') as jsonFile:
             characterData = json.load(jsonFile)
 
         charDict = {}
         for cid in characterData:
             if cid.split('_')[0] == 'char':
+                cidx = cid.split('_')[1]
                 cin = cid.split('_')[2]
-                charDict[cin] = characterData[cid]['name']
+                charDict[cin] = {'name':characterData[cid]['name'],'id':cidx}
 
         with open(f'ArknightsStoryJson/{lang}/chardict.json','w',encoding='utf-8') as jsonFile:
             json.dump(charDict, jsonFile, indent=4, ensure_ascii=False)
+            print(f'Character Data exported!')
 
         try:
             with open(f'ArknightsGameData/{lang}/gamedata/excel/storyinfo_table.json', encoding='utf-8') as jsonFile:

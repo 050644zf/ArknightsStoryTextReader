@@ -33,6 +33,7 @@ export default {
     hideName: hideName,
     storyFile: storyFile,
     storyData: storyData,
+    intermezzi: ['act9d0', 'act18d0', 'act18d3'],
     parseContent(content){
         if(content){
             const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;

@@ -1,6 +1,15 @@
 # Change Log
 
-## wv0,9.3
+## wv0.10
+
+Feature:
+- New menupage
+- The sidebar only provide inter-event navigation
+
+Bugfix:
+- Fix the issue of storyline link
+
+## wv0.9.3
 
 Bugfix:
 
