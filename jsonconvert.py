@@ -117,6 +117,12 @@ def reader(story):
 
 
 if __name__=='__main__':
+<<<<<<< Updated upstream
+=======
+
+    UPDATE_ALL = True
+
+>>>>>>> Stashed changes
     import subprocess
     os.chdir('ArknightsGameData')
     subprocess.run('git fetch', shell=True)
@@ -129,11 +135,13 @@ if __name__=='__main__':
 
     for lang in langs:
         events = func.getEvents(dataPath, lang)
+        storyInfo = {}
         for event in events:
             for story in event:
                 storyPath = Path(story.storyTxt)
                 try:
                     storyJson = reader(story)
+                    storyInfo[str(story.storyTxt)] = storyJson['storyInfo']
                 except FileNotFoundError:
                     continue
 
@@ -152,6 +160,19 @@ if __name__=='__main__':
 
         with open(f'ArknightsStoryJson/{lang}/chardict.json','w',encoding='utf-8') as jsonFile:
             json.dump(charDict, jsonFile, indent=4, ensure_ascii=False)
+
+        try:
+            with open(f'ArknightsGameData/{lang}/gamedata/excel/storyinfo_table.json', encoding='utf-8') as jsonFile:
+                storyinfoData = json.load(jsonFile)
+        except:
+            storyinfoData = {}
+
+        for info in storyInfo:
+            storyinfoData[info] = storyInfo[info]
+
+        with open(f'ArknightsStoryJson/{lang}/storyinfo.json','w',encoding='utf-8') as jsonFile:
+            json.dump(storyinfoData, jsonFile, indent=4, ensure_ascii=False)
+            print(f'StoryInfo Data exported!')
 
 
     
