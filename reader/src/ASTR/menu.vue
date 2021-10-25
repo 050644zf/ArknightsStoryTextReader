@@ -1,7 +1,9 @@
 <template>
     <div id="sidebar">
         <div :class="{menuButton:true,'material-icons':true,menuButtonR:showMenu}" @click="showMenu=!showMenu;">chevron_right</div>
+
         <div :class="{sidebar:true, sidebarhidden:!showMenu}" >
+
             <div id="currentLang" class="currentLang">
                 <div style="display: flex;align-items: center;justify-content:center;" @click="showLangSelect = !showLangSelect">
                     <span class="material-icons" style="margin-right: 5px;">language</span>
@@ -14,12 +16,14 @@
                     </div>
                 </div>
             </div>
-            
-            <div v-for="(events, eventType, ETidx) in eventList" class="eventType" :id="eventType" :key="ETidx">
-                <div class="eventtype" >{{i18n[eventType][lang]}}</div>
+            <div class="homepage" @click="home()">
+                <span class="material-icons">
+                menu_open
+                </span>
+                <span class="home">{{i18n.home[lang]}}</span>
+            </div>            
                 
-                <Eventmenu v-for="(event, Eidx) in events" class="event" :id="event.id" :event="event" :lang="lang" @hidemenu="showMenu=false" :key="Eidx"></Eventmenu>
-            </div>
+            <Eventmenu v-for="(event, Eidx) in eventList" class="event" :id="event.id" :event="event" :lang="lang" @hidemenu="showMenu=false" :key="Eidx"></Eventmenu>
         </div>
     </div>
 </template>
@@ -54,31 +58,32 @@ methods:{
         window.location.search = req;
     },
     getEventList(reviewData, chardict){
-        var eventList = {main:[], ss:[], mini:[], or:[]};
+        var eventList = [];
         var eventid;
         for(eventid in reviewData){
             if(reviewData[eventid].entryType == 'MAINLINE'){
-                eventList.main.push(reviewData[eventid]);
+                eventList.push(reviewData[eventid]);
             }
             else if(reviewData[eventid].entryType == 'ACTIVITY'){
-                eventList.ss.push(reviewData[eventid]);
+                eventList.push(reviewData[eventid]);
             }
             else if(reviewData[eventid].entryType == 'MINI_ACTIVITY'){
-                eventList.mini.push(reviewData[eventid]);
+                eventList.push(reviewData[eventid]);
             }
             else if(reviewData[eventid].entryType == 'NONE'){
                 var cin = eventid.split('_')[1];
                 var set = eventid.split('_')[3];
                 reviewData[eventid].name = chardict[cin]['name'] + ' - ' + set;
-                eventList.or.push(reviewData[eventid]);
+                eventList.push(reviewData[eventid]);
             }
         }
-        eventList.ss.sort(function(a,b){return a.startTime - b.startTime;});
-        eventList.mini.sort(function(a,b){return a.startTime - b.startTime;});
         return eventList;
     },
     focusStory(){
         func.focus();
+    },
+    home(){
+        window.location.search = '?s=' + this.server;
     }
 },
 components:{
@@ -166,6 +171,14 @@ components:{
     transform: rotate(180deg);
     background-color: #3f51b5ff;
 }
+.homepage{
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+}
+.homepage:hover{
+    background-color: rgba(255,255,255,0.2);
+}
 @media(max-width: 1000px){
     .sidebar{
     width: 80%;
@@ -199,6 +212,9 @@ components:{
     }
     .langSelect{
         font-size: 40px;
+    }
+    .home{
+        font-size: 30px;
     }
 }
 </style>

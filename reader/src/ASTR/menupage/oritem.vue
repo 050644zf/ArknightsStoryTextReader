@@ -41,7 +41,7 @@ export default {
 
 <style>
 .oritem{
-    width: min-content;
+    width: auto;
     height: min-content;
     flex: 0 1 45%;
     margin: 10px;
@@ -81,5 +81,14 @@ export default {
 }
 .orstory:hover{
     background-color: rgba(255,255,255,0.2);
+}
+@media(max-width: 1000px){
+    .orcard img{
+        height: 80px;
+        width: 80px;
+    }
+    .oritem{
+        font-size: 40px;
+    }
 }
 </style>

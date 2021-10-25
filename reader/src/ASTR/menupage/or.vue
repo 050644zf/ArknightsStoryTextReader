@@ -36,6 +36,11 @@ export default {
     display: flex;
     flex-wrap: wrap;
     transition: all 0.5s;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
+@media(max-width:1000px){
+    .record{
+        flex-direction: column;
+    }
 }
 </style>

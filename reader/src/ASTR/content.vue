@@ -74,7 +74,7 @@ export default {
             {{data.eventName}}  {{data.storyCode}}  {{data.avgTag}}  {{data.storyName}}
         </div>
         <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id">
-        <a :href="getURL(lang,path,line.id)" class="linkButton material-icons">link</a>
+        <a :href="getURL(server,path,line.id)" class="linkButton material-icons">link</a>
         
             <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
             <Subtitle v-if="line.prop == 'Subtitle'" :inputline="line"></Subtitle>

@@ -40,7 +40,7 @@ export default {
 .itemname{
     flex: 1;
     color: rgba(255,255,255,0);
-    font-size: 15px;
+    font-size: 15px !important; 
     transition: color 0.5s;
 }
 .itemfocused{
@@ -53,5 +53,13 @@ export default {
 }
 .itemfocused .itemname{
     color: rgba(255,255,255,1);
+}
+@media(max-width:1000px){
+    .itemname{
+        font-size: 25px;
+    }
+    .itemicon{
+        font-size: 40px;
+    }
 }
 </style>

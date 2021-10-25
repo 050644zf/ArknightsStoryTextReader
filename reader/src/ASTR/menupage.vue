@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import $ from 'jquery'
+import $ from 'jquery';
 import i18n from './i18n.json';
 import func from './func';
 import navibar from './menupage/navibar.vue'
@@ -102,9 +102,8 @@ export default {
 
 <style>
 .menupage{
-    margin-left: 10%;
+    margin: 0 10%;
     font-size: 20px;
-    width: 60%
 }
 .menupage .currentLang{
     text-align: center;
