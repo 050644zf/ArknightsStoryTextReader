@@ -117,12 +117,9 @@ def reader(story):
 
 
 if __name__=='__main__':
-<<<<<<< Updated upstream
-=======
 
     UPDATE_ALL = True
 
->>>>>>> Stashed changes
     import subprocess
     os.chdir('ArknightsGameData')
     subprocess.run('git fetch', shell=True)
