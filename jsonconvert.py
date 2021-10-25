@@ -118,6 +118,7 @@ def reader(story):
 
 if __name__=='__main__':
 
+
     UPDATE_ALL = False
 
     import subprocess
@@ -133,6 +134,7 @@ if __name__=='__main__':
     for lang in langs:
         print(f'Lang: {lang}')
         events = func.getEvents(dataPath, lang)
+        storyInfo = {}
         for event in events:
             for story in event:
                 storyPath = Path(story.storyTxt)
@@ -144,6 +146,7 @@ if __name__=='__main__':
                 jsonPath.parent.mkdir(exist_ok=True, parents=True)
                 try:
                     storyJson = reader(story)
+                    storyInfo[str(story.storyTxt)] = storyJson['storyInfo']
                 except FileNotFoundError:
                     continue
 
@@ -165,6 +168,19 @@ if __name__=='__main__':
         with open(f'ArknightsStoryJson/{lang}/chardict.json','w',encoding='utf-8') as jsonFile:
             json.dump(charDict, jsonFile, indent=4, ensure_ascii=False)
             print(f'Character Data exported!')
+
+        try:
+            with open(f'ArknightsGameData/{lang}/gamedata/excel/storyinfo_table.json', encoding='utf-8') as jsonFile:
+                storyinfoData = json.load(jsonFile)
+        except:
+            storyinfoData = {}
+
+        for info in storyInfo:
+            storyinfoData[info] = storyInfo[info]
+
+        with open(f'ArknightsStoryJson/{lang}/storyinfo.json','w',encoding='utf-8') as jsonFile:
+            json.dump(storyinfoData, jsonFile, indent=4, ensure_ascii=False)
+            print(f'StoryInfo Data exported!')
 
 
     
