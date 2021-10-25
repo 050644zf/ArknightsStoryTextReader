@@ -120,9 +120,8 @@ export default {
     display: block;
     position: absolute;
     margin: auto;
-    margin-top: 4px;
     text-align: center;
-    width: 60%;
+    width: 80%;
 }
 .menupage .langSelect div{
     text-align: center;
