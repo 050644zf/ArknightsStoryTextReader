@@ -45,6 +45,7 @@ def reader(story):
         d['id'] = index
         if '//' in line:
             d['prop'] = 'Comment'
+            d['attributes'] = {}
             d['attributes']['value'] = line.lstrip('//')
             continue
         prop,content = re.match(prRe, line).group('prop','content')
@@ -99,7 +100,7 @@ def reader(story):
                             rawlist[lastPredicate]['targetLine'] = f'line{index}'
                             d['endOfOpt'] = True
                             del usedOptions[f'option{ref}']
-                except KeyError:
+                except:
                     print(f'Disable Optiontrace From Line {index}!')
                     OPTIONTRACE = False
                 

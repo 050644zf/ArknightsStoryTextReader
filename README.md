@@ -68,6 +68,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v2.1.1
+
+- Fixed some issues
+
 ## v2.1.0
 
 - Add disable tracing option feature when exception occured to handle those story file that don't have a "correct" option predicate.

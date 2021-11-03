@@ -62,7 +62,7 @@ def xlc(sheet, storyJson):
             '----'])
         
         if prop == 'Predicate':
-            if line['endOfOpt']:
+            if line.get('endOfOpt'):
                 sheet.append([index,
                 '--Branch--',
                 '> End of Options'])
