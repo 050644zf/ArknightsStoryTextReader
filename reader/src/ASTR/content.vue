@@ -97,6 +97,7 @@ export default {
     margin: 8px;
     margin-left: 15%;
     width: 800px;
+    padding-bottom: 100px;
 }
 .linkButton{
     display: block;

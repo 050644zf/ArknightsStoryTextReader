@@ -1,6 +1,7 @@
 <template>
         <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme');">
-            <div :class="[item.icon, 'itemicon']"></div>
+            <div :class="[item.icon, 'itemicon']" v-if="item.icon!='search'"></div>
+            <span class="material-icons itemicon" v-if="item.icon=='search'">search</span>
             <span class=itemname>{{item.title}}</span>
         </div>
 </template>

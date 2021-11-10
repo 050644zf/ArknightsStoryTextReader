@@ -19,6 +19,7 @@
         <Sidestory :eventList="eventList['sidestory']" v-show="focus==2"></Sidestory>
         <Storyset :eventList="eventList['storyset']" v-show="focus==3"></Storyset>
         <Or :eventList="eventList['or']" v-show="focus==4"></Or>
+        <Search :eventList="eventList" v-show="focus==5"></Search>
     </div>
 </template>
 
@@ -32,6 +33,7 @@ import maintheme from './menupage/maintheme.vue';
 import intermezzi from './menupage/intermezzi.vue';
 import sidestory from './menupage/sidestory.vue';
 import storyset from './menupage/storyset.vue';
+import search from './menupage/search.vue';
 
 export default {
     data(){
@@ -56,7 +58,8 @@ export default {
         Intermezzi: intermezzi,
         Sidestory: sidestory,
         Storyset: storyset,
-        Or: or
+        Or: or,
+        Search: search
     },
     methods:{
         serverSwitch(langCode){

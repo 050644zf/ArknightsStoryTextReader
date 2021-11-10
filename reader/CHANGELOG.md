@@ -1,5 +1,10 @@
 # Change Log
 
+## wv0.11
+
+Feature:
+- Search feature available
+
 ## wv0.10
 
 Feature:
