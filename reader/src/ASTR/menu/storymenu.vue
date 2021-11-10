@@ -1,5 +1,5 @@
 <template>
-    <div :class="{story:true, storyFocused:focused}" :id="story.storyId" @click="loadStory(lang, story.storyTxt)">
+    <div :class="{story:true, storyFocused:focused}" :id="story.storyId" @click="loadStory(story.storyTxt)">
         <div class="storycode">{{story.storyCode}}  {{story.avgTag}} </div>
         <div class="storyname">{{story.storyName}}</div>
     </div>
