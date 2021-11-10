@@ -17,7 +17,7 @@ export default {
                 sidestory:{icon:'terminal-sidestory', title:'Sidestory'},
                 storyset:{icon:'terminal-storyset', title:'Storyset'},
                 or:{icon:'terminal-record', title:"Records"},
-                search:{icon:'search', title:"Search"}
+                search:{icon:'search', title:"Search (Beta)"}
             }
         }
     },

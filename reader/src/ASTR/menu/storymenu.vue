@@ -26,7 +26,7 @@ export default {
         }
     },
     methods:{
-        loadStory(lang, path){
+        loadStory(path){
             var req = 's='+ this.server;
             req = req + '&f=' + path;
             window.location.search = req;

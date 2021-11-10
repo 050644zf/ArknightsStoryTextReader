@@ -1,19 +1,34 @@
 <template>
     <div class="search">
-        <div class="searchbar">
-            <input v-model="searchvalue">
+        <div :class="{searchbar:true , searching:isSearching}">
+            <input v-model="searchvalue"  @keyup.enter="searchRequest()">
             <span class="material-icons" @click="searchRequest()">search</span>
         </div>
 
-        <div class="searchresult">
-            {{resultNumber}} Results<br/>
+        <div :class="{searchresult:true, searching:isSearching}">
+            {{resultNumber}} results<br/>
             <div v-for="(event, eventid, eidx) in result" :key='eidx' style="font-weight: bold;margin: 5px;">
                 {{eventid}}
-                <div v-for="(story,sidx) in event" :key='sidx' style="font-weight: normal;">
-                    {{story.storyCode}} {{story.avgTag}} {{story.storyName}}
+                <div v-for="(story,sidx) in event" :key='sidx' style="font-weight: normal;margin-left:20px;">
+                    <div style="display: flex;align-items: center;justify-content: space-between;">
+                        <div class="resulttitle">
+                            <span style="font-size:smaller;">{{story.storyCode}} {{story.avgTag}}</span>
+                            <br/>
+                            <span >{{story.storyName}}</span>
+                        </div>
+                        <span class="material-icons loadButton" @click="loadStory(story.storyPath)">open_in_new</span>
+                    </div>
+
                     <div class="textmatch" v-for="(match,midx) in story.text_matches" :key="midx" v-html="parseFrag(match['fragment'],match['matches'])"></div>
                 </div>
             </div>
+        </div>
+
+        <div style="margin:10%; color:rgba(255,255,255,0.7)">
+            <p style="text-align:center;">The search feature is powered by Github API.</p>
+            <p style="font-weight:bold;">Didn't find the expected result?</p>
+            <p>The Github code search only return the result that the target text is exactly surrounded by <span style="font-weight:bold;">spaces or punctuation</span>. Try using plural noun or change its tense to get more results. </p>
+
         </div>
     </div>
 
@@ -30,7 +45,8 @@ export default {
             result: {},
             server: func.server,
             resultNumber: 0,
-            isIncomplete: false
+            isIncomplete: false,
+            isSearching: false
         }
     },
     props:{
@@ -38,6 +54,9 @@ export default {
     },
     methods:{
         searchRequest(){
+            this.isSearching = true;
+            this.result = {};
+            this.resultNumber = 'Searching';
             var requestURL = 'https://api.github.com/search/code?q='+this.searchvalue+'+repo:050644zf/ArknightsStoryJson+path:'+this.server+'/gamedata';
             $.ajaxSetup({headers : {'Accept':'application/vnd.github.v3.text-match+json'}});
             $.getJSON(requestURL).done(s => {
@@ -84,7 +103,7 @@ export default {
                     }
                 }
             })
-            
+            this. isSearching = false;
         },
         parseFrag(content,matches){
             if(content){
@@ -96,6 +115,11 @@ export default {
             }
             return content;
         },
+        loadStory(path){
+            var req = 's='+ this.server;
+            req = req + '&f=' + path;
+            window.location.search = req;
+        }
     }
 }
 </script>
@@ -130,5 +154,18 @@ export default {
     background-color: rgba(0,0,0,0.2);
     color: gray;
     font-size: small;
+    margin-left: 20px;
+}
+.loadButton{
+    font-size: larger;
+    transition: all 0.2s;
+    padding: 0px;
+}
+.loadButton:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 5px;
+}
+.searching{
+    background-color: rgba(255, 233, 108, 0.2);
 }
 </style>
