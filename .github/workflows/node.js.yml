@@ -31,6 +31,8 @@ jobs:
         npm ci
         npm run build 
         cd dist
+        git config --global user.email 050644zf@outlook.com
+        git config --global user.name nightsky
         git init
         git add -A
         git commit -m 'deploy'
