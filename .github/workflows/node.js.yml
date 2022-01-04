@@ -25,14 +25,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: ./reader/package-lock.json
-    - name: Build
+    - name: Build & Deploy
       run: |
         cd reader
         npm ci
         npm run build 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages # The branch the action should deploy to.
-        publish_dir: ./reader/dist
+        cd dist
+        git init
+        git add -A
+        git commit -m 'deploy'
+        git push -f origin gh-pages
+      
