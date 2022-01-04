@@ -31,7 +31,7 @@ jobs:
         npm ci
         npm run build 
     - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@4.1.7
+      uses: peaceiris/actions-gh-pages@v3
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: ./reader/dist
+        publish_dir: ./reader/dist
