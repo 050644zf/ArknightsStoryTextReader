@@ -1,5 +1,10 @@
 # Change Log
 
+## wv0.11.1
+
+Feature:
+- New page for Integrated Strategies Relics (Beta)
+
 ## wv0.11
 
 Feature:
