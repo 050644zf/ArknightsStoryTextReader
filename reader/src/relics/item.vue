@@ -8,7 +8,7 @@
             <div class="itemname lt">{{itemInfo.name}}</div>
             <div class="itemusage nt">{{itemInfo.usage}}</div>
             <div class="itemdesc nt">{{itemInfo.description}}<br/><br/></div>
-            <div class="itemunlock nt" v-if="itemInfo.unlockCond">
+            <div class="itemunlock nt" v-if="itemInfo.unlockCondDesc">
                 <span class="material-icons">lock_open</span>
                 {{itemInfo.unlockCondDesc}}
             </div>
