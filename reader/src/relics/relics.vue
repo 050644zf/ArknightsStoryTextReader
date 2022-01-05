@@ -1,7 +1,7 @@
 <template>
     <Header></Header>
     <div class="ItemsList">
-        <Item v-for="(iteminfo, itemcode, iidx) in rltable['itemTable']['items']" :key="iidx" :itemInfo="iteminfo"></Item>
+        <Item v-for="(iteminfo, itemcode, iidx) in rltable" :key="iidx" :itemInfo="iteminfo"></Item>
     </div>
 </template>
 
@@ -18,7 +18,12 @@ export default {
         }
     },
     created(){
-        $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/roguelike_table.json').done(s => this.rltable = s)
+        if(this.server=='zh_CN'){
+            $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/roguelike_topic_table.json').done(s => this.rltable = s['details']['rogue_1']['items'])
+        }
+        else{
+            $.getJSON('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/roguelike_table.json').done(s => this.rltable = s['itemTable']['items'])
+        }
     },
     components:{
         Header: header,
