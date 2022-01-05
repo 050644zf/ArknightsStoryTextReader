@@ -1,6 +1,6 @@
 <template>
     <div class="itemcard" :style="{'border-left-color':raritycolor[itemInfo.rarity]}">
-        <div style="width:64px;margin: 4px;">
+        <div class="imgblock">
             <img :src="'https://raw.githubusercontent.com/Aceship/AN-EN-Tags/master/img/ui/roguelike/item/'+itemInfo.id+'.png'" onerror="this.style.display='none'">
         </div>
 
@@ -47,9 +47,18 @@ export default {
     border-left: 5px solid #00000000;
     align-items: center;
 }
+.imgblock{
+    width: 64px;
+    height: 100%;
+    margin-right: 6px;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 10px rgb(0,0,0);
+}
 .itemcard img{
     height: 64px;
     width: 64px;
+    margin: auto;
 }
 .itemname{
     font-weight: bold;
