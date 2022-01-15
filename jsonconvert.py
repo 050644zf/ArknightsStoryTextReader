@@ -123,7 +123,8 @@ if __name__=='__main__':
     import subprocess
     import time
     import urllib.request
-
+    subprocess.run('git config --global user.email "050644zf@outlook.com"',shell=True)
+    subprocess.run('git config --global user.name "Nightsky"', shell=True)
     if not Path('ArknightsStoryJson').is_dir():
         subprocess.run('git clone https://github.com/050644zf/ArknightsStoryJson.git', shell=True)
 
