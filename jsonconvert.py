@@ -146,15 +146,15 @@ if __name__=='__main__':
             exit()
 
 
-    if not Path('ArknightsGameData').is_dir():
-        subprocess.run('git clone https://github.com/Kengxxiao/ArknightsGameData.git', shell=True)
+    # if not Path('ArknightsGameData').is_dir():
+    #     subprocess.run('git clone https://github.com/Kengxxiao/ArknightsGameData.git', shell=True)
 
-    else:
-        os.chdir('ArknightsGameData')
-        subprocess.run('git fetch', shell=True)
-        subprocess.run('git pull', shell=True)
+    # else:
+    #     os.chdir('ArknightsGameData')
+    #     subprocess.run('git fetch', shell=True)
+    #     subprocess.run('git pull', shell=True)
     
-        os.chdir('..')
+    #     os.chdir('..')
 
 
     langs = [i.stem for i in Path('ArknightsGameData').iterdir() if i.is_dir() and not '.' in i.name]
