@@ -4,19 +4,19 @@
 
         <div :class="{sidebar:true, sidebarhidden:!showMenu}" >
 
-            <div id="currentLang" class="currentLang">
+            <div id="currentLang" class="currentLang lt">
                 <div style="display: flex;align-items: center;justify-content:center;" @click="showLangSelect = !showLangSelect">
                     <span class="material-icons" style="margin-right: 5px;">language</span>
                     <span> {{i18n['server'][server]}}</span>
                 </div>
 
-                <div id="langSelect" class="langSelect" v-show="showLangSelect">
+                <div id="langSelect" class="langSelect lt" v-show="showLangSelect">
                     <div  v-for="(langtext,langCode,lidx) in i18n['server']" @click="serverSwitch(langCode)" :key="lidx">
                         {{langtext}}
                     </div>
                 </div>
             </div>
-            <div class="homepage" @click="home()">
+            <div class="homepage nt" @click="home()">
                 <span class="material-icons">
                 menu_open
                 </span>
@@ -143,13 +143,6 @@ components:{
 .langSelect div:hover{
     background-color: rgb(114, 122, 173);
 }
-.eventtype{
-    text-align: center;
-    font-weight: bolder;
-    color: #ffc4c4;
-    background-color: #383838;
-    padding: 4px;
-}
 .menuButton{
     position: fixed;
     font-size: 64px;
@@ -194,27 +187,6 @@ components:{
     }
     .menuButtonR{
         left: 80%;
-    }
-    .eventtype{
-      font-size: 40px;
-    }
-    .eventname{
-        font-size: 40px;
-    }
-    .story{
-        font-size: 30px;
-    }
-    .storycode{
-        font-size: 20px;
-    }
-    .currentLang{
-        font-size: 40px;
-    }
-    .langSelect{
-        font-size: 40px;
-    }
-    .home{
-        font-size: 30px;
     }
 }
 </style>

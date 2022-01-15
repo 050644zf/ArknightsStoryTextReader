@@ -1,12 +1,12 @@
 <template>
     <div class="menupage">
-        <div id="currentLang" class="currentLang">
+        <div id="currentLang lt" class="currentLang">
             <div style="display: flex;align-items: center;justify-content:center;" @click="showLangSelect = !showLangSelect">
-                <span class="material-icons" style="margin-right: 5px;">language</span>
-                <span> {{i18n['server'][server]}}</span>
+                <span class="material-icons lt" style="margin-right: 5px;">language</span>
+                <span class="lt"> {{i18n['server'][server]}}</span>
             </div>
 
-            <div id="langSelect" class="langSelect" v-show="showLangSelect">
+            <div id="langSelect" class="langSelect lt" v-show="showLangSelect">
                 <div  v-for="(langtext,langCode,lidx) in i18n['server']" @click="serverSwitch(langCode)" :key="lidx">
                     {{langtext}}
                 </div>
@@ -133,16 +133,5 @@ export default {
 }
 .menupage .langSelect div:hover{
     background-color: rgb(114, 122, 173);
-}
-@media (max-width: 1000px) {
-    .menupage span{
-        font-size: 50px;
-    }
-    .currentLang{
-        font-size: 40px;
-    }
-    .langSelect{
-        font-size: 40px;
-    }
 }
 </style>

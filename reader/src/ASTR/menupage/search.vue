@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <div :class="{searchbar:true , searching:isSearching}">
+        <div :class="{searchbar:true , searching:isSearching, nt:true}">
             <input v-model="searchvalue"  @keyup.enter="searchRequest()">
             <span class="material-icons" @click="searchRequest()">search</span>
         </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div style="margin:10%; color:rgba(255,255,255,0.7)">
+        <div class="st" style="margin:10%; color:rgba(255,255,255,0.7)">
             <p style="text-align:center;">The search feature is powered by Github API.</p>
             <p style="font-weight:bold;">Didn't find the expected result?</p>
             <p>The Github code search only return the result that the target text is exactly surrounded by <span style="font-weight:bold;">spaces or punctuation</span>. Try using plural noun or change its tense to get more results. </p>

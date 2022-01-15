@@ -1,5 +1,12 @@
 # Change Log
 
+## wv0.12
+
+Feature:
+- Optimize the font size
+- New auto updater featured Github Actions
+- Last Update Time Display in the bottom right corner
+
 ## wv0.11.1
 
 Feature:

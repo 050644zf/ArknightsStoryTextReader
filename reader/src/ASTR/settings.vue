@@ -9,14 +9,14 @@
             <span :class="{'material-icons':true}" @click="show = !show"  id="settingbutton">
                 settings
             </span>
-            <span class="settingtitle">{{i18n.setting[lang]}}</span>
+            <span class="settingtitle nt">{{i18n.setting[lang]}}</span>
             
             <div class="clear" @click="clearSetting()">
                 <span class="material-icons clearbutton" style="float: right;padding: 4px;" >delete</span>
-                <span class="settingtitle" style="float: right; font-weight: normal;font-size: 15px;">{{i18n.clear[lang]}} </span>                
+                <span class="settingtitle nt" style="float: right; font-weight: normal;">{{i18n.clear[lang]}} </span>                
             </div>
             <div style="clear: both;"></div>
-            <div :class="{settingoptions:true}" v-show="show">
+            <div :class="{settingoptions:true, nt:true}" v-show="show">
                 <span class="material-icons">public</span>
                 <select v-model="targetLang">
                     <option v-for="langCode in langList" :key="langCode">{{langCode}}</option>
@@ -37,10 +37,10 @@
                     <div style="clear: both;"></div>
                 </div>
 
-                <span style="font-size: 10px; font-weight: bold; color: dimgray;">
+                <span class="xxst" style="font-weight: bold; color: dimgray;">
                     Developer Info/Options (Please attach these info with your issues)
                 </span>
-                <div style="font-size: 5px;color: dimgray;">
+                <div class="xxst" style="color: dimgray;">
                     Current JsonFile:<br/> {{getJSONFile()}}<br/>
                     Browser Info:<br/> {{getUserAgent()}}<br/>
                     Browser width: {{getWidth()}}<br/>
@@ -136,7 +136,6 @@ methods:{
 }
 .settingtitle{
     font-weight: bold; 
-    font-size: 18px; 
     padding: 4px;
     float: left;
     color: rgba(255, 255, 255, 0);
@@ -161,7 +160,6 @@ methods:{
 .clearbutton{
     color: rgba(255, 255, 255, 0);
     transition: color 0.5s;
-    font-size: 24px;
 }
 .settingshow .clearbutton{
     color: rgba(255, 255, 255, 1);
@@ -203,13 +201,9 @@ methods:{
 
 @media(max-width: 1000px){
     .settingtitle{
-        font-size: 30px;
         margin: 10px 0;
     }
     input{
-        font-size: 30px;
-    }
-    .settingoptions *{
         font-size: 30px;
     }
     .checkbox{

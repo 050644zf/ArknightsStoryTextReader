@@ -1,6 +1,6 @@
 <template>
     <div class="event">
-        <div :class="{eventname:true, eventnamehl:!collapsed}" >{{event.name}}</div>
+        <div :class="{eventname:true, eventnamehl:!collapsed, lt:true}" >{{event.name}}</div>
         <div class="stories" v-show="!collapsed">
             <Storymenu v-for="(story, STidx) in event.infoUnlockDatas" :story="story" @unfoldevent="collapsed = false;$emit('focusStory')" :key="STidx"></Storymenu>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <div :class="{oritem: true, orfocused:showStory}">
+    <div :class="{oritem: true, orfocused:showStory, lt:true}">
         <div class="orcard" @click="$emit('focusme')">
             <img :src="getAvatar()">
             <div class="operatorname">{{eventData.name}}</div>
@@ -86,9 +86,6 @@ export default {
     .orcard img{
         height: 80px;
         width: 80px;
-    }
-    .oritem{
-        font-size: 40px;
     }
 }
 </style>

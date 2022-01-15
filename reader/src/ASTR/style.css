@@ -86,7 +86,38 @@
     a{
         color: blanchedalmond;
     }
+
+.lt{
+    font-size: larger;
+}
+.nt{
+    font-size: medium;
+}
+.st{
+  font-size: small;
+}
+.xst{
+  font-size: x-small;
+}
+.xxst{
+  font-size: xx-small;
+}
 @media (max-width: 1000px){
+  .lt{
+      font-size: 40px;
+  }
+  .nt{
+      font-size:30px;
+  }
+  .st{
+    font-size: 25px;
+  }
+  .xst{
+    font-size: 20px;
+  }
+  .xxst{
+    font-size: 10px;
+  }
   #content{
       margin-left: 70px !important;
       width: 90%;

@@ -1,8 +1,8 @@
 <template>
         <div :class='{navitem:true, itemfocused:focus}' @click="$emit('focusme');">
-            <div :class="[item.icon, 'itemicon']" v-if="item.icon!='search'"></div>
-            <span class="material-icons itemicon" v-if="item.icon=='search'">search</span>
-            <span class=itemname>{{item.title}}</span>
+            <div :class="[item.icon, 'itemicon', 'lt']" v-if="item.icon!='search'"></div>
+            <span class="material-icons itemicon lt" v-if="item.icon=='search'">search</span>
+            <span class="itemname st">{{item.title}}</span>
         </div>
 </template>
 
@@ -34,7 +34,6 @@ export default {
 .itemicon{
     flex: 1;
     height: max-content;
-    font-size: 32px;
     text-shadow: none;
     transition: font-size 0.5s, text-shawdow 0.5s;
 }
@@ -54,13 +53,5 @@ export default {
 }
 .itemfocused .itemname{
     color: rgba(255,255,255,1);
-}
-@media(max-width:1000px){
-    .itemname{
-        font-size: 25px;
-    }
-    .itemicon{
-        font-size: 40px;
-    }
 }
 </style>
