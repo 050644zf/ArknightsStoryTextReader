@@ -26,6 +26,7 @@ jobs:
       with:
         repository: 050644zf/ArknightsStoryJson
         path: ArknightsStoryJson
+        token: ${{secrets.PAT}}
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
