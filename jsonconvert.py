@@ -221,8 +221,8 @@ if __name__=='__main__':
     subprocess.run('git pull', shell=True)
     subprocess.run('git add -A', shell=True)
     subprocess.run(f'git commit -m {time.strftime("%Y%m%d")}', shell=True)
-    subprocess.run('ls')
-    subprocess.run('git push')
+    print(f'Commit {time.strftime("%Y%m%d")} has created!')
+    #subprocess.run('git push')
     os.chdir('..')
 
     print('Update Success!')

@@ -18,6 +18,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: Kengxxiao/ArknightsGameData
+        path: ArknightsGameData
+    - uses: actions/checkout@v2
+      with:
+        repository: 050644zf/ArknightsStoryJson
+        path: ArknightsStoryJson
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -25,3 +33,5 @@ jobs:
     - name: updater
       run: |
         python ./jsonconvert.py 
+        cd ArknightsStoryJson
+        git push
