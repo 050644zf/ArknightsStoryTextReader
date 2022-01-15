@@ -1,11 +1,9 @@
-import openpyxl as xl
+from ast import arg
 import re
 import argparse
 from pathlib import Path
 import os
-from func import getFile
 import func
-from openpyxl.worksheet.hyperlink import Hyperlink
 import json
 
 prRe = r"^(?:\[(?P<prop>\w+).*?\])?(?P<content>.*)$"
@@ -103,12 +101,6 @@ def reader(story):
                 except:
                     print(f'Disable Optiontrace From Line {index}!')
                     OPTIONTRACE = False
-                
-
-
-                
-
-                    
         
         rawlist.append(d)
 
@@ -119,21 +111,57 @@ def reader(story):
 
 if __name__=='__main__':
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--all',type=bool,default=False,help="Update all json file or not")
 
-    UPDATE_ALL = False
+    args = parser.parse_args()
+
+    UPDATE_ALL = args.all
+
+
 
     import subprocess
-    os.chdir('ArknightsGameData')
-    subprocess.run('git fetch', shell=True)
-    subprocess.run('git pull', shell=True)
-    os.chdir('..')
+    import time
+    import urllib.request
+
+    if not Path('ArknightsStoryJson').is_dir():
+        subprocess.run('git clone https://github.com/050644zf/ArknightsStoryJson.git', shell=True)
+
+    with open('ArknightsStoryJson/log.json', encoding='utf-8') as logFile:
+        logData = json.load(logFile)
+    
+    if not UPDATE_ALL:
+        with urllib.request.urlopen('https://api.github.com/repos/Kengxxiao/ArknightsGameData/commits') as f:
+            content = f.read()
+        content = json.loads(content)
+        latest = content[0]["commit"]["author"]["date"]
+        latest = time.mktime(time.strptime(latest,"%Y-%m-%dT%H:%M:%SZ"))
+        if latest>logData["latestCommitTime"]:
+            logData["latestCommitTime"] = latest
+            with open('ArknightsStoryJson/log.json','w', encoding='utf-8') as logFile:
+                json.dump(logData,logFile)
+        else:
+            print("No new commit detected from ArknightsGameData, skip the update.")
+            exit()
+
+
+    if not Path('ArknightsGameData').is_dir():
+        subprocess.run('git clone https://github.com/Kengxxiao/ArknightsGameData.git', shell=True)
+
+    else:
+        os.chdir('ArknightsGameData')
+        subprocess.run('git fetch', shell=True)
+        subprocess.run('git pull', shell=True)
+    
+        os.chdir('..')
+
 
     langs = [i.stem for i in Path('ArknightsGameData').iterdir() if i.is_dir() and not '.' in i.name]
     dataPath = Path('ArknightsGameData')
     jsonDataPath = Path('ArknightsStoryJson')
 
     for lang in langs:
-        print(f'Lang: {lang}')
+        print(f'Server: {lang}')
         events = func.getEvents(dataPath, lang)
         storyInfo = {}
         for event in events:
@@ -185,7 +213,7 @@ if __name__=='__main__':
 
 
     
-    import time
+    
 
     os.chdir('ArknightsStoryJson')
     subprocess.run('git fetch', shell=True)
@@ -194,6 +222,8 @@ if __name__=='__main__':
     subprocess.run(f'git commit -m {time.strftime("%Y%m%d")}', shell=True)
     subprocess.run('git push')
     os.chdir('..')
+
+    print('Update Success!')
 
 
     
