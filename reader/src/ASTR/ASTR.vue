@@ -52,7 +52,7 @@ export default {
 <div class="info st">
     <hr/>
     Last Update (UTC): {{dateFormatter(latestUpdate)}}<br/>
-    Auto Updater scheduled at 01:30, 08:30, 11:30 UTC everyday. <br/><br/>
+    Auto Updater scheduled at 08:30 UTC everyday. <br/><br/>
     Current Status: <br/>
     <img src="https://app.travis-ci.com/050644zf/ArknightsStoryTextReader.svg?branch=master">
     <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg">

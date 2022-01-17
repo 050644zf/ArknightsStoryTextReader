@@ -5,7 +5,7 @@ name: ASTR Auto Updater
 
 on:
   schedule:
-    - cron: 30 1,8,11 * * *
+    - cron: 30 8 * * *
   push:
     branches:
       - master
