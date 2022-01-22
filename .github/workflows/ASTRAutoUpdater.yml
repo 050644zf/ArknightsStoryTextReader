@@ -9,6 +9,8 @@ on:
   push:
     branches:
       - master
+  repository_dispatch:
+    type: [update]
     
 
 jobs:
