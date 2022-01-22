@@ -51,9 +51,8 @@ export default {
 <Topbtn></Topbtn>
 <div class="info st">
     <hr/>
-    Last Update (UTC): {{dateFormatter(latestUpdate)}}<br/>
-    Auto Updater scheduled at 08:30 UTC everyday. <br/><br/>
-    Current Status: <br/>
+    Last Update/最后更新 (UTC): {{dateFormatter(latestUpdate)}}<br/><br/>
+    Current Status/当前状态: <br/>
     <img src="https://app.travis-ci.com/050644zf/ArknightsStoryTextReader.svg?branch=master">
     <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg">
 </div>

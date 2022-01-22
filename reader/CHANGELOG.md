@@ -1,5 +1,9 @@
 # Change Log
 
+## wv0.12.1
+
+Feature:
+- Utilized Repository Dispatch to automoatically execute Update Action instead of schudled action, thx @Kengxxiao for help.
 ## wv0.12
 
 Feature:
