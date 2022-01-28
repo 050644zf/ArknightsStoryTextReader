@@ -7,8 +7,11 @@ var doctor = window.localStorage.getItem('doctor');
 var hidetip = window.localStorage.getItem('hidetip');
 var showDelay = window.localStorage.getItem('showDelay');
 var hideName = window.localStorage.getItem('hideName');
+var wversion = window.localStorage.getItem('wversion');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
+var isOldversion = false;
+const currentwversion = 13;
 
 if(!server){server = 'zh_CN'};
 if(!l || l == 'none' || l == 'Default'){l = navigator.language.replace('-','_')};
@@ -19,7 +22,7 @@ if(!doctor){doctor = "{@nickname}"};
 if(!hidetip){hidetip = false};
 if(!showDelay){showDelay = 'y'};
 if(!hideName){hideName = 'n'};
-
+if(!wversion||wversion<currentwversion){wversion = currentwversion; window.localStorage.setItem('wversion',wversion);isOldversion = true};
 
 
 export default {
@@ -34,6 +37,8 @@ export default {
     storyFile: storyFile,
     storyData: storyData,
     intermezzi: ['act9d0', 'act18d0', 'act18d3'],
+    wversion: wversion,
+    isOldversion: isOldversion,
     parseContent(content){
         if(content){
             const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;

@@ -10,7 +10,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        relics: resolve(__dirname, 'relics.html')
+        relics: resolve(__dirname, 'relics.html'),
+        export: resolve(__dirname, 'export.html')
       }
     }
   }

@@ -16,5 +16,6 @@
     "showDelay":{"zh_CN":"显示空白分割行","en_US":"Show Blank Seperation Line","ja_JP":"Show Blank Seperation Line","ko_KR":"Show Blank Seperation Line", "zh_TW":"顯示空白分割行"},
     "hideName":{"zh_CN":"隐藏重复人名","en_US":"Hide Duplicate Names","ja_JP":"Hide Duplicate Names","ko_KR":"Hide Duplicate Names", "zh_TW":"隱藏重複人名"},
     "save":{"zh_CN":"应用设置","en_US":"Apply Setting","ja_JP":"Apply Setting","ko_KR":"Apply Setting", "zh_TW":"应用设置"},
-    "home":{"zh_CN":"返回目录","en_US":"Return to Menu","ja_JP":"Return to Menu","ko_KR":"Return to Menu", "zh_TW":"返回目錄"}
+    "home":{"zh_CN":"返回目录","en_US":"Return to Menu","ja_JP":"Return to Menu","ko_KR":"Return to Menu", "zh_TW":"返回目錄"},
+    "export2excel":{"zh_CN":"导出Excel","en_US":"Export to Excel","ja_JP":"Export to Excel","ko_KR":"Export to Excel", "zh_TW":"導出Excel"}
 }

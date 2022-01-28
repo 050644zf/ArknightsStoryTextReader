@@ -155,6 +155,10 @@ export default {
     color: gray;
     font-size: small;
     margin-left: 20px;
+    margin-top: 5px;
+    border-radius: 5px 0px 0px 5px;
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    padding-left: 5px;
 }
 .loadButton{
     font-size: larger;

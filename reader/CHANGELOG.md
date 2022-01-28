@@ -1,5 +1,11 @@
 # Change Log
 
+## wv0.13
+
+Features:
+- (beta) New Export Feature allows you to export the event into spreadsheet you want.
+- Optimized the footer.
+- Optimized the menu style.
 ## wv0.12.1
 
 Feature:

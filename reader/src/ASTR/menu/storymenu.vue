@@ -39,15 +39,18 @@ export default {
 .story{
     margin: 4px;
     margin-left: 40px;
-    transition: padding 0.2s;
+    transition: padding 0.2s, border 0.2s, background-color 0.2s;
     border-radius: 4px;
+    border-left: 5px solid rgba(0,0,0,0);
+    padding-left: 5px;
 }
 .story:hover{
+    border-left: 5px solid rgba(255,255,255,0.4);
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 5px;
 }
 .storyFocused{
-    background-color: #f4433633;
+    border-left: 5px solid rgba(255,255,255,0.4);
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 5px;
 }
 .storycode{

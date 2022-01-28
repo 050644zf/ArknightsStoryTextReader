@@ -5,6 +5,14 @@
             <span class="material-icons" style="float: right;" @click="hide()">clear</span>
             <div style="clear: both;"></div>
         </div>
+        <div class="warmtip" style="background-color: rgb(43 118 61); padding: 5px;" v-show="isOldversion">
+            <span style="float: left;margin-left: 20px;">
+                Arknights Story Text Reader has been updated! Click the version number on the top right corner to see the changelog.<br/>
+                明日方舟剧情文本阅读器已更新！点击右上角的版本号可查看更新日志。
+            </span>
+            <span class="material-icons" style="float: right;" @click="hide2()">clear</span>
+            <div style="clear: both;"></div>
+        </div>
         <div :class="{setting:true,settingshow:show}">
             <span :class="{'material-icons':true}" @click="show = !show"  id="settingbutton">
                 settings
@@ -70,7 +78,8 @@ data(){
         hidetip: func.hidetip,
         showDelay: func.showDelay,
         hideName: func.hideName,
-        langList: func.langList
+        langList: func.langList,
+        isOldversion: func.isOldversion
     }
 },
 methods:{
@@ -88,6 +97,10 @@ methods:{
     hide(){
         this.hidetip = true;
         window.localStorage.setItem('hidetip', true);
+    },
+    hide2(){
+        this.isOldversion = false;
+        window.localStorage.setItem('isOldversion', false);
     },
     getJSONFile(){
         return "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"+this.lang+'/gamedata/story/'+func.storyFile+'.json'

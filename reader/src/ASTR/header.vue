@@ -6,7 +6,7 @@
         </div>
 
         <span style="font-size: medium;font-weight: normal;text-align: right; margin-right: 20px;">
-                <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/reader/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.12</a><br/>
+                <a href="https://github.com/050644zf/ArknightsStoryTextReader/blob/master/reader/CHANGELOG.md" style="font-weight: bold;text-decoration: underline;">wv0.13</a><br/>
                 by nightsky#3319 on 
                 <a href="https://discord.gg/rihq" style="font-weight: bold;text-decoration: underline;">RIHQ</a>
             </span>
