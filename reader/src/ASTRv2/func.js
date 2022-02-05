@@ -1,5 +1,4 @@
-import $ from 'jquery'
-const langList = ['zh_CN','en_US','ko_KR','ja_JP','zh_TW','Default'];
+const langList = ['zh_CN','en_US','ko_KR','ja_JP','zh_TW'];
 var urlParams = new URLSearchParams(window.location.search);
 var server = urlParams.get('s');
 var l = window.localStorage.getItem('lang');

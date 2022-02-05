@@ -5,17 +5,24 @@ import { createRouter,createWebHashHistory } from 'vue-router'
 import ASTR from './ASTRv2/ASTR.vue'
 import server from './ASTRv2/server.vue'
 import menupage from './ASTRv2/menupage.vue'
+import eventpage from './ASTRv2/eventpage.vue'
 import contentpage from './ASTRv2/contentpage.vue'
+import maintheme from './ASTRv2/menupage/maintheme.vue'
 
 const routes = [
     { 
         path: '/:server', 
         component: server,
         children: [
-            { path: 'menu/:type', component: menupage },
-            { path: 'content/:f', component: contentpage }
+            { path: 'menu', component: menupage, children:[
+                {path:'maintheme',component:maintheme}
+            ] },
+            { path: 'event/:event', component: eventpage },
+            { path: 'content', component: contentpage },
+            
         ]
     },
+    {path:'/',redirect:'/zh_CN/menu'}
 ]
 
 const router = createRouter({

@@ -13,6 +13,7 @@
     "xlsx": "^0.17.5"
   },
   "devDependencies": {
+    "@vicons/fa": "^0.11.0",
     "@vicons/material": "^0.11.0",
     "@vitejs/plugin-vue": "^1.9.3",
     "naive-ui": "^2.24.7",

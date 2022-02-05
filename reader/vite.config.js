@@ -15,5 +15,11 @@ export default defineConfig({
         main2: resolve(__dirname, 'index2.html'),
       }
     }
+  },
+  server:{
+    host: '0.0.0.0',
+    fs:{
+      strict:false
+    }
   }
 })

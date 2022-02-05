@@ -93,4 +93,5 @@ class Story():
         self.storyName = storyData['storyName']
         self.storyInfo = self.root_dir/'gamedata/story/[uc]{}.txt'.format(storyData['storyInfo'])
         self.storyTxt = self.root_dir/'gamedata/story/{}.txt'.format(storyData['storyTxt'])
+        self.f = storyData['storyTxt']
 
