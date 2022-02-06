@@ -48,7 +48,8 @@ export default {
     padding: 4px;
     transition: background-color 0.5s;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
 }
 .option:hover{
     background-color: rgba(255, 255, 255, 0.2);

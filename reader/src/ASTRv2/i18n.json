@@ -22,5 +22,6 @@
     "home":{"zh_CN":"返回目录","en_US":"Return to Menu","ja_JP":"Return to Menu","ko_KR":"Return to Menu", "zh_TW":"返回目錄"},
     "menu":{"zh_CN":"目录","en_US":"Menu","ja_JP":"Menu","ko_KR":"Menu", "zh_TW":"目錄"},
     "export2excel":{"zh_CN":"导出Excel","en_US":"Export to Excel","ja_JP":"Export to Excel","ko_KR":"Export to Excel", "zh_TW":"導出Excel"},
-    "showIntro":{"zh_CN":"显示简介","en_US":"Show Intro","ja_JP":"Show Intro","ko_KR":"Show Intro", "zh_TW":"顯示簡介"}
+    "showIntro":{"zh_CN":"显示简介","en_US":"Show Intro","ja_JP":"Show Intro","ko_KR":"Show Intro", "zh_TW":"顯示簡介"},
+    "optionTraceDisabled":{"zh_CN":"由于技术问题，选项跟踪在该故事已被禁用","en_US":"Option Tracing Feature is disabled in this story due to technical issues.","ja_JP":"Option Tracing Feature is disabled in this story due to technical issues.","ko_KR":"Option Tracing Feature is disabled in this story due to technical issues.", "zh_TW":"由於技術問題，選項跟踪在該故事已被禁用"}
 }

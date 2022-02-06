@@ -66,8 +66,10 @@ export default {
     margin:0% 15%;
 }
 .eventpage .breadcrumb{
-    background-color: rgba(0, 0, 0, 1);
+    margin: 10px;
+    background: #000;
     padding:5px 10px;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    z-index: -1;
 }
 </style>

@@ -4,12 +4,12 @@ export default {
     data(){
         return{
             line: this.inputline,
-            hideName: false
+            hideName: func.hideName
         }
     },
-    mounted(){
-        this.hideName = this.isHideName();
-    },
+    // mounted(){
+    //     this.hideName = this.isHideName();
+    // },
     props:{
         inputline: Object,
         story: Object,
@@ -20,8 +20,9 @@ export default {
             return func.parseContent(content);
         },
         isHideName(){
-            if(this.lidx=='0' || func.hideName == 'n' || !this.line){
-                return false
+            console.log([this.lidx, this.hideName, this.line])
+            if(this.lidx=='0' || this.hideName == 'n' || !this.line){
+                return false;
             }
             else{
                 var lastLine = this.story[this.lidx-1];
@@ -42,7 +43,7 @@ export default {
 
 <template>
     <div class="textblock">
-        <div :class="{nameblock:true, hideName:hideName}">{{line.attributes.name}}</div>
+        <div :class="{nameblock:true}">{{line.attributes.name}}</div>
         <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
     </div>
 </template>

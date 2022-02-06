@@ -2,7 +2,7 @@
     <n-layout-header >
         <n-space item-style="display: flex;" justify="space-between" align="center" class="header">
             <n-space item-style="display: flex;" align="center" >
-                <n-image src="/src/assets/favicon.png" width="40"/>
+                <n-image src="/ArknightsStoryTextReader/src/assets/favicon.png" width="40"/>
                 <n-h2 style="margin: 0px;padding:5px;" strong>
                     Arknights Story Text Reader
                 </n-h2>
@@ -41,7 +41,8 @@ export default {
         return{
             serverOpts: this.getServerOpts(),
             i18n: i18n,
-            showsettings: false
+            showsettings: false,
+            server: this.$route.params.server,
         }
     },
     created(){
@@ -54,17 +55,13 @@ export default {
             }
         );
     },
-    props: {
-        server: {
-            type: String,
-        },
-    },
     components:{
         LangIcon:LanguageRound,
         ArrowDropDown:ArrowDropDownSharp,
         SettingsIcon:SettingsOutlined,
         Settings: settings,
     },
+    emits: ['pushServer'],
     methods:{
         getServerOpts(){
             var opts = [];
@@ -75,12 +72,12 @@ export default {
                     disabled: s == this.$route.params.server
                 });
             };
-            //console.log(opts);
+            console.log(this.$route);
             return opts;
         },
-        pushServer(server){
-            this.$router.push('/'+server+'/menu');
-        }
+        async pushServer(server){
+            this.$emit('pushServer', {server: server});
+        },
     }
 }
 </script>

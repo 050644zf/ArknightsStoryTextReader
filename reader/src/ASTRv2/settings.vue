@@ -50,13 +50,13 @@
                         <n-icon>
                             <ResetIcon/>
                         </n-icon>
-                        {{i18n.clear[currentLang]}}
+                        &nbsp;{{i18n.clear[currentLang]}}
                     </n-button>
                     <n-button strong type="primary" @click="save()">
                         <n-icon>
                             <SaveIcon/>
                         </n-icon>
-                        {{i18n.save[currentLang]}}
+                        &nbsp;{{i18n.save[currentLang]}}
                     </n-button>
                 </n-space>
             </template>
@@ -76,6 +76,7 @@ export default {
            langOpts: func.langList,
            doctor: func.doctor,
            showDelay: func.showDelay,
+           hideName: func.hideName,
        }
     },
     props:{

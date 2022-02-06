@@ -1,6 +1,8 @@
 <template>
-    <Header :server="$route.params.server"></Header> 
-    <n-loading-bar-provider><router-view></router-view></n-loading-bar-provider>   
+    
+    <Header @push-server="pushServer"></Header>
+    <router-view></router-view>
+    
     
 </template>
 
@@ -8,12 +10,15 @@
 import Header from "./header.vue"
 import func from "./func.js"
 import {computed} from "vue"
+import {useLoadingBar,useDialog } from 'naive-ui'
 
 export default {
     data() {
         return {
             server: this.$route.params.server,
             intermezzi: func.intermezzi,
+            loadingbar: useLoadingBar(),
+            dialog: useDialog(),
         };
     },
     created(){
@@ -31,19 +36,41 @@ export default {
         Header,
     },
     methods:{
+        async pushServer({server}){
+            
+            const currentServer = this.server;
+            this.server = server;
+
+            await this.initServerData();
+
+            window.location.href = window.location.href.replace(currentServer, server);
+        },
         async initServerData(){
-            let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => res.json());
-            let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => res.json());
-            let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => res.json());
-            let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => res.json());
-            let eventList = await this.getEventList(menudata, chardict);
-            chapterdata = await this.getMainthemeData(chapterdata, eventList);
-            window.sessionStorage.setItem('server', this.server);
-            window.sessionStorage.setItem('menudata', JSON.stringify(menudata));
-            window.sessionStorage.setItem('chardict', JSON.stringify(chardict));
-            window.sessionStorage.setItem('infodata', JSON.stringify(infodata));
-            window.sessionStorage.setItem('eventList', JSON.stringify(eventList));
-            window.sessionStorage.setItem('chapterdata', JSON.stringify(chapterdata));
+            this.loadingbar.start();
+            try{
+                let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => res.json());
+                let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => res.json());
+                let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => res.json());
+                let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => res.json());
+                let eventList = await this.getEventList(menudata, chardict);
+                chapterdata = await this.getMainthemeData(chapterdata, eventList);
+                window.sessionStorage.setItem('server', this.server);
+                window.sessionStorage.setItem('menudata', JSON.stringify(menudata));
+                window.sessionStorage.setItem('chardict', JSON.stringify(chardict));
+                window.sessionStorage.setItem('infodata', JSON.stringify(infodata));
+                window.sessionStorage.setItem('eventList', JSON.stringify(eventList));
+                window.sessionStorage.setItem('chapterdata', JSON.stringify(chapterdata));
+                this.loadingbar.finish();                
+            }catch(e){
+                this.loadingbar.error();
+                console.log(e);
+                this.dialog.error({
+                    title: 'Fail to Load Event Data',
+                    content: 'This maybe because of the server is not supported or the data is not available.If you are sure the server is supported, please summit a issue.'
+                })
+            }
+
+            
         },
         async getEventList(reviewData, chardict){
             var eventList = {maintheme:[], intermezzi:[],sidestory:[], storyset:[], or:[]};

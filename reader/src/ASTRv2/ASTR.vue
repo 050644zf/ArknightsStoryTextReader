@@ -1,7 +1,11 @@
 <template>
 <n-layout>
     <n-config-provider :theme="darkTheme">
-        <router-view></router-view>
+        <n-loading-bar-provider>
+        <n-dialog-provider>
+            <router-view></router-view>
+        </n-dialog-provider>
+        </n-loading-bar-provider>
         <Footer></Footer>
     </n-config-provider>
 </n-layout>    

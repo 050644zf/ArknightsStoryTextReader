@@ -14,11 +14,9 @@ const routes = [
         path: '/:server', 
         component: server,
         children: [
-            { path: 'menu', component: menupage, children:[
-                {path:'maintheme',component:maintheme}
-            ] },
-            { path: 'event/:event', component: eventpage },
-            { path: 'content', component: contentpage },
+            { path: 'menu', component: menupage,name:'menu'},
+            { path: 'event/:event',name:'event', component: eventpage },
+            { path: 'content',name:'content', component: contentpage },
             
         ]
     },
