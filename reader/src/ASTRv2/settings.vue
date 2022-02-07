@@ -1,6 +1,6 @@
 <template>
     <n-button text class="SettingsBtn" @click="showsettings=true">
-        <n-icon>
+        <n-icon size="24">
             <SettingsIcon/>
         </n-icon>
     </n-button>
@@ -47,16 +47,20 @@
             <template #footer>
                 <n-space item-style="display:flex;" align="center" justify="end">
                     <n-button strong secondary type="error" @click="clearSetting()">
+                        <template #icon>
                         <n-icon>
                             <ResetIcon/>
-                        </n-icon>
-                        &nbsp;{{i18n.clear[currentLang]}}
+                        </n-icon>                            
+                        </template>
+                        {{i18n.clear[currentLang]}}
                     </n-button>
                     <n-button strong type="primary" @click="save()">
+                        <template #icon>
                         <n-icon>
                             <SaveIcon/>
-                        </n-icon>
-                        &nbsp;{{i18n.save[currentLang]}}
+                        </n-icon>                            
+                        </template>
+                        {{i18n.save[currentLang]}}
                     </n-button>
                 </n-space>
             </template>

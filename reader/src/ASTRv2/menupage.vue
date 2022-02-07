@@ -22,7 +22,7 @@
                 <template v-slot:tab>
                     <n-icon><SearchIcon/></n-icon>&nbsp;{{i18n.search[currentLang]}}
                 </template>
-                To Be Done
+                <Search></Search>
             </n-tab-pane>
         </n-tabs>
         <router-view></router-view>
@@ -36,6 +36,8 @@ import func from './func.js';
 import maintheme from './menupage/maintheme.vue';
 import events from "./menupage/events.vue";
 import homepage from "./menupage/homepage.vue";
+import search from "./menupage/search.vue";
+
 export default {
     data(){
         return{
@@ -55,7 +57,8 @@ export default {
         SearchIcon:SearchOutlined,
         Maintheme: maintheme,
         Events: events,
-        Homepage: homepage
+        Homepage: homepage,
+        Search: search,
     }
 }
 </script>

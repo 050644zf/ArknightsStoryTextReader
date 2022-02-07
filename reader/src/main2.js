@@ -8,16 +8,17 @@ import menupage from './ASTRv2/menupage.vue'
 import eventpage from './ASTRv2/eventpage.vue'
 import contentpage from './ASTRv2/contentpage.vue'
 import maintheme from './ASTRv2/menupage/maintheme.vue'
+import exportpage from './ASTRv2/export.vue'
 
 const routes = [
     { 
         path: '/:server', 
         component: server,
         children: [
-            { path: 'menu', component: menupage,name:'menu'},
+            { path: 'menu', name:'menu', component: menupage },
             { path: 'event/:event',name:'event', component: eventpage },
             { path: 'content',name:'content', component: contentpage },
-            
+            { path: 'export',name:'export', component: exportpage },
         ]
     },
     {path:'/',redirect:'/zh_CN/menu'}

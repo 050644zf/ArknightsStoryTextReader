@@ -2,20 +2,27 @@
     <n-layout-header >
         <n-space item-style="display: flex;" justify="space-between" align="center" class="header">
             <n-space item-style="display: flex;" align="center" >
-                <n-image src="/ArknightsStoryTextReader/src/assets/favicon.png" width="40"/>
-                <n-h2 style="margin: 0px;padding:5px;" strong>
-                    Arknights Story Text Reader
-                </n-h2>
+                <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/favicon.png" width="40"/>
+                <n-space item-style="display: flex;" align="baseline">
+                    <n-h2 style="margin: 0px;padding:5px;" strong>
+                        Arknights Story Text Reader
+                    </n-h2>
+                    <n-text depth="3">web version 0.91</n-text>                    
+                </n-space>
+
             </n-space>
 
             <n-space justify="space-around" item-style="display: flex;" align="center">
                 <n-dropdown :options="serverOpts" @select="pushServer" class="serverSelect">
                     <n-button text>
+                        <template #icon>
                         <n-icon>
                             <LangIcon/>
-                        </n-icon>
+                        </n-icon>                            
+                        </template>
+
                             {{i18n.server[$route.params.server]}}
-                        <n-icon>
+                        <n-icon size="24">
                             <ArrowDropDown/>
                         </n-icon>
                     </n-button>
