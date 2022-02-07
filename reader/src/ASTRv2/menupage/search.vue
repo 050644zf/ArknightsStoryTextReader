@@ -1,7 +1,7 @@
 <template>
     <n-space vertical class="searchpage">
         <n-space item-style="display:flex;" align="center" justify="center" >
-            <n-input v-model:value="searchvalue" type="text" :loading="isSearching"></n-input>
+            <n-input v-model:value="searchvalue" type="text" :loading="isSearching" @keyup.enter="searchRequest"></n-input>
             <n-button type="info" @click="searchRequest">
                 <n-icon size="24">
                     <SearchIcon/>
@@ -19,7 +19,7 @@
                         <n-text depth="3">{{story.avgTag}}</n-text>
                     </template>
                     <template #header-extra>
-                        <n-button secondary type="info">
+                        <n-button secondary type="info" @click="loadStory(story.storyPath)">
                             <n-icon size="24">
                                 <OpenIcon/>
                             </n-icon>
