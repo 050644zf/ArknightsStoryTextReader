@@ -45,6 +45,23 @@
             <n-li>表格工具 / Spreadsheet Toolkit: <n-a href="https://github.com/SheetJS/sheetjs">Sheetjs</n-a></n-li>
         </n-ul>
         <n-hr/>
+
+        <n-h3 prefix="bar" type="info">
+            更新日志 / Changelog: 
+        </n-h3>          
+        <n-collapse arrow-placement="right">
+            <n-collapse-item>
+                <template #header>
+                    点击展开 / Click to Unfold
+                </template>
+                <n-h4>wv 0.92</n-h4>
+                <n-oi>
+                    <n-li>Add return to home feature on icon.</n-li>
+                    <n-li>Add zoom in feature on story CGs.</n-li>
+                </n-oi>
+            </n-collapse-item>
+        </n-collapse>
+        <n-hr/>
         <n-h3 prefix="bar" type="info">
             Todo List: 
         </n-h3>
