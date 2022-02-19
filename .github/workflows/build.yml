@@ -25,14 +25,15 @@ jobs:
     - uses: actions/setup-node@v2
       with:
         node-version: '17.5.0'
-    - run: cd reader
-    - run: npm ci
-    - run: npm run build
-    - run: cd ..
-    - run: cp .\reader\dist\* .\gh-pages -r
-    - run: cd gh-pages
-    - run: git add -A
-    - run: git commit -m 'Build'
-    - run: git push
+    - run: |
+        cd reader
+        npm ci
+        npm run build
+        cd ..
+        cp .\reader\dist\* .\gh-pages -r
+        cd gh-pages
+        git add -A
+        git commit -m 'Build'
+        git push
     
     
