@@ -1,13 +1,19 @@
 <template>
     <n-layout-header >
         <n-space item-style="display: flex;" justify="space-between" align="center" class="header">
-            <n-space item-style="display: flex;" align="center" >
-                <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/favicon.png" width="40"/>
+            <n-space item-style="display: flex;" align="center">
+                <router-link to="/" #="{ navigate, href }" custom>
+                    <n-a :href="href" @click="navigate">
+                        <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/favicon.png" style="width:40px;height:40px"  preview-disabled/>
+                    </n-a>
+                </router-link>
+                
+                
                 <n-space item-style="display: flex;" align="baseline">
                     <n-h2 style="margin: 0px;padding:5px;" strong>
                         Arknights Story Text Reader
                     </n-h2>
-                    <n-text depth="3">web version 0.91</n-text>                    
+                    <n-text depth="3">web version 0.92</n-text>                    
                 </n-space>
 
             </n-space>

@@ -36,6 +36,11 @@ export default {
             }
         );
     },
+    beforeUpdate(){
+        if(this.server != window.sessionStorage.getItem("server")){
+            this.initServerData();
+        }
+    },
     components: {
         Header,
     },
@@ -68,9 +73,17 @@ export default {
             }catch(e){
                 this.loadingbar.error();
                 console.log(e);
-                this.dialog.error({
+                this.dialog.warning({
                     title: 'Fail to Load Event Data',
-                    content: 'This maybe because of the server is not supported or the data is not available.If you are sure the server is supported, please summit a issue.'
+                    content: 'This maybe because of the server is not supported or the data is not available.If you are sure the server is supported, please summit a issue.',
+                    positiveText: 'Return to Home Page / 返回主页',
+                    negativeText: 'Return to Last Page / 返回上一页',
+                    onPositiveClick: () => {
+                        this.$router.push('/');
+                    },
+                    onNegativeClick: () => {
+                        this.$router.back();
+                    },
                 })
             }
 
