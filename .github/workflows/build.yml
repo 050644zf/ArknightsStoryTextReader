@@ -30,7 +30,7 @@ jobs:
         npm ci
         npm run build
         cd ..
-        cp .\reader\dist\* .\gh-pages -r
+        cp ./reader/dist/* ./gh-pages -r
         cd gh-pages
         git add -A
         git commit -m 'Build'
