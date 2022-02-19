@@ -32,6 +32,8 @@ jobs:
         cd ..
         cp ./reader/dist/* ./gh-pages -r
         cd gh-pages
+        git config --global user.email 050644zf@outlook.com
+        git config --global user.name nightsky
         git add -A
         git commit -m 'Build'
         git push
