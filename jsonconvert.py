@@ -182,6 +182,34 @@ if __name__=='__main__':
             json.dump(storyinfoData, jsonFile, indent=4, ensure_ascii=False)
             print(f'StoryInfo Data exported!')
 
+        rogue_data_path = dataPath/lang/'gamedata/excel/roguelike_topic_table.json'
+        if rogue_data_path.exists():
+            with open(rogue_data_path, encoding='utf-8') as jsonFile:
+                rogueData = json.load(jsonFile)
+            
+            rogueDict = {}
+            for season in rogueData['details']:
+                rogueDict[season] = {
+                    'name':rogueData['topics'][season]['name'],
+                }
+                
+                for squad in rogueData['details'][season]['monthSquad']:
+                    squad_data = rogueData['details'][season]['monthSquad'][squad]
+                    rogueDict[season][squad] = {
+                        'id':squad_data['id'],
+                        'teamName':squad_data['teamName'],
+                        'teamDesc':squad_data['teamDesc'],
+                        'teamColor':squad_data['teamColor'],
+                        'teamYear':squad_data['teamYear'],
+                        'teamMonth':squad_data['teamMonth'],
+                        'teamChars':[char.split('_')[2] for char in squad_data['teamChars']],
+                        'chatId':squad_data['chatId'],
+                    }
+
+
+
+        
+
 
     
     import time
