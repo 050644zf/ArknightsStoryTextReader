@@ -29,13 +29,16 @@ jobs:
         cd reader
         npm ci
         npm run build
+        echo "Build Completed!"
         cd ..
         cp ./reader/dist/* ./gh-pages -r
+        echo "File Transfer Completed!"
         cd gh-pages
         git config --global user.email 050644zf@outlook.com
         git config --global user.name nightsky
         git add -A
         git commit -m 'Build'
         git push
+        echo "Build Pushed!"
     
     

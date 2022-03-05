@@ -2,7 +2,7 @@
 
 一个用于将明日方舟原始剧情数据转换为其它可读格式如Excel表格、csv等的简单Python程序
 
-***New:*** 在 [这里](https://050644zf.github.io/ArknightsStoryTextReader/ASTR/reader.html) 查看ASTR的网页应用！
+***New:*** 在 [这里](https://050644zf.github.io/ArknightsStoryTextReader/index2.html) 查看ASTR的网页应用！
 
 您可以在[Kengxxiao/ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData)找到原始数据
 

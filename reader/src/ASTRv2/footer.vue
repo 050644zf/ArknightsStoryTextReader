@@ -16,7 +16,7 @@
             <n-text>
                 最后更新 / Last Update (UTC) : {{dateFormatter(latestUpdate)}}<br/>
                 当前状态 / Current Status: <br/>
-                <img src="https://app.travis-ci.com/050644zf/ArknightsStoryTextReader.svg?branch=master">&nbsp;
+                <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/build.yml/badge.svg">&nbsp;
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg">
             </n-text>
         </n-space>
