@@ -37,7 +37,7 @@ jobs:
         git config --global user.email 050644zf@outlook.com
         git config --global user.name nightsky
         git add -A
-        git commit -m 'Build'
+        git commit --allow-empty -m 'Build'
         git push
         echo "Build Pushed!"
     
