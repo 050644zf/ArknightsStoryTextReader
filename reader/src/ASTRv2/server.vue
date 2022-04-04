@@ -1,9 +1,8 @@
 <template>
-    
     <Header @push-server="pushServer"></Header>
     <router-view v-slot="{ Component }">
     <transition name="fade">
-        <component :is="Component" />
+        <component :is="Component" v-if="isDataLoaded"/>
     </transition>
     </router-view>
     
@@ -13,6 +12,7 @@
 <script>
 import Header from "./header.vue"
 import func from "./func.js"
+import i18n from "./i18n.json"
 import {computed} from "vue"
 import {useLoadingBar,useDialog } from 'naive-ui'
 
@@ -20,12 +20,27 @@ export default {
     data() {
         return {
             server: this.$route.params.server,
+            serverName: i18n.server[this.server],
             intermezzi: func.intermezzi,
             loadingbar: useLoadingBar(),
             dialog: useDialog(),
+            i18n: i18n,
+            isDataLoaded: false,
         };
     },
+    metaInfo(){
+        return{
+            title: this.i18n.server[this.server]+ ' | Arknights Story Text Reader',  
+            meta:[
+                {vmid: 'og:title', property: 'og:title',content: 'Arknights Story Text Reader'},
+                {vmid: 'og:description', propoty: 'og:description',content: 'Viewing Arknights Stories Texts from different server.'},
+                {vmid: 'og:image', propoty:'og:image',content: '/src/assets/favicon.png'},
+                {name:'theme-color', content:'#007575'},
+            ] 
+        }
+    },
     created(){
+        this.isDataLoaded = false;
         this.initServerData();
         this.$watch(
             () => this.$route.params,
@@ -69,7 +84,8 @@ export default {
                 window.sessionStorage.setItem('infodata', JSON.stringify(infodata));
                 window.sessionStorage.setItem('eventList', JSON.stringify(eventList));
                 window.sessionStorage.setItem('chapterdata', JSON.stringify(chapterdata));
-                this.loadingbar.finish();                
+                this.loadingbar.finish();
+                this.isDataLoaded = true;                
             }catch(e){
                 this.loadingbar.error();
                 console.log(e);

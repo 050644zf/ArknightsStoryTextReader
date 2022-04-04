@@ -36,6 +36,8 @@ export default{
     components: {
         ForwardIcon: ArrowForwardOutlined,
     },
+    methods:{
+    }
 }
 </script>
 

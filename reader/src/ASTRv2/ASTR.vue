@@ -1,4 +1,5 @@
 <template>
+<metainfo/>
 <n-layout>
     <n-config-provider :theme="darkTheme">
         <n-loading-bar-provider>
@@ -15,6 +16,7 @@
 import { darkTheme } from "naive-ui"
 import headerVue from "./header.vue"
 import footerVue from "./footer.vue"
+import { useMeta } from "vue-meta"
 
 export default {
     data(){

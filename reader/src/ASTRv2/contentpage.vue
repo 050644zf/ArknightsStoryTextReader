@@ -93,6 +93,11 @@ export default {
             storyIdx: -1,
         }
     },
+    metaInfo(){
+        return{
+            title: this.data.storyCode + ' ' + this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader',
+        }
+    },
     created(){
         this.loadingbar.start();
         this.getStoryData();

@@ -44,8 +44,12 @@ export default {
         dateFormatter(t){
             var d = new Date(t*1000);
             var s = '';
-            s = d.getUTCFullYear() +'-'+(d.getUTCMonth()+1)+'-'+d.getUTCDate()+' '+d.getUTCHours()+':'+d.getUTCMinutes()+':'+d.getUTCSeconds();
+            s = d.getUTCFullYear() +'-'+(d.getUTCMonth()+1)+'-'+d.getUTCDate()+' '+this.add0(d.getUTCHours())+':'+this.add0(d.getUTCMinutes())+':'+this.add0(d.getUTCSeconds());
             return s;
+        },
+        add0(t){
+            //add 0 before single digit
+            return t<10?'0'+t:t;
         },
         load(site){
             window.location = site;

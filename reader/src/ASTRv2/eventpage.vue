@@ -69,6 +69,29 @@ export default {
             server: this.$route.params.server,
         }
     },
+    metaInfo(){
+        //using event name as title
+        return{
+            title: this.data[this.eventid]["name"] + ' | Arknights Story Text Reader',
+            meta:[
+                {vmid: 'og:title', property: 'og:title',content: this.data[this.eventid]["name"] + ' | Arknights Story Text Reader'},
+                {vmid: 'og:image', propoty:'og:image',content: '/src/assets/favicon.png'},
+            ]
+        }
+    },
+    created(){
+        //Watch if the server data is loaded, if not reload the page
+        this.$watch(
+            () => this.data,
+            (toParams, previousParams) => {
+                if(previousParams != toParams){
+                    window.location.reload();
+                }
+            }
+        )
+
+
+    },
     components:{
         MenuIcon: MenuOpenFilled,
         ForwardIcon: ArrowForwardOutlined,

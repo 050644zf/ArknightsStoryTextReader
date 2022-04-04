@@ -54,6 +54,11 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.93</n-h4>
+                <n-oi>
+                    <n-li>Add meta data for social media embeddings.</n-li>
+                    <n-li>Fix the issue of loading data error in event page.</n-li>
+                </n-oi>
                 <n-h4>wv 0.92</n-h4>
                 <n-oi>
                     <n-li>Add return to home feature on icon.</n-li>
