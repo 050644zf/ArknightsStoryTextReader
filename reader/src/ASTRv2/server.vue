@@ -32,9 +32,11 @@ export default {
         return{
             title: this.i18n.server[this.server]+ ' | Arknights Story Text Reader',  
             meta:[
+                {propoty: 'og:type', content: 'website'},
                 {vmid: 'og:title', property: 'og:title',content: 'Arknights Story Text Reader'},
-                {vmid: 'og:description', propoty: 'og:description',content: 'Viewing Arknights Stories Texts from different server.'},
-                {vmid: 'og:image', propoty:'og:image',content: '/src/assets/favicon.png'},
+                {vmid: 'og:description', property: 'og:description',content: 'Viewing Arknights Stories Texts from different server.'},
+                {vmid: 'og:image', property:'og:image',content: '/src/assets/favicon.png'},
+                {vmid: 'og:url', property:'og:url',content:location.href},
                 {name:'theme-color', content:'#007575'},
             ] 
         }
