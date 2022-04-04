@@ -35,7 +35,6 @@ app.use(naive);
 app.use(router);
 app.use(metaManager);
 app.use(metaPlugin);
-await router.isReady();
 app.mount('#ASTR');
 
 
