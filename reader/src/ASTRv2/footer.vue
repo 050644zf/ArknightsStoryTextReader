@@ -17,7 +17,8 @@
                 最后更新 / Last Update (UTC) : {{dateFormatter(latestUpdate)}}<br/>
                 当前状态 / Current Status: <br/>
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/build.yml/badge.svg">&nbsp;
-                <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg">
+                <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg"><br/>
+                <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1281065135&web_id=1281065135"></script>
             </n-text>
         </n-space>
 
