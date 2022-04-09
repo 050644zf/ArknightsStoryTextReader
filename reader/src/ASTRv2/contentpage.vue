@@ -95,7 +95,7 @@ export default {
     },
     metaInfo(){
         return{
-            title: this.data.storyCode?this.data.storyCode+ ' ':''  + this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader',
+            title: this.data.storyCode?this.data.storyCode+' '+this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader':this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader',
         }
     },
     created(){
