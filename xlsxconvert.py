@@ -78,6 +78,17 @@ def xlc(sheet, storyJson):
             attrs.get('text','')])
             sheet.append([''])
 
+        if prop == 'Sticker':
+            sheet.append([''])
+            sheet.append([index,
+            '',
+            attrs.get('text','')])
+
+        if prop == 'stickerclear':
+            sheet.append([''])
+
+        
+
         if 'image' in attrs.keys():
             prop = prop.lower()
             if prop == "backgroundtween":

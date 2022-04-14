@@ -69,6 +69,10 @@ positional arguments:
 
 config the `path` in the `relic.py` and the properties you want to export and run the program directly
 
+## v2.3
+
+- Add `Sticker` property support in EP10
+
 ## v2.2
 
 - Test the auto updater
