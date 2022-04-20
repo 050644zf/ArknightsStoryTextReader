@@ -13,6 +13,7 @@
     "mini": {"zh_CN":"故事集","en_US":"Storyset","ja_JP":"Storyset","ko_KR":"Storyset", "zh_TW":"故事集"},
     "or": {"zh_CN":"干员密录","en_US":"Operators' Records","ja_JP":"Operators' Records","ko_KR":"Operators' Records", "zh_TW":"幹員密錄"},
     "search": {"zh_CN":"搜索","en_US":"Search","ja_JP":"検索","ko_KR":"Search", "zh_TW":"搜索"},
+    "misc": {"zh_CN":"其他","en_US":"Misc","ja_JP":"その他","ko_KR":"その他", "zh_TW":"其他"},
     "setting":{"zh_CN":"设置","en_US":"Settings","ja_JP":"Settings","ko_KR":"Settings", "zh_TW":"设置"},
     "clear":{"zh_CN":"重置所有设置","en_US":"Reset All Settings","ja_JP":"Reset All Settings","ko_KR":"Reset All Settings", "zh_TW":"重置所有设置"},
     "dr":{"zh_CN":"博士称呼","en_US":"Doctor's Name","ja_JP":"ドクターの名前","ko_KR":"Doctor's Name", "zh_TW":"博士稱呼"},
@@ -23,5 +24,8 @@
     "menu":{"zh_CN":"目录","en_US":"Menu","ja_JP":"Menu","ko_KR":"Menu", "zh_TW":"目錄"},
     "export2excel":{"zh_CN":"导出Excel","en_US":"Export to Excel","ja_JP":"Export to Excel","ko_KR":"Export to Excel", "zh_TW":"導出Excel"},
     "showIntro":{"zh_CN":"显示简介","en_US":"Show Intro","ja_JP":"Show Intro","ko_KR":"Show Intro", "zh_TW":"顯示簡介"},
-    "optionTraceDisabled":{"zh_CN":"由于技术问题，选项跟踪在该故事已被禁用","en_US":"Option Tracing Feature is disabled in this story due to technical issues.","ja_JP":"Option Tracing Feature is disabled in this story due to technical issues.","ko_KR":"Option Tracing Feature is disabled in this story due to technical issues.", "zh_TW":"由於技術問題，選項跟踪在該故事已被禁用"}
+    "optionTraceDisabled":{"zh_CN":"由于技术问题，选项跟踪在该故事已被禁用","en_US":"Option Tracing Feature is disabled in this story due to technical issues.","ja_JP":"Option Tracing Feature is disabled in this story due to technical issues.","ko_KR":"Option Tracing Feature is disabled in this story due to technical issues.", "zh_TW":"由於技術問題，選項跟踪在該故事已被禁用"},
+    "wordCount":{"zh_CN":" 词","en_US":" Words ","ja_JP":" Words ","ko_KR":" Words ", "zh_TW":" 詞"},
+    "charCount":{"zh_CN":" 字","en_US":" Characters ","ja_JP":" Characters ","ko_KR":" Characters ", "zh_TW":" 字"},
+    "length":{"zh_CN":"长度","en_US":"Length ","ja_JP":"Length ","ko_KR":"Length ", "zh_TW":"長度"}
 }

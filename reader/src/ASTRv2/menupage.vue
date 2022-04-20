@@ -18,6 +18,14 @@
                 </div>
                 
             </n-tab-pane>
+
+            <n-tab-pane name="others">
+                <template v-slot:tab>
+                    <n-icon><AnalyticsIcon/></n-icon>&nbsp;{{i18n.misc[currentLang]}}
+                </template>
+                <Misc class="menucontent"></Misc>
+            </n-tab-pane>
+
             <n-tab-pane name="search">
                 <template v-slot:tab>
                     <n-icon><SearchIcon/></n-icon>&nbsp;{{i18n.search[currentLang]}}
@@ -30,13 +38,15 @@
 </template>
 
 <script>
-import {InfoOutlined, SearchOutlined} from "@vicons/material";
+import {InfoOutlined, SearchOutlined, AnalyticsOutlined} from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 import maintheme from './menupage/maintheme.vue';
 import events from "./menupage/events.vue";
 import homepage from "./menupage/homepage.vue";
 import search from "./menupage/search.vue";
+import misc from './misc.vue'
+
 
 export default {
     data(){
@@ -55,10 +65,12 @@ export default {
     components:{
         InfoIcon:InfoOutlined,
         SearchIcon:SearchOutlined,
+        AnalyticsIcon:AnalyticsOutlined,
         Maintheme: maintheme,
         Events: events,
         Homepage: homepage,
         Search: search,
+        Misc: misc,
     }
 }
 </script>
