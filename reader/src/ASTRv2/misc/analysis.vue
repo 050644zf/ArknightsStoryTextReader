@@ -9,7 +9,11 @@
             <n-breadcrumb-item>活动字/词数统计 | Event Characters/Words Analysis</n-breadcrumb-item>
         </n-breadcrumb>
             <n-space>
-                <n-checkbox v-for="eType in eventType" :key="eType" :label="i18n[eType][currentLang]" v-model:checked="filter[eType]" @click="loadData"></n-checkbox>
+                <n-checkbox v-for="eType in eventType" :key="eType" v-model:checked="filter[eType]" @click="loadData">
+                    <n-text :style="{'background-color':colorMap[eType],padding:'2px'}">
+                        {{i18n[eType][currentLang]}}
+                    </n-text>
+                </n-checkbox>
             </n-space>
 
         <svg id="chart" >
@@ -53,6 +57,13 @@ export default{
                 left: 150
             },
             eventType: ['maintheme','sidestory','intermezzi','storyset','or'],
+            colorMap: {
+                maintheme: '#000000',
+                sidestory: '#000000',
+                intermezzi: '#000000',
+                storyset: '#000000',
+                or: '#000000'
+            },
             currentLang: func.l,
         }
     },
@@ -111,6 +122,10 @@ export default{
 
             var colorFunc = d3.schemeDark2;
 
+            for(var etype in this.colorMap){
+                this.colorMap[etype] = colorFunc[typeIdx(etype)];
+            }
+
             enterRects.append('rect')
                 .attr('x', (d) => this.barChartPadding.left)
                 .attr('y', (d) => yRange(d.name) + this.barChartPadding.top)
@@ -122,6 +137,7 @@ export default{
                 .attr('y', (d) => yRange(d.name) + this.barChartPadding.top)
                 .attr('width', (d) => xRange(d.value))
                 .attr('height', yRange.bandwidth())
+                .attr('fill', (d) => colorFunc[typeIdx(d.type)]);
             
             exitRects.remove();
 
