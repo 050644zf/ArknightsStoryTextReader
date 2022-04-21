@@ -54,6 +54,11 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.94</n-h4>
+                <n-oi>
+                    <n-li>Add support for new "Sticker" property</n-li>
+                    <n-li>Add analysis for word/characters number in events</n-li>
+                </n-oi>
                 <n-h4>wv 0.93</n-h4>
                 <n-oi>
                     <n-li>Add meta data for social media embeddings.</n-li>
