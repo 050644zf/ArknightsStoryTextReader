@@ -78,6 +78,7 @@ export default {
                 let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => res.json());
                 let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => res.json());
                 let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => res.json());
+                let wordCountData = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/wordcount.json').then(res => res.json());
                 let eventList = await this.getEventList(menudata, chardict);
                 chapterdata = await this.getMainthemeData(chapterdata, eventList);
                 window.sessionStorage.setItem('server', this.server);
@@ -86,6 +87,7 @@ export default {
                 window.sessionStorage.setItem('infodata', JSON.stringify(infodata));
                 window.sessionStorage.setItem('eventList', JSON.stringify(eventList));
                 window.sessionStorage.setItem('chapterdata', JSON.stringify(chapterdata));
+                window.sessionStorage.setItem('wordCountData', JSON.stringify(wordCountData));
                 this.loadingbar.finish();
                 this.isDataLoaded = true;                
             }catch(e){

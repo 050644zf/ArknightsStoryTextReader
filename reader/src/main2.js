@@ -8,6 +8,7 @@ import menupage from './ASTRv2/menupage.vue'
 import eventpage from './ASTRv2/eventpage.vue'
 import contentpage from './ASTRv2/contentpage.vue'
 import exportpage from './ASTRv2/export.vue'
+import analysis from './ASTRv2/misc/analysis.vue'
 
 const routes = [
     { 
@@ -18,6 +19,7 @@ const routes = [
             { path: 'event/:event',name:'event', component: eventpage },
             { path: 'content',name:'content', component: contentpage },
             { path: 'export',name:'export', component: exportpage },
+            { path: 'analysis',name:'analysis', component: analysis },
         ]
     },
     {path:'/',redirect:'/zh_CN/menu'}

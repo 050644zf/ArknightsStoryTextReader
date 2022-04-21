@@ -1,4 +1,5 @@
 from ast import arg
+from itertools import count
 import re
 import argparse
 from pathlib import Path
@@ -15,6 +16,7 @@ commentFlag = False
 infoFlag = False
 
 def reader(story):
+    counter = 0
     if isinstance(story,func.Story):
         with open(story.storyTxt, encoding='utf-8') as txtFile:
             rawstorytext = txtFile.read()
@@ -53,8 +55,7 @@ def reader(story):
         if prop == 'name' or prop == '' or prop == None:
             d['prop'] = 'name'
             d['attributes']['content'] = content
-
-
+            counter += len(content.split()) if story.lang == 'en_US' else len(content)
 
 
         if len(parameters):
@@ -75,6 +76,8 @@ def reader(story):
         if prop == 'Decision':
             d['targetLine'] = {}
             options = d['attributes']['options'].split(';')
+            for option in options:
+                counter += len(content.split()) if story.lang == 'en_US' else len(content)
             values = [f"option{value}" for value in d['attributes']['values'].split(';')]
             if OPTIONTRACE:
                 for idx,value in enumerate(values[:len(options)]):
@@ -101,18 +104,22 @@ def reader(story):
                 except:
                     print(f'Disable Optiontrace From Line {index}!')
                     OPTIONTRACE = False
+
+        if d['attributes'].get('text'):
+            counter += len(content.split()) if story.lang == 'en_US' else len(content)
+        
         
         rawlist.append(d)
 
     storydict['storyList'] = rawlist
     storydict['OPTIONTRACE'] = OPTIONTRACE
-    return storydict
+    return storydict, counter
 
 
 if __name__=='__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--all',type=bool,default=False,help="Update all json file or not")
+    parser.add_argument('--all',action='store_true',help="Update all json file or not")
 
     args = parser.parse_args()
 
@@ -130,6 +137,7 @@ if __name__=='__main__':
 
     with open('ArknightsStoryJson/log.json', encoding='utf-8') as logFile:
         logData = json.load(logFile)
+
     
     if not UPDATE_ALL:
         with urllib.request.urlopen('https://api.github.com/repos/Kengxxiao/ArknightsGameData/commits') as f:
@@ -166,7 +174,14 @@ if __name__=='__main__':
         events = func.getEvents(dataPath, lang)
         with open(f'ArknightsStoryJson/{lang}/storyinfo.json',encoding='utf-8') as jsonFile:
             storyInfo = json.load(jsonFile)
+
+        with open(f'ArknightsStoryJson/{lang}/wordcount.json',encoding='utf-8') as jsonFile:
+            wordCount = json.load(jsonFile)
+        
         for event in events:
+            if not wordCount.get(event):
+                wordCount[event.eventid] = {}
+
             for story in event:
                 storyPath = Path(story.storyTxt)
                 jsonPath = jsonDataPath/storyPath.relative_to(dataPath).parent/Path(str(storyPath.stem)+'.json')
@@ -176,7 +191,7 @@ if __name__=='__main__':
 
                 jsonPath.parent.mkdir(exist_ok=True, parents=True)
                 try:
-                    storyJson = reader(story)
+                    storyJson,counter = reader(story)
                     storyInfo[str(story.f)] = storyJson['storyInfo']
                 except FileNotFoundError:
                     continue
@@ -185,6 +200,8 @@ if __name__=='__main__':
                 with open(jsonPath, 'w', encoding='utf-8') as jsonFile:
                     json.dump(storyJson,jsonFile, indent=4, ensure_ascii=False)
                     print(f'File {jsonPath} exported!')
+                
+                wordCount[event.eventid][str(story.f)] = counter
 
         with open(f'ArknightsGameData/{lang}/gamedata/excel/character_table.json', encoding='utf-8') as jsonFile:
             characterData = json.load(jsonFile)
@@ -205,6 +222,10 @@ if __name__=='__main__':
         with open(f'ArknightsStoryJson/{lang}/storyinfo.json','w',encoding='utf-8') as jsonFile:
             json.dump(storyInfo, jsonFile, indent=4, ensure_ascii=False)
             print(f'StoryInfo Data exported!')
+
+        with open(f'ArknightsStoryJson/{lang}/wordcount.json','w',encoding='utf-8') as jsonFile:
+            json.dump(wordCount, jsonFile, indent=4, ensure_ascii=False)
+            print(f'WordCount Data exported!')
 
 
     
