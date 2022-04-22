@@ -179,7 +179,7 @@ if __name__=='__main__':
             wordCount = json.load(jsonFile)
         
         for event in events:
-            if not wordCount.get(event):
+            if not wordCount.get(event.eventid):
                 wordCount[event.eventid] = {}
 
             for story in event:
