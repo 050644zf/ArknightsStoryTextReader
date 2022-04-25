@@ -42,6 +42,15 @@ def xlc(sheet, storyJson):
             if not attrs.get('name','') in characters:
                 characters.append(attrs.get('name',''))
 
+        if prop == 'multiline':
+            sheet.append([
+                index,
+                attrs.get('name',''),
+                attrs['content']
+            ])
+            if not attrs.get('name','') in characters:
+                characters.append(attrs.get('name',''))
+
         if prop == 'Dialog':
             sheet.append([index,
             '----',

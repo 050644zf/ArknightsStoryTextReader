@@ -15,8 +15,10 @@ characterFlag = False
 commentFlag = False
 infoFlag = False
 
+
+
 def reader(story):
-    counter = 0
+    
     if isinstance(story,func.Story):
         with open(story.storyTxt, encoding='utf-8') as txtFile:
             rawstorytext = txtFile.read()
@@ -28,11 +30,14 @@ def reader(story):
         storydict['storyCode'] = story.storyCode
         storydict['avgTag'] = story.avgTag
         storydict['storyName'] = story.storyName
+        counter = 0
+        COUNTER_FLAG = True
         with open(story.storyInfo, encoding='utf-8') as txtFile:
             storydict['storyInfo'] = txtFile.read()
     if isinstance(story, str):
         rawstorytext = story
         storydict = {}
+        COUNTER_FLAG = False
 
     OPTIONTRACE = True
     rawstorylist = rawstorytext.split('\n')
@@ -40,6 +45,9 @@ def reader(story):
     rawlist = []
     currentOptions = {}
     usedOptions = {}
+    multiline_buffer = []
+    last_multiline = None
+
     for (index, line) in enumerate(rawstorylist):
         d = {}
         d['id'] = index
@@ -55,7 +63,11 @@ def reader(story):
         if prop == 'name' or prop == '' or prop == None:
             d['prop'] = 'name'
             d['attributes']['content'] = content
-            counter += len(content.split()) if story.lang == 'en_US' else len(content)
+            if COUNTER_FLAG:
+                counter += len(content.split()) if story.lang == 'en_US' else len(content)
+        
+
+            
 
 
         if len(parameters):
@@ -72,12 +84,25 @@ def reader(story):
                         imgtype = "background"
                     elif imgtype == 'showitem':
                         imgtype = 'item'
+        
+        if prop == 'multiline':
+            d['attributes']['content'] = content
+            multiline_buffer.append(content)
+            if COUNTER_FLAG:
+                counter += len(content.split()) if story.lang == 'en_US' else len(content)
+            last_multiline = d
+            if d['attributes'].get('end') == 'true':
+                joined_line = ''.join(multiline_buffer)
+                multiline_buffer = []
+                d['attributes']['joined'] = joined_line
+
 
         if prop == 'Decision':
             d['targetLine'] = {}
             options = d['attributes']['options'].split(';')
-            for option in options:
-                counter += len(content.split()) if story.lang == 'en_US' else len(content)
+            if COUNTER_FLAG:
+                for option in options:
+                    counter += len(content.split()) if story.lang == 'en_US' else len(content)
             values = [f"option{value}" for value in d['attributes']['values'].split(';')]
             if OPTIONTRACE:
                 for idx,value in enumerate(values[:len(options)]):
@@ -106,14 +131,18 @@ def reader(story):
                     OPTIONTRACE = False
 
         if d['attributes'].get('text'):
-            counter += len(content.split()) if story.lang == 'en_US' else len(content)
+            if COUNTER_FLAG:
+                counter += len(content.split()) if story.lang == 'en_US' else len(content)
         
         
         rawlist.append(d)
 
     storydict['storyList'] = rawlist
     storydict['OPTIONTRACE'] = OPTIONTRACE
-    return storydict, counter
+    if COUNTER_FLAG:
+        return storydict, counter
+    else:
+        return storydict
 
 
 if __name__=='__main__':
