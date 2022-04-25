@@ -48,6 +48,7 @@
             <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" v-else>
             
                 <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
+                <Nameline v-if="line.prop == 'multiline'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                 <Subtitle v-if="line.prop == 'Subtitle' || line.prop == 'Sticker'" :inputline="line"></Subtitle>
                 <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
                 <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
