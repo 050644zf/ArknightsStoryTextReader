@@ -12,6 +12,10 @@
                 所有访问数据均于本地浏览器处理，不会上传至任何服务器。<br/>
                 All data is handled locally in the browser, and will not be uploaded to any server.
             </n-alert>
+            <n-alert type="info" closable>
+                更多数据将会尽快加入。<br/>
+                More data will be added soon.
+            </n-alert>            
             <n-hr></n-hr>
             <n-steps>
                 <n-step title="登录 / Login">
@@ -319,6 +323,11 @@ export default {
         OpenIcon: OpenInNewOutlined,
     },
     mounted(){
+    },
+    metaInfo(){
+        return{
+            title: 'Arknight Journey Review | Arknights Story Text Reader',
+        }
     },
     methods:{
         openNewTab(url){
