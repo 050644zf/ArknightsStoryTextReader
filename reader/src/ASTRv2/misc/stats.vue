@@ -140,6 +140,18 @@
                             <n-number-animation from="0" :to="stats.result_user_online_basic.online_day_cnt" show-separator/>
                             <template #suffix>Day(s)</template>
                         </n-statistic>
+                        <n-statistic>
+                            <template #label>6点至12点上线次数 <br/>Times of Login bewteen 6 to 12:00 </template>
+                            <n-number-animation from="0" :to="stats.result_user_online_basic.login_cnt_06_12" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>12点至19点上线次数 <br/>Times of Login bewteen 12 to 19:00 </template>
+                            <n-number-animation from="0" :to="stats.result_user_online_basic.login_cnt_12_19" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>19点至6点上线次数 <br/>Times of Login bewteen 19 to 6:00 </template>
+                            <n-number-animation from="0" :to="stats.result_user_online_basic.login_cnt_19_06" show-separator/>
+                        </n-statistic>                                      
                     </n-space>
                 </n-card>
                 <n-card>
@@ -248,6 +260,19 @@
                         </n-modal>                                              
                 </n-card>
                 <n-card>
+                    <template #header>干员招募 / Operators Recruitment</template>
+                        <n-button secondary type="info" @click="showMostRecruitment=true">
+                            <template #icon><OpenIcon/></template>
+                            各稀有度招募最多次的干员列表 / List of Operators with the Most Recruitment in Rarities
+                        </n-button>
+                        <n-modal v-model:show="showMostRecruitment">
+                            <n-card style="width: 800px">
+                                <template #header>各稀有度招募最多次的干员列表 / List of Operators with the Most Recruitment in Rarities</template>
+                                <n-data-table :columns="RecCols" :data="getRecData(stats.result_char_get.char_get_most)" size="small" class="datatable" virtual-scroll max-height="500"></n-data-table>
+                            </n-card>
+                        </n-modal>                                              
+                </n-card>
+                <n-card>
                     <template #header>集成战略 / Integrated Strategies</template>
                     <n-space>
                         <n-statistic>
@@ -311,6 +336,17 @@ export default {
                 {title: '首次获得时间 / First Obtained Time', key:'char_first_get_ts',sorter: (row1, row2) => row1.char_first_get_ts - row2.char_first_get_ts, render: (row) => {
                     return this.dateFormatter(row.char_first_get_ts)
                 }},
+            ],
+            showMostRecruitment: false,
+            RecCols:[
+                {title: '稀有度 / Rarity', key: 'rarity', sorter: (row1, row2) => row1.rarity - row2.rarity},
+                {title: '干员 / Operator', key:'char_id', render: (row) => {
+                    return h('img', {
+                            src: this.getCharAvatar(row.charId),
+                            style: {width: '48px'}
+                    })
+                }},
+                {title: '招募次数 / Recruitment Times', key:'char_get_cnt_histroy',sorter: (row1, row2) => row1.char_get_cnt_histroy - row2.char_get_cnt_histroy},
             ]
         }
     },
@@ -373,6 +409,15 @@ export default {
             //get the avatar of the character
             return 'https://aceship.github.io/AN-EN-Tags/img/avatars/'+char_code+'.png'
         },
+        getRecData(input){
+            var data = [];
+            for(var rarity in input){
+                var row = input[rarity][0];
+                row.rarity = rarity;
+                data.push(row);
+            }
+            return data;
+        }
     }
 }
 </script>
