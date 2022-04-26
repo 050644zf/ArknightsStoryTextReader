@@ -9,10 +9,26 @@
                             Analysis of the Number of characters/words in the Events
                         </n-h2>
                     </n-space>
-                  
                 </n-space>
                 <template #suffix>
                     <n-button text @click="$router.push('/'+$route.params.server+'/analysis')">
+                        <n-icon size="32">
+                            <ForwardIcon/>
+                        </n-icon>
+                    </n-button>
+                </template>  
+            </n-list-item>
+            <n-list-item>
+                <n-space item-style="display:flex;" align="center">
+                    <n-space item-style="display:flex;" align="baseline">
+                        <n-h2 prefix="bar">
+                            明日方舟特别回顾 (仅支持简中服)<br/>
+                            Arknight Journey Review (CN server only)
+                        </n-h2>
+                    </n-space>
+                </n-space>
+                <template #suffix>
+                    <n-button text @click="$router.push('/'+$route.params.server+'/stats')">
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>

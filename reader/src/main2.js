@@ -9,6 +9,7 @@ import eventpage from './ASTRv2/eventpage.vue'
 import contentpage from './ASTRv2/contentpage.vue'
 import exportpage from './ASTRv2/export.vue'
 import analysis from './ASTRv2/misc/analysis.vue'
+import stats from './ASTRv2/misc/stats.vue'
 
 const routes = [
     { 
@@ -20,6 +21,7 @@ const routes = [
             { path: 'content',name:'content', component: contentpage },
             { path: 'export',name:'export', component: exportpage },
             { path: 'analysis',name:'analysis', component: analysis },
+            { path: 'stats',name:'stats', component: stats },
         ]
     },
     {path:'/',redirect:'/zh_CN/menu'}
