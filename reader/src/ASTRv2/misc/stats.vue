@@ -180,7 +180,7 @@
                 </n-card>
                 <n-card>
                     <template #header>线索交流 / Clues Exchange</template>
-                    <n-space>
+                    <n-space justify="space-between">
                         <n-statistic>
                             <template #label>总线索交换数 <br/># of Total Clues Exchanged</template>
                             <n-number-animation from="0" :to="stats.result_clue.clue_total_cnt"/>
@@ -205,7 +205,7 @@
                 </n-card>
                 <n-card>
                     <template #header>好友助战数据 / Friend Assist Data</template>
-                    <n-space>
+                    <n-space justify="space-between">
                         <n-statistic>
                             <template #label>助战被使用次数 <br/># of Times the Assist being Used</template>
                             <n-number-animation from="0" :to="stats.result_assist.char_assist_used_cnt"/>
@@ -218,7 +218,7 @@
                 </n-card>
                 <n-card>
                     <template #header>助理数据 / Secretary Data</template>
-                    <n-space>
+                    <n-space justify="space-between">
                         <n-statistic>
                             <template #label>任命时间最长助理 <br/>Secretary Assigned for the Longest Time</template>
                             <img :src="getCharAvatar(stats.result_char_secretary_favor.charid)" style="width:64px;"> 
@@ -274,7 +274,7 @@
                 </n-card>
                 <n-card>
                     <template #header>集成战略 / Integrated Strategies</template>
-                    <n-space>
+                    <n-space justify="space-between">
                         <n-statistic>
                             <template #label>通过节点数<br/># of Nodes Passed</template>
                             <n-number-animation from="0" :to="stats.result_rouge.node_pass_cnt" show-seperator/> 
