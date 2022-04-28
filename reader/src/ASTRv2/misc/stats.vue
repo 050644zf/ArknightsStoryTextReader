@@ -179,6 +179,76 @@
                     </n-space>                    
                 </n-card>
                 <n-card>
+                    <template #header>最佳干员 / Best Operator</template>
+                    <n-space justify="space-around">
+                        <n-statistic>
+                            <template #label>最佳干员 <br/>Best Operator</template>
+                            <img :src="getCharAvatar(stats.result_char_best_partner.char_best_partner_list[0].charId)" style="width:64px;"> 
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>使用次数 <br/>Times of Appearance</template>
+                            <n-number-animation from="0" :to="stats.result_char_best_partner.char_best_partner_list[0].char_use_cnt" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>危机合约最佳战绩 <br/>Best Score in C.C.</template>
+                            <template #prefix>{{stats.result_char_best_partner.char_best_partner_list[0].season_no}} Lv.</template>
+                            <n-number-animation from="0" :to="stats.result_char_best_partner.char_best_partner_list[0].best_scores" show-separator/>
+                        </n-statistic>                        
+                    </n-space>
+                </n-card>
+                <n-card>
+                    <template #header>危机合约 / Contingency Contracts</template>
+                    <n-space vertical>
+                        <n-card>
+                            <template #header>首次通过危机等级18 / C.C. Level 18 First Clear</template>
+                            <n-space>
+                                <n-statistic>
+                                    <template #label>时间 <br/> Time</template>
+                                    {{dateFormatter(stats.result_crisis_clear.first_gt18_scores_ts)}}
+                                </n-statistic>
+                                <n-statistic>
+                                    <template #label>季度 <br/> Season</template>
+                                    {{stats.result_crisis_clear.first_gt18_scores_act_no}}
+                                </n-statistic>
+                                <n-statistic>
+                                    <template #label>阵容 <br/> Team</template>
+                                    <n-space>
+                                        <div v-for="char in stats.result_crisis_clear.first_gt18_scores_squad" :key="char.charId">
+                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />                                            
+                                        </div>
+                                    </n-space>
+                                </n-statistic>                                    
+                            </n-space>
+                        </n-card>
+                        <n-card>
+                            <template #header>最高危机等级 / Best C.C. Level Cleared</template>
+                            <n-space>
+                                <n-statistic>
+                                    <template #label>时间 <br/> Time</template>
+                                    {{dateFormatter(stats.result_crisis_clear.best_scores_ts)}}
+                                </n-statistic>
+                                <n-statistic>
+                                    <template #label>赛季 <br/> Season</template>
+                                    {{stats.result_crisis_clear.best_scores_act_no}}
+                                </n-statistic>
+                                <n-statistic>
+                                    <template #label>危机等级 <br/> C.C. Level</template>
+                                    <template #prefix>Lv.</template>
+                                    <n-number-animation from="0" :to="stats.result_crisis_clear.best_scores"/>
+                                </n-statistic>
+                                <n-statistic>
+                                    <template #label>阵容 <br/> Team</template>
+                                    <n-space>
+                                        <div v-for="char in stats.result_crisis_clear.best_scores_squad" :key="char.charId">
+                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />                                            
+                                        </div>
+                                    </n-space>
+                                </n-statistic>                                    
+                            </n-space>
+                        </n-card>
+                    </n-space>
+                </n-card>
+                <n-card>
                     <template #header>线索交流 / Clues Exchange</template>
                     <n-space justify="space-around">
                         <n-statistic>
