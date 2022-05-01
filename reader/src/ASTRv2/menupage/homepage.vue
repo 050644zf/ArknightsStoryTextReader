@@ -57,6 +57,7 @@
                 <n-h4>wv 0.95</n-h4>
                 <n-oi>
                     <n-li>Add "Arknights Journey Review" in misc</n-li>
+                    <n-li>Add loading screen</n-li>
                 </n-oi>
                 <n-h4>wv 0.94</n-h4>
                 <n-oi>

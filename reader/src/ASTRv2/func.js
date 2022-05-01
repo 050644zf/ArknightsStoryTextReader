@@ -35,7 +35,7 @@ export default {
     hideName: hideName,
     storyFile: storyFile,
     storyData: storyData,
-    intermezzi: ['act9d0', 'act18d0', 'act18d3'],
+    intermezzi: ['act9d0', 'act18d0', 'act18d3','act17side'],
     wversion: wversion,
     isOldversion: isOldversion,
     parseContent(content){

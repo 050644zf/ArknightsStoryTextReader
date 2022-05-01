@@ -3,6 +3,12 @@
     <router-view v-slot="{ Component }">
     <transition name="fade">
         <component :is="Component" v-if="isDataLoaded"/>
+        <n-layout-content v-else >
+            <n-space vertical align="center" class="loading" item-style="display:flex;">
+                <n-spin size="large" />
+                <n-progress type="line" :percentage="loadingProgress" :indicator-placement="'inside'" :status="isDataLoaded?'success':isError?'error':'info'" :processing="!isDataLoaded" style="width: 500px"/>
+            </n-space>
+        </n-layout-content>
     </transition>
     </router-view>
     
@@ -26,6 +32,8 @@ export default {
             dialog: useDialog(),
             i18n: i18n,
             isDataLoaded: false,
+            loadingProgress: 0,
+            isError: false
         };
     },
     metaInfo(){
@@ -73,12 +81,13 @@ export default {
         },
         async initServerData(){
             this.loadingbar.start();
+            this.loadingProgress = 0;
             try{
-                let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => res.json());
-                let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => res.json());
-                let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => res.json());
-                let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => res.json());
-                let wordCountData = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/wordcount.json').then(res => res.json());
+                let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => {this.loadingProgress = 10;return res.json()});
+                let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => {this.loadingProgress = 20;return res.json()});
+                let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => {this.loadingProgress = 30;return res.json()});
+                let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => {this.loadingProgress = 40;return res.json()});
+                let wordCountData = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/wordcount.json').then(res => {this.loadingProgress = 50;return res.json()});
                 let eventList = await this.getEventList(menudata, chardict);
                 chapterdata = await this.getMainthemeData(chapterdata, eventList);
                 window.sessionStorage.setItem('server', this.server);
@@ -88,10 +97,12 @@ export default {
                 window.sessionStorage.setItem('eventList', JSON.stringify(eventList));
                 window.sessionStorage.setItem('chapterdata', JSON.stringify(chapterdata));
                 window.sessionStorage.setItem('wordCountData', JSON.stringify(wordCountData));
+                this.loadingProgress = 100;
                 this.loadingbar.finish();
                 this.isDataLoaded = true;                
             }catch(e){
                 this.loadingbar.error();
+                this.isError = true;
                 console.log(e);
                 this.dialog.warning({
                     title: 'Fail to Load Event Data',
@@ -164,3 +175,10 @@ export default {
     }
 };
 </script>
+
+<style>
+.loading{
+    /*Center the loading spin */
+    margin: 2% 15%;
+}
+</style>
