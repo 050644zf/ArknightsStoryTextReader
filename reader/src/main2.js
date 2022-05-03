@@ -10,6 +10,7 @@ import contentpage from './ASTRv2/contentpage.vue'
 import exportpage from './ASTRv2/export.vue'
 import analysis from './ASTRv2/misc/analysis.vue'
 import stats from './ASTRv2/misc/stats.vue'
+import isrecords from './ASTRv2/misc/isrecords.vue'
 
 const routes = [
     { 
@@ -22,6 +23,7 @@ const routes = [
             { path: 'export',name:'export', component: exportpage },
             { path: 'analysis',name:'analysis', component: analysis },
             { path: 'stats',name:'stats', component: stats },
+            { path: 'isrecords',name:'isrecords', component: isrecords },
         ]
     },
     {path:'/',redirect:'/zh_CN/menu'}

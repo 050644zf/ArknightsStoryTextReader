@@ -7,7 +7,7 @@
                     <n-icon><MenuIcon/></n-icon>
                     {{i18n.menu[currentLang]}}
                 </n-breadcrumb-item>
-                <n-breadcrumb-item>{{data[eventid]["name"]}}</n-breadcrumb-item>
+                <n-breadcrumb-item>{{mdata[eventid]["name"]}}</n-breadcrumb-item>
             </n-breadcrumb>
             </n-affix>
             <n-space item-style="display:flex;" align="center">
@@ -29,7 +29,7 @@
                 </n-space>
             </n-space>
             <n-list>
-                <n-list-item v-for="(story, sidx) in data[eventid]['infoUnlockDatas']" :key="sidx">
+                <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx">
                     <n-space vertical>
                         <n-space item-style="display:flex;" align="end">
                             <n-h3 style="margin:0px;" prefix="bar">{{story.storyName}}</n-h3>
@@ -61,7 +61,7 @@ export default {
     data(){
         return{
             eventid: this.$route.params.event,
-            data: window.sessionStorage.getItem('menudata')?JSON.parse(window.sessionStorage.getItem('menudata')):{},
+            mdata: window.sessionStorage.getItem('menudata')?JSON.parse(window.sessionStorage.getItem('menudata')):{},
             infodata: window.sessionStorage.getItem('infodata')?JSON.parse(window.sessionStorage.getItem('infodata')):{},
             i18n: i18n,
             currentLang: func.l,
@@ -72,9 +72,9 @@ export default {
     metaInfo(){
         //using event name as title
         return{
-            title: this.data[this.eventid]["name"] + ' | Arknights Story Text Reader',
+            title: this.mdata[this.eventid]["name"] + ' | Arknights Story Text Reader',
             meta:[
-                {vmid: 'og:title', property: 'og:title',content: this.data[this.eventid]["name"] + ' | Arknights Story Text Reader'},
+                {vmid: 'og:title', property: 'og:title',content: this.mdata[this.eventid]["name"] + ' | Arknights Story Text Reader'},
                 {vmid: 'og:image', propoty:'og:image',content: '/src/assets/favicon.png'},
             ]
         }
@@ -82,7 +82,7 @@ export default {
     created(){
         //Watch if the server data is loaded, if not reload the page
         this.$watch(
-            () => this.data,
+            () => this.mdata,
             (toParams, previousParams) => {
                 if(previousParams != toParams){
                     window.location.reload();
@@ -99,8 +99,8 @@ export default {
     },
     methods:{
         exportAll(){
-            let data = this.data[this.eventid]['infoUnlockDatas'];
-            let eventname = this.data[this.eventid].name;
+            let data = this.mdata[this.eventid]['infoUnlockDatas'];
+            let eventname = this.mdata[this.eventid].name;
             let eventid = this.eventid;
             window.localStorage.setItem("filename", eventid+"_"+eventname);
             let server = this.server;

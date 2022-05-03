@@ -35,6 +35,24 @@
                     </n-button>
                 </template>  
             </n-list-item>
+            <n-list-item>
+                <n-space item-style="display:flex;" align="center">
+                    <n-space item-style="display:flex;" align="baseline">
+                        <n-h2 prefix="bar">
+                            集成战略月度小队记录<br/>
+                            Monthly Team Records in Integrated Strategies
+                        </n-h2>
+                    </n-space>
+                </n-space>
+                <template #suffix>
+                    <n-button text @click="$router.push('/'+$route.params.server+'/isrecords')">
+                        <n-icon size="32">
+                            <ForwardIcon/>
+                        </n-icon>
+                    </n-button>
+                </template>  
+            </n-list-item>
+
         </n-list>
     </n-space>
 </template>

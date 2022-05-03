@@ -15,11 +15,18 @@
                     </n-text>
                 </n-checkbox>
             </n-space>
+            <n-space justify="right">
+                <n-text depth="3">{{i18n.unit[currentLang]}}: </n-text>
+                <n-text v-if="$route.params.server=='en_US'">{{i18n.wordCount[currentLang]}}</n-text>
+                <n-text v-else>{{i18n.charCount[currentLang]}}</n-text>
+            </n-space>
 
         <svg id="chart" >
             <g id="rects"></g>
             <g id="xAxis"></g>
             <g id="yAxis"></g>
+            <g id="yAxisLabel"></g>
+            <g id="counters"></g>
         </svg>
     </n-space>
 
@@ -90,7 +97,7 @@ export default{
                             counter += this.wordCount[eventid][story];
                         }
                         data.push({
-                            name: event.name,
+                            name: etype=='or'?event.name+' #'+event.set:event.name,
                             id: event.id,
                             type: etype,
                             value: counter
@@ -111,12 +118,22 @@ export default{
             var enterRects = bind.enter();
             var exitRects = bind.exit();
 
+            var cbind = d3.select('#counters').selectAll('text').data(this.data);
+            var updateCounters = cbind;
+            var enterCounters = cbind.enter();
+            var exitCounters = cbind.exit();
+
+            var labelbind = d3.select('#yAxisLabel').selectAll('text').data(this.data);
+            var updateLabels = labelbind;
+            var enterLabels = labelbind.enter();
+            var exitLabels = labelbind.exit();
+
             //find max value among data
             var maxValue = d3.max(this.data, (d) => d.value);
 
             var xRange = d3.scaleLinear().domain([0, maxValue]).range([0, this.barChartWidth - this.barChartPadding.left - this.barChartPadding.right]);
 
-            var yRange = d3.scaleBand().domain(this.data.map((d) => d.name)).range([0, this.barChartHeight - this.barChartPadding.top - this.barChartPadding.bottom]).paddingInner(0.1);
+            var yRange = d3.scaleBand().domain(this.data.map((d) => d.id)).range([0, this.barChartHeight - this.barChartPadding.top - this.barChartPadding.bottom]).paddingInner(0.1);
 
             var typeIdx = d3.scaleOrdinal().domain(this.eventType).range([0, 1, 2, 3, 4]);
 
@@ -128,24 +145,67 @@ export default{
 
             enterRects.append('rect')
                 .attr('x', (d) => this.barChartPadding.left)
-                .attr('y', (d) => yRange(d.name) + this.barChartPadding.top)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top)
                 .attr('width', (d) => xRange(d.value))
                 .attr('height', yRange.bandwidth())
                 .attr('fill', (d) => colorFunc[typeIdx(d.type)]);
 
             updateRects.attr('x', (d) => this.barChartPadding.left)
-                .attr('y', (d) => yRange(d.name) + this.barChartPadding.top)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top)
                 .attr('width', (d) => xRange(d.value))
                 .attr('height', yRange.bandwidth())
                 .attr('fill', (d) => colorFunc[typeIdx(d.type)]);
             
             exitRects.remove();
 
+            enterCounters.append('text')
+                .attr('x', (d) => (d.value > maxValue / 2) ? this.barChartPadding.left + xRange(d.value) - 5 : this.barChartPadding.left + xRange(d.value) +5)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top + yRange.bandwidth() / 2)
+                .attr('text-anchor', (d) => (d.value > maxValue / 2) ? 'end' : 'start')
+                .attr('dominant-baseline', 'central')
+                .attr('fill', '#ffffff')
+                .attr('font-size', '12px')
+                .text((d) => d3.format(',')(d.value));
+
+            updateCounters.attr('x', (d) => (d.value > maxValue / 2) ? this.barChartPadding.left + xRange(d.value) - 5 : this.barChartPadding.left + xRange(d.value) +5)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top + yRange.bandwidth() / 2)
+                .attr('text-anchor', (d) => (d.value > maxValue / 2) ? 'end' : 'start')
+                .attr('dominant-baseline', 'central')
+                .attr('fill', '#ffffff')
+                .attr('font-size', '12px')
+                .text((d) => d3.format(',')(d.value));
+            
+            exitCounters.remove();
+
+            enterLabels.append('text')
+                .attr('x', this.barChartPadding.left -5)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top + yRange.bandwidth() / 2)
+                .attr('class','tick')
+                .attr('text-anchor', 'end')
+                .attr('dominant-baseline', 'central')
+                .attr('fill', '#ffffff')
+                .attr('font-size', '12px')
+                .text((d) => d.name);
+            
+            updateLabels.attr('x', this.barChartPadding.left -5)
+                .attr('y', (d) => yRange(d.id) + this.barChartPadding.top + yRange.bandwidth() / 2)
+                .attr('class','tick')
+                .attr('text-anchor', 'end')
+                .attr('dominant-baseline', 'central')
+                .attr('fill', '#ffffff')
+                .attr('font-size', '12px')
+                .text((d) => d.name);
+
+            exitLabels.remove();
+            
+            
+
             var xAxis = d3.axisTop(xRange).ticks(5);
-            var yAxis = d3.axisLeft(yRange);
+            var yAxis = d3.axisLeft(yRange).tickFormat((d) => d.name);
             d3.select('#xAxis').call(xAxis).attr('transform', 'translate(' + this.barChartPadding.left + ',' + this.barChartPadding.top + ')');
-            d3.select('#yAxis').call(yAxis).attr('transform', 'translate(' + this.barChartPadding.left + ',' + this.barChartPadding.top + ')')
+            d3.select('#yAxis').call(yAxis).attr('transform', 'translate(' + this.barChartPadding.left + ',' + this.barChartPadding.top + ')');
             d3.select('#xAxis').selectAll('line').attr('y2', this.barChartHeight - this.barChartPadding.bottom).attr('stroke', 'rgba(255,255,255,0.2');
+
 
         }
     },
@@ -156,7 +216,7 @@ export default{
 
 <style>
 .analysis{
-    margin-left: 15%;
+    margin: 2% 15%;
 }
 
 </style>

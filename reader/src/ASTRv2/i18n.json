@@ -30,5 +30,9 @@
     "optionTraceDisabled":{"zh_CN":"由于技术问题，选项跟踪在该故事已被禁用","en_US":"Option Tracing Feature is disabled in this story due to technical issues.","ja_JP":"Option Tracing Feature is disabled in this story due to technical issues.","ko_KR":"Option Tracing Feature is disabled in this story due to technical issues.", "zh_TW":"由於技術問題，選項跟踪在該故事已被禁用"},
     "wordCount":{"zh_CN":" 词","en_US":" Words ","ja_JP":" Words ","ko_KR":" Words ", "zh_TW":" 詞"},
     "charCount":{"zh_CN":" 字","en_US":" Characters ","ja_JP":" Characters ","ko_KR":" Characters ", "zh_TW":" 字"},
-    "length":{"zh_CN":"长度","en_US":"Length ","ja_JP":"Length ","ko_KR":"Length ", "zh_TW":"長度"}
+    "length":{"zh_CN":"长度","en_US":"Length ","ja_JP":"Length ","ko_KR":"Length ", "zh_TW":"長度"},
+    "unit":{"zh_CN":" 单位","en_US":" Unit ","ja_JP":" Unit ","ko_KR":" Unit ", "zh_TW":" 單位"},
+    "loadDialog":{"zh_CN":"加载对话","en_US":"Load Dialog","ja_JP":"Load Dialog","ko_KR":"Load Dialog", "zh_TW":"加載對話"},
+    "unfold":{"zh_CN":"展开","en_US":"Unfold","ja_JP":"Unfold","ko_KR":"Unfold", "zh_TW":"展開"},
+    "fold":{"zh_CN":"折叠","en_US":"Fold","ja_JP":"Fold","ko_KR":"Fold", "zh_TW":"折疊"}
 }
