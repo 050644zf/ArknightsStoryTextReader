@@ -1,0 +1,35 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: ASTR Auto Updater (Weekly)
+
+on:
+  schedule:
+  - cron: 0 0 * * 1
+    
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        repository: Kengxxiao/ArknightsGameData
+        path: ArknightsGameData
+    - uses: actions/checkout@v2
+      with:
+        repository: 050644zf/ArknightsStoryJson
+        path: ArknightsStoryJson
+        token: ${{secrets.PAT}}
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.8"
+    - name: updater
+      run: |
+        python ./jsonconvert.py --all
+        cd ArknightsStoryJson 
+        git push
