@@ -12,9 +12,9 @@
                 所有访问数据均于本地浏览器处理，不会上传至任何服务器。<br/>
                 All data is handled locally in the browser, and will not be uploaded to any server.
             </n-alert>
-            <n-alert type="info" closable>
-                更多数据将会尽快加入。<br/>
-                More data will be added soon.
+            <n-alert type="warning" title="注意！/ Warning!" closable>
+                回顾网页可能于2022年5月29日03:59分(UTC+8)关闭，建议保存所需文件以备后期查看<br/>
+                The review site maybe closed at 2022-05-29 03:59(UTC+8), saving the files for later viewing is suggested.
             </n-alert>            
             <n-hr></n-hr>
             <n-steps>
@@ -54,8 +54,8 @@
                                 </template>
                                 story
                             </n-button>                                             -->
-                            <n-a href="https://ak.hypergryph.com/activity/journey-review/section/data/stats">stats</n-a>
-                            <n-a href="https://ak.hypergryph.com/activity/journey-review/section/data/story">story</n-a>
+                            <n-text code>https://ak.hypergryph.com/activity/journey-review/section/data/stats</n-text>
+                            <n-text code>https://ak.hypergryph.com/activity/journey-review/section/data/story</n-text>
                         </n-space>
                     </n-space>
                 </n-step>

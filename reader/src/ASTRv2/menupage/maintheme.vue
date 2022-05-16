@@ -1,5 +1,6 @@
 <template>
-    <n-steps vertical>
+    <n-space class="maintheme">
+    <n-steps vertical >
         <template #finish-icon>
 
         </template>
@@ -35,6 +36,7 @@
             <!-- </n-carousel> -->
         </n-step> 
     </n-steps>
+    </n-space>
 </template>
 
 <script>

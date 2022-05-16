@@ -80,6 +80,6 @@ export default {
     min-height: 600px;
 }
 .menucontent{
-    margin-left:15%;
+    margin: 0% 0% 2% 15%;
 }
 </style>

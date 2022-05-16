@@ -7,8 +7,8 @@
         </div>
         <div class="warmtip" style="background-color: rgb(43 118 61); padding: 5px;" v-show="isOldversion">
             <span style="float: left;margin-left: 20px;">
-                Arknights Story Text Reader has been updated! Click the version number on the top right corner to see the changelog.<br/>
-                明日方舟剧情文本阅读器已更新！点击右上角的版本号可查看更新日志。
+                New version of Arknights Story Text Reader has been released! <a href='https://050644zf.github.io/ArknightsStoryTextReader/index2.html'>Check it out!</a><br/>
+                明日方舟剧情文本阅读器已发布新版本，<a href='https://050644zf.github.io/ArknightsStoryTextReader/index2.html'>点此访问新版！</a>
             </span>
             <span class="material-icons" style="float: right;" @click="hide2()">clear</span>
             <div style="clear: both;"></div>
@@ -79,7 +79,7 @@ data(){
         showDelay: func.showDelay,
         hideName: func.hideName,
         langList: func.langList,
-        isOldversion: func.isOldversion
+        isOldversion: true
     }
 },
 methods:{

@@ -1,11 +1,11 @@
 <template>
     <Header @push-server="pushServer"></Header>
-    <router-view v-slot="{ Component }">
+    <router-view v-slot="{ Component }" style="min-height: 80vh">
     <transition name="fade">
         <component :is="Component" v-if="isDataLoaded"/>
         <n-layout-content v-else >
-            <n-space vertical align="center" class="loading" item-style="display:flex;">
-                <n-spin size="large" />
+            <n-space vertical align="center" class="loading" item-style="display:flex;" justify="center">
+                <n-spin size="large" style="padding:5px"/>
                 <n-progress type="line" :percentage="loadingProgress" :indicator-placement="'inside'" :status="isDataLoaded?'success':isError?'error':'info'" :processing="!isDataLoaded" style="width: 500px"/>
             </n-space>
         </n-layout-content>
@@ -180,5 +180,6 @@ export default {
 .loading{
     /*Center the loading spin */
     margin: 2% 15%;
+    min-height: 90vh;
 }
 </style>

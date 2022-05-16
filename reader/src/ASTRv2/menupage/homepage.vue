@@ -1,12 +1,16 @@
 <template>
     <n-space vertical class="homepage">
+        <n-alert type="info" title="We're Seeking Translators!" closable>
+            ASTR is seeking Japanese and Korean translators to localize the interface of ASTR.<br/>
+            Contact nightsky#3319 in discord for more info. Thank you for your contribution!
+        </n-alert>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br/>
             Welcome to Arknights Story Text Reader!
         </n-h1>
         <n-text>
-            这是新版ASTR的beta测试，尚未还原旧版ASTR的所有功能，且暂未优化移动端网页。<br/>
-            This is the beta version of ASTR, and it is not yet fully supporting the features in the old version of ASTR, and it is not optimized for mobile.<br/>
+            这是新版ASTR的beta测试，暂未优化移动端网页。<br/>
+            This is the beta version of ASTR and it is not yet optimized for mobile.<br/>
             <br/>
             你可以<n-a href="https://050644zf.github.io/ArknightsStoryTextReader/?s=zh_CN">单击此处</n-a>访问旧版ASTR。<br/>
             You can <n-a href="https://050644zf.github.io/ArknightsStoryTextReader/?s=zh_CN">click here</n-a> to visit the old version of ASTR.<br/><br/>
@@ -38,11 +42,12 @@
         </n-text>
         <n-ul>
             <n-li>数据资源&更新自动化支持 / Data Source & Auto Update Support: <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a></n-li>
-            <n-li>剧情图片资源 / Story Images Source: <n-a href="https://github.com/Aceship/AN-EN-Tags">Aceship/AN-EN-Tags</n-a></n-li>
+            <n-li>剧情&干员图片资源 / Stories&Operators' Images Source: <n-a href="https://github.com/Aceship/AN-EN-Tags">Aceship/AN-EN-Tags</n-a></n-li>
             <n-li>活动封面资源 / Event Banners Source: <n-a href="https://prts.wiki/">PRTS Wiki</n-a></n-li>
             <n-li>UI 框架 / UI Framework: <n-a href="https://www.naiveui.com/">Naive UI</n-a></n-li>
             <n-li>图标 / Icon: <n-a href="https://www.xicons.org/#/">xicons</n-a></n-li>
             <n-li>表格工具 / Spreadsheet Toolkit: <n-a href="https://github.com/SheetJS/sheetjs">Sheetjs</n-a></n-li>
+            <n-li>数据可视化 / Data Visualization: <n-a href="https://github.com/d3/d3">D3.js</n-a></n-li>
         </n-ul>
         <n-hr/>
 
@@ -54,6 +59,11 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.97</n-h4>
+                <n-oi>
+                    <n-li>Optimized the style of website</n-li>
+                    <n-li>Optimized some content in misc</n-li>
+                </n-oi>                 
                 <n-h4>wv 0.96</n-h4>
                 <n-oi>
                     <n-li>Add "Monthly Team Records" in misc</n-li>

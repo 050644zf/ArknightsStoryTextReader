@@ -1,10 +1,11 @@
 <template>
 <metainfo/>
-<n-layout>
+<n-layout class="site">
     <n-config-provider :theme="darkTheme">
         <n-loading-bar-provider>
         <n-dialog-provider>
             <router-view></router-view>
+            
         </n-dialog-provider>
         </n-loading-bar-provider>
         <Footer></Footer>

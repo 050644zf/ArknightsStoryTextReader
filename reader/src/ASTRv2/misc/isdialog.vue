@@ -22,8 +22,8 @@
                     <n-text v-if="line.prop=='Title'">{{line.content}}</n-text>
                     <n-text v-if="line.prop=='Div'">{{line.content}}</n-text>
                     <n-space v-if="line.prop=='Dialog'" item-style="display:flex" align="center">
-                        <img :src="getCharAvatar(line.attributes.head)" style="width:40px"/>
-                        <n-card content-style="padding:10px">{{line.content}}</n-card>
+                        <img :src="getCharAvatar(line.attributes.head)" style="width:40px" class="avatar"/>
+                        <n-card content-style="padding:10px" class="chatbox">{{line.content}}</n-card>
                     </n-space>
                     
                 </div>
@@ -117,5 +117,11 @@ export default {
 </script>
 
 <style>
-
+.avatar{
+    background-color: black;
+    border: 1px solid #777;
+    border-radius: 10%;
+    /*Add shadow to southeast*/ 
+    box-shadow: 5 5 5px black;
+}
 </style>
