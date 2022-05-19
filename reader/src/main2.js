@@ -11,6 +11,7 @@ import exportpage from './ASTRv2/export.vue'
 import analysis from './ASTRv2/misc/analysis.vue'
 import stats from './ASTRv2/misc/stats.vue'
 import isrecords from './ASTRv2/misc/isrecords.vue'
+import act17side_log from './ASTRv2/misc/act17side_log.vue'
 
 const routes = [
     { 
@@ -24,6 +25,7 @@ const routes = [
             { path: 'analysis',name:'analysis', component: analysis },
             { path: 'stats',name:'stats', component: stats },
             { path: 'isrecords',name:'isrecords', component: isrecords },
+            { path: 'act17side_log',name:'act17side_log', component: act17side_log },
         ]
     },
     {path:'/',redirect:'/zh_CN/menu'}

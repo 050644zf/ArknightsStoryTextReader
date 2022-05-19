@@ -52,7 +52,23 @@
                     </n-button>
                 </template>  
             </n-list-item>
-
+            <n-list-item>
+                <n-space item-style="display:flex;" align="center">
+                    <n-space item-style="display:flex;" align="baseline">
+                        <n-h2 prefix="bar">
+                            愚人号行动日志<br/>
+                            Operation Log in Stultifera Navis
+                        </n-h2>
+                    </n-space>
+                </n-space>
+                <template #suffix>
+                    <n-button text @click="$router.push('/'+$route.params.server+'/act17side_log')">
+                        <n-icon size="32">
+                            <ForwardIcon/>
+                        </n-icon>
+                    </n-button>
+                </template>                  
+            </n-list-item>
         </n-list>
     </n-space>
 </template>

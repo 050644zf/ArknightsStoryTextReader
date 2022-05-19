@@ -28,6 +28,20 @@
                     </n-button>
                 </n-space>
             </n-space>
+            <n-alert type="info" v-if="eventid=='act17side'">
+                <n-space justify="space-between" align="center" item-style="display:flex;">
+                    <n-text>
+                        查看愚人号活动行动日志<br/>
+                        Check Operation Log in Stultifera Navis                                 
+                    </n-text>
+                    <n-button text @click="$router.push('/'+$route.params.server+'/act17side_log')">
+                        <n-icon size="32">
+                            <ForwardIcon/>
+                        </n-icon>
+                    </n-button>                    
+                </n-space>
+
+            </n-alert>
             <n-list>
                 <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx">
                     <n-space vertical>
