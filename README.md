@@ -11,7 +11,7 @@ The python scripts for this repository have benn move to [ASTR-Script](https://g
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ja_JP/menu">JP</a> |
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ko_KR/menu">KR</a> |
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/en_US/menu">EN</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_TW/menu">TW</a> |
+    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_TW/menu">TW</a> 
 </p>
 
 <p align="center">
