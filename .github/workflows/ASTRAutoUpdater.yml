@@ -6,10 +6,6 @@ name: ASTR Auto Updater
 on:
   repository_dispatch:
     type: [update]
-  # trigger on push
-  push:
-    branches:
-      - master
 
     
 
