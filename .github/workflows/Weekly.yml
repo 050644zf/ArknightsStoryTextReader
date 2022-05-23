@@ -15,6 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        repository: 050644zf/ASTR-Script
+        token: ${{secrets.PAT}} 
     - uses: actions/checkout@v2
       with:
         repository: Kengxxiao/ArknightsGameData
