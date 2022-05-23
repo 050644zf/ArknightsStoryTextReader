@@ -1,6 +1,6 @@
 # Arknights Story Text Reader
 
-The python scripts for this repository have benn move to [ASTR-Script](https://github.com/050644zf/ASTR-Script)
+The python scripts for this repository have been move to [ASTR-Script](https://github.com/050644zf/ASTR-Script)
 
 <p align="center">
     <img src="reader/src/assets/favicon.png" width="75px"/>
