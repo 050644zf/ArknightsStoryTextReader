@@ -64,6 +64,7 @@
                     <n-li>Optimized the style of website</n-li>
                     <n-li>Optimized some content in misc</n-li>
                     <n-li>Add "Stultifera Navis Operation Log" in misc</n-li>
+                    <n-li>Add Warp to Story Feature</n-li>
                 </n-oi>                 
                 <n-h4>wv 0.96</n-h4>
                 <n-oi>

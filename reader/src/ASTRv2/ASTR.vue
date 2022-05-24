@@ -75,4 +75,9 @@ export default {
     content: "\e904";
 }
 
+.n-list{
+    color: rgba(0,0,0,0) !important;
+    --n-color: rgba(0,0,0,0) !important;
+}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <Header @push-server="pushServer"></Header>
+    <Header @push-server="pushServer" :loaded="isDataLoaded"></Header>
     <router-view v-slot="{ Component }" style="min-height: 80vh">
     <transition name="fade">
         <component :is="Component" v-if="isDataLoaded"/>

@@ -34,5 +34,6 @@
     "unit":{"zh_CN":" 单位","en_US":" Unit ","ja_JP":" Unit ","ko_KR":" Unit ", "zh_TW":" 單位"},
     "loadDialog":{"zh_CN":"加载对话","en_US":"Load Dialog","ja_JP":"Load Dialog","ko_KR":"Load Dialog", "zh_TW":"加載對話"},
     "unfold":{"zh_CN":"展开","en_US":"Unfold","ja_JP":"Unfold","ko_KR":"Unfold", "zh_TW":"展開"},
-    "fold":{"zh_CN":"折叠","en_US":"Fold","ja_JP":"Fold","ko_KR":"Fold", "zh_TW":"折疊"}
+    "fold":{"zh_CN":"折叠","en_US":"Fold","ja_JP":"Fold","ko_KR":"Fold", "zh_TW":"折疊"},
+    "warp":{"zh_CN":"跳转到故事...","en_US":"Warp to Story...","ja_JP":"Warp to Story...","ko_KR":"Warp to Story...", "zh_TW":"跳轉到故事..."}
 }

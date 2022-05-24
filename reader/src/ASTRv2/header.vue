@@ -19,6 +19,7 @@
             </n-space>
 
             <n-space justify="space-around" item-style="display: flex;" align="center">
+                <Warp v-if="loaded"/>
                 <n-dropdown :options="serverOpts" @select="pushServer" class="serverSelect">
                     <n-button text>
                         <template #icon>
@@ -48,6 +49,7 @@ import { LanguageRound, ArrowDropDownSharp, SettingsOutlined } from "@vicons/mat
 import i18n from './i18n.json';
 import func from './func.js';
 import settings from './settings.vue';
+import warp from './warp.vue';
 
 export default {
     data(){
@@ -58,6 +60,7 @@ export default {
             server: this.$route.params.server,
         }
     },
+    props: ['loaded'],
     created(){
         this.$watch(
             () => this.$route.params,
@@ -73,6 +76,7 @@ export default {
         ArrowDropDown:ArrowDropDownSharp,
         SettingsIcon:SettingsOutlined,
         Settings: settings,
+        Warp: warp,
     },
     emits: ['pushServer'],
     methods:{
