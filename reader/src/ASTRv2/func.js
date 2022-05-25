@@ -7,6 +7,7 @@ var hidetip = window.localStorage.getItem('hidetip');
 var showDelay = window.localStorage.getItem('showDelay');
 var hideName = window.localStorage.getItem('hideName');
 var wversion = window.localStorage.getItem('wversion');
+var showbg = window.localStorage.getItem('showbg');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
 var isOldversion = false;
@@ -21,6 +22,7 @@ if(!doctor){doctor = "{@nickname}"};
 if(!hidetip){hidetip = false};
 if(!showDelay){showDelay = 'y'};
 if(!hideName){hideName = 'n'};
+if(!showbg){showbg = 'y'};
 if(!wversion||wversion<currentwversion){wversion = currentwversion; window.localStorage.setItem('wversion',wversion);isOldversion = true};
 
 
@@ -32,6 +34,7 @@ export default {
     doctor: doctor,
     hidetip: hidetip,
     showDelay: showDelay,
+    showbg: showbg,
     hideName: hideName,
     storyFile: storyFile,
     storyData: storyData,

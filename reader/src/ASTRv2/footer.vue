@@ -1,15 +1,22 @@
 <template>
     <n-layout-footer >
         <n-space justify="space-around" class="footer">
-            <n-space justify="space-around">
+            <n-space justify="space-around" class="links" item-style="display:flex" align="center">
                 <n-button text @click="load('https://github.com/050644zf/ArknightsStoryTextReader')">
                     <n-icon size="32">
                         <Github/>
                     </n-icon>
                 </n-button>
+                <n-divider vertical />
                 <n-button text @click="load('https://discord.gg/rihq')">
                     <n-icon size="32">
                         <Discord/>
+                    </n-icon>
+                </n-button>
+                <n-divider vertical />
+                <n-button text @click="load('https://www.patreon.com/m31nightsky/membership?')">
+                    <n-icon size="32">
+                        <Patreon/>
                     </n-icon>
                 </n-button>
             </n-space>
@@ -18,7 +25,6 @@
                 当前状态 / Current Status: <br/>
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/build.yml/badge.svg">&nbsp;
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg"><br/>
-                <div v-is="'script'" type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1281065135&web_id=1281065135"/>
             </n-text>
         </n-space>
 
@@ -26,7 +32,7 @@
 </template>
 
 <script>
-import {Github, Discord} from "@vicons/fa";
+import {Github, Discord, Patreon} from "@vicons/fa";
 
 export default {
     data(){
@@ -36,7 +42,8 @@ export default {
     },
     components:{
         Github,
-        Discord
+        Discord,
+        Patreon
     },
     created(){
         fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/log.json').then(r=>r.json()).then(s=>{this.latestUpdate=s['latestCommitTime']});
@@ -64,4 +71,5 @@ export default {
     margin: 5%;
     padding: 20px;
 }
+
 </style>

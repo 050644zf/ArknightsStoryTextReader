@@ -1,25 +1,39 @@
 <template>
-    <n-image  class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'"/>
+    <n-image  :class="[imgtype]" :src="`https://aceship.github.io/AN-EN-Tags/img/avg/${imgtype}/${line.attributes.image}.png`"/>
 </template>
 
 <script>
 export default {
     data(){
         return{
-            line: this.inputline
+            line: this.inputline,
+            imgtype: this.background?'backgrounds':'images'
         }
     },
     props:{
-        inputline: Object
+        inputline: Object,
+        background:{
+            type: Boolean,
+            default: false
+        }
     }
 }
 </script>
 
 <style>
-.line img{
+.line .images img{
     max-width: 500px;
     max-height: 300px;
     margin: 4px;
     margin-left: 114px;
 }
+.line .backgrounds img{
+    margin: 10px;
+    margin-left: 100px;
+    height: 150px;
+    width: 700px;
+    object-fit: none !important;
+}
+
+
 </style>

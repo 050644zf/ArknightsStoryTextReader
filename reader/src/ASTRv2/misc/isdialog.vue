@@ -21,7 +21,7 @@
                 <div v-for="(line, lidx) in rec" :key="lidx">
                     <n-text v-if="line.prop=='Title'">{{line.content}}</n-text>
                     <n-text v-if="line.prop=='Div'">{{line.content}}</n-text>
-                    <n-space v-if="line.prop=='Dialog'" item-style="display:flex" align="center">
+                    <n-space v-if="line.prop=='Dialog'" item-style="display:flex;" align="center" style="flex-wrap: nowrap">
                         <img :src="getCharAvatar(line.attributes.head)" style="width:40px" class="avatar"/>
                         <n-card content-style="padding:10px" class="chatbox">{{line.content}}</n-card>
                     </n-space>

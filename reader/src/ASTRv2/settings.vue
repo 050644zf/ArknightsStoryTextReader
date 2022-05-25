@@ -4,7 +4,7 @@
             <SettingsIcon/>
         </n-icon>
     </n-button>
-    <n-drawer v-model:show="showsettings" placement="top">
+    <n-drawer v-model:show="showsettings" placement="top" height="300">
         <n-drawer-content closable >
             <template #header>
                 <n-space item-style="display:flex;" align="center">
@@ -14,35 +14,46 @@
                     <span>{{i18n.setting[currentLang]}}</span>
                 </n-space>
             </template>
-            <n-space item-style="display:flex;" align="center">
-                <n-icon>
-                    <LangIcon/>
-                </n-icon>
-                {{i18n.currentLang[currentLang]}}: 
-                <n-radio-group v-model:value="currentLang">
-                    <n-radio-button v-for="lang in langOpts" :key="lang" :value="lang">
-                        {{lang}}
-                    </n-radio-button>
-                </n-radio-group>
-            </n-space>
-            <n-space item-style="display:flex;" align="center">
-                <n-icon>
-                    <DrNameIcon/>
-                </n-icon>
-                {{i18n.dr[currentLang]}}: 
-                <n-space item-style="display:flex;" align="center" justify="end">
-                    Dr.
-                    <n-input v-model:value="doctor" type="text" placeholder="{@nickname}"/>
+            <n-space vertical item-style="display: flex" justify="space-between">
+
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <LangIcon/>
+                    </n-icon>
+                    {{i18n.currentLang[currentLang]}}: 
+                    <n-radio-group v-model:value="currentLang">
+                        <n-radio-button v-for="lang in langOpts" :key="lang" :value="lang">
+                            {{lang}}
+                        </n-radio-button>
+                    </n-radio-group>
                 </n-space>
-                
-            </n-space>
-            <n-space item-style="display:flex;" align="center">
-                <n-icon>
-                    <BlankIcon/>
-                </n-icon>
-                {{i18n.showDelay[currentLang]}}: 
-                <n-switch v-model:value="showDelay" checked-value="y" unchecked-value="n"/>
-            </n-space>
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <DrNameIcon/>
+                    </n-icon>
+                    {{i18n.dr[currentLang]}}: 
+                    <n-space item-style="display:flex;" align="center" justify="end">
+                        Dr.
+                        <n-input v-model:value="doctor" type="text" placeholder="{@nickname}"/>
+                    </n-space>
+                    
+                </n-space>
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <BlankIcon/>
+                    </n-icon>
+                    {{i18n.showDelay[currentLang]}}: 
+                    <n-switch v-model:value="showDelay" checked-value="y" unchecked-value="n"/>
+                </n-space>
+
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <BGIcon/>
+                    </n-icon>
+                    {{i18n.showbg[currentLang]}}: 
+                    <n-switch v-model:value="showbg" checked-value="y" unchecked-value="n"/>
+                </n-space>
+            </n-space>            
 
             <template #footer>
                 <n-space item-style="display:flex;" align="center" justify="end">
@@ -69,7 +80,7 @@
 </template>
 
 <script>
-import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled } from "@vicons/material";
+import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined } from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 export default {
@@ -81,6 +92,7 @@ export default {
            doctor: func.doctor,
            showDelay: func.showDelay,
            hideName: func.hideName,
+           showbg: func.showbg,
        }
     },
     props:{
@@ -96,6 +108,7 @@ export default {
         BlankIcon: VerticalDistributeOutlined,
         SaveIcon: SaveAltOutlined,
         ResetIcon: DeleteOutlineFilled,
+        BGIcon: WallpaperOutlined,
     },
     methods:{
         save(){
@@ -103,6 +116,7 @@ export default {
             window.localStorage.setItem('showDelay', this.showDelay);
             window.localStorage.setItem('hideName', this.hideName);
             window.localStorage.setItem('lang', this.currentLang);
+            window.localStorage.setItem('showbg', this.showbg);
             window.location.reload(true);
         },
         clearSetting(){

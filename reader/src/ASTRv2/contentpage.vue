@@ -54,6 +54,7 @@
                 <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
                 <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
                 <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
+                <Showimg v-if="line.prop == 'Background' && line.attributes.image &&showbg=='y'" :inputline="line" background></Showimg>
                 
                 <div style="clear: both;"></div>
             </div>        
@@ -86,6 +87,7 @@ export default {
             i18n: i18n,
             currentLang: func.l,
             showDelay: func.showDelay,
+            showbg: func.showbg,
             loading: true,
             loadingbar: useLoadingBar(),
             dialog: useDialog(),
