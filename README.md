@@ -15,8 +15,8 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 </p>
 
 <p align="center">
-    <img src="https://visitor-badge.glitch.me/badge?page_id=050644zf.ASTR"/>&nbsp;
     <img src="https://img.shields.io/github/stars/050644zf/ArknightsStoryTextReader"/>&nbsp;
+    <img src="https://visitor-badge.glitch.me/badge?page_id=050644zf.ASTR"/>&nbsp;
     <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/build.yml/badge.svg"/>&nbsp;
     <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg"/>
 </p>
