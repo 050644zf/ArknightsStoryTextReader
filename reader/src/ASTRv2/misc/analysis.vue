@@ -151,6 +151,9 @@ export default{
                 .attr('fill', (d) => colorFunc[typeIdx(d.type)]);
 
             updateRects.attr('x', (d) => this.barChartPadding.left)
+                .transition()
+                .duration(400)
+                .ease(d3.easeCubicOut)
                 .attr('y', (d) => yRange(d.id) + this.barChartPadding.top)
                 .attr('width', (d) => xRange(d.value))
                 .attr('height', yRange.bandwidth())

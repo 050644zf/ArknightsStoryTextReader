@@ -59,6 +59,12 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.98.1</n-h4>
+                <n-oi>
+                    <n-li> Fix the wrong language issue in Monthly Squad Records, Integrated Stratgies</n-li>
+                    <n-li> Add animation in Event Characters/Words analysis</n-li>
+                    <n-li> Fix the en_US terms, thanks to <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/25">jaywyeee's PR</n-a>  </n-li>
+                </n-oi>
                 <n-h4>wv 0.98</n-h4>
                 <n-oi>
                     <n-li> Add Backgroud Support</n-li>

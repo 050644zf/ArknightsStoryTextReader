@@ -49,14 +49,15 @@ export default {
             i18n: i18n,
             currentLang: func.l,
             show: false,
-            loading: false            
+            loading: false,
+            server: this.$route.params.server,    
         }
     },
     props: ['chatid'],
     methods:{
         async loadDialog(){
             this.loading = true;
-            var path = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/zh_CN/gamedata/story/obt/rogue/'+this.chatid+'/';
+            var path = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/story/obt/rogue/'+this.chatid+'/';
             var i = 1;
             while(true){
                 try{
