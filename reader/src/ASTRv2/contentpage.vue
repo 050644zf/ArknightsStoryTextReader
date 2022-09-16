@@ -2,7 +2,7 @@
     <n-layout>
         
         <n-layout-content class="content" ref="content">
-            <n-affix :top="30" :trigger-top="30" position="fixed">
+            <n-affix :top="0" :trigger-top="30" position="fixed">
             <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
             <n-space justify="space-between" v-else item-style="display: flex;" align="center" class="breadcrumb">
                 <n-breadcrumb >
