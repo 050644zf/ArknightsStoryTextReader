@@ -58,7 +58,7 @@ export default {
                 window.location.href = "export.html";
         },
         getAvatar(){
-            return 'https://aceship.github.io/AN-EN-Tags/img/avatars/char_'+this.eventData.cid+'_'+this.eventData.cin+'.png'
+            return 'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/char_'+this.eventData.cid+'_'+this.eventData.cin+'.png'
         },
         loadStory(path){
             var req = 's='+ this.server;
