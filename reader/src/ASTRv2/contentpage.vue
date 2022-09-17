@@ -1,17 +1,16 @@
 <template>
     <n-layout>
-        
         <n-layout-content class="content" ref="content">
             <n-affix :top="30" :trigger-top="30" position="fixed">
             <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
             <n-space justify="space-between" v-else item-style="display: flex;" align="center" class="breadcrumb">
-                <n-breadcrumb >
-                    <n-breadcrumb-item  @click="$router.push('/'+$route.params.server+'/menu')">
+                <n-breadcrumb>
+                    <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
                         <n-icon><MenuIcon/></n-icon>
                         {{i18n.menu[currentLang]}}
                     </n-breadcrumb-item>
                     <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)">
-                    {{data.eventName}}
+                        {{data.eventName}}
                     </n-breadcrumb-item>
                     <n-breadcrumb-item>
                         <n-popselect :options="storyOpts" v-model:value="path" scrollable>
@@ -19,7 +18,7 @@
                                 {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
                                 <n-icon>
                                     <ArrowDropDown/>
-                                </n-icon>                            
+                                </n-icon>
                             </n-text>
                         </n-popselect>
                     </n-breadcrumb-item>
@@ -46,7 +45,7 @@
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
 
             <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" v-else>
-            
+
                 <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                 <Nameline v-if="line.prop == 'multiline'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                 <Subtitle v-if="line.prop == 'Subtitle' || line.prop == 'Sticker'" :inputline="line"></Subtitle>
@@ -55,13 +54,11 @@
                 <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
                 <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
                 <Showimg v-if="line.prop == 'Background' && line.attributes.image &&showbg=='y'" :inputline="line" background></Showimg>
-                
-                <div style="clear: both;"></div>
-            </div>        
-        </n-layout-content>
-        
-    </n-layout>
 
+                <div style="clear: both;"></div>
+            </div>
+        </n-layout-content>
+    </n-layout>
 </template>
 
 <script>
@@ -98,7 +95,7 @@ export default {
     },
     metaInfo(){
         return{
-            title: this.data.storyCode?this.data.storyCode+' '+this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader':this.data.storyName + ' - ' + this.data.avgTag + ' | Arknights Story Text Reader',
+            title: this.data.storyCode ? `${this.data.storyCode} ${this.data.storyName} - ${this.data.avgTag} | Arknights Story Text Reader` : `${this.data.storyName} - ${this.data.avgTag} | Arknights Story Text Reader`,
         }
     },
     created(){
@@ -148,7 +145,7 @@ export default {
                     content: 'This maybe because the story is not availble in this server or the story is not exist. If you sure the story is exist in this server, please summit a issue. ',
                     });
             });
-            
+
         },
         getStoryOpts(){
             var opts = [];
@@ -156,7 +153,7 @@ export default {
             for(var story of this.mdata[this.eventid]['infoUnlockDatas']){
                 opts.push({
                     value: story.storyTxt,
-                    label: story.storyCode+' '+story.storyName+' - '+story.avgTag,
+                    label: story.storyCode ? `${story.storyCode} ${story.storyName} - ${story.avgTag}` : `${story.storyName} - ${story.avgTag}`,
                 });
                 if(story.storyTxt == this.path){
                     this.storyIdx = sidx;
@@ -187,6 +184,7 @@ export default {
     background-color: rgba(0, 0, 0, 1);
     padding:5px 10px;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    border-radius: 4px;
 }
 
 </style>

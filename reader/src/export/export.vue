@@ -6,7 +6,7 @@
                 menu_open
                 </span>
                 <span class="home nt">返回上一页/Return to Last Page</span>
-            </button>            
+            </button>
         <div class="nt">当前导出列表/Current Exporting List: </div>
         <div class="exportList st">
             <table>
@@ -36,7 +36,7 @@
                     file_download
                 </span>
                 <span>导出所有/Export All</span>
-            </button>            
+            </button>
         </div>
 
         <div class="logArea xst" v-html="logs"></div>
@@ -58,7 +58,7 @@ export default {
             exportFile:null,
             logs: '',
             i18n: i18n,
-            lang: func.l, 
+            lang: func.l,
         }
     },
     created(){
@@ -93,7 +93,7 @@ export default {
                     await this.book_append_sheet(this.exportFile, sheet, story.path.split('/')[2]);
                     if(story == this.exportList.length - 1){
                         xlsx.writeFile(this.exportFile, 'export.xlsx',{type: 'file'});
-                        this.logs += 'Export Process Finished.<br/>'; 
+                        this.logs += 'Export Process Finished.<br/>';
                         }
                     });
 
@@ -102,7 +102,7 @@ export default {
                 this.exportStories().then(resolve);
             }).then(() => {
                 xlsx.writeFile(this.exportFile, this.filename+'.xlsx',{type: 'file'});
-                this.logs += 'Export Process Finished.<br/>'; 
+                this.logs += 'Export Process Finished.<br/>';
             });
         },
         async exportStories(){
@@ -176,7 +176,7 @@ export default {
                     else if(prop == 'showitem'){
                         prop == 'item';
                     }
-                    storyList.push([index, '--'+prop+'--', 'https://aceship.github.io/AN-EN-Tags/img/avg/'+prop+'s/'+attrs.image+'.png']);
+                    storyList.push([index, '--'+prop+'--', 'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/'+prop+'s/'+attrs.image+'.png']);
                 }
             }
             return storyList;

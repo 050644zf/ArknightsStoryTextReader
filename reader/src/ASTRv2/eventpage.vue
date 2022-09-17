@@ -21,7 +21,7 @@
                         <template #icon>
                         <n-icon>
                             <ExportIcon/>
-                        </n-icon>                            
+                        </n-icon>
                         </template>
 
                         {{i18n.export2excel[currentLang]}}
@@ -32,13 +32,13 @@
                 <n-space justify="space-between" align="center" item-style="display:flex;">
                     <n-text>
                         查看愚人号活动行动日志<br/>
-                        Check Operation Log in Stultifera Navis                                 
+                        Check Operation Log in Stultifera Navis
                     </n-text>
                     <n-button text @click="$router.push('/'+$route.params.server+'/act17side_log')">
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
-                    </n-button>                    
+                    </n-button>
                 </n-space>
 
             </n-alert>
@@ -51,7 +51,7 @@
                         </n-space>
                         <n-text depth="2" v-show="showIntro">
                             {{infodata[story['storyTxt']]}}
-                        </n-text>                        
+                        </n-text>
                     </n-space>
                     <template #suffix>
                         <n-button text @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})">
@@ -145,6 +145,6 @@ export default {
     background: #000;
     padding:5px 10px;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-    z-index: -1;
+    border-radius: 4px;
 }
 </style>

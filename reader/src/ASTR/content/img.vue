@@ -1,5 +1,5 @@
 <template>
-<img  class="Image" :src="'https://aceship.github.io/AN-EN-Tags/img/avg/images/'+line.attributes.image+'.png'">
+<img class="Image" :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/images/'+line.attributes.image+'.png'">
 </template>
 
 <script>

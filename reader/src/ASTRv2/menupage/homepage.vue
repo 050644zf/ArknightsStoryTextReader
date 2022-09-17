@@ -12,8 +12,8 @@
             这是新版ASTR的beta测试，暂未优化移动端网页。<br/>
             This is the beta version of ASTR and it is not yet optimized for mobile.<br/>
             <br/>
-            你可以<n-a href="https://050644zf.github.io/ArknightsStoryTextReader/?s=zh_CN">单击此处</n-a>访问旧版ASTR。<br/>
-            You can <n-a href="https://050644zf.github.io/ArknightsStoryTextReader/?s=zh_CN">click here</n-a> to visit the old version of ASTR.<br/><br/>
+            你可以<n-a href="../ArknightsStoryTextReader/?s=zh_CN">单击此处</n-a>访问旧版ASTR。<br/>
+            You can <n-a href="../ArknightsStoryTextReader/?s=zh_CN">click here</n-a> to visit the old version of ASTR.<br/><br/>
             如果在使用过程中遇到任何问题，或者有改进ASTR的好点子，请在<n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/new">这里</n-a>提交issue。<br/>
             If you have any questions or feedbacks, please submit an issue <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/new">here</n-a>.<br/><br/>
 
@@ -27,7 +27,7 @@
             <br/><br/>
 
 
-            <n-text strong type="warning"> 
+            <n-text strong type="warning">
                 网站内使用的游戏图片和文本原文，仅用于更好地表现游戏资料，其版权属于上海鹰角网络科技有限公司。<br/>
                 The images and text used in the website are only for better representation of the game data, and their copyright belongs to Shanghai Hypergryph Network Technology Co., Ltd.<br/>
             </n-text>
@@ -52,8 +52,8 @@
         <n-hr/>
 
         <n-h3 prefix="bar" type="info">
-            更新日志 / Changelog: 
-        </n-h3>          
+            更新日志 / Changelog:
+        </n-h3>
         <n-collapse arrow-placement="right">
             <n-collapse-item>
                 <template #header>
@@ -75,11 +75,11 @@
                     <n-li>Optimized some content in misc</n-li>
                     <n-li>Add "Stultifera Navis Operation Log" in misc</n-li>
                     <n-li>Add Warp to Story Feature</n-li>
-                </n-oi>                 
+                </n-oi>
                 <n-h4>wv 0.96</n-h4>
                 <n-oi>
-                    
-                </n-oi>                
+
+                </n-oi>
                 <n-h4>wv 0.95</n-h4>
                 <n-oi>
                     <n-li>Add "Arknights Journey Review" in misc</n-li>
@@ -105,7 +105,7 @@
         </n-collapse>
         <n-hr/>
         <n-h3 prefix="bar" type="info">
-            Todo List: 
+            Todo List:
         </n-h3>
         <n-ol>
             <n-li>Implement the export, search feature.</n-li>

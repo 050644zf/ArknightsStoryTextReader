@@ -15,7 +15,7 @@
             <n-alert type="warning" title="注意！/ Warning!" closable>
                 回顾网页可能于2022年5月29日03:59分(UTC+8)关闭，建议保存所需文件以备后期查看<br/>
                 The review site maybe closed at 2022-05-29 03:59(UTC+8), saving the files for later viewing is suggested.
-            </n-alert>            
+            </n-alert>
             <n-hr></n-hr>
             <n-steps>
                 <n-step title="登录 / Login">
@@ -29,7 +29,7 @@
                                 <n-icon><LoginIcon></LoginIcon></n-icon>
                             </template>
                             登录 / Login
-                        </n-button>                        
+                        </n-button>
                     </n-space>
                 </n-step>
                 <n-step title="下载 / Download">
@@ -72,7 +72,7 @@
                                         <n-icon><UploadIcon></UploadIcon></n-icon>
                                     </template>
                                     stats
-                                </n-button>                                
+                                </n-button>
                             </n-upload>
                             <n-upload :on-change="handleStoryFile" :show-file-list="false">
                                 <n-button :type="this.uploaded.story?'success':'default'">
@@ -81,7 +81,7 @@
                                     </template>
                                     story
                                 </n-button>
-                            </n-upload>                                            
+                            </n-upload>
                         </n-space>
                     </n-space>
                 </n-step>
@@ -129,7 +129,7 @@
                             <template #label>贸易站收益 <br/> Trading Center Revenue</template>
                             <n-number-animation from="0" :to="stats.result_gold_delivery.delivery_gold_sum" show-separator/>
                             <template #suffix>LMD</template>
-                        </n-statistic>                        
+                        </n-statistic>
                     </n-space>
                 </n-card>
                 <n-card>
@@ -151,7 +151,7 @@
                         <n-statistic>
                             <template #label>19点至6点上线次数 <br/>Times of Login bewteen 19 to 6:00 </template>
                             <n-number-animation from="0" :to="stats.result_user_online_basic.login_cnt_19_06" show-separator/>
-                        </n-statistic>                                      
+                        </n-statistic>
                     </n-space>
                 </n-card>
                 <n-card>
@@ -175,15 +175,15 @@
                                     on {{stats.result_stage_clear_cnt.battle_one_day_most_day}} in {{stats.result_stage_clear_cnt.battle_one_day_most_stage}}
                                 </n-text>
                             </template>
-                        </n-statistic>                        
-                    </n-space>                    
+                        </n-statistic>
+                    </n-space>
                 </n-card>
                 <n-card>
                     <template #header>最佳干员 / Best Operator</template>
                     <n-space justify="space-around">
                         <n-statistic>
                             <template #label>最佳干员 <br/>Best Operator</template>
-                            <img :src="getCharAvatar(stats.result_char_best_partner.char_best_partner_list[0].charId)" style="width:64px;"> 
+                            <img :src="getCharAvatar(stats.result_char_best_partner.char_best_partner_list[0].charId)" style="width:64px;">
                         </n-statistic>
                         <n-statistic>
                             <template #label>使用次数 <br/>Times of Appearance</template>
@@ -193,7 +193,7 @@
                             <template #label>危机合约最佳战绩 <br/>Best Score in C.C.</template>
                             <template #prefix>{{stats.result_char_best_partner.char_best_partner_list[0].season_no}} Lv.</template>
                             <n-number-animation from="0" :to="stats.result_char_best_partner.char_best_partner_list[0].best_scores" show-separator/>
-                        </n-statistic>                        
+                        </n-statistic>
                     </n-space>
                 </n-card>
                 <n-card>
@@ -214,10 +214,10 @@
                                     <template #label>阵容 <br/> Team</template>
                                     <n-space>
                                         <div v-for="char in stats.result_crisis_clear.first_gt18_scores_squad" :key="char.charId">
-                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />                                            
+                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />
                                         </div>
                                     </n-space>
-                                </n-statistic>                                    
+                                </n-statistic>
                             </n-space>
                         </n-card>
                         <n-card>
@@ -240,10 +240,10 @@
                                     <template #label>阵容 <br/> Team</template>
                                     <n-space>
                                         <div v-for="char in stats.result_crisis_clear.best_scores_squad" :key="char.charId">
-                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />                                            
+                                        <img v-if="char.charId!='EMPTY'" :src="getCharAvatar(char.charId)" style="width:32px;" />
                                         </div>
                                     </n-space>
-                                </n-statistic>                                    
+                                </n-statistic>
                             </n-space>
                         </n-card>
                     </n-space>
@@ -279,11 +279,11 @@
                         <n-statistic>
                             <template #label>助战被使用次数 <br/># of Times the Assist being Used</template>
                             <n-number-animation from="0" :to="stats.result_assist.char_assist_used_cnt"/>
-                        </n-statistic>                    
+                        </n-statistic>
                         <n-statistic>
                             <template #label>被使用最多的助战干员 <br/>Assist Operator being Used the most</template>
-                            <img :src="getCharAvatar(stats.result_assist.charid_assist_used_most)" style="width:64px;"> 
-                        </n-statistic>                        
+                            <img :src="getCharAvatar(stats.result_assist.charid_assist_used_most)" style="width:64px;">
+                        </n-statistic>
                     </n-space>
                 </n-card>
                 <n-card>
@@ -291,8 +291,8 @@
                     <n-space justify="space-around">
                         <n-statistic>
                             <template #label>任命时间最长助理 <br/>Secretary Assigned for the Longest Time</template>
-                            <img :src="getCharAvatar(stats.result_char_secretary_favor.charid)" style="width:64px;"> 
-                        </n-statistic>                    
+                            <img :src="getCharAvatar(stats.result_char_secretary_favor.charid)" style="width:64px;">
+                        </n-statistic>
                         <n-statistic>
                             <template #label>任命时长 <br/>Duration Assigned</template>
                             <n-number-animation from="0" :to="stats.result_char_secretary_favor.secretary_use_days" show-separator/>
@@ -300,8 +300,8 @@
                         </n-statistic>
                         <n-statistic>
                             <template #label>历史助理数<br/># of Secretary in History</template>
-                            <n-number-animation from="0" :to="stats.result_char_secretary_favor.secretary_char_used_cnt"/> 
-                        </n-statistic>                        
+                            <n-number-animation from="0" :to="stats.result_char_secretary_favor.secretary_char_used_cnt"/>
+                        </n-statistic>
                     </n-space>
                     <n-modal v-model:show="showSecretaryHistory">
                         <n-card style="width: 800px">
@@ -313,7 +313,7 @@
                         <n-button secondary type="info" @click="showSecretaryHistory=true">
                             <template #icon><OpenIcon/></template>
                             助理详情 / Secretaries Details
-                        </n-button>                              
+                        </n-button>
                     </template>
                 </n-card>
                 <n-card>
@@ -327,7 +327,7 @@
                                 <template #header>拥有时装的干员列表 / List of Operators with Costumes</template>
                                 <n-data-table :columns="CostumesCols" :data="stats.result_char_skin.char_list_skin_cnt_gt1" size="small" class="datatable" virtual-scroll max-height="500"></n-data-table>
                             </n-card>
-                        </n-modal>                                              
+                        </n-modal>
                 </n-card>
                 <n-card>
                     <template #header>干员招募 / Operators Recruitment</template>
@@ -340,21 +340,21 @@
                                 <template #header>各稀有度招募最多次的干员列表 / List of Operators with the Most Recruitment in Rarities</template>
                                 <n-data-table :columns="RecCols" :data="getRecData(stats.result_char_get.char_get_most)" size="small" class="datatable" virtual-scroll max-height="500"></n-data-table>
                             </n-card>
-                        </n-modal>                                              
+                        </n-modal>
                 </n-card>
                 <n-card>
                     <template #header>集成战略 / Integrated Strategies</template>
                     <n-space justify="space-around">
                         <n-statistic>
                             <template #label>通过节点数<br/># of Nodes Passed</template>
-                            <n-number-animation from="0" :to="stats.result_rouge.node_pass_cnt" show-seperator/> 
+                            <n-number-animation from="0" :to="stats.result_rouge.node_pass_cnt" show-seperator/>
                         </n-statistic>
                         <n-statistic>
                             <template #label>获得热水壶数<br/># of Kettles Obtained</template>
-                            <n-number-animation from="0" :to="stats.result_rouge.kettle_get_cnt" show-seperator/> 
-                        </n-statistic>   
-                    </n-space>                               
-                </n-card>                
+                            <n-number-animation from="0" :to="stats.result_rouge.kettle_get_cnt" show-seperator/>
+                        </n-statistic>
+                    </n-space>
+                </n-card>
             </n-space>
         </n-space>
         <n-alert class="stats" v-else type="error">
@@ -445,12 +445,12 @@ export default {
             option.file.file.text().then(data => {
                 var stats = JSON.parse(data);
                 if(stats.code==0){
-                    this.uploaded.stats = true;                
+                    this.uploaded.stats = true;
                     this.stats = stats.data;
                 }
 
             });
-            
+
         },
         handleStoryFile(option){
             //assign the parsed file to the story variable
@@ -458,11 +458,11 @@ export default {
                 var story = JSON.parse(data);
                 if(story.code==0){
                     this.uploaded.story = true;
-                    this.story = story.data;                    
+                    this.story = story.data;
                 }
 
             })
-        
+
         },
         analysis(){
             this.analysis_enabled = true;
@@ -477,7 +477,7 @@ export default {
         },
         getCharAvatar(char_code){
             //get the avatar of the character
-            return 'https://aceship.github.io/AN-EN-Tags/img/avatars/'+char_code+'.png'
+            return 'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/'+char_code+'.png'
         },
         getRecData(input){
             var data = [];

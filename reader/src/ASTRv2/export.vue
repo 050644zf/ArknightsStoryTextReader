@@ -7,7 +7,7 @@
                     {{i18n.menu[currentLang]}}
                 </n-breadcrumb-item>
                 <n-breadcrumb-item>{{i18n.export2excel[currentLang]}}</n-breadcrumb-item>
-            </n-breadcrumb>            
+            </n-breadcrumb>
             <n-data-table :columns="cols" :data="exportList" size="small" max-height="300" min-height="300" virtual-scroll striped style="width:90%;">
             </n-data-table>
             <n-space item-style="display: flex;" align="center">
@@ -30,7 +30,7 @@
                     导出 / Export
                 </n-button>
             </n-space>
-        
+
 
     <n-progress type="line" :status="processing?'warning':'success'" :percentage="percentage" :indicator-placement="'inside'" :processing="processing"  />
 
@@ -43,7 +43,7 @@
                     menu_open
                     </span>
                     <span class="home nt">返回上一页/Return to Last Page</span>
-                </button>            
+                </button>
             <div class="nt">当前导出列表/Current Exporting List: </div>
             <div class="exportList st">
                 <table>
@@ -73,7 +73,7 @@
                         file_download
                     </span>
                     <span>导出所有/Export All</span>
-                </button>            
+                </button>
             </div>
 
             <div class="logArea xst" v-html="logs"></div>
@@ -143,7 +143,7 @@ export default {
                     await this.book_append_sheet(this.exportFile, sheet, story.path.split('/')[2]);
                     if(story == this.exportList.length - 1){
                         xlsx.writeFile(this.exportFile, 'export.xlsx',{type: 'file'});
-                        this.logs += 'Export Process Finished.<br/>'; 
+                        this.logs += 'Export Process Finished.<br/>';
                         }
                     });
 
@@ -154,7 +154,7 @@ export default {
                 xlsx.writeFile(this.exportFile, this.filename+'.xlsx',{type: 'file'});
                 this.processing = false;
                 this.percentage = 100;
-                this.logs += 'Export Process Finished.\n'; 
+                this.logs += 'Export Process Finished.\n';
             });
         },
         async exportStories(){
@@ -229,7 +229,7 @@ export default {
                     else if(prop == 'showitem'){
                         prop == 'item';
                     }
-                    storyList.push([index, '--'+prop+'--', 'https://aceship.github.io/AN-EN-Tags/img/avg/'+prop+'s/'+attrs.image+'.png']);
+                    storyList.push([index, '--'+prop+'--', 'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/'+prop+'s/'+attrs.image+'.png']);
                 }
             }
             return storyList;

@@ -105,7 +105,7 @@ export default {
         },
         getCharAvatar(char_code){
             //get the avatar of the character
-            return 'https://aceship.github.io/AN-EN-Tags/img/avatars/'+char_code+'.png'
+            return 'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/'+char_code+'.png'
         },
     },
     components:{
