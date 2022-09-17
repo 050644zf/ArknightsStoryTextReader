@@ -4,7 +4,7 @@
             <n-space item-style="display: flex;" align="center">
                 <router-link to="/" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
-                        <n-image src="../ArknightsStoryTextReader/src/assets/favicon.png" style="width:40px;height:40px"  preview-disabled/>
+                        <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/favicon.png" style="width:40px;height:40px"  preview-disabled/>
                     </n-a>
                 </router-link>
 
