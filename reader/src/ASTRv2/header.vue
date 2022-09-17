@@ -4,16 +4,16 @@
             <n-space item-style="display: flex;" align="center">
                 <router-link to="/" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
-                        <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/favicon.png" style="width:40px;height:40px"  preview-disabled/>
+                        <n-image src="../ArknightsStoryTextReader/src/assets/favicon.png" style="width:40px;height:40px"  preview-disabled/>
                     </n-a>
                 </router-link>
-                
-                
+
+
                 <n-space item-style="display: flex;" align="baseline">
                     <n-h2 style="margin: 0px;padding:5px;" strong>
                         Arknights Story Text Reader
                     </n-h2>
-                    <n-text depth="3">web version 0.98</n-text>                    
+                    <n-text depth="3">web version 0.98</n-text>
                 </n-space>
 
             </n-space>
@@ -25,7 +25,7 @@
                         <template #icon>
                         <n-icon>
                             <LangIcon/>
-                        </n-icon>                            
+                        </n-icon>
                         </template>
 
                             {{i18n.server[$route.params.server]}}
@@ -41,7 +41,7 @@
         </n-space>
 
     </n-layout-header>
-    
+
 </template>
 
 <script>

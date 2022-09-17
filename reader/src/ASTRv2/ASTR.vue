@@ -5,12 +5,12 @@
         <n-loading-bar-provider>
         <n-dialog-provider>
             <router-view></router-view>
-            
+
         </n-dialog-provider>
         </n-loading-bar-provider>
         <Footer></Footer>
     </n-config-provider>
-</n-layout>    
+</n-layout>
 </template>
 
 <script>
@@ -33,9 +33,14 @@ export default {
 </script>
 
 <style>
-.n-layout .n-layout-scroll-container{
+.n-layout .n-layout-scroll-container {
     overflow-y: hidden;
 }
+
+.site > .n-layout-scroll-container {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 @font-face {
     font-family: 'ak_terminal';
     src:url('ak_terminal.ttf') format('truetype');

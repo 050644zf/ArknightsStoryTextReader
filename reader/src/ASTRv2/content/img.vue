@@ -1,5 +1,5 @@
 <template>
-    <n-image  :class="[imgtype]" :src="`https://aceship.github.io/AN-EN-Tags/img/avg/${imgtype}/${line.attributes.image}.png`"/>
+    <n-image  :class="[imgtype]" :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`"/>
 </template>
 
 <script>
