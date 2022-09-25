@@ -1,64 +1,71 @@
 <template>
-    <n-layout>
-        <n-layout-content class="content" ref="content">
-            <n-affix :top="30" :trigger-top="30" position="fixed">
-            <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
-            <n-space justify="space-between" v-else item-style="display: flex;" align="center" class="breadcrumb">
-                <n-breadcrumb>
-                    <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
-                        <n-icon><MenuIcon/></n-icon>
-                        {{i18n.menu[currentLang]}}
-                    </n-breadcrumb-item>
-                    <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)">
-                        {{data.eventName}}
-                    </n-breadcrumb-item>
-                    <n-breadcrumb-item>
-                        <n-popselect :options="storyOpts" v-model:value="path" scrollable>
-                            <n-text type="info">
-                                {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
-                                <n-icon>
-                                    <ArrowDropDown/>
-                                </n-icon>
-                            </n-text>
-                        </n-popselect>
-                    </n-breadcrumb-item>
-                </n-breadcrumb>
-                <n-divider vertical />
-                <n-button-group>
-                    <n-button secondary round type="info" v-show="storyIdx != 0" @click="paging(-1)">
-                        <n-icon size="24">
-                            <LastStory/>
-                        </n-icon>
-                    </n-button>
-                    <n-button secondary round type="info" v-show="storyIdx!=storyOpts.length-1" @click="paging(1)">
-                        <n-icon size="24">
-                            <NextStory/>
-                        </n-icon>
-                    </n-button>
-                </n-button-group>
-            </n-space>
-            </n-affix>
 
+    <n-layout-content class="contentpage"   >
+    
+        <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
+        <n-affix :top="0" :trigger-top="40" v-else listen-to=".site">
+        <n-space class="breadcrumb" >
+            <n-breadcrumb>
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
+                    <n-icon><MenuIcon/></n-icon>
+                    {{i18n.menu[currentLang]}}
+                </n-breadcrumb-item>
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)">
+                    {{data.eventName}}
+                </n-breadcrumb-item>
+                <n-breadcrumb-item>
+                    <n-popselect :options="storyOpts" v-model:value="path" scrollable>
+                        <n-text type="info">
+                            {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
+                            <n-icon>
+                                <ArrowDropDown/>
+                            </n-icon>
+                        </n-text>
+                    </n-popselect>
+                </n-breadcrumb-item>
+            </n-breadcrumb>
+            <!-- <n-divider vertical />
+            <n-button-group>
+                <n-button secondary round type="info" v-show="storyIdx != 0" @click="paging(-1)">
+                    <n-icon size="24">
+                        <LastStory/>
+                    </n-icon>
+                </n-button>
+                <n-button secondary round type="info" v-show="storyIdx!=storyOpts.length-1" @click="paging(1)">
+                    <n-icon size="24">
+                        <NextStory/>
+                    </n-icon>
+                </n-button>
+            </n-button-group> -->
+        </n-space>
+    </n-affix>
+
+        <n-space veritical class="content" justify="center">
             <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
                 {{i18n.optionTraceDisabled[currentLang]}}
             </n-h4>
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
+            <div v-else>
+                <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" >
 
-            <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" v-else>
+                    <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
+                    <Nameline v-if="line.prop == 'multiline'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
+                    <Subtitle v-if="line.prop == 'Subtitle' || line.prop == 'Sticker'" :inputline="line"></Subtitle>
+                    <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
+                    <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
+                    <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
+                    <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
+                    <Showimg v-if="line.prop == 'Background' && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
 
-                <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
-                <Nameline v-if="line.prop == 'multiline'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
-                <Subtitle v-if="line.prop == 'Subtitle' || line.prop == 'Sticker'" :inputline="line"></Subtitle>
-                <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
-                <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
-                <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
-                <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
-                <Showimg v-if="line.prop == 'Background' && line.attributes.image &&showbg=='y'" :inputline="line" background></Showimg>
-
-                <div style="clear: both;"></div>
+                    <div style="clear: both;"></div>
+                </div>                            
             </div>
-        </n-layout-content>
-    </n-layout>
+    
+        </n-space>
+
+
+    </n-layout-content>
+
 </template>
 
 <script>
@@ -84,7 +91,7 @@ export default {
             i18n: i18n,
             currentLang: func.l,
             showDelay: func.showDelay,
-            showbg: func.showbg,
+            bgMode: func.bgMode,
             loading: true,
             loadingbar: useLoadingBar(),
             dialog: useDialog(),
@@ -174,17 +181,28 @@ export default {
 </script>
 
 <style>
-.content{
-    margin-left: 15%;
-    max-width: 800px;
-    min-height: 600px;
+.contentpage{
+    padding-bottom: 50px;
+    
 }
-.content .breadcrumb{
-    margin:10px;
-    background-color: rgba(0, 0, 0, 1);
-    padding:5px 10px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-    border-radius: 4px;
+
+.contentpage > .n-layout-scroll-container{
+    overflow-y: hidden;
+}
+
+.contentpage  .content{
+    width: 80vw;
+    max-width: 1200px;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+.contentpage .breadcrumb{
+    margin: 0px 0px 16px 0px !important;
+    background: rgb(0, 65, 65);
+    padding: 5px 50px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    /* border-radius: 4px; */
+    width: 100vw;
 }
 
 </style>

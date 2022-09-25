@@ -1,13 +1,15 @@
 <template>
-    <n-image  :class="[imgtype]" :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`"/>
+    <n-image  :class="{images: imgtype=='images' || bgMode=='full', backgrounds:imgtype=='backgrounds'&&bgMode=='stripe'}" :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`"/>
 </template>
 
 <script>
+import func from '../func'
 export default {
     data(){
         return{
             line: this.inputline,
-            imgtype: this.background?'backgrounds':'images'
+            imgtype: this.background?'backgrounds':'images',
+            bgMode: func.bgMode
         }
     },
     props:{

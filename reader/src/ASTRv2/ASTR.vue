@@ -1,6 +1,6 @@
 <template>
 <metainfo/>
-<n-layout class="site">
+<n-layout  class="site">
     <n-config-provider :theme="darkTheme">
         <n-loading-bar-provider>
         <n-dialog-provider>
@@ -34,11 +34,15 @@ export default {
 
 <style>
 .n-layout .n-layout-scroll-container {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
+}
+
+.site{
+    height: 100vh;
 }
 
 .site > .n-layout-scroll-container {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgb(24, 24, 28);
 }
 
 @font-face {
@@ -85,4 +89,14 @@ export default {
     --n-color: rgba(0,0,0,0) !important;
 }
 
+.n-list-item{
+    padding: 20px !important;
+    transition: all 0.5s !important;
+}
+.n-list-item:hover{
+    background-color: rgba(112, 192, 232,0.2);
+    padding: 30px 20px !important;
+    /* add inner box shadow */
+    box-shadow:0px 0px 20px 0px rgba(112, 192, 232,0.3);
+}
 </style>

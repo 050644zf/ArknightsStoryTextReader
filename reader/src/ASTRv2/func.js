@@ -1,4 +1,5 @@
 const langList = ['zh_CN','en_US','ko_KR','ja_JP','zh_TW'];
+const bgModes = ['full','stripe','off']
 var urlParams = new URLSearchParams(window.location.search);
 var server = urlParams.get('s');
 var l = window.localStorage.getItem('lang');
@@ -7,7 +8,8 @@ var hidetip = window.localStorage.getItem('hidetip');
 var showDelay = window.localStorage.getItem('showDelay');
 var hideName = window.localStorage.getItem('hideName');
 var wversion = window.localStorage.getItem('wversion');
-var showbg = window.localStorage.getItem('showbg');
+// var showbg = window.localStorage.getItem('showbg');
+var bgMode = window.localStorage.getItem('bgMode');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
 var isOldversion = false;
@@ -22,7 +24,7 @@ if(!doctor){doctor = "{@nickname}"};
 if(!hidetip){hidetip = false};
 if(!showDelay){showDelay = 'y'};
 if(!hideName){hideName = 'n'};
-if(!showbg){showbg = 'y'};
+if(!bgMode){bgMode = 'stripe'};
 if(!wversion||wversion<currentwversion){wversion = currentwversion; window.localStorage.setItem('wversion',wversion);isOldversion = true};
 
 
@@ -34,7 +36,8 @@ export default {
     doctor: doctor,
     hidetip: hidetip,
     showDelay: showDelay,
-    showbg: showbg,
+    bgMode: bgMode,
+    bgModes: bgModes,
     hideName: hideName,
     storyFile: storyFile,
     storyData: storyData,

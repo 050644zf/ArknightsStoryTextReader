@@ -1,6 +1,6 @@
 <template>
     <n-space vertical class="searchpage">
-        <n-space item-style="display:flex;" align="center" justify="center" >
+        <n-space item-style="display:flex;margin:10px;" align="center" justify="center" style="flex-wrap: nowrap;">
             <n-input v-model:value="searchvalue" type="text" :loading="isSearching" @keyup.enter="searchRequest"></n-input>
             <n-button type="info" @click="searchRequest">
                 <n-icon size="24">

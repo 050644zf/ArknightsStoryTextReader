@@ -9,11 +9,11 @@
                 </router-link>
 
 
-                <n-space item-style="display: flex;" align="baseline">
-                    <n-h2 style="margin: 0px;padding:5px;" strong>
+                <n-space item-style="display: flex;" align="baseline" >
+                    <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
                         Arknights Story Text Reader
                     </n-h2>
-                    <n-text depth="3">web version 0.98</n-text>
+                    <n-text depth="3" class="astrversion">web version 0.99</n-text>
                 </n-space>
 
             </n-space>
@@ -107,5 +107,17 @@ export default {
 }
 .SettingsBtn{
     font-size: large;
+}
+
+@media(max-width: 1000px){
+    .astrversion{
+        display: none;
+    }
+}
+
+@media(max-width: 820px){
+    .astrtitle{
+        display: none;
+    }
 }
 </style>

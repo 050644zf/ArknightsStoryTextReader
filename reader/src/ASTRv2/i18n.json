@@ -35,5 +35,8 @@
     "loadDialog":{"zh_CN":"加载对话","en_US":"Load Dialog","ja_JP":"Load Dialog","ko_KR":"이야기 불러오기", "zh_TW":"加載對話"},
     "unfold":{"zh_CN":"展开","en_US":"Unfold","ja_JP":"Unfold","ko_KR":"펴기", "zh_TW":"展開"},
     "fold":{"zh_CN":"折叠","en_US":"Fold","ja_JP":"Fold","ko_KR":"접기", "zh_TW":"折疊"},
-    "warp":{"zh_CN":"跳转到故事...","en_US":"Warp to Story...","ja_JP":"Warp to Story...","ko_KR":"스토리로 이동...", "zh_TW":"跳轉到故事..."}
+    "warp":{"zh_CN":"跳转到故事...","en_US":"Warp to Story...","ja_JP":"Warp to Story...","ko_KR":"스토리로 이동...", "zh_TW":"跳轉到故事..."},
+    "bg_full": {"zh_CN":"完整","en_US":"Full","ja_JP":"Full","ko_KR":"Full", "zh_TW":"完整"},
+    "bg_stripe": {"zh_CN":"条形","en_US":"Stripe","ja_JP":"Stripe","ko_KR":"Stripe", "zh_TW":"條形"},
+    "bg_off": {"zh_CN":"关闭","en_US":"Off","ja_JP":"Off","ko_KR":"Off", "zh_TW":"關閉"}
 }

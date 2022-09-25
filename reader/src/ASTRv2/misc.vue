@@ -1,7 +1,7 @@
 <template>
-    <n-space class="events" item-style="display:flex;">
+    <n-space class="misc" item-style="display:flex;" justify="center">
         <n-list class="list">
-            <n-list-item>
+            <n-list-item @click="$router.push('/'+$route.params.server+'/analysis')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">
                         <n-h2 prefix="bar">
@@ -11,14 +11,14 @@
                     </n-space>
                 </n-space>
                 <template #suffix>
-                    <n-button text @click="$router.push('/'+$route.params.server+'/analysis')">
+                    <n-button text>
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
                     </n-button>
                 </template>  
             </n-list-item>
-            <n-list-item>
+            <n-list-item @click="$router.push('/'+$route.params.server+'/stats')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">
                         <n-h2 prefix="bar">
@@ -28,14 +28,14 @@
                     </n-space>
                 </n-space>
                 <template #suffix>
-                    <n-button text @click="$router.push('/'+$route.params.server+'/stats')">
+                    <n-button text>
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
                     </n-button>
                 </template>  
             </n-list-item>
-            <n-list-item>
+            <n-list-item @click="$router.push('/'+$route.params.server+'/isrecords')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">
                         <n-h2 prefix="bar">
@@ -45,14 +45,14 @@
                     </n-space>
                 </n-space>
                 <template #suffix>
-                    <n-button text @click="$router.push('/'+$route.params.server+'/isrecords')">
+                    <n-button text >
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
                     </n-button>
                 </template>  
             </n-list-item>
-            <n-list-item>
+            <n-list-item @click="$router.push('/'+$route.params.server+'/act17side_log')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">
                         <n-h2 prefix="bar">
@@ -62,7 +62,7 @@
                     </n-space>
                 </n-space>
                 <template #suffix>
-                    <n-button text @click="$router.push('/'+$route.params.server+'/act17side_log')">
+                    <n-button text >
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
@@ -90,7 +90,8 @@ export default{
 </script>
 
 <style>
-.events .n-list-item{
-    min-width: 800px;
+.misc .list{
+    width: 80vw;
+    max-width: 1200px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <n-space class="events" item-style="display:flex;">
+    <n-space class="events" item-style="display:flex;" justify="center">
         <n-list class="list">
-            <n-list-item v-for="(edata, eidx) in eventList[eventype]" :key="eidx">
+            <n-list-item v-for="(edata, eidx) in eventList[eventype]" :key="eidx" @click="$router.push('/'+$route.params.server+'/event/'+edata.id)">
                 <n-space item-style="display:flex;" align="center">
                     <img v-if="eventype != 'or'" :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/'+edata.id+'.png'"/>
                     <img v-else :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/char_'+edata.cid+'_'+edata.cin+'.png'" style="height: 64px;"/>
@@ -25,7 +25,7 @@
 
                 </n-space>
                 <template #suffix>
-                    <n-button text @click="$router.push('/'+$route.params.server+'/event/'+edata.id)">
+                    <n-button text >
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
@@ -69,7 +69,8 @@ export default{
 </script>
 
 <style>
-.events .n-list-item{
-    min-width: 800px;
+.events .list{
+    width: 80vw;
+    max-width: 1200px;
 }
 </style>

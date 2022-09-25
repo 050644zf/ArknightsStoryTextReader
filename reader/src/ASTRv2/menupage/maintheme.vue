@@ -1,5 +1,5 @@
 <template>
-    <n-space class="maintheme">
+    <n-space class="maintheme" justify="center">
     <n-steps vertical >
         <template #finish-icon>
 
@@ -57,6 +57,9 @@ export default{
 </script>
 
 <style>
+.maintheme{
+    margin: 20px 20px;
+}
 .episode{
     text-align: center;
     font-weight: bold;

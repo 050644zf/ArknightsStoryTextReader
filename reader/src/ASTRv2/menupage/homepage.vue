@@ -1,5 +1,5 @@
 <template>
-    <n-space vertical class="homepage">
+    <n-space vertical class="homepage" justify="center">
         <n-alert type="info" title="We're Seeking Translators!" closable>
             ASTR is seeking Japanese and Korean translators to localize the interface of ASTR.<br/>
             Contact nightsky#3319 in discord for more info. Thank you for your contribution!
@@ -59,6 +59,13 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.99</n-h4>
+                <n-oi>
+                    <n-li>UI overhaul.</n-li>
+                    <n-li>Add animation in list selection and story introdution switch</n-li>
+                    <n-li>Add more option to background image display in settings</n-li>
+                    <n-li>Fix the image source, thanks to <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/32">Fryze's PR</n-a></n-li>
+                </n-oi>
                 <n-h4>wv 0.98.1</n-h4>
                 <n-oi>
                     <n-li> Fix the wrong language issue in Monthly Squad Records, Integrated Stratgies</n-li>

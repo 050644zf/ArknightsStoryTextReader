@@ -55,7 +55,7 @@ export default {
 }
 .nameblock{
     display: flex;
-    flex: 1 70px;
+    flex: 1.5 70px;
     justify-content: flex-end;
     background-color: unset;
     float: left;

@@ -51,7 +51,11 @@
                         <BGIcon/>
                     </n-icon>
                     {{i18n.showbg[currentLang]}}: 
-                    <n-switch v-model:value="showbg" checked-value="y" unchecked-value="n"/>
+                    <n-radio-group v-model:value="bgMode">
+                        <n-radio-button v-for="mode in bgModes" :key="mode" :value="mode">
+                            {{i18n['bg_'+mode][currentLang]}}
+                        </n-radio-button>
+                    </n-radio-group>
                 </n-space>
             </n-space>            
 
@@ -92,7 +96,8 @@ export default {
            doctor: func.doctor,
            showDelay: func.showDelay,
            hideName: func.hideName,
-           showbg: func.showbg,
+           bgMode: func.bgMode,
+           bgModes: func.bgModes
        }
     },
     props:{
@@ -116,7 +121,7 @@ export default {
             window.localStorage.setItem('showDelay', this.showDelay);
             window.localStorage.setItem('hideName', this.hideName);
             window.localStorage.setItem('lang', this.currentLang);
-            window.localStorage.setItem('showbg', this.showbg);
+            window.localStorage.setItem('bgMode', this.bgMode);
             window.location.reload(true);
         },
         clearSetting(){
