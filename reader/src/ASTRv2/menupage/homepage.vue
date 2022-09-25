@@ -64,6 +64,7 @@
                     <n-li>UI overhaul.</n-li>
                     <n-li>Add animation in list selection and story introdution switch</n-li>
                     <n-li>Add more option to background image display in settings</n-li>
+                    <n-li>(Under development) Add some responsiveness on some UI components</n-li>
                     <n-li>Fix the image source, thanks to <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/32">Fryze's PR</n-a></n-li>
                 </n-oi>
                 <n-h4>wv 0.98.1</n-h4>
