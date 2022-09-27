@@ -25,7 +25,7 @@
                             </template>
                             <n-text>{{team.teamDes}}</n-text>
                             <template #action>
-                                <IsDialog :chatid="team.chatId"/>
+                                <IsDialog :chatid="team.chatId" :adata="archiveCompData" :topic="topic"/>
                             </template>
                         </n-card>
                     </n-space>
@@ -45,6 +45,7 @@ export default {
     data(){
         return{
             idata: {},
+            archiveCompData: {},
             topics: [],
             idata_loaded: false,
             loadingbar: useLoadingBar(),
@@ -67,7 +68,10 @@ export default {
                         name: idata.topics[topic].name,
                     })
                     this.idata[topic] = idata.details[topic].monthSquad;
+                    this.archiveCompData[topic] = idata.details[topic].archiveComp;
+                    
                 }
+                // console.log(this.archiveCompData);
                 this.idata_loaded = true;
                 this.loadingbar.finish();
             }

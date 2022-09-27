@@ -17,7 +17,7 @@
     <n-collapse-transition v-show="show">    
     <n-tabs type="segment">
         <n-tab-pane v-for="(rec, rid, ridx) in records" :key="ridx" :tab="rid" :name="rid">
-            <n-space vertical>
+            <n-space vertical v-if="topic.id=='rogue_1'">
                 <div v-for="(line, lidx) in rec" :key="lidx">
                     <n-text v-if="line.prop=='Title'">{{line.content}}</n-text>
                     <n-text v-if="line.prop=='Div'">{{line.content}}</n-text>
@@ -27,6 +27,9 @@
                     </n-space>
                     
                 </div>
+            </n-space>
+            <n-space vertical v-if="topic.id=='rogue_2'">
+                <n-text v-html="rec"></n-text>
             </n-space>
         </n-tab-pane>
     </n-tabs>
@@ -53,26 +56,28 @@ export default {
             server: this.$route.params.server,    
         }
     },
-    props: ['chatid'],
+    props: ['chatid','adata','topic'],
     methods:{
         async loadDialog(){
             this.loading = true;
-            var path = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/story/obt/rogue/'+this.chatid+'/';
+            // console.log(this.topic);
+            var chatData = this.adata[this.topic.id]['chat']['chat'][this.chatid];
             var i = 1;
-            while(true){
-                try{
-                    let res = await fetch(path+this.chatid+'_'+i+'.txt');
-                    let text = await res.text();
-                    if(text == '404: Not Found'){
-                        break;
-                    }
-                    this.records["Record_"+i] = this.parseDialog(text);
-                    i++;
+            for(var chatItem of chatData.clientChatItemData){
+                var path = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/story/' + chatItem.chatStoryId.toLowerCase()+'.txt';
+                var res = await fetch(path);
+                var text = await res.text();
+                if(text=='404: Not Found'){break;}
+                if(this.topic.id=='rogue_1'){
+                this.records['Record_'+i] = this.parseDialog(text);
                 }
-                catch(e){
-                    break;
+                else if(this.topic.id=='rogue_2'){
+                    this.records['Record_'+i] = text.replaceAll('\n','<br/><br/>');
                 }
+                i++;
             }
+            console.log(this.records);
+
             this.rec_loaded = true;
             this.show = true;
             this.loading = false;

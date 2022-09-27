@@ -59,6 +59,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 0.99.1</n-h4>
+                <n-oi>
+                    <n-li>Fix Monthly Team Records</n-li>
+                </n-oi>
                 <n-h4>wv 0.99</n-h4>
                 <n-oi>
                     <n-li>UI overhaul.</n-li>
