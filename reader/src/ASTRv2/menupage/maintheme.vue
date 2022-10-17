@@ -1,9 +1,7 @@
 <template>
     <n-space class="maintheme" justify="center">
     <n-steps vertical >
-        <template #finish-icon>
-
-        </template>
+        <template #finish-icon></template>
         <n-step v-for="(chapter,cidx) in cdata" :key="cidx">
             
             <template v-slot:title>

@@ -1,6 +1,6 @@
 <template>
     <n-layout-header >
-        <n-space item-style="display: flex;" justify="space-between" align="center" class="header">
+        <n-space item-style="display: flex; " justify="space-between" align="center" class="header" style="flex-warp: nowarp;">
             <n-space item-style="display: flex;" align="center">
                 <router-link to="/" #="{ navigate, href }" custom>
                     <n-a :href="href" @click="navigate">
@@ -13,7 +13,7 @@
                     <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
                         Arknights Story Text Reader
                     </n-h2>
-                    <n-text depth="3" class="astrversion">web version 0.99</n-text>
+                    <n-text depth="3" class="astrversion">web version 1.0 </n-text>🎉
                 </n-space>
 
             </n-space>
@@ -27,8 +27,7 @@
                             <LangIcon/>
                         </n-icon>
                         </template>
-
-                            {{i18n.server[$route.params.server]}}
+                            <n-text class="servername">{{i18n.server[$route.params.server]}}</n-text>
                         <n-icon size="24">
                             <ArrowDropDown/>
                         </n-icon>
@@ -117,6 +116,12 @@ export default {
 
 @media(max-width: 820px){
     .astrtitle{
+        display: none;
+    }
+}
+
+@media(max-width: 500px){
+    .servername{
         display: none;
     }
 }

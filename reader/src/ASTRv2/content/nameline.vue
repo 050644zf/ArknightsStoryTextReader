@@ -63,6 +63,7 @@ export default {
     margin-right: 10px;
     text-align: right;
     font-weight: bold;
+    color: #7f7f7f
 }
 .contentblock{
     display: flex;

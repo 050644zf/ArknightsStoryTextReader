@@ -2,15 +2,15 @@
     <n-space class="events" item-style="display:flex;" justify="center">
         <n-list class="list">
             <n-list-item v-for="(edata, eidx) in eventList[eventype]" :key="eidx" @click="$router.push('/'+$route.params.server+'/event/'+edata.id)">
-                <n-space item-style="display:flex;" align="center">
+                <n-space item-style="display:flex;" align="center" class="eventtitle" >
                     <img v-if="eventype != 'or'" :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/'+edata.id+'.png'"/>
                     <img v-else :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/char_'+edata.cid+'_'+edata.cin+'.png'" style="height: 64px;"/>
                     <n-space vertical item-style="display:flex;" justify="space-around">
-                        <n-space item-style="display:flex;" align="baseline">
-                            <n-text style="padding:0px;margin:0px;font-size:24px">{{edata.name}}</n-text>
+                        <n-space item-style="display:flex;" align="baseline" >
+                            <n-text style="padding:0px;margin:0px;font-size:24px;text-align: center;">{{edata.name}}</n-text>
                             <n-text depth="3" v-if="eventype=='or'">#{{edata.set}}</n-text>
                         </n-space>
-                        <n-space>
+                        <n-space class="eventstat">
                             <n-statistic :label="i18n.length[currentLang]" >
                                 <template #suffix>
                                     <n-text style="font-size:medium;color:rgba(255,255,255,0.5)">{{i18n[unit][currentLang]}}</n-text>
@@ -25,7 +25,7 @@
 
                 </n-space>
                 <template #suffix>
-                    <n-button text >
+                    <n-button text  class="eventwarp">
                         <n-icon size="32">
                             <ForwardIcon/>
                         </n-icon>
@@ -72,5 +72,16 @@ export default{
 .events .list{
     width: 80vw;
     max-width: 1200px;
+}
+@media(max-width: 700px){
+    .eventstat{
+        display: none !important;
+    }
+    .eventtitle{
+        flex-direction: column !important;
+    }
+    .eventwarp{
+        display: none !important;
+    }
 }
 </style>

@@ -1,34 +1,53 @@
 <template>
     <n-layout-content class="menupage">
-        <n-tabs type="line" justify-content="space-evenly" class="tabs" v-model:value="selected">
+        <n-tabs type="line" justify-content="space-evenly" class="tabs" v-model:value="selected" animated>
             <n-tab-pane name="home">
                 <template v-slot:tab>
-                    <n-icon><InfoIcon/></n-icon>
+                    <n-icon>
+                        <InfoIcon />
+                    </n-icon>
                     <n-text class="titletext">
                         &nbsp;{{i18n.homepage[currentLang]}}
                     </n-text>
                 </template>
-                <Homepage></Homepage>
+                <n-space vertical justify="center" item-style="display:flex" align="center">
+
+                    <Homepage></Homepage>
+                </n-space>
+
             </n-tab-pane>
 
             <n-tab-pane v-for="(item,itemName,iidx) in navi" :name="itemName" :key="iidx">
                 <template v-slot:tab>
-                    <n-icon><div :class="item.icon"></div></n-icon>
+                    <n-icon>
+                        <div :class="item.icon"></div>
+                    </n-icon>
                     <n-text class="titletext">
                         &nbsp;{{i18n[item.title][currentLang]}}
                     </n-text>
-                    
-                </template>
-                <div class="menucontent">
+                </template>                    
+                <n-divider title-placement="center" class="eventtypetitle" dashed>
+
+                        <n-icon size="32">
+                            <div :class="item.icon"></div>
+                        </n-icon>
+                        <n-text style="font-size: 24px" strong>
+                            &nbsp;{{i18n[item.title][currentLang]}}
+                        </n-text>
+                </n-divider>
+                <n-space vertical class="menucontent" justify="center" item-style="display:flex" align="center">
+
                     <Maintheme v-if="itemName == 'maintheme'"></Maintheme>
                     <Events :eventype="itemName" v-else></Events>
-                </div>
-                
+                </n-space>
+
             </n-tab-pane>
 
             <n-tab-pane name="others">
                 <template v-slot:tab>
-                    <n-icon><AnalyticsIcon/></n-icon>
+                    <n-icon>
+                        <AnalyticsIcon />
+                    </n-icon>
                     <n-text class="titletext">
                         &nbsp;{{i18n.misc[currentLang]}}
                     </n-text>
@@ -38,7 +57,9 @@
 
             <n-tab-pane name="search">
                 <template v-slot:tab>
-                    <n-icon><SearchIcon/></n-icon>
+                    <n-icon>
+                        <SearchIcon />
+                    </n-icon>
                     <n-text class="titletext">
                         &nbsp;{{i18n.search[currentLang]}}
                     </n-text>
@@ -90,20 +111,27 @@ export default {
 </script>
 
 <style>
-.menupage{
+.menupage {
     min-height: 600px;
 }
-.menupage > .n-layout-scroll-container{
+
+.menupage>.n-layout-scroll-container {
     overflow-y: hidden;
 }
-.n-tabs-nav{
+
+.n-tabs-nav {
     background: rgba(0, 65, 65, 0.504);
 }
-.menucontent{
+
+.menucontent {
     /* margin: 0% 0% 2% 15%; */
 }
-@media(max-width: 1000px){
-    .titletext{
+
+.eventtypetitle .n-divider__line{
+    background-color: #7f7f7f !important;
+}
+@media(max-width: 1000px) {
+    .titletext {
         display: none;
     }
 }

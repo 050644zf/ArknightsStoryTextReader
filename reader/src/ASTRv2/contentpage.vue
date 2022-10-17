@@ -3,8 +3,8 @@
     <n-layout-content class="contentpage"   >
     
         <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
-        <n-affix :top="0" :trigger-top="40" v-else listen-to=".site">
-        <n-space class="breadcrumb" >
+
+        <n-space v-else class="breadcrumb" >
             <n-breadcrumb>
                 <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
                     <n-icon><MenuIcon/></n-icon>
@@ -13,6 +13,7 @@
                 <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)">
                     {{data.eventName}}
                 </n-breadcrumb-item>
+                <br class="breadcrumbbreak"/>
                 <n-breadcrumb-item>
                     <n-popselect :options="storyOpts" v-model:value="path" scrollable>
                         <n-text type="info">
@@ -38,7 +39,7 @@
                 </n-button>
             </n-button-group> -->
         </n-space>
-    </n-affix>
+
 
         <n-space veritical class="content" justify="center">
             <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
@@ -203,6 +204,14 @@ export default {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     /* border-radius: 4px; */
     width: 100vw;
+}
+.breadcrumbbreak{
+        display: none;
+    }
+@media(max-width: 700px){
+    .breadcrumbbreak{
+        display: block;
+    }
 }
 
 </style>

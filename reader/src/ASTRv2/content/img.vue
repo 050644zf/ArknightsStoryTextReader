@@ -1,20 +1,22 @@
 <template>
-    <n-image  :class="{images: imgtype=='images' || bgMode=='full', backgrounds:imgtype=='backgrounds'&&bgMode=='stripe'}" :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`"/>
+    <n-image
+        :class="{images: imgtype=='images' || bgMode=='full', backgrounds:imgtype=='backgrounds'&&bgMode=='stripe'}"
+        :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`" />
 </template>
 
 <script>
 import func from '../func'
 export default {
-    data(){
-        return{
+    data() {
+        return {
             line: this.inputline,
-            imgtype: this.background?'backgrounds':'images',
+            imgtype: this.background ? 'backgrounds' : 'images',
             bgMode: func.bgMode
         }
     },
-    props:{
+    props: {
         inputline: Object,
-        background:{
+        background: {
             type: Boolean,
             default: false
         }
@@ -23,19 +25,34 @@ export default {
 </script>
 
 <style>
-.line .images img{
+.line .images img {
     max-width: 500px;
     max-height: 300px;
-    margin: 4px;
-    margin-left: 114px;
+    /*horizontal center*/
+    margin-left: calc(100vh/7*2);
 }
-.line .backgrounds img{
+
+.line .backgrounds img {
     margin: 10px;
-    margin-left: 100px;
+    /*horizontal center*/
+    margin-left: calc(100vh/7*2);
     height: 150px;
     width: 700px;
     object-fit: none !important;
 }
 
+@media(max-width: 750px) {
+    .line .images img {
+        margin-left: 5%;
+        max-width: 90vw;
+    }
 
+    .line .backgrounds img {
+        margin: 10px;
+        max-width: 90vw;
+        /*horizontal center*/
+        margin-left: 5%;
+        object-fit: scale-down !important;
+    }
+}
 </style>
