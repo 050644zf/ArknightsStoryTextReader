@@ -10,17 +10,23 @@
                     <n-icon><MenuIcon/></n-icon>
                     {{i18n.menu[currentLang]}}
                 </n-breadcrumb-item>
-                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)">
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)" v-if="data.eventid">
                     {{data.eventName}}
                 </n-breadcrumb-item>
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/extra')" v-else>
+                    {{i18n.extra[currentLang]}}
+                </n-breadcrumb-item>                
                 <br class="breadcrumbbreak"/>
                 <n-breadcrumb-item>
                     <n-popselect :options="storyOpts" v-model:value="path" scrollable>
-                        <n-text type="info">
+                        <n-text type="info" v-if="data.eventid">
                             {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
                             <n-icon>
                                 <ArrowDropDown/>
                             </n-icon>
+                        </n-text>
+                        <n-text type="info" v-else>
+                            {{data.storyName}}
                         </n-text>
                     </n-popselect>
                 </n-breadcrumb-item>
@@ -158,15 +164,20 @@ export default {
         getStoryOpts(){
             var opts = [];
             var sidx = 0;
-            for(var story of this.mdata[this.eventid]['infoUnlockDatas']){
-                opts.push({
-                    value: story.storyTxt,
-                    label: story.storyCode ? `${story.storyCode} ${story.storyName} - ${story.avgTag}` : `${story.storyName} - ${story.avgTag}`,
-                });
-                if(story.storyTxt == this.path){
-                    this.storyIdx = sidx;
-                }
-                sidx++;
+            try{
+                for(var story of this.mdata[this.eventid]['infoUnlockDatas']){
+                    opts.push({
+                        value: story.storyTxt,
+                        label: story.storyCode ? `${story.storyCode} ${story.storyName} - ${story.avgTag}` : `${story.storyName} - ${story.avgTag}`,
+                    });
+                    if(story.storyTxt == this.path){
+                        this.storyIdx = sidx;
+                    }
+                    sidx++;
+                }                
+            }
+            catch(e){
+                console.log(e);
             }
             return opts;
         },

@@ -60,6 +60,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.0.1</n-h4>
+                <n-oi>
+                    <n-li> Add extra story in misc</n-li>
+                </n-oi>
                 <n-h4>wv 1.0</n-h4>
                 <n-oi>
                     <n-li> Add layout responsiveness for different scrren.</n-li>

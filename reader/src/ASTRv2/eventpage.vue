@@ -34,8 +34,7 @@
                 <n-alert type="info" v-if="eventid=='act17side'">
                     <n-space justify="space-between" align="center" item-style="display:flex;">
                         <n-text>
-                            查看愚人号活动行动日志<br />
-                            Check Operation Log in Stultifera Navis
+                            {{i18n.act17side_log[currentLang]}}
                         </n-text>
                         <n-button text @click="$router.push('/'+$route.params.server+'/act17side_log')">
                             <n-icon size="32">
@@ -43,7 +42,18 @@
                             </n-icon>
                         </n-button>
                     </n-space>
-
+                </n-alert>
+                <n-alert type="info" v-if="eventid=='act13side'">
+                    <n-space justify="space-between" align="center" item-style="display:flex;">
+                        <n-text>
+                            {{i18n.extra[currentLang]}}
+                        </n-text>
+                        <n-button text @click="$router.push('/'+$route.params.server+'/extra')">
+                            <n-icon size="32">
+                                <ForwardIcon />
+                            </n-icon>
+                        </n-button>
+                    </n-space>
                 </n-alert>
                 <n-list>
                     <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx" @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})">
