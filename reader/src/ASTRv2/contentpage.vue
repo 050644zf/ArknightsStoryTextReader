@@ -47,12 +47,15 @@
         </n-space>
 
 
-        <n-space veritical class="content" justify="center">
+        <n-space veritical class="content" justify="center" warp="false">
+
+
             <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
                 {{i18n.optionTraceDisabled[currentLang]}}
             </n-h4>
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
             <div v-else>
+                <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" >
 
                     <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
@@ -66,6 +69,7 @@
 
                     <div style="clear: both;"></div>
                 </div>                            
+                <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
             </div>
     
         </n-space>
@@ -85,6 +89,7 @@ import decision from './content/decision.vue';
 import predicate from './content/predicate.vue';
 import delay from './content/delay.vue';
 import img from './content/img.vue';
+import paging from './content/paging.vue';
 import {MenuOpenFilled, ArrowDropDownSharp,ChevronLeftOutlined,ChevronRightOutlined } from "@vicons/material"
 import {useLoadingBar,useDialog } from 'naive-ui'
 
@@ -105,6 +110,7 @@ export default {
             mdata: window.sessionStorage.getItem('menudata')?JSON.parse(window.sessionStorage.getItem('menudata')):{},
             storyOpts: [],
             storyIdx: -1,
+            storyCount: 0,
         }
     },
     metaInfo(){
@@ -143,6 +149,7 @@ export default {
         Predicate: predicate,
         Delay: delay,
         Showimg: img,
+        Paging: paging,
         MenuIcon: MenuOpenFilled,
         ArrowDropDown: ArrowDropDownSharp,
         LastStory: ChevronLeftOutlined,
@@ -165,6 +172,8 @@ export default {
             var opts = [];
             var sidx = 0;
             try{
+                this.storyCount = this.mdata[this.eventid]['infoUnlockDatas'].length;
+                console.log(this.storyCount);
                 for(var story of this.mdata[this.eventid]['infoUnlockDatas']){
                     opts.push({
                         value: story.storyTxt,
@@ -187,6 +196,17 @@ export default {
         paging(inc){
             //console.log(this.storyIdx, this.storyOpts.length);
             this.pushStory(this.storyOpts[this.storyIdx+inc].value);
+        },
+        calcjustify(){
+            if(!this.storyIdx){
+                return 'end';
+            }
+            else if(this.storyIdx == this.storyOpts.length-1){
+                return 'start';
+            }
+            else{
+                return 'space-between';
+            }
         }
     }
 }

@@ -41,9 +41,15 @@ export default {
 <style>
 .Decision{
     margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .option{
     text-align: center;
+    max-width: 800px;
+    min-width: 30vw;
     margin: 4px;
     padding: 4px;
     transition: background-color 0.5s;
