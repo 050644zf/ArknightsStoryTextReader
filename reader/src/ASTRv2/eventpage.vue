@@ -56,8 +56,8 @@
                     </n-space>
                 </n-alert>
                 <n-list>
-                    <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx" @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})">
-                        <n-space vertical>
+                    <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx" >
+                        <n-space vertical @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})">
                             <n-space item-style="display:flex;" align="end">
                                 <n-h3 style="margin:0px;" prefix="bar">{{story.storyName}}</n-h3>
                                 <n-text depth="3">{{story.storyCode}} {{story.avgTag}}</n-text>
@@ -70,11 +70,7 @@
 
                         </n-space>
                         <template #suffix>
-                            <n-button text>
-                                <n-icon size="32">
-                                    <ForwardIcon />
-                                </n-icon>
-                            </n-button>
+                            <OpenInNew :link="{path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}}"/>
                         </template>
                     </n-list-item>
                 </n-list>
@@ -84,9 +80,10 @@
 </template>
 
 <script>
-import { MenuOpenFilled, ArrowForwardOutlined, DownloadOutlined } from "@vicons/material"
+import { MenuOpenFilled, ArrowForwardOutlined, DownloadOutlined, OpenInNewOutlined} from "@vicons/material"
 import i18n from "./i18n.json"
 import func from "./func.js"
+import openInNew from "./components/openInNewBtn.vue"
 export default {
     data() {
         return {
@@ -124,8 +121,9 @@ export default {
     },
     components: {
         MenuIcon: MenuOpenFilled,
-        ForwardIcon: ArrowForwardOutlined,
+        ForwardIcon: OpenInNewOutlined,
         ExportIcon: DownloadOutlined,
+        OpenInNew: openInNew,
     },
     methods: {
         exportAll() {

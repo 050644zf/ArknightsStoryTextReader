@@ -1,8 +1,8 @@
 <template>
     <n-space class="events" item-style="display:flex;" justify="center">
         <n-list class="list">
-            <n-list-item v-for="(edata, eidx) in eventList[eventype]" :key="eidx" @click="$router.push('/'+$route.params.server+'/event/'+edata.id)">
-                <n-space item-style="display:flex;" align="center" class="eventtitle" >
+            <n-list-item v-for="(edata, eidx) in eventList[eventype]" :key="eidx">
+                <n-space item-style="display:flex;" align="center" class="eventtitle" @click="$router.push('/'+$route.params.server+'/event/'+edata.id)">
                     <img v-if="eventype != 'or'" :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/'+edata.id+'.png'"/>
                     <img v-else :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/char_'+edata.cid+'_'+edata.cin+'.png'" style="height: 64px;"/>
                     <n-space vertical item-style="display:flex;" justify="space-around">
@@ -25,11 +25,7 @@
 
                 </n-space>
                 <template #suffix>
-                    <n-button text  class="eventwarp">
-                        <n-icon size="32">
-                            <ForwardIcon/>
-                        </n-icon>
-                    </n-button>
+                    <OpenInNew :link="'/'+$route.params.server+'/event/'+edata.id"/>
                 </template>
             </n-list-item>
         </n-list>
@@ -37,9 +33,10 @@
 </template>
 
 <script>
-import { ArrowForwardOutlined } from '@vicons/material'
+import { ArrowForwardOutlined, OpenInNewOutlined } from '@vicons/material'
 import i18n from '../i18n.json'
 import func from '../func'
+import openInNew from "../components/openInNewBtn.vue"
 export default{
     props: ['eventype'],
     data(){
@@ -54,7 +51,7 @@ export default{
         }
     },
     components: {
-        ForwardIcon: ArrowForwardOutlined,
+        OpenInNew: openInNew
     },
     methods:{
         getEventWordCount(eventid){

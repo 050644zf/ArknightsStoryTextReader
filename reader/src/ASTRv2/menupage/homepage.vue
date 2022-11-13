@@ -60,6 +60,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.1.1</n-h4>
+                <n-oi>
+                    <n-li> Add "open in new tab" feature in menus.</n-li>
+                </n-oi>                
                 <n-h4>wv 1.1</n-h4>
                 <n-oi>
                     <n-li> Bring back the paging feature</n-li>

@@ -59,5 +59,6 @@
                       "en_US":"Stultifera Navis Operation Log",
                       "ja_JP":"Stultifera Navis Operation Log",
                       "ko_KR":"Stultifera Navis Operation Log",
-                      "zh_TW":"愚人號行動日誌"}
+                      "zh_TW":"愚人號行動日誌"},
+    "openInNew": {"zh_CN":"在新标签页中打开","en_US":"Open in New Tab","ja_JP":"新しいタブで開く","ko_KR":"새 탭에서 열기", "zh_TW":"在新標籤頁中打開"}
 }
