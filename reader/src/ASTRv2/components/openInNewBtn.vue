@@ -40,3 +40,11 @@ export default {
 }
 
 </script>
+
+<style>
+@media(max-width: 700px){
+    .openinnew{
+        display: none !important;
+    }
+}
+</style>
