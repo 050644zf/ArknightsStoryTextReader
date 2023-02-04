@@ -10,13 +10,15 @@
             If you have any questions or feedbacks, please submit an issue <n-a
                 href="https://github.com/050644zf/ArknightsStoryTextReader/issues/new">here</n-a>.<br /><br />
 
-            如果你喜欢本项目，可以考虑给一个star资瓷一下。<br />
+            如果您喜欢本项目，可以考虑给一个star资瓷一下。<br />
             If you like this project, please give me a star!<br />
             <n-a href="https://github.com/050644zf/ArknightsStoryTextReader">
                 <n-icon>
                     <img src="https://img.shields.io/github/stars/050644zf/ArknightsStoryTextReader?style=social" />
                 </n-icon>
-            </n-a>
+            </n-a><br />
+            如果您觉得ASTR有帮到您，欢迎通过 <n-a href="patreon.com/m31nightsky">Patreon<n-a/> 给我买杯咖啡！
+            If you find ASTR helpful, consider buy me a coffee on <n-a href="patreon.com/m31nightsky">Patreon<n-a/>!
             <br /><br />
             <n-text strong type="warning">
                 网站内使用的游戏图片和文本原文，仅用于更好地表现游戏资料，其版权属于上海鹰角网络科技有限公司。<br />
