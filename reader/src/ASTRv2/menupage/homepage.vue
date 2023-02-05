@@ -16,8 +16,9 @@
                 <n-icon>
                     <img src="https://img.shields.io/github/stars/050644zf/ArknightsStoryTextReader?style=social" />
                 </n-icon>
-            </n-a><br />
-            如果您觉得ASTR有帮到您，欢迎通过 <n-a href="patreon.com/m31nightsky">Patreon</n-a> 给我买杯咖啡！
+            </n-a>
+            <br /><br />
+            如果您觉得ASTR有帮到您，欢迎通过 <n-a href="patreon.com/m31nightsky">Patreon</n-a> 给我买杯咖啡！<br />
             If you find ASTR helpful, consider buy me a coffee on <n-a href="patreon.com/m31nightsky">Patreon</n-a>!
             <br /><br />
             <n-text strong type="warning">
