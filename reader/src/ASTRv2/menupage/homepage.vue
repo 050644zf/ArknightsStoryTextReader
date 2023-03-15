@@ -32,6 +32,13 @@
             致谢 / Credits:
         </n-h3>
         <n-text>
+        感谢以下赞助者的大力支持！<br/>
+        Thanks to the generous support from the following sponsors!
+        </n-text>
+        <n-ul>
+            <n-li>Thymewarp</n-li>
+        </n-ul>
+        <n-text>
             本项目的实现离不开以下项目的支持：<br />
             The implementation of this project is not without the support of the following projects:
         </n-text>
