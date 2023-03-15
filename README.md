@@ -28,3 +28,6 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 - Pretty formatted story text, selecting option will navigate to corresponding line (in most stories)
 - More interesting feature in misc
 
+# Thanks to the Generous Support from Sponsors!
+
+> Thymewarp
