@@ -14,7 +14,7 @@
             </n-alert>
             <n-alert type="warning" title="注意！/ Warning!" closable>
                 回顾网页可能于2023年5月29日03:59分(UTC+8)关闭，建议保存所需文件以备后期查看<br/>
-                The review site maybe closed at 2022-05-29 03:59(UTC+8), saving the files for later viewing is suggested.
+                The review site maybe closed at 2023-05-29 03:59(UTC+8), saving the files for later viewing is suggested.
             </n-alert>
             <n-hr></n-hr>
             <n-steps>
@@ -178,7 +178,7 @@
                             <img :src="getCharAvatar(stats.result_room_char.hire_max_ts_all_char)" style="width:64px;">
                         </n-statistic>
                         <n-statistic>
-                            <template #label>制造站 <br/> Manufacture Room </template>
+                            <template #label>制造站 <br/> Production Room </template>
                             <img :src="getCharAvatar(stats.result_room_char.manufacture_max_ts_all_char)" style="width:64px;">
                         </n-statistic>
                         <n-statistic>
