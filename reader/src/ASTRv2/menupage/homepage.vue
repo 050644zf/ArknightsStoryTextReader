@@ -70,6 +70,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.2</n-h4>
+                <n-oi>
+                    <n-li> Add Arknights Annual Report 2023</n-li>
+                </n-oi>
                 <n-h4>wv 1.1.1</n-h4>
                 <n-oi>
                     <n-li> Add "open in new tab" feature in menus.</n-li>

@@ -105,15 +105,15 @@
                         </n-statistic>
                         <n-statistic>
                             <template #label>战斗次数 <br/> # of Battles</template>
-                            <n-number-animation from="0" :to="stats.result_battle_gacha.battle_times"/>
+                            <n-number-animation from="0" :to="stats.result_battle_gacha.battle_times" show-separator/>
                         </n-statistic>
                         <n-statistic>
                             <template #label>寻访次数 <br/> # of Headhunting</template>
-                            <n-number-animation from="0" :to="stats.result_battle_gacha.gacha_times"/>
+                            <n-number-animation from="0" :to="stats.result_battle_gacha.gacha_times" show-separator/>
                         </n-statistic>
                         <n-statistic>
                             <template #label>理智消耗 <br/> # of Sanity Consumed</template>
-                            <n-number-animation from="0" :to="stats.result_ap_cost.ap_cost"/>
+                            <n-number-animation from="0" :to="stats.result_ap_cost.ap_cost" show-separator/>
                         </n-statistic>
                     </n-space>
                     <n-space justify="space-around">
@@ -241,9 +241,87 @@
                 </n-card>
                 <n-card>
                     <template #header>
-                        TBD...
+                        危机合约数据 / Contingency Contract Data
                     </template>
-                </n-card>                    
+                    <n-space justify="space-around">
+                        <n-statistic>
+                            <template #label>首次参与危机合约日期 <br/> Date of first C.C.attendance</template>
+                            {{ stats.result_crisis.first_attend_time }}
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>最高合约等级 <br/> Best C.C. Level</template>
+                            <n-number-animation from="0" :to="stats.result_crisis.best_score" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>最常使用干员 <br/> Most Use Operator</template>
+                            <img :src="getCharAvatar(stats.result_crisis_char.mostuse_char)" style="width:64px;">
+                        </n-statistic>               
+                    </n-space>                      
+                </n-card>
+                <n-card>
+                    <template #header>
+                        集成战略数据 / Integrated Strategies Data
+                    </template>
+                    <n-card>
+                    <template #header>
+                        干员Pick位前五 / Top 5 Pick
+                    </template>
+                    <n-space justify="space-around">
+                    <n-statistic>
+                            <img :src="getCharAvatar(stats.result_rogue_char_pick.char_pick1)" style="width:64px;">
+                    </n-statistic>
+                    <n-statistic>
+                            <img :src="getCharAvatar(stats.result_rogue_char_pick.char_pick2)" style="width:64px;">
+                    </n-statistic>
+                    <n-statistic>
+                            <img :src="getCharAvatar(stats.result_rogue_char_pick.char_pick3)" style="width:64px;">
+                    </n-statistic>
+                    <n-statistic>
+                            <img :src="getCharAvatar(stats.result_rogue_char_pick.char_pick4)" style="width:64px;">
+                    </n-statistic>
+                    <n-statistic>
+                            <img :src="getCharAvatar(stats.result_rogue_char_pick.char_pick5)" style="width:64px;">
+                    </n-statistic>
+                    </n-space>
+                    </n-card>
+                    <n-card>
+                    <template #header>
+                        其他数据 / Other Data
+                    </template>
+                    <n-space justify="space-around">
+                        <n-statistic>
+                            <template #label>使用骰子次数 <br/> # of Dice Used</template>
+                            <n-number-animation from="0" :to="stats.result_rogue_dice.use_dice_cnt" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>掷出6次数 <br/> Times of Getting 6</template>
+                            <n-number-animation from="0" :to="stats.result_rogue_dice.dice_6up_cnt" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>掷出6概率 <br/> Possibility of Getting 6</template>
+                            {{ toPercent(stats.result_rogue_dice.dice_6up_rank) }}
+                        </n-statistic>                        
+                    </n-space>
+                    <n-space justify="space-around">
+                        <n-statistic>
+                            <template #label>敌人进点次数 <br/> # of Enemies Escaped</template>
+                            <n-number-animation from="0" :to="stats.result_rogue_enemy_exit.enemy_exit_cnt_all" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>进点最多关卡 <br/> Stages with Most Enemies Escaped </template>
+                            <n-a :href=getStageLink(stats.result_rogue_enemy_exit.max_exit_stage) target="_blank">{{ stats.result_rogue_enemy_exit.max_exit_stage }}</n-a>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>获得收藏品数 <br/> # of Relics Obtained</template>
+                            <n-number-animation from="0" :to="stats.result_rogue_relic_get.get_cnt" show-separator/>
+                        </n-statistic>
+                        <n-statistic>
+                            <template #label>获得热水壶数 <br/> # of Kettle Obtained</template>
+                            <n-number-animation from="0" :to="stats.result_rogue_relic_get.kettle_get_cnt" show-separator/>
+                        </n-statistic>                                                
+                    </n-space>                    
+                    </n-card>                    
+                </n-card>                
             </n-space>
         </n-space>
         <n-alert class="stats" v-else type="error">
@@ -363,6 +441,14 @@ export default {
                 data.push(row);
             }
             return data;
+        },
+        toPercent(point){
+            var str=Number(point*100).toFixed(2);
+            str+="%";
+            return str;
+        },
+        getStageLink(id){
+            return 'https://map.ark-nights.com/map/' + id;
         }
     }
 }

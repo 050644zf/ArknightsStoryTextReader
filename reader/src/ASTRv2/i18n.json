@@ -60,5 +60,10 @@
                       "ja_JP":"Stultifera Navis Operation Log",
                       "ko_KR":"Stultifera Navis Operation Log",
                       "zh_TW":"愚人號行動日誌"},
-    "openInNew": {"zh_CN":"在新标签页中打开","en_US":"Open in New Tab","ja_JP":"新しいタブで開く","ko_KR":"새 탭에서 열기", "zh_TW":"在新標籤頁中打開"}
+    "openInNew": {"zh_CN":"在新标签页中打开","en_US":"Open in New Tab","ja_JP":"新しいタブで開く","ko_KR":"새 탭에서 열기", "zh_TW":"在新標籤頁中打開"},
+    "annual_report": {"zh_CN":"明日方舟年度工作报告（仅支持CN服）",
+                      "en_US":"Arknights Annual Report (CN Server Only)",
+                      "ja_JP":"Arknights Annual Report (CN Server Only)",
+                      "ko_KR":"Arknights Annual Report (CN Server Only)",
+                      "zh_TW":"明日方舟年度工作報告（僅支持CN服）"}
 }

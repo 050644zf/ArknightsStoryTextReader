@@ -13,7 +13,7 @@
                     <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
                         Arknights Story Text Reader
                     </n-h2>
-                    <n-text depth="3" class="astrversion">web version 1.1 </n-text>
+                    <n-text depth="3" class="astrversion">web version 1.2 </n-text>
                 </n-space>
 
             </n-space>

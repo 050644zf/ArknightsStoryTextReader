@@ -49,6 +49,22 @@
                     </n-button>
                 </template>  
             </n-list-item>
+            <n-list-item @click="$router.push('/'+$route.params.server+'/stats2023')">
+                <n-space item-style="display:flex;" align="center">
+                    <n-space item-style="display:flex;" align="baseline">
+                        <n-h2 prefix="bar">
+                            {{i18n.annual_report[currentLang]}}
+                        </n-h2>
+                    </n-space>
+                </n-space>
+                <template #suffix>
+                    <n-button text>
+                        <n-icon size="32">
+                            <ForwardIcon/>
+                        </n-icon>
+                    </n-button>
+                </template>  
+            </n-list-item>            
             <n-list-item @click="$router.push('/'+$route.params.server+'/isrecords')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">
