@@ -48,9 +48,13 @@ export default {
         if(content){
             const color_re = /<color=([\w#]+)>(.+?)<\/color>/gm;
             const color_sub = `<span style="color:$1">$2</span>`;
+            const nbsp_sub_before = /(\s+)(<\/?\w+>)/gm;
+            const nbsp_sub_after = /(<\/?\w+>)(\s+)/gm;
             content = content.replaceAll('{@nickname}',this.doctor);
             content = content.replaceAll('\\n','<br/>')
             content = content.replace(color_re,color_sub);
+            content = content.replace(nbsp_sub_before,'&nbsp;$2');
+            content = content.replace(nbsp_sub_after,'$1&nbsp;');
         }
         return content;
     },
