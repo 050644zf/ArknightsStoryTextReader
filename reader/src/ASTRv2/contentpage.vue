@@ -54,7 +54,7 @@
                 {{i18n.optionTraceDisabled[currentLang]}}
             </n-h4>
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
-            <div v-else>
+            <div v-else class="lines">
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" >
 
@@ -215,11 +215,14 @@ export default {
 <style>
 .contentpage{
     padding-bottom: 50px;
-    
 }
 
 .contentpage > .n-layout-scroll-container{
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
 .contentpage  .content{
@@ -228,8 +231,9 @@ export default {
     /* display: flex;
     justify-content: flex-end; */
 }
+
 .contentpage .breadcrumb{
-    margin: 0px 0px 16px 0px !important;
+    margin: 0px -64px 16px 0px !important;
     background: rgb(0, 65, 65);
     padding: 5px 50px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);

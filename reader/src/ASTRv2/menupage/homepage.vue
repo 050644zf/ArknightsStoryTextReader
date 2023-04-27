@@ -73,6 +73,7 @@
                 <n-h4>wv 1.2.1</n-h4>
                 <n-oi>
                     <n-li> Fix missing space before & after html tag in content</n-li>
+                    <n-li> Change the alignment to center in content page</n-li>
                 </n-oi>                
                 <n-h4>wv 1.2</n-h4>
                 <n-oi>
