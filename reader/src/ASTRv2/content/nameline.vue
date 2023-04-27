@@ -66,7 +66,7 @@ export default {
     color: #7f7f7f
 }
 .contentblock{
-    display: flex;
+    display: block;
     flex: 6 300px;
     background-color: unset;
     float: left;
