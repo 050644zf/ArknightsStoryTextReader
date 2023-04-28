@@ -13,7 +13,7 @@
                     <!-- <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
                         Arknights Story Text Reader
                     </n-h2> -->
-                    <n-image src="/src/assets/ASTReader.png" style="height:30px"  preview-disabledclass="astrtitle"/>
+                    <n-image src="https://raw.githubusercontent.com/050644zf/ArknightsStoryTextReader/master/reader/src/assets/ASTReader.png" style="height:30px"  preview-disabledclass="astrtitle"/>
                     <n-text depth="3" class="astrversion">
                         Arknights Story Text Reader <br/>
                         Version 1.2 
