@@ -9,11 +9,15 @@
                 </router-link>
 
 
-                <n-space item-style="display: flex;" align="baseline" >
-                    <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
+                <n-space item-style="display: flex;" align="center" >
+                    <!-- <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
                         Arknights Story Text Reader
-                    </n-h2>
-                    <n-text depth="3" class="astrversion">web version 1.2 </n-text>
+                    </n-h2> -->
+                    <n-image src="/src/assets/ASTReader.png" style="height:30px"  preview-disabledclass="astrtitle"/>
+                    <n-text depth="3" class="astrversion">
+                        Arknights Story Text Reader <br/>
+                        Version 1.2 
+                    </n-text>
                 </n-space>
 
             </n-space>
@@ -106,6 +110,16 @@ export default {
 }
 .SettingsBtn{
     font-size: large;
+}
+.astrtitle{
+    font-family: v-mono, SFMono-Regular, Menlo, Consolas, Courier, monospace;
+    font-weight: bold;
+}
+.astrtitle svg{
+    padding-top: 100px;
+}
+.cls-1{
+    fill: #f3f0e7;
 }
 
 @media(max-width: 1000px){
