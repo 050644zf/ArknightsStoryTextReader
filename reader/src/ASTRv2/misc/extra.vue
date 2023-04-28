@@ -1,5 +1,5 @@
 <template>
-    <n-layout-content class="eventpage">
+    <n-layout-content class="extra">
 
             <n-breadcrumb class="breadcrumb">
                 <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
@@ -104,19 +104,19 @@ export default {
 </script>
 
 <style>
-.eventpage{
+.extra{
     display: flex;
 }
-.eventpage .breadcrumb {
+.extra .breadcrumb {
     margin: 0px 0px 16px 0px;
-    background: rgb(0, 65, 65);
+    background: #3b3830;
     padding: 8px 50px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     /* border-radius: 4px; */
     width: 100vw;
 }
 
-.eventpage .content {
+.extra .content {
     width: 80vw;
     max-width: 1000px;
 }

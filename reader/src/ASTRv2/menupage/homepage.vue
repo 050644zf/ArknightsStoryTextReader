@@ -70,6 +70,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.2.2</n-h4>
+                <n-oi>
+                    <n-li>Rhine Theme for Rhine Event!</n-li>
+                </n-oi> 
                 <n-h4>wv 1.2.1</n-h4>
                 <n-oi>
                     <n-li> Fix missing space before & after html tag in content</n-li>

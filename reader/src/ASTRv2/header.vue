@@ -100,7 +100,7 @@ export default {
 
 <style>
 .header{
-    background-color: #007575;
+    background-color: #615c4f;
     font-weight: bold;
     padding: 0px 20px;
 }

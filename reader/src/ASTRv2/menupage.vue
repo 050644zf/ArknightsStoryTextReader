@@ -120,7 +120,11 @@ export default {
 }
 
 .n-tabs-nav {
-    background: rgba(0, 65, 65, 0.504);
+    background: #3b3830;
+    /* --n-bar-color: #ffcd43;
+    --n-tab-text-color-active: #ffcd43;
+    --n-tab-text-color-hover: #ffcd43; */
+
 }
 
 .menucontent {

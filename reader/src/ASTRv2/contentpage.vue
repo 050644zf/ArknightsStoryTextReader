@@ -234,7 +234,7 @@ export default {
 
 .contentpage .breadcrumb{
     margin: 0px -64px 16px 0px !important;
-    background: rgb(0, 65, 65);
+    background: #3b3830;
     padding: 5px 50px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     /* border-radius: 4px; */

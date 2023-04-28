@@ -1,7 +1,7 @@
 <template>
     <metainfo />
     <n-layout class="site">
-        <n-config-provider :theme="darkTheme">
+        <n-config-provider :theme="rhineTheme">
             <n-loading-bar-provider>
                 <n-dialog-provider>
                     <router-view></router-view>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { darkTheme } from "naive-ui"
+import { darkTheme,NConfigProvider,lightTheme } from "naive-ui"
 import headerVue from "./header.vue"
 import footerVue from "./footer.vue"
 import { useMeta } from "vue-meta"
@@ -22,20 +22,34 @@ import { useMeta } from "vue-meta"
 export default {
     data() {
         return {
-            darkTheme: darkTheme
+            darkTheme: darkTheme,
+            rhineTheme: {},
         }
+    },
+    created() {
+        this.rhineTheme = this.prepare(darkTheme);
     },
     components: {
         "Header": headerVue,
         "Footer": footerVue,
+    },
+    methods:{
+        prepare(theme){
+            console.log(theme);
+            theme.common.bodyColor = "#151515";
+            theme.common.primaryColor = "#ffd03f";
+            theme.common.primaryColorHover = "#eca93b";
+            theme.common.primaryColorPressed = "#ffc33f";
+            theme.common.primaryColorSuppl = "#ffc33f";
+            theme.Typography.common.infoColor = "#87c1af"
+            return theme;
+        }
     }
+    
 }
 </script>
 
 <style>
-.n-layout .n-layout-scroll-container {
-    /* overflow-y: hidden; */
-}
 
 .site {
     height: 100vh;
@@ -100,9 +114,9 @@ export default {
 }
 
 .n-list-item:hover {
-    background-color: rgba(112, 192, 232, 0.2);
+    background-color: rgba(143, 52, 46,0.5);
     padding: 30px 20px !important;
     /* add inner box shadow */
-    box-shadow: 0px 0px 20px 0px rgba(112, 192, 232, 0.3);
+    box-shadow: 0px 0px 20px 0px rgba(143, 52, 46, 0.3);
 }
 </style>
