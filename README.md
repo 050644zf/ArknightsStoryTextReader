@@ -3,7 +3,8 @@
 The python scripts for this repository have been move to [ASTR-Script](https://github.com/050644zf/ASTR-Script)
 
 <p align="center">
-    <img src="reader/src/assets/favicon.png" width="75px"/>
+    <img src="reader/src/assets/favicon.png" width="75px"/>&nbsp;
+    <img src="reader/src/assets/ASTReader.png" height="75px"/>
 </p>
 
 <p align="center">
