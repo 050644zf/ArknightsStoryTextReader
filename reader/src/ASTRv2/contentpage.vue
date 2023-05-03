@@ -58,14 +58,14 @@
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" >
 
-                    <Nameline v-if="line.prop == 'name'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
-                    <Nameline v-if="line.prop == 'multiline'" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
-                    <Subtitle v-if="line.prop == 'Subtitle' || line.prop == 'Sticker'" :inputline="line"></Subtitle>
-                    <Decision v-if="line.prop == 'Decision'" :inputline="line"></Decision>
-                    <Predicate v-if="line.prop == 'Predicate'" :inputline="line"></Predicate>
-                    <Delay v-if="line.prop == 'Delay' && showDelay == 'y'" :inputline="line"></Delay>
-                    <Showimg v-if="line.prop == 'Image' && line.attributes.image" :inputline="line"></Showimg>
-                    <Showimg v-if="line.prop == 'Background' && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
+                    <Nameline v-if="strMatch(line.prop, 'name')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
+                    <Nameline v-if="strMatch(line.prop,'multiline')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
+                    <Subtitle v-if="strMatch(line.prop ,'subtitle') || line.prop == 'Sticker'" :inputline="line"></Subtitle>
+                    <Decision v-if="strMatch(line.prop , 'decision')" :inputline="line"></Decision>
+                    <Predicate v-if="strMatch(line.prop , 'predicate')" :inputline="line"></Predicate>
+                    <Delay v-if="strMatch(line.prop , 'delay') && showDelay == 'y'" :inputline="line"></Delay>
+                    <Showimg v-if="strMatch(line.prop , 'image') && line.attributes.image" :inputline="line"></Showimg>
+                    <Showimg v-if="strMatch(line.prop, 'background') && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
 
                     <div style="clear: both;"></div>
                 </div>                            
@@ -207,7 +207,10 @@ export default {
             else{
                 return 'space-between';
             }
-        }
+        },
+        strMatch(str1, str2){
+            return str1.toLowerCase() == str2.toLowerCase();
+        },
     }
 }
 </script>
