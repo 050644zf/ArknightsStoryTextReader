@@ -1,11 +1,11 @@
 <template>
     <n-space vertical class="homepage" justify="center">
-        <n-alert type="error" title="ASTR 已停止更新 / ASTR has stopped updating">
+        <!-- <n-alert type="error" title="ASTR 已停止更新 / ASTR has stopped updating">
                 由于数据资源 <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a> 已经停止更新，ASTR数据将不再更新直到找到新可用数据源。<br/>
                 如果有新可用数据源欢迎在 github issue 中反馈！感谢大家的支持！<br/><br/>
                 Due to the archiving of game datasource <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a>, ASTR will not be updated until a new datasource is found. <br/>
                 If you find a new datasource, please submit an issue on github! Thank you for your support! 
-        </n-alert>
+        </n-alert> -->
         <br/>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br />
