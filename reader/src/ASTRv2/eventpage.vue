@@ -43,6 +43,18 @@
                         </n-button>
                     </n-space>
                 </n-alert>
+                <n-alert type="info" v-if="eventid=='act25side'">
+                    <n-space justify="space-between" align="center" item-style="display:flex;">
+                        <n-text>
+                            {{i18n.act25side_log[currentLang]}}
+                        </n-text>
+                        <n-button text @click="$router.push('/'+$route.params.server+'/act25side_log')">
+                            <n-icon size="32">
+                                <ForwardIcon />
+                            </n-icon>
+                        </n-button>
+                    </n-space>
+                </n-alert>
                 <n-alert type="info" v-if="eventid=='act13side'">
                     <n-space justify="space-between" align="center" item-style="display:flex;">
                         <n-text>

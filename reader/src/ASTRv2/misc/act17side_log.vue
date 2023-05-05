@@ -9,8 +9,8 @@
             <n-breadcrumb-item>愚人号行动日志 | Stultifera Navis Operation Log</n-breadcrumb-item>
         </n-breadcrumb>
         <n-layout has-sider v-if="is_mdata_loaded">
-            <n-layout-sider bordered width="240" style="height: 80vh" :native-scrollbar="false">
-                <n-menu :options="menu_options" @update:value="loadLog"></n-menu>
+            <n-layout-sider bordered width="240" style="height: 80vh" :native-scrollbar="false" collapse-mode="width" show-trigger :collapsed-width="20">
+                <n-menu :options="menu_options" @update:value="loadLog" ></n-menu>
             </n-layout-sider>
             <n-layout-content style="height: 80vh" :native-scrollbar="false">
                 <n-empty v-if="current_Opt == {}"></n-empty>

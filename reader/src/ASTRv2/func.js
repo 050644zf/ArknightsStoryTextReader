@@ -51,7 +51,7 @@ export default {
             const nbsp_sub_before = /(\s+)(<\/?\w+>)/gm;
             const nbsp_sub_after = /(<\/?\w+>)(\s+)/gm;
             content = content.replaceAll('{@nickname}',this.doctor);
-            content = content.replaceAll('\\n','<br/>')
+            content = content.replace(/(?:\r\n|\r|\n)/g, '<br>');
             content = content.replace(color_re,color_sub);
             content = content.replace("#000000","white");
             content = content.replace(nbsp_sub_before,'&nbsp;$2');

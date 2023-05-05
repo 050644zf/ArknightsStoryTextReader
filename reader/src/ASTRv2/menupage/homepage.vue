@@ -80,6 +80,7 @@
                 <n-h4>wv 1.2.3</n-h4>
                 <n-oi>
                     <n-li>Add new property support for excel export.</n-li>
+                    <n-li>Add Lone Trail Investigation Reports.</n-li>
                     <n-li>Disable the search feature until available.</n-li>
                 </n-oi> 
                 <n-h4>wv 1.2.2</n-h4>
