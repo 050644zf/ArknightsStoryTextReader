@@ -187,7 +187,7 @@ export default {
             for(var lidx in storyJson['storyList']){
                 var line = storyJson['storyList'][lidx];
                 var index = line.id;
-                var prop = line.prop;
+                var prop = line.prop.toLowerCase();
                 var attrs = line.attributes;
 
                 if(prop == 'Comment'){
@@ -196,10 +196,13 @@ export default {
                 if(prop == 'name'){
                     storyList.push([index, attrs.name, attrs.content]);
                 }
-                if(prop == 'Dialog'){
+                if(prop == 'multiline'){
+                    storyList.push([index, attrs.name, attrs.content]);
+                }
+                if(prop == 'dialog'){
                     storyList.push([index, '----', '----']);
                 }
-                if(prop == 'Decision'){
+                if(prop == 'decision'){
                     storyList.push([index, '--Decision--', '----']);
                     var options = attrs.options.split(';');
                     var values = attrs.values.split(';');
@@ -208,7 +211,7 @@ export default {
                     }
                     storyList.push([index, '--Decision End--', '----']);
                 }
-                if(prop == 'Predicate'){
+                if(prop == 'predicate'){
                     if(line.endOfOpt){
                         storyList.push([index, '--Branch--', 'End of Options']);
                     }
@@ -216,9 +219,16 @@ export default {
                         storyList.push([index, '--Branch--', '>Options_'+attrs.references.replaceAll(';', '&')]);
                     }
                 }
-                if(prop == 'Subtitle'){
+                if(prop == 'subtitle'){
                     storyList.push(['']);
                     storyList.push([index, '', attrs.text]);
+                    storyList.push(['']);
+                }
+                if(prop == 'sticker'){
+                    storyList.push(['']);
+                    storyList.push([index, '', attrs.text]);                    
+                }
+                if(prop == 'stickerclear'){
                     storyList.push(['']);
                 }
                 if(Object.keys(attrs).indexOf('image') != -1){

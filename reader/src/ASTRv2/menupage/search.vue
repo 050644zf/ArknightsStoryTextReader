@@ -1,7 +1,11 @@
 <template>
     <n-space vertical class="searchpage">
+        <n-alert type="error">
+            由于 Github 搜索 API鉴权限制，搜索功能暂时无法使用。<br/>
+            Due to Github API Authentication limit, search function is temporarily unavailable.
+        </n-alert>
         <n-space item-style="display:flex;margin:10px;" align="center" justify="center" style="flex-wrap: nowrap;">
-            <n-input v-model:value="searchvalue" type="text" :loading="isSearching" @keyup.enter="searchRequest">
+            <n-input v-model:value="searchvalue" type="text" :loading="isSearching" @keyup.enter="searchRequest" disabled>
             </n-input>
             <n-button type="info" @click="searchRequest">
                 <n-icon size="24">
