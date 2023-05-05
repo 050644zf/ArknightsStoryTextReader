@@ -115,7 +115,7 @@ export default {
 
 .n-list-item:hover {
     background-color: rgba(143, 52, 46,0.5);
-    padding: 30px 20px !important;
+    /* padding: 30px 20px !important; */
     /* add inner box shadow */
     box-shadow: 0px 0px 20px 0px rgba(143, 52, 46, 0.3);
 }
