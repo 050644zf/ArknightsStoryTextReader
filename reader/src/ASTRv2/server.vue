@@ -154,25 +154,6 @@ export default {
             return eventList;
         },
         async getMainthemeData(chapterdata, eventList){
-            if(this.server == 'zh_CN'){
-                for(var idx in chapterdata.chapters){
-                    var events = [];
-                    var flag = false;
-                    for(var event of eventList.maintheme){
-                        if(event.id == chapterdata.chapters[idx].value.startZoneId){
-                            flag = true;
-                        }
-                        if(flag){
-                            events.push(event.id);
-                        }
-                        if(event.id == chapterdata.chapters[idx].value.endZoneId){
-                            flag = false;
-                        }
-                    }
-                    chapterdata.chapters[idx].value.events = events;
-                }
-                return chapterdata;
-            }
             for(var chapter in chapterdata){
                 var events = [];
                 var flag = false;

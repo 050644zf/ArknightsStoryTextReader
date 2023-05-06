@@ -77,6 +77,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.2.4</n-h4>
+                <n-oi>
+                    <n-li>Revert changes for new json format.</n-li>
+                </n-oi>
                 <n-h4>wv 1.2.3</n-h4>
                 <n-oi>
                     <n-li>Add new property support for excel export.</n-li>
