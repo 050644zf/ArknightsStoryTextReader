@@ -70,7 +70,7 @@ npm run build
 ```bash
 cd reader
 npm install
-npm run build
+npm run dev
 ```
 
 ### ASTRv2  Explained
