@@ -25,7 +25,7 @@
                 </n-icon>
             </n-a>
             <br /><br />
-            如果您觉得ASTR有帮到您，欢迎通过 <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a> 给我买杯咖啡！<br />
+            如果您觉得ASTR有帮到您，欢迎通过转账支付宝账户: 050644zf@outlook.com 或 <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a> 给我买杯咖啡！<br />
             If you find ASTR helpful, consider buy me a coffee on <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a>!
             <br /><br />
             <n-text strong type="warning">
