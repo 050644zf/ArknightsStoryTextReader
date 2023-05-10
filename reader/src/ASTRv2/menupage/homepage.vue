@@ -44,6 +44,8 @@
         </n-text>
         <n-ul>
             <n-li>Thymewarp</n-li>
+            <n-li>Bo Yi-bo</n-li>
+            <n-li>wangxu</n-li>
         </n-ul>
         <n-text>
             本项目的实现离不开以下项目的支持：<br />
