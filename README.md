@@ -31,8 +31,8 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 
 ## Thanks to the Generous Support from Sponsors!
 
-> Thymewarp
-> Bo Yi-bo
+> Thymewarp, 
+> Bo Yi-bo, 
 > wangxu
 
 ## Development Info
