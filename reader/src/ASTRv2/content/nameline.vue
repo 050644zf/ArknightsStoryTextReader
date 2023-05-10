@@ -43,7 +43,7 @@ export default {
 
 <template>
     <div class="textblock">
-        <div :class="{nameblock:true}">{{line.attributes.name}}</div>
+        <div :class="{nameblock:true,figure:line.figure_art}">{{line.attributes.name}}</div>
         <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
     </div>
 </template>
@@ -74,5 +74,8 @@ export default {
 }
 .hideName{
     color:rgba(0,0,0,0);
+}
+.figure{
+    /* text-decoration: underline; */
 }
 </style>
