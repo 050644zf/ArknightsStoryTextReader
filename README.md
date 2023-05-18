@@ -33,7 +33,8 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 
 > Thymewarp, 
 > Bo Yi-bo, 
-> wangxu
+> wangxu,
+> Syegen
 
 ## Development Info
 
