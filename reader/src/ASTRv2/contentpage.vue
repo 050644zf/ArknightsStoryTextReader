@@ -60,7 +60,7 @@
 
                     <Nameline v-if="strMatch(line.prop, 'name')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                     <Nameline v-if="strMatch(line.prop,'multiline')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
-                    <Subtitle v-if="strMatch(line.prop ,'subtitle') || line.prop == 'Sticker'" :inputline="line"></Subtitle>
+                    <Subtitle v-if="strMatch(line.prop ,'subtitle') || strMatch(line.prop ,'sticker')" :inputline="line"></Subtitle>
                     <Decision v-if="strMatch(line.prop , 'decision')" :inputline="line"></Decision>
                     <Predicate v-if="strMatch(line.prop , 'predicate')" :inputline="line"></Predicate>
                     <Delay v-if="strMatch(line.prop , 'delay') && showDelay == 'y'" :inputline="line"></Delay>
