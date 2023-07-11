@@ -79,6 +79,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.4</n-h4>
+                <n-oi>
+                    <n-li>Using Source Han Serif in the content of ASTR.</n-li>
+                </n-oi>
                 <n-h4>wv 1.3.1</n-h4>
                 <n-oi>
                     <n-li>Fix line break in subtitle class.</n-li>

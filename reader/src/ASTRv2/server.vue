@@ -2,7 +2,7 @@
     <Header @push-server="pushServer" :loaded="isDataLoaded"></Header>
     <router-view v-slot="{ Component }" style="min-height: 80vh">
     <transition name="fade">
-        <component :is="Component" v-if="isDataLoaded"/>
+        <component :is="Component" v-if="isDataLoaded" :class="[server=='ja_JP'?'jp-font':'',server=='zh_CN'?'sc-font':'',server=='zh_TW'?'tc-font':'']"/>
         <n-layout-content v-else >
             <n-space vertical align="center" class="loading" item-style="display:flex;" justify="center">
                 <n-spin size="large" style="padding:5px"/>
@@ -83,6 +83,7 @@ export default {
             this.loadingbar.start();
             this.loadingProgress = 0;
             try{
+                await this.loadFont();
                 let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => {this.loadingProgress = 10;return res.json()});
                 let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => {this.loadingProgress = 20;return res.json()});
                 let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => {this.loadingProgress = 30;return res.json()});
@@ -171,6 +172,16 @@ export default {
                 chapterdata[chapter].events = events;
             }
             return chapterdata;
+        },
+        async loadFont(){
+            return (function(d) {
+                var config = {
+                kitId: 'hsd6rxj',
+                scriptTimeout: 3000,
+                async: true
+                },
+                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
         }
     }
 };
@@ -181,5 +192,14 @@ export default {
     /*Center the loading spin */
     margin: 2% 15%;
     min-height: 90vh;
+}
+.jp-font{
+    font-family: "source-han-serif-japanese", sans-serif;
+}
+.sc-font{
+    font-family: "source-han-serif-sc", sans-serif;
+}
+.tc-font{
+    font-family: "source-han-serif-tc", sans-serif;
 }
 </style>
