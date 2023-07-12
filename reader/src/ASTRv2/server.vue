@@ -2,7 +2,8 @@
     <Header @push-server="pushServer" :loaded="isDataLoaded"></Header>
     <router-view v-slot="{ Component }" style="min-height: 80vh">
     <transition name="fade">
-        <component :is="Component" v-if="isDataLoaded" :class="[server=='ja_JP'?'jp-font':'',server=='zh_CN'?'sc-font':'',server=='zh_TW'?'tc-font':'']"/>
+        <component :is="Component" v-if="isDataLoaded" 
+        :class="[server=='ja_JP'?'jp-font':'',server=='zh_CN'?'sc-font':'',server=='zh_TW'?'tc-font':'',server=='ko_KR'?'kr-font':'']"/>
         <n-layout-content v-else >
             <n-space vertical align="center" class="loading" item-style="display:flex;" justify="center">
                 <n-spin size="large" style="padding:5px"/>
@@ -201,5 +202,8 @@ export default {
 }
 .tc-font{
     font-family: "source-han-serif-tc", sans-serif;
+}
+.kr-font{
+    font-family: "source-han-serif-korean", sans-serif;
 }
 </style>
