@@ -28,7 +28,7 @@
                     
                 </div>
             </n-space>
-            <n-space vertical v-if="topic.id=='rogue_2'">
+            <n-space vertical v-if="topic.id=='rogue_2'||topic.id=='rogue_3'">
                 <n-text v-html="rec"></n-text>
             </n-space>
         </n-tab-pane>
