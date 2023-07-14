@@ -62,16 +62,17 @@ export default {
             this.loading = true;
             // console.log(this.topic);
             var chatData = this.adata[this.topic.id]['chat']['chat'][this.chatid];
+            console.log(chatData);
             var i = 1;
             for(var chatItem of chatData.clientChatItemData){
                 var path = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/story/' + chatItem.chatStoryId.toLowerCase()+'.txt';
                 var res = await fetch(path);
                 var text = await res.text();
-                if(text=='404: Not Found'){break;}
+                if(text=='404: Not Found'){console.log('Not Found');break;}
                 if(this.topic.id=='rogue_1'){
                 this.records['Record_'+i] = this.parseDialog(text);
                 }
-                else if(this.topic.id=='rogue_2'){
+                else if(this.topic.id=='rogue_2'||this.topic.id=='rogue_3'){
                     this.records['Record_'+i] = text.replaceAll('\n','<br/><br/>');
                 }
                 i++;
