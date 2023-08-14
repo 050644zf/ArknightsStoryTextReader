@@ -1,11 +1,12 @@
 <template>
     <n-space vertical class="homepage" justify="center">
-        <!-- <n-alert type="error" title="ASTR 已停止更新 / ASTR has stopped updating">
-                由于数据资源 <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a> 已经停止更新，ASTR数据将不再更新直到找到新可用数据源。<br/>
-                如果有新可用数据源欢迎在 github issue 中反馈！感谢大家的支持！<br/><br/>
-                Due to the archiving of game datasource <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a>, ASTR will not be updated until a new datasource is found. <br/>
-                If you find a new datasource, please submit an issue on github! Thank you for your support! 
-        </n-alert> -->
+        <n-alert type="info" title="协议更新声明 / Declaration of License Update">
+                由于版权意识上的欠缺，自四年前发布以来，ASTR一直以无协议也即开放领域的形式开源。然而近日发现某些项目在没有任何注明署名和来源的情况下，复制粘贴ASTR的代码。为了保护ASTR贡献者的权益，从本次提交起ASTR将采用MIT协议开源。以往代码仍然保留在无协议的形式，但是从本提交开始的代码将采用MIT协议授权。<br/>
+                <n-text type="warning">在MIT协议下，您可对ASTR的代码进行任意修改和使用，但是您必须在您的项目中包含原始的MIT协议和版权声明。</n-text>
+                <br/><br/>
+                Due to lack of copyright awareness, ASTR has been released without any license in open domain for 4 years. However, recently we found some project copypasting code from ASTR without any credit and source listed. To protect ASTR contributors' rights, from this commit, ASTR will be released under MIT license. The previous code will still be in open domain, but the code from this and future commits are released under MIT license.<br/>
+                <n-text type="warning">Under MIT license, you can modify and use the code of ASTR in any way you want, but you must include the original MIT license and the copyright statement in your project.</n-text>
+        </n-alert>
         <br/>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br />
@@ -79,6 +80,11 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.4.1</n-h4>
+                <n-oi>
+                    <n-li>Add initialization guidance when launch ASTR first time.</n-li>
+                    <n-li>Add mirror accerlation support. Currently support Source serif loading.</n-li>
+                </n-oi>
                 <n-h4>wv 1.4</n-h4>
                 <n-oi>
                     <n-li>Using Source Han Serif in the content of ASTR.</n-li>

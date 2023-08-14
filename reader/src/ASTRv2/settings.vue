@@ -4,8 +4,8 @@
             <SettingsIcon/>
         </n-icon>
     </n-button>
-    <n-drawer v-model:show="showsettings" placement="top" height="300">
-        <n-drawer-content closable >
+    <n-drawer v-model:show="showsettings" placement="top" height="400">
+        <n-drawer-content :closable="inited" >
             <template #header>
                 <n-space item-style="display:flex;" align="center">
                     <n-icon>
@@ -27,6 +27,15 @@
                         </n-radio-button>
                     </n-radio-group>
                 </n-space>
+
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <MirrorIcon/>
+                    </n-icon>
+                    {{i18n.mirror[currentLang]}}: 
+                    <n-switch v-model:value="mirror" checked-value="mirror" unchecked-value="origin"/>
+                </n-space>
+            
                 <n-space item-style="display:flex;" align="center">
                     <n-icon>
                         <DrNameIcon/>
@@ -84,7 +93,7 @@
 </template>
 
 <script>
-import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined } from "@vicons/material";
+import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined,LibraryAddOutlined } from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 export default {
@@ -95,16 +104,12 @@ export default {
            langOpts: func.langList,
            doctor: func.doctor,
            showDelay: func.showDelay,
+           mirror: func.mirror,
            hideName: func.hideName,
            bgMode: func.bgMode,
-           bgModes: func.bgModes
+           bgModes: func.bgModes,
+           showsettings: !func.inited,
        }
-    },
-    props:{
-        showsettings: {
-            type: Boolean,
-            default: false,
-        },
     },
     components:{
         SettingsIcon: SettingsOutlined,
@@ -114,11 +119,14 @@ export default {
         SaveIcon: SaveAltOutlined,
         ResetIcon: DeleteOutlineFilled,
         BGIcon: WallpaperOutlined,
+        MirrorIcon: LibraryAddOutlined,
     },
     methods:{
         save(){
+            window.localStorage.setItem('inited',true);
             window.localStorage.setItem('doctor',this.doctor);
             window.localStorage.setItem('showDelay', this.showDelay);
+            window.localStorage.setItem('mirror', this.mirror);
             window.localStorage.setItem('hideName', this.hideName);
             window.localStorage.setItem('lang', this.currentLang);
             window.localStorage.setItem('bgMode', this.bgMode);

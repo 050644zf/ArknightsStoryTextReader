@@ -1,6 +1,6 @@
 {
     "server": {"zh_CN":"简中服(CN)","en_US":"Global Server(EN)","ja_JP":"日本サーバー(JP)","ko_KR":"한국 서버(KR)", "zh_TW":"繁中服(TW)"},
-    "currentLang": {"zh_CN":"当前语言","en_US":"Current Language","ja_JP":"現在の言語","ko_KR":"현재 언어", "zh_TW":"當前語言"},
+    "currentLang": {"zh_CN":"UI语言","en_US":"UI Language","ja_JP":"UIの言語","ko_KR":"현재 언어", "zh_TW":"UI語言"},
     "selectStory": {"zh_CN":"请从目录中选择故事查看",
                     "en_US":"Select the story you wanna view from the menu",
                     "ja_JP":"閲覧したいストーリーをメニューから選んでください",
@@ -21,6 +21,7 @@
     "clear":{"zh_CN":"重置所有设置","en_US":"Reset All Settings","ja_JP":"全ての設定を初期化","ko_KR":"모든 설정 초기화", "zh_TW":"重置所有设置"},
     "dr":{"zh_CN":"博士称呼","en_US":"Doctor's Name","ja_JP":"ドクターの名前","ko_KR":"박사의 이름", "zh_TW":"博士稱呼"},
     "showDelay":{"zh_CN":"显示空白分割行","en_US":"Show Blank Seperation Line","ja_JP":"空行を表示する","ko_KR":"공백 구분선 표시", "zh_TW":"顯示空白分割行"},
+    "mirror":{"zh_CN":"使用镜像加速（Beta，内地访问建议勾选）","en_US":"Use Mirror Resources(Beta)","ja_JP":"ミラーのリソースを使用する(Beta)","ko_KR":"미러 리소스 사용(Beta)", "zh_TW":"使用鏡像資源(Beta)"},
     "showbg":{"zh_CN":"显示背景","en_US":"Show Background","ja_JP":"背景を表示する","ko_KR":"배경 표시", "zh_TW":"顯示背景"},
     "save":{"zh_CN":"应用设置","en_US":"Apply Setting","ja_JP":"設定を適用","ko_KR":"설정 적용", "zh_TW":"应用设置"},
     "home":{"zh_CN":"返回目录","en_US":"Return to Menu","ja_JP":"メニューに戻る","ko_KR":"메뉴로 돌아가기", "zh_TW":"返回目錄"},
