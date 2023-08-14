@@ -12,6 +12,7 @@ var wversion = window.localStorage.getItem('wversion');
 var bgMode = window.localStorage.getItem('bgMode');
 var inited = window.localStorage.getItem('inited');
 var mirror = window.localStorage.getItem('mirror');
+var fontsize = window.localStorage.getItem('fontsize');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
 var isOldversion = false;
@@ -29,6 +30,7 @@ if(!hideName){hideName = 'n'};
 if(!bgMode){bgMode = 'stripe'};
 if(!inited){inited = false};
 if(!mirror){mirror = 'origin'};
+if(!fontsize){fontsize = 14};
 if(!wversion||wversion<currentwversion){wversion = currentwversion; window.localStorage.setItem('wversion',wversion);isOldversion = true};
 
 
@@ -45,6 +47,7 @@ export default {
     hideName: hideName,
     inited: inited,
     mirror: mirror,
+    fontsize: fontsize,
     storyFile: storyFile,
     storyData: storyData,
     intermezzi: ['act9d0', 'act18d0', 'act18d3','act17side','act25side'],

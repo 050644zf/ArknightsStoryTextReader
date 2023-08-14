@@ -84,6 +84,7 @@
                 <n-oi>
                     <n-li>Add initialization guidance when launch ASTR first time.</n-li>
                     <n-li>Add mirror accerlation support. Currently support Source serif loading.</n-li>
+                    <n-li>Add fontsize adjustment.</n-li>
                 </n-oi>
                 <n-h4>wv 1.4</n-h4>
                 <n-oi>

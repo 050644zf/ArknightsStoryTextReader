@@ -4,7 +4,7 @@
             <SettingsIcon/>
         </n-icon>
     </n-button>
-    <n-drawer v-model:show="showsettings" placement="top" height="400">
+    <n-drawer v-model:show="showsettings" placement="top" height="500">
         <n-drawer-content :closable="inited" >
             <template #header>
                 <n-space item-style="display:flex;" align="center">
@@ -66,6 +66,33 @@
                         </n-radio-button>
                     </n-radio-group>
                 </n-space>
+
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <FontSizeIcon/>
+                    </n-icon>
+                    {{i18n.fontsize[currentLang]}}: 
+
+                    <n-slider
+                        :default-value="14"
+                        :marks="fontmarks"
+                        :min="12" :max="30"
+                        v-model:value="fontsize"
+                        style="width: 40vw;"
+                        />
+
+                </n-space>
+
+
+                <n-card >
+                    <span :style="{'font-size': 30+'px !important'}">
+                        
+                    </span>
+                    <span :style="{'font-size': fontsize+'px !important'}">
+                        明日方舟剧情文本阅读器 Arknights Story Text Reader
+                    </span>
+                </n-card>
+
             </n-space>            
 
             <template #footer>
@@ -93,7 +120,7 @@
 </template>
 
 <script>
-import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined,LibraryAddOutlined } from "@vicons/material";
+import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined,LibraryAddOutlined,FormatSizeOutlined } from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 export default {
@@ -108,7 +135,15 @@ export default {
            hideName: func.hideName,
            bgMode: func.bgMode,
            bgModes: func.bgModes,
+           inited: func.inited == 'true',
+           fontsize: func.fontsize*1,
            showsettings: !func.inited,
+           fontmarks: {
+                '12': '12px',
+                '14': '14px',
+                '20': '20px',
+                '26': '26px'
+           }
        }
     },
     components:{
@@ -120,6 +155,7 @@ export default {
         ResetIcon: DeleteOutlineFilled,
         BGIcon: WallpaperOutlined,
         MirrorIcon: LibraryAddOutlined,
+        FontSizeIcon: FormatSizeOutlined,
     },
     methods:{
         save(){
@@ -130,6 +166,7 @@ export default {
             window.localStorage.setItem('hideName', this.hideName);
             window.localStorage.setItem('lang', this.currentLang);
             window.localStorage.setItem('bgMode', this.bgMode);
+            window.localStorage.setItem('fontsize', this.fontsize);
             window.location.reload(true);
         },
         clearSetting(){

@@ -1,6 +1,6 @@
 <template>
 
-    <n-layout-content class="contentpage"   >
+    <n-layout-content class="contentpage"  :style="{'font-size':fontsize+'px'}" >
     
         <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
 
@@ -104,6 +104,7 @@ export default {
             currentLang: func.l,
             showDelay: func.showDelay,
             bgMode: func.bgMode,
+            fontsize: func.fontsize,
             loading: true,
             loadingbar: useLoadingBar(),
             dialog: useDialog(),

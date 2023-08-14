@@ -23,6 +23,7 @@
     "showDelay":{"zh_CN":"显示空白分割行","en_US":"Show Blank Seperation Line","ja_JP":"空行を表示する","ko_KR":"공백 구분선 표시", "zh_TW":"顯示空白分割行"},
     "mirror":{"zh_CN":"使用镜像加速（Beta，内地访问建议勾选）","en_US":"Use Mirror Resources(Beta)","ja_JP":"ミラーのリソースを使用する(Beta)","ko_KR":"미러 리소스 사용(Beta)", "zh_TW":"使用鏡像資源(Beta)"},
     "showbg":{"zh_CN":"显示背景","en_US":"Show Background","ja_JP":"背景を表示する","ko_KR":"배경 표시", "zh_TW":"顯示背景"},
+    "fontsize":{"zh_CN":"字体大小","en_US":"Font Size","ja_JP":"フォントサイズ","ko_KR":"글꼴 크기", "zh_TW":"字體大小"},
     "save":{"zh_CN":"应用设置","en_US":"Apply Setting","ja_JP":"設定を適用","ko_KR":"설정 적용", "zh_TW":"应用设置"},
     "home":{"zh_CN":"返回目录","en_US":"Return to Menu","ja_JP":"メニューに戻る","ko_KR":"메뉴로 돌아가기", "zh_TW":"返回目錄"},
     "menu":{"zh_CN":"目录","en_US":"Menu","ja_JP":"メニュー","ko_KR":"메뉴", "zh_TW":"目錄"},
