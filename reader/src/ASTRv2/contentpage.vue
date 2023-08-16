@@ -56,7 +56,8 @@
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
             <div v-else class="lines">
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
-                <div v-for="(line, lidx) in data.storyList" :key="line.id" class="line" :id="'line'+line.id" >
+                <div v-for="(line, lidx) in data.storyList" :key="line.id" 
+                    class="line" :id="'line'+line.id" :style="{'margin-bottom':margin +'px'}">
 
                     <Nameline v-if="strMatch(line.prop, 'name')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                     <Nameline v-if="strMatch(line.prop,'multiline')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
@@ -67,7 +68,7 @@
                     <Showimg v-if="strMatch(line.prop , 'image') && line.attributes.image" :inputline="line"></Showimg>
                     <Showimg v-if="strMatch(line.prop, 'background') && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
 
-                    <div style="clear: both;"></div>
+                    <!-- <div style="clear: both;"></div> -->
                 </div>                            
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
             </div>
@@ -105,6 +106,7 @@ export default {
             showDelay: func.showDelay,
             bgMode: func.bgMode,
             fontsize: func.fontsize,
+            margin: func.margin,
             loading: true,
             loadingbar: useLoadingBar(),
             dialog: useDialog(),
@@ -252,5 +254,4 @@ export default {
         display: block;
     }
 }
-
 </style>

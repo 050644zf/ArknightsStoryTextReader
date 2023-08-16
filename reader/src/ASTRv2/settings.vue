@@ -4,7 +4,7 @@
             <SettingsIcon/>
         </n-icon>
     </n-button>
-    <n-drawer v-model:show="showsettings" placement="top" height="500">
+    <n-drawer v-model:show="showsettings" placement="top" height="700">
         <n-drawer-content :closable="inited" >
             <template #header>
                 <n-space item-style="display:flex;" align="center">
@@ -83,14 +83,29 @@
 
                 </n-space>
 
+                <n-space item-style="display:flex;" align="center">
+                    <n-icon>
+                        <MarginIcon/>
+                    </n-icon>
+                    {{i18n.margin[currentLang]}}: 
 
-                <n-card >
-                    <span :style="{'font-size': 30+'px !important'}">
-                        
-                    </span>
-                    <span :style="{'font-size': fontsize+'px !important'}">
-                        明日方舟剧情文本阅读器 Arknights Story Text Reader
-                    </span>
+                    <n-slider
+                        :default-value="4"
+                        :marks="marginmarks"
+                        :min="0" :max="20"
+                        v-model:value="margin"
+                        style="width: 40vw;"
+                        />
+
+                </n-space>
+
+                <n-card>
+                    <div :style="{'margin-bottom':margin+'px','font-size': fontsize+'px !important'}">
+                        明日方舟剧情文本阅读器
+                    </div>
+                    <div :style="{'margin-bottom':margin+'px','font-size': fontsize+'px !important'}">
+                        Arknights Story Text Reader
+                    </div>
                 </n-card>
 
             </n-space>            
@@ -120,7 +135,7 @@
 </template>
 
 <script>
-import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined,LibraryAddOutlined,FormatSizeOutlined } from "@vicons/material";
+import { SettingsOutlined, PublicFilled, DriveFileRenameOutlineRound, VerticalDistributeOutlined, SaveAltOutlined, DeleteOutlineFilled, WallpaperOutlined,LibraryAddOutlined,FormatSizeOutlined,HeightOutlined } from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 export default {
@@ -137,12 +152,17 @@ export default {
            bgModes: func.bgModes,
            inited: func.inited == 'true',
            fontsize: func.fontsize*1,
+            margin: func.margin*1,
            showsettings: !func.inited,
            fontmarks: {
-                '12': '12px',
                 '14': '14px',
                 '20': '20px',
                 '26': '26px'
+           },
+           marginmarks: {
+                '4': '4px',
+                '8': '8px',
+                '16': '16px'
            }
        }
     },
@@ -156,6 +176,7 @@ export default {
         BGIcon: WallpaperOutlined,
         MirrorIcon: LibraryAddOutlined,
         FontSizeIcon: FormatSizeOutlined,
+        MarginIcon: HeightOutlined
     },
     methods:{
         save(){
@@ -167,6 +188,7 @@ export default {
             window.localStorage.setItem('lang', this.currentLang);
             window.localStorage.setItem('bgMode', this.bgMode);
             window.localStorage.setItem('fontsize', this.fontsize);
+            window.localStorage.setItem('margin', this.margin);
             window.location.reload(true);
         },
         clearSetting(){

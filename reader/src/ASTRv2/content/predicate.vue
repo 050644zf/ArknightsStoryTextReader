@@ -1,7 +1,7 @@
 <template>
-    <div :class="line.prop">
-        <div v-if="!line.endOfOpt" class="optText">Options: {{line.attributes.references.replaceAll(';',' ')}}</div>
-    </div>
+    <n-divider title-placement="left" v-if="!line.endOfOpt" class="Predicate" dashed>
+        Options: {{line.attributes.references.replaceAll(';',' ')}}
+    </n-divider>
 </template>
 
 <script>
@@ -21,17 +21,12 @@ export default {
 
 <style>
 .Predicate{
-    font-size: 50%;
-    margin: 4px;
+    font-size: 20%;
     transition: background-color 0.5s;
     color: rgba(255, 255, 255, 0.8);
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.optText{
-    float: left;
-    padding: 4px;
+    background-color: rgba(255, 255, 255, 0);
 }
 .PredicateFocused{
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(135, 193, 175,0.2);
 }
 </style>

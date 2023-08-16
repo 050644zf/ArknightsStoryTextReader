@@ -1,12 +1,7 @@
 <template>
     <n-space vertical class="homepage" justify="center">
-        <n-alert type="info" title="协议更新声明 / Declaration of License Update">
-                由于版权意识上的欠缺，自四年前发布以来，ASTR一直以无协议也即开放领域的形式开源。然而近日发现某些项目在没有任何注明署名和来源的情况下，复制粘贴ASTR的代码。为了保护ASTR贡献者的权益，从本次提交起ASTR将采用MIT协议开源。以往代码仍然保留在无协议的形式，但是从本提交开始的代码将采用MIT协议授权。<br/>
-                <n-text type="warning">在MIT协议下，您可对ASTR的代码进行任意修改和使用，但是您必须在您的项目中包含原始的MIT协议和版权声明。</n-text>
-                <br/><br/>
-                Due to lack of copyright awareness, ASTR has been released without any license in open domain for 4 years. However, recently we found some project copypasting code from ASTR without any credit and source listed. To protect ASTR contributors' rights, from this commit, ASTR will be released under MIT license. The previous code will still be in open domain, but the code from this and future commits are released under MIT license.<br/>
-                <n-text type="warning">Under MIT license, you can modify and use the code of ASTR in any way you want, but you must include the original MIT license and the copyright statement in your project.</n-text>
-        </n-alert>
+        <!-- <n-alert type="info" title="ASTR正在寻找">
+        </n-alert> -->
         <br/>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br />
@@ -29,6 +24,9 @@
             如果您觉得ASTR有帮到您，欢迎通过转账支付宝账户: 050644zf@outlook.com 或 <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a> 给我买杯咖啡！<br />
             If you find ASTR helpful, consider buy me a coffee on <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a>!
             <br /><br />
+            如果您想了解ASTR的开发进展，或者想要为ASTR贡献代码（万分感谢🙏），请访问 <n-a href="https://github.com/users/050644zf/projects/1">ASTR路线图</n-a>查看最新的开发进展。<br/>
+            If you want to know about the development progress of ASTR, or want to contribute to ASTR (Much Appreciated🙏), check out <n-a href="https://github.com/users/050644zf/projects/1"> ASTR Roadmap</n-a> for latest development progress.
+            <br /><br />
             <n-text strong type="warning">
                 网站内使用的游戏图片和文本原文，仅用于更好地表现游戏资料，其版权属于上海鹰角网络科技有限公司。<br />
                 The images and text used in the website are only for better representation of the game data, and their
@@ -40,14 +38,22 @@
             致谢 / Credits:
         </n-h3>
         <n-text>
+        感谢以下贡献者对ASTR的鼎力支持！<br/>
+        Thanks to the following contributors for building better ASTR!
+        </n-text>
+        <n-card><n-image width="200" src="https://contributors-img.web.app/image?repo=050644zf/ArknightsStoryTextReader"/></n-card>
+        
+        <n-text>
         感谢以下赞助者的大力支持！<br/>
         Thanks to the generous support from the following sponsors!
         </n-text>
-        <n-ul>
-            <n-li>Thymewarp</n-li>
-            <n-li>Bo Yi-bo</n-li>
-            <n-li>wangxu</n-li>
-        </n-ul>
+        <n-card>
+            <n-badge value="1" type="info">Thymewarp &nbsp;</n-badge> &nbsp;
+            <n-badge value="4" type="warning">Bo Yi-bo &nbsp;</n-badge> &nbsp;
+            <n-badge value="4" type="warning">wangxu &nbsp;</n-badge> &nbsp;
+            <n-badge value="1" type="info">Syegen &nbsp;</n-badge> &nbsp;
+        </n-card>
+
         <n-text>
             本项目的实现离不开以下项目的支持：<br />
             The implementation of this project is not without the support of the following projects:
@@ -69,6 +75,8 @@
             </n-li>
             <n-li>数据可视化 / Data Visualization: <n-a href="https://github.com/d3/d3">D3.js</n-a>
             </n-li>
+            <n-li>Adobe Fonts 镜像 / Adobe Fonts Mirror: <n-a href="https://mirrors.sustech.edu.cn/">南方科技大学开源镜像站 / SUSTech Open Source Mirrors</n-a>
+            </n-li>
         </n-ul>
         <n-hr />
 
@@ -80,6 +88,11 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.4.2</n-h4>
+                <n-oi>
+                    <n-li>Optimize the Predicate line.</n-li>
+                    <n-li>Add line margin adjustment.</n-li>
+                </n-oi>
                 <n-h4>wv 1.4.1</n-h4>
                 <n-oi>
                     <n-li>Add initialization guidance when launch ASTR first time.</n-li>
