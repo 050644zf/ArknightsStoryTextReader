@@ -23,7 +23,6 @@
             <n-text>
                 最后更新 / Last Update (UTC) : {{dateFormatter(latestUpdate)}}<br/>
                 当前状态 / Current Status: <br/>
-                <img src="https://visitor-badge.glitch.me/badge?page_id=050644zf.ASTR"/>&nbsp;
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/build.yml/badge.svg">&nbsp;
                 <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg"><br/>
             </n-text>

@@ -73,5 +73,10 @@
                       "en_US":"Arknights Annual Report (CN Server Only)",
                       "ja_JP":"Arknights Annual Report (CN Server Only)",
                       "ko_KR":"Arknights Annual Report (CN Server Only)",
-                      "zh_TW":"明日方舟年度工作報告（僅支持CN服）"}
+                      "zh_TW":"明日方舟年度工作報告（僅支持CN服）"},
+    "copied": {"zh_CN": "已复制该行链接！",
+                "en_US": "The link of this line has been copied!",
+                "ja_JP": "この行のリンクがコピーされました！",
+                "ko_KR": "이 줄의 링크가 복사되었습니다!",
+                "zh_TW": "已複製該行鏈接！"}
 }

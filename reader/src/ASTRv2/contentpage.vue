@@ -59,6 +59,7 @@
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" 
                     class="line" :id="'line'+line.id" :style="{'margin-bottom':margin +'px'}">
 
+
                     <Nameline v-if="strMatch(line.prop, 'name')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                     <Nameline v-if="strMatch(line.prop,'multiline')" :inputline="line" :lidx="lidx" :story="data.storyList"></Nameline>
                     <Subtitle v-if="strMatch(line.prop ,'subtitle') || strMatch(line.prop ,'sticker')" :inputline="line"></Subtitle>
@@ -69,7 +70,7 @@
                     <Showimg v-if="strMatch(line.prop, 'background') && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
 
                     <!-- <div style="clear: both;"></div> -->
-                </div>                            
+            </div>                            
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
             </div>
     
@@ -161,7 +162,7 @@ export default {
     methods:{
         async getStoryData(){
             this.loading = true;
-            fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/gamedata/story/'+this.path+'.json').then(res => res.json()).then(s => {this.data = s;this.eventid = s.eventid;}).then(() => {this.storyOpts=this.getStoryOpts();this.loading = false; this.loadingbar.finish();}).catch(e => {
+            fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/gamedata/story/'+this.path+'.json').then(res => res.json()).then(s => {this.data = s;this.eventid = s.eventid;}).then(() => {this.storyOpts=this.getStoryOpts();this.loading = false; this.loadingbar.finish();this.scrollToHash()}).catch(e => {
                 this.loadingbar.error();
                 console.log(e);
                 this.dialog.error({
@@ -214,6 +215,22 @@ export default {
         strMatch(str1, str2){
             return str1.toLowerCase() == str2.toLowerCase();
         },
+        scrollToHash(){
+            if(this.$route.hash){
+                var hash = this.$route.hash;
+                // remove the # character
+                hash = hash.replace('#', '');
+                setTimeout(() => {
+                    var el = document.getElementById(hash);
+                    // add highlight class to the element
+                    el.classList.add('highlight');
+                    if(el){
+                        // scroll into center
+                        el.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+                    }
+                }, 1000);
+            }
+        }
     }
 }
 </script>
@@ -248,7 +265,12 @@ export default {
 }
 .breadcrumbbreak{
         display: none;
-    }
+}
+
+.contentpage .highlight{
+    background-color: rgb(85, 85, 0);
+}
+
 @media(max-width: 700px){
     .breadcrumbbreak{
         display: block;

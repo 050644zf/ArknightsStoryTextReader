@@ -1,10 +1,17 @@
 <script>
 import func from "../func";
+import i18n from "../i18n";
+import {LinkOutlined} from "@vicons/material";
+
 export default {
     data(){
         return{
             line: this.inputline,
-            hideName: func.hideName
+            hideName: func.hideName,
+            showLink: false,
+            i18n: i18n,
+            currentLang: func.l,
+            copied: false
         }
     },
     // mounted(){
@@ -14,6 +21,9 @@ export default {
         inputline: Object,
         story: Object,
         lidx: Number
+    },
+    components:{
+        LinkOutlined
     },
     methods:{
         parseContent(content){
@@ -36,15 +46,34 @@ export default {
 
                 return false;
             }
+        },
+        hyperlink2line(lineid){
+            var l = document.location.href.split('#')[0]+ '#'+ document.location.hash.split('#')[1]  +'#line'+lineid;
+            // write l into clipboard
+            navigator.clipboard.writeText(l).then(() => {
+                this.copied = true;
+                setTimeout(()=>{this.copied = false}, 1000);
+            });
         }
     }
 }
 </script>
 
 <template>
-    <div class="textblock">
+    <div class="textblock" @mousemove="showLink=true" @mouseout="showLink=false">
         <div :class="{nameblock:true,figure:line.figure_art}">{{line.attributes.name}}</div>
         <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
+        <n-popover trigger="manual"  :show-arrow="false" :show="copied">
+            <template #trigger>
+                <n-icon-wrapper  :size="32" color="#00000000" icon-color="#7f7f7f" class="link" v-show="showLink" @click="hyperlink2line(line.id)">
+                    <n-icon size="24">
+                        <LinkOutlined/>
+                    </n-icon>
+                </n-icon-wrapper>                
+            </template>
+            {{ i18n['copied'][currentLang] }}
+        </n-popover>
+
     </div>
 </template>
 
@@ -53,29 +82,42 @@ export default {
     margin: 4px;
     display: flex;
 }
-.nameblock{
+.textblock .nameblock{
     display: flex;
     flex: 1.5 70px;
     justify-content: flex-end;
     background-color: unset;
-    float: left;
+
     margin: 2px;
     margin-right: 10px;
     text-align: right;
     font-weight: bold;
     color: #7f7f7f
 }
-.contentblock{
+.textblock .contentblock{
     display: block;
     flex: 6 300px;
     background-color: unset;
-    float: left;
+
     margin: 2px;
 }
-.hideName{
+.textblock .hideName{
     color:rgba(0,0,0,0);
 }
-.figure{
-    /* text-decoration: underline; */
+.textblock .link {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Generic */
+
+    float: left;
+    position: absolute;
+    display: flex;
+    justify-content: center;
 }
+.textblock .link:hover{
+    color: yellow !important;
+}
+
+
 </style>

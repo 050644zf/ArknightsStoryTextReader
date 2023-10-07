@@ -48,10 +48,10 @@
         Thanks to the generous support from the following sponsors!
         </n-text>
         <n-card>
-            <n-badge value="1" type="info">Thymewarp &nbsp;</n-badge> &nbsp;
-            <n-badge value="4" type="warning">Bo Yi-bo &nbsp;</n-badge> &nbsp;
-            <n-badge value="4" type="warning">wangxu &nbsp;</n-badge> &nbsp;
-            <n-badge value="1" type="info">Syegen &nbsp;</n-badge> &nbsp;
+            <n-badge value="$1" type="info">Thymewarp &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$7" type="warning">Bo Yi-bo &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$4" type="warning">wangxu &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$1" type="info">Syegen &nbsp;</n-badge> &nbsp;&nbsp;
         </n-card>
 
         <n-text>
@@ -88,6 +88,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.4.3</n-h4>
+                <n-oi>
+                    <n-li>Add copy permalink to line and line warpping feature.</n-li>
+                </n-oi>
                 <n-h4>wv 1.4.2</n-h4>
                 <n-oi>
                     <n-li>Optimize the Predicate line.</n-li>
