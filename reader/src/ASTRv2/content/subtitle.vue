@@ -1,6 +1,6 @@
 <template>
-<div :class="line.prop" :style="{'text-align': line.attributes.alignment}" @mousemove="showLink=true" @mouseout="showLink=false">
-    <div v-html="parseContent(line.attributes.text)" ></div>
+<div :class="line.prop" :style="{'text-align': line.attributes.alignment}" @mousemove="showLink=true" @mouseout="showLink=false" class="Subtitle">
+    
     <n-popover trigger="manual"  :show-arrow="false" :show="copied">
             <template #trigger>
                 <n-icon-wrapper  :size="32" color="#00000000" icon-color="#7f7f7f" class="link" v-show="showLink" @click="hyperlink2line(line.id)">
@@ -11,6 +11,7 @@
             </template>
             {{ i18n['copied'][currentLang] }}
         </n-popover>
+        <div v-html="parseContent(line.attributes.text)" ></div>
 </div>
 </template>
 
@@ -50,12 +51,12 @@ export default {
 
 <style>
 .Subtitle{
-    background-color: unset;
+    /* background-color: unset;
     margin: 4px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding: 10px;
-    clear: both;
+    clear: both; */
 }
 .Subtitle .link {
     -webkit-user-select: none; /* Safari */
@@ -63,8 +64,9 @@ export default {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Generic */
 
-    float: left;
     position: absolute;
+    margin-left: -40px;
+    padding-right: 40px;
     display: flex;
     justify-content: center;
 }

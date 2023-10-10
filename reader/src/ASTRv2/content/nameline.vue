@@ -110,8 +110,9 @@ export default {
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Generic */
 
-    float: left;
     position: absolute;
+    margin-left: -40px;
+    padding-right: 40px;
     display: flex;
     justify-content: center;
 }
