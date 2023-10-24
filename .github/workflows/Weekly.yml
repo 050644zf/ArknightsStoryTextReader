@@ -6,6 +6,9 @@ name: ASTR Auto Updater (Weekly)
 on:
   schedule:
   - cron: 0 0 * * 1
+  # add manual trigger
+  workflow_dispatch:
+  
     
 
 jobs:
