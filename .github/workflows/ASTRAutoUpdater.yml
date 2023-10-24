@@ -26,7 +26,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: Kengxxiao/ArknightsGameData_YoStar
-        path: ArknightsGameData_YoStar        
+        path: ArknightsGameData_YoStar
     - uses: actions/checkout@v2
       with:
         repository: 050644zf/ArknightsStoryJson
