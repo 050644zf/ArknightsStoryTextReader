@@ -88,6 +88,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.5</n-h4>
+                <n-oi>
+                    <n-li>Adapt to the major changes of game data.</n-li>
+                </n-oi>                
                 <n-h4>wv 1.4.3</n-h4>
                 <n-oi>
                     <n-li>Add copy permalink to line and line warpping feature.</n-li>

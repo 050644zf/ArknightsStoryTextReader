@@ -87,13 +87,18 @@ export default {
         async initServerData(){
             this.loadingbar.start();
             this.loadingProgress = 0;
+            var gamedata = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/';
+            const gamejson = 'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'
+            if(this.server!='zh_CN'){
+                gamedata = 'https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/';
+            }
             try{
                 this.loadFont();
-                let menudata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/story_review_table.json').then(res => {this.loadingProgress = 10;return res.json()});
-                let chardict = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/chardict.json').then(res => {this.loadingProgress = 20;return res.json()});
-                let infodata = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/storyinfo.json').then(res => {this.loadingProgress = 30;return res.json()});
-                let chapterdata = await fetch('https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/'+this.server+'/gamedata/excel/chapter_table.json').then(res => {this.loadingProgress = 40;return res.json()});
-                let wordCountData = await fetch('https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/'+this.server+'/wordcount.json').then(res => {this.loadingProgress = 50;return res.json()});
+                let menudata = await fetch(gamedata+this.server+'/gamedata/excel/story_review_table.json').then(res => {this.loadingProgress = 10;return res.json()});
+                let chardict = await fetch(gamejson+this.server+'/chardict.json').then(res => {this.loadingProgress = 20;return res.json()});
+                let infodata = await fetch(gamejson+this.server+'/storyinfo.json').then(res => {this.loadingProgress = 30;return res.json()});
+                let chapterdata = await fetch(gamedata+this.server+'/gamedata/excel/chapter_table.json').then(res => {this.loadingProgress = 40;return res.json()});
+                let wordCountData = await fetch(gamejson+this.server+'/wordcount.json').then(res => {this.loadingProgress = 50;return res.json()});
                 let eventList = await this.getEventList(menudata, chardict);
                 chapterdata = await this.getMainthemeData(chapterdata, eventList);
                 window.sessionStorage.setItem('server', this.server);
@@ -147,8 +152,8 @@ export default {
                 else if(reviewData[eventid].entryType == 'NONE'){
                     var cin = eventid.split('_')[1];
                     var set = eventid.split('_')[3];
-                    reviewData[eventid].name = chardict[cin]['name'];
-                    reviewData[eventid].cid = chardict[cin]['id'];
+                    reviewData[eventid].name = chardict[cin].name;
+                    reviewData[eventid].cid = chardict[cin].id;
                     reviewData[eventid].cin = cin;
                     reviewData[eventid].set = set;
                     eventList.or.push(reviewData[eventid]);

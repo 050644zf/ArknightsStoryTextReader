@@ -20,7 +20,7 @@
                     </router-link>
                     <n-text depth="3" class="astrversion">
                         Arknights Story Text Reader <br/>
-                        Version 1.4 
+                        Version 1.5
                     </n-text>
                 </n-space>
 
