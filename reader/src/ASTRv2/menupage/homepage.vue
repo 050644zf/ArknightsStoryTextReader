@@ -52,6 +52,7 @@
             <n-badge value="$7" type="warning">Bo Yi-bo &nbsp;</n-badge>, &nbsp;&nbsp;
             <n-badge value="$4" type="warning">wangxu &nbsp;</n-badge>, &nbsp;&nbsp;
             <n-badge value="$1" type="info">Syegen &nbsp;</n-badge> &nbsp;&nbsp;
+            <n-badge value="$3" type="warning">Hikari Leafs &nbsp;</n-badge> &nbsp;&nbsp;
         </n-card>
 
         <n-text>
