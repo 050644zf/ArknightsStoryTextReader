@@ -12,7 +12,7 @@
         </n-layout-content>
     </transition>
     </router-view>
-    <n-back-top :right="50"></n-back-top>
+    <n-back-top :right="50" role="button"></n-back-top>
     
 </template>
 
