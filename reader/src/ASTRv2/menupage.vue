@@ -8,7 +8,7 @@
             animated
             @update:value="$router.replace('/'+$route.params.server+'/menu/'+selected)"
         >
-            <n-tab-pane name="home">
+            <n-tab-pane name="home" role="button" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <InfoIcon />
@@ -23,7 +23,7 @@
 
             </n-tab-pane>
 
-            <n-tab-pane v-for="(item,itemName,iidx) in navi" :name="itemName" :key="iidx">
+            <n-tab-pane v-for="(item,itemName,iidx) in navi" :name="itemName" :key="iidx" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <div :class="item.icon"></div>
@@ -33,7 +33,6 @@
                     </n-text>
                 </template>                    
                 <n-divider title-placement="center" class="eventtypetitle" dashed>
-
                         <n-icon size="32">
                             <div :class="item.icon"></div>
                         </n-icon>
@@ -49,7 +48,7 @@
 
             </n-tab-pane>
 
-            <n-tab-pane name="others">
+            <n-tab-pane name="others" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <AnalyticsIcon />
@@ -61,7 +60,7 @@
                 <Misc class="menucontent"></Misc>
             </n-tab-pane>
 
-            <n-tab-pane name="search">
+            <n-tab-pane name="search" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <SearchIcon />
