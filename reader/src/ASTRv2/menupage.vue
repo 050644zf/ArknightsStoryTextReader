@@ -1,6 +1,13 @@
 <template>
     <n-layout-content class="menupage">
-        <n-tabs type="line" justify-content="space-evenly" class="tabs" v-model:value="selected" animated>
+        <n-tabs 
+            type="line" 
+            justify-content="space-evenly" 
+            class="tabs" 
+            v-model:value="selected" 
+            animated
+            @update:value="$router.replace('/'+$route.params.server+'/menu/'+selected)"
+        >
             <n-tab-pane name="home">
                 <template v-slot:tab>
                     <n-icon>
@@ -11,7 +18,6 @@
                     </n-text>
                 </template>
                 <n-space vertical justify="center" item-style="display:flex" align="center">
-
                     <Homepage></Homepage>
                 </n-space>
 
@@ -94,9 +100,20 @@ export default {
             },
             i18n: i18n,
             currentLang: func.l,
-            selected: 'home',
+            selected: this.$route.params.selected || 'home',
         }
     },
+    created() {
+        this.$watch(
+            () => this.$route.params,
+            (toParams, previousParams) => {
+                if(previousParams.selected != toParams.selected){
+                    this.selected = toParams.selected || 'home';
+                }
+            }
+        );
+    },
+
     components:{
         InfoIcon:InfoOutlined,
         SearchIcon:SearchOutlined,
