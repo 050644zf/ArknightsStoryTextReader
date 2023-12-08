@@ -18,7 +18,7 @@
                 </n-breadcrumb-item>                
                 <br class="breadcrumbbreak"/>
                 <n-breadcrumb-item role="button">
-                    <n-popselect :options="storyOpts" v-model:value="path" scrollable role="link" :node-props='() => {return {"role": "link"}}'>
+                    <n-popselect :options="storyOpts" v-model:value="path" scrollable :node-props='() => {return {"role": "link"}}'>
                         <n-text type="info" v-if="data.eventid">
                             {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
                             <n-icon>
