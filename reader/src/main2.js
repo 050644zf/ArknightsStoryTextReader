@@ -21,7 +21,7 @@ const routes = [
         path: '/:server', 
         component: server,
         children: [
-            { path: 'menu', name:'menu', component: menupage },
+            { path: 'menu/:selected?', name:'menu', component: menupage },
             { path: 'event/:event',name:'event', component: eventpage },
             { path: 'content',name:'content', component: contentpage },
             { path: 'export',name:'export', component: exportpage },

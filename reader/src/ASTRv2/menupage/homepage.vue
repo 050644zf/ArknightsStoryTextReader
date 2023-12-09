@@ -89,6 +89,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.5.1</n-h4>
+                <n-oi>
+                    <n-li>Add aria roles for accessibility tools and main menu selection qol , thank's to hanss314's <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/53">PR</n-a></n-li>
+                </n-oi>                
                 <n-h4>wv 1.5</n-h4>
                 <n-oi>
                     <n-li>Adapt to the major changes of game data.</n-li>

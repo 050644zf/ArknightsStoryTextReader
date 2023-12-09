@@ -69,7 +69,7 @@
                 </n-alert>
                 <n-list>
                     <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx" >
-                        <n-space vertical @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})">
+                        <n-space vertical @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})" role="link">
                             <n-space item-style="display:flex;" align="end">
                                 <n-h3 style="margin:0px;" prefix="bar">{{story.storyName}}</n-h3>
                                 <n-text depth="3">{{story.storyCode}} {{story.avgTag}}</n-text>

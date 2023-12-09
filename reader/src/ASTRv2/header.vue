@@ -28,7 +28,7 @@
 
             <n-space justify="space-around" item-style="display: flex;" align="center">
                 <Warp v-if="loaded"/>
-                <n-dropdown :options="serverOpts" @select="pushServer" class="serverSelect">
+                <n-dropdown :options="serverOpts" @select="pushServer" class="serverSelect" role="button" :node-props="() => {return {'role': 'button'};}">
                     <n-button text>
                         <template #icon>
                         <n-icon>

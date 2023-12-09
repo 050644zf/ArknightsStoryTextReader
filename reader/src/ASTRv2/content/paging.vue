@@ -1,6 +1,6 @@
 <template>
     <n-space class="pagingbar" :justify="loc" item-style="display: flex;" align="center">
-        <n-space justify="left" item-style="display: flex;" align="center" v-if="storyIdx" class="pagingbtn" @click="paging(-1)">
+        <n-space justify="left" item-style="display: flex;" align="center" v-if="storyIdx" class="pagingbtn" @click="paging(-1)" role="link">
             <n-icon size="24">
                 <LastStory/>
             </n-icon>
@@ -9,7 +9,7 @@
             </n-ellipsis>
         </n-space>
 
-        <n-space justify="right" item-style="display: flex;" align="center" v-if="storyIdx!=storyCount-1" class="pagingbtn" @click="paging(1)">
+        <n-space justify="right" item-style="display: flex;" align="center" v-if="storyIdx!=storyCount-1" class="pagingbtn" @click="paging(1)" role="link">
             <n-ellipsis style="max-width: 30vw">
                 {{storyOpts[storyIdx+1]["label"]}}
             </n-ellipsis>

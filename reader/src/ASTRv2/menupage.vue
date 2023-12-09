@@ -1,7 +1,14 @@
 <template>
     <n-layout-content class="menupage">
-        <n-tabs type="line" justify-content="space-evenly" class="tabs" v-model:value="selected" animated>
-            <n-tab-pane name="home">
+        <n-tabs 
+            type="line" 
+            justify-content="space-evenly" 
+            class="tabs" 
+            v-model:value="selected" 
+            animated
+            @update:value="$router.replace('/'+$route.params.server+'/menu/'+selected)"
+        >
+            <n-tab-pane name="home" role="button" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <InfoIcon />
@@ -11,13 +18,12 @@
                     </n-text>
                 </template>
                 <n-space vertical justify="center" item-style="display:flex" align="center">
-
                     <Homepage></Homepage>
                 </n-space>
 
             </n-tab-pane>
 
-            <n-tab-pane v-for="(item,itemName,iidx) in navi" :name="itemName" :key="iidx">
+            <n-tab-pane v-for="(item,itemName,iidx) in navi" :name="itemName" :key="iidx" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <div :class="item.icon"></div>
@@ -27,7 +33,6 @@
                     </n-text>
                 </template>                    
                 <n-divider title-placement="center" class="eventtypetitle" dashed>
-
                         <n-icon size="32">
                             <div :class="item.icon"></div>
                         </n-icon>
@@ -43,7 +48,7 @@
 
             </n-tab-pane>
 
-            <n-tab-pane name="others">
+            <n-tab-pane name="others" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <AnalyticsIcon />
@@ -55,7 +60,7 @@
                 <Misc class="menucontent"></Misc>
             </n-tab-pane>
 
-            <n-tab-pane name="search">
+            <n-tab-pane name="search" :tab-props='{"role": "button"}'>
                 <template v-slot:tab>
                     <n-icon>
                         <SearchIcon />
@@ -94,9 +99,20 @@ export default {
             },
             i18n: i18n,
             currentLang: func.l,
-            selected: 'home',
+            selected: this.$route.params.selected || 'home',
         }
     },
+    created() {
+        this.$watch(
+            () => this.$route.params,
+            (toParams, previousParams) => {
+                if(previousParams.selected != toParams.selected){
+                    this.selected = toParams.selected || 'home';
+                }
+            }
+        );
+    },
+
     components:{
         InfoIcon:InfoOutlined,
         SearchIcon:SearchOutlined,

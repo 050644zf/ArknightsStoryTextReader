@@ -6,19 +6,19 @@
 
         <n-space v-else class="breadcrumb" >
             <n-breadcrumb>
-                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')">
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')" role="link">
                     <n-icon><MenuIcon/></n-icon>
                     {{i18n.menu[currentLang]}}
                 </n-breadcrumb-item>
-                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)" v-if="data.eventid">
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/event/'+data.eventid)" v-if="data.eventid" role="link">
                     {{data.eventName}}
                 </n-breadcrumb-item>
-                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/extra')" v-else>
+                <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/extra')" v-else role="link">
                     {{i18n.extra[currentLang]}}
                 </n-breadcrumb-item>                
                 <br class="breadcrumbbreak"/>
-                <n-breadcrumb-item>
-                    <n-popselect :options="storyOpts" v-model:value="path" scrollable>
+                <n-breadcrumb-item role="button">
+                    <n-popselect :options="storyOpts" v-model:value="path" scrollable :node-props='() => {return {"role": "link"}}'>
                         <n-text type="info" v-if="data.eventid">
                             {{data.storyCode}}  {{data.storyName}} - {{data.avgTag}}
                             <n-icon>
@@ -70,7 +70,7 @@
                     <Showimg v-if="strMatch(line.prop, 'background') && line.attributes.image && bgMode!='off'" :inputline="line" background></Showimg>
 
                     <!-- <div style="clear: both;"></div> -->
-            </div>                            
+                </div>                            
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
             </div>
     
