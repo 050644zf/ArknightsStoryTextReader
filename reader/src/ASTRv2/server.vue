@@ -152,6 +152,14 @@ export default {
                 else if(reviewData[eventid].entryType == 'NONE'){
                     var cin = eventid.split('_')[1];
                     var set = eventid.split('_')[3];
+                    try {
+                        reviewData[eventid].name = chardict[cin].name;
+                    } catch (error) {
+                        console.log(eventid);
+                        console.log(chardict[cin]);
+                        console.log(error);
+                        continue;
+                    }
                     reviewData[eventid].name = chardict[cin].name;
                     reviewData[eventid].cid = chardict[cin].id;
                     reviewData[eventid].cin = cin;
