@@ -154,16 +154,20 @@ export default {
                     var set = eventid.split('_')[3];
                     try {
                         reviewData[eventid].name = chardict[cin].name;
+                        reviewData[eventid].cid = chardict[cin].id;
+                        reviewData[eventid].cin = cin;
+                        reviewData[eventid].set = set;
                     } catch (error) {
                         console.log(eventid);
                         console.log(chardict[cin]);
                         console.log(error);
-                        continue;
+                        
+                        reviewData[eventid].cid = "?";
+                        reviewData[eventid].cin = "?";
+                        reviewData[eventid].set = "?";
                     }
-                    reviewData[eventid].name = chardict[cin].name;
-                    reviewData[eventid].cid = chardict[cin].id;
-                    reviewData[eventid].cin = cin;
-                    reviewData[eventid].set = set;
+                    
+
                     eventList.or.push(reviewData[eventid]);
                 }
             }
