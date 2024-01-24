@@ -34,7 +34,9 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 > Thymewarp, 
 > Bo Yi-bo, 
 > wangxu,
-> Syegen
+> Syegen, 
+> Hikari Leafs, 
+> Elaine
 
 ## Development Info
 
