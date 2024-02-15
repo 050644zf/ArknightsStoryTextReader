@@ -53,7 +53,8 @@
             <n-badge value="$4" type="warning">wangxu &nbsp;</n-badge>, &nbsp;&nbsp;
             <n-badge value="$1" type="info">Syegen &nbsp;</n-badge> &nbsp;&nbsp;
             <n-badge value="$3" type="warning">Hikari Leafs &nbsp;</n-badge> &nbsp;&nbsp;
-            <n-badge value="$50" type="warning">Elaine &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$50" type="error">Elaine &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$3" type="warning">Leonard &nbsp;</n-badge> &nbsp;&nbsp;
         </n-card>
 
         <n-text>
