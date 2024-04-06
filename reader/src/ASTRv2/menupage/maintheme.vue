@@ -21,7 +21,10 @@
                 <n-space  item-style="display: flex;" align="center" >
                     <n-card content-style="padding: 0px;" v-for="(eid, eidx) in chapter.events" :key="eidx" size="large" class="episode" @click="$router.push('/'+$route.params.server+'/event/'+eid)">
                         <template #cover>
-                            <img :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/'+eid+'.png'" class="mainicon" style="height: 100px;width: 100px;margin:auto;"/>
+                            <n-image :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/'+eid+'.png'" class="mainicon" style="height: 100px;width: 100px;margin:auto;"
+                            preview-disabled
+                            fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/404.png"
+                            />
                         </template>
                         <n-text strong >{{mdata[eid].name}}</n-text>
                     </n-card>

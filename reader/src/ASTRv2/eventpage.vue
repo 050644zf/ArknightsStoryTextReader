@@ -67,7 +67,7 @@
                         </n-button>
                     </n-space>
                 </n-alert>
-                <n-list>
+                <n-list hoverable clickable>
                     <n-list-item v-for="(story, sidx) in mdata[eventid]['infoUnlockDatas']" :key="sidx" >
                         <n-space vertical @click="$router.push({path:'/'+$route.params.server+'/content', query:{f:story['storyTxt']}})" role="link">
                             <n-space item-style="display:flex;" align="end">

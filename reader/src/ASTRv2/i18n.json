@@ -69,6 +69,7 @@
                       "ko_KR":"Lone Trail Investigation Report",
                       "zh_TW":"孤星調查報告"},
     "openInNew": {"zh_CN":"在新标签页中打开","en_US":"Open in New Tab","ja_JP":"新しいタブで開く","ko_KR":"새 탭에서 열기", "zh_TW":"在新標籤頁中打開"},
+    "startTime": {"zh_CN":"开始时间","en_US":"Start Time","ja_JP":"開始時間","ko_KR":"시작 시간", "zh_TW":"開始時間"},
     "annual_report": {"zh_CN":"明日方舟年度工作报告（仅支持CN服）",
                       "en_US":"Arknights Annual Report (CN Server Only)",
                       "ja_JP":"Arknights Annual Report (CN Server Only)",
@@ -78,5 +79,15 @@
                 "en_US": "The link of this line has been copied!",
                 "ja_JP": "この行のリンクがコピーされました！",
                 "ko_KR": "이 줄의 링크가 복사되었습니다!",
-                "zh_TW": "已複製該行鏈接！"}
+                "zh_TW": "已複製該行鏈接！"},
+    "timeasc": {"zh_CN": "时间升序",
+                "en_US": "Time Ascending",
+                "ja_JP": "時間昇順",
+                "ko_KR": "시간 오름차순",
+                "zh_TW": "時間升序"},
+    "timedesc": {"zh_CN": "时间降序",
+                 "en_US": "Time Descending",
+                 "ja_JP": "時間降順",
+                 "ko_KR": "시간 내림차순",
+                 "zh_TW": "時間降序"}
 }

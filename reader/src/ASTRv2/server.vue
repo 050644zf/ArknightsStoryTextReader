@@ -174,6 +174,7 @@ export default {
             eventList.intermezzi.sort(function(a,b){return a.startTime - b.startTime;});
             eventList.sidestory.sort(function(a,b){return a.startTime - b.startTime;});
             eventList.storyset.sort(function(a,b){return a.startTime - b.startTime;});
+            console.log(eventList);
             return eventList;
         },
         async getMainthemeData(chapterdata, eventList){
