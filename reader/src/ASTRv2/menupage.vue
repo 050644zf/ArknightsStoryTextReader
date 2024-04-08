@@ -43,6 +43,7 @@
                 <n-space vertical class="menucontent" justify="center" item-style="display:flex" align="center">
 
                     <Maintheme v-if="itemName == 'maintheme'"></Maintheme>
+                    <Or v-else-if="itemName == 'or'"></Or>
                     <Events :eventype="itemName" v-else></Events>
                 </n-space>
 
@@ -82,6 +83,7 @@ import i18n from './i18n.json';
 import func from './func.js';
 import maintheme from './menupage/maintheme.vue';
 import events from "./menupage/events.vue";
+import or from "./menupage/or.vue";
 import homepage from "./menupage/homepage.vue";
 import search from "./menupage/search.vue";
 import misc from './misc.vue'
@@ -95,7 +97,7 @@ export default {
                 intermezzi:{icon:'terminal-intermezzi', title:'intermezzi'},
                 sidestory:{icon:'terminal-sidestory', title:'ss'},
                 storyset:{icon:'terminal-storyset', title:'mini'},
-                or:{icon:'terminal-record', title:"or"},
+                or:{icon:'terminal-record', title:"operator_data"},
             },
             i18n: i18n,
             currentLang: func.l,
@@ -119,6 +121,7 @@ export default {
         AnalyticsIcon:AnalyticsOutlined,
         Maintheme: maintheme,
         Events: events,
+        Or: or,
         Homepage: homepage,
         Search: search,
         Misc: misc,

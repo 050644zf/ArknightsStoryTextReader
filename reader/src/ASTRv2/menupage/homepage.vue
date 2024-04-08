@@ -41,7 +41,7 @@
         感谢以下贡献者对ASTR的鼎力支持！<br/>
         Thanks to the following contributors for building better ASTR!
         </n-text>
-        <n-card><n-image width="200" src="https://contributors-img.web.app/image?repo=050644zf/ArknightsStoryTextReader"/></n-card>
+        <n-card><n-image width="200" src="https://contributors-img.web.app/image?repo=050644zf/ArknightsStoryTextReader" preview-disabled /></n-card>
         
         <n-text>
         感谢以下赞助者的大力支持！<br/>
@@ -92,6 +92,13 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>wv 1.6</n-h4>
+                <n-oi>
+                    <n-li>Add event start time and sort by time feature in intermezzi and sidestory, thank's to  <n-a href="https://github.com/Tsuk1ko">Tsuk1ko</n-a>'s assistance.</n-li>
+                    <n-li>
+                        New Operators' Data page that shows the operators' archive, modules and records.
+                    </n-li>
+                </n-oi>                     
                 <n-h4>wv 1.5.1</n-h4>
                 <n-oi>
                     <n-li>Add aria roles for accessibility tools and main menu selection qol , thank's to hanss314's <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/53">PR</n-a></n-li>

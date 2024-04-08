@@ -55,8 +55,13 @@ export default {
     height: 100vh;
 }
 
+#ASTR .n-layout {
+    overflow: visible !important;
+}
+
 .site>.n-layout-scroll-container {
     background-color: rgb(24, 24, 28);
+    overflow: visible;
 }
 
 @font-face {
@@ -111,12 +116,5 @@ export default {
 .n-list-item {
     padding: 20px !important;
     transition: all 0.5s !important;
-}
-
-.n-list-item:hover {
-    background-color: rgba(143, 52, 46,0.5);
-    /* padding: 30px 20px !important; */
-    /* add inner box shadow */
-    box-shadow: 0px 0px 20px 0px rgba(143, 52, 46, 0.3);
 }
 </style>

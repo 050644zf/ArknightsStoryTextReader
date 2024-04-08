@@ -1,11 +1,15 @@
 <template>
 
-    <n-layout-content class="contentpage"  :style="{'font-size':fontsize+'px'}" >
+    <n-layout-content class="contentpage"  :style="{'font-size':fontsize+'px'}" ref="contentpage">
     
         <n-skeleton v-if="loading" class="breadcrumb"></n-skeleton>
 
-        <n-space v-else class="breadcrumb" >
-            <n-breadcrumb>
+        
+        <n-space v-else  >
+            <!-- <n-affix
+            :top="0"
+            :trigger-top="0"> -->
+            <n-breadcrumb class="breadcrumb">
                 <n-breadcrumb-item @click="$router.push('/'+$route.params.server+'/menu')" role="link">
                     <n-icon><MenuIcon/></n-icon>
                     {{i18n.menu[currentLang]}}
@@ -31,6 +35,7 @@
                     </n-popselect>
                 </n-breadcrumb-item>
             </n-breadcrumb>
+            <!-- </n-affix> -->
             <!-- <n-divider vertical />
             <n-button-group>
                 <n-button secondary round type="info" v-show="storyIdx != 0" @click="paging(-1)">
@@ -94,6 +99,7 @@ import img from './content/img.vue';
 import paging from './content/paging.vue';
 import {MenuOpenFilled, ArrowDropDownSharp,ChevronLeftOutlined,ChevronRightOutlined } from "@vicons/material"
 import {useLoadingBar,useDialog } from 'naive-ui'
+import { defineComponent, ref } from 'vue'
 
 export default {
     data(){
@@ -115,6 +121,7 @@ export default {
             storyOpts: [],
             storyIdx: -1,
             storyCount: 0,
+            contentpageRef: ref<HTMLElement | null>(null),
         }
     },
     metaInfo(){

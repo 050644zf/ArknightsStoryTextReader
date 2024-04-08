@@ -1,5 +1,9 @@
 const langList = ['zh_CN','en_US','ko_KR','ja_JP','zh_TW'];
 const bgModes = ['full','stripe','off']
+const professions = ['PIONEER', 'CASTER', 'WARRIOR', 'MEDIC', 'TANK', 'SUPPORT', 'SNIPER', 'SPECIAL']
+const professions_aceship = ['VANGUARD', 'CASTER', 'GUARD', 'MEDIC', 'DEFENDER', 'SUPPORTER', 'SNIPER', 'SPECIALIST']
+
+const rarity_colors = ['#000000','#9F9F9F', '#DCE537', '#00B2F6','#DBB1DB','#FFAE00','#FF6600']
 var urlParams = new URLSearchParams(window.location.search);
 var server = urlParams.get('s');
 var l = window.localStorage.getItem('lang');
@@ -38,6 +42,9 @@ if(!wversion||wversion<currentwversion){wversion = currentwversion; window.local
 
 export default {
     urlParams: urlParams,
+    professions: professions,
+    professions_aceship: professions_aceship,
+    rarity_colors: rarity_colors,
     l: l,
     langList:langList,
     server: server,

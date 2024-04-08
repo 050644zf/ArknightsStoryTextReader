@@ -1,6 +1,6 @@
 <template>
     <n-space class="misc" item-style="display:flex;" justify="center">
-        <n-list class="list">
+        <n-list class="list" hoverable clickable>
             <n-list-item @click="$router.push('/'+$route.params.server+'/extra')">
                 <n-space item-style="display:flex;" align="center">
                     <n-space item-style="display:flex;" align="baseline">

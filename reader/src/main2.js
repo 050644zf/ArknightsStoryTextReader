@@ -15,13 +15,18 @@ import isrecords from './ASTRv2/misc/isrecords.vue'
 import act17side_log from './ASTRv2/misc/act17side_log.vue'
 import act25side_log from './ASTRv2/misc/act25side_log.vue'
 import extra from './ASTRv2/misc/extra.vue'
+import opcard from './ASTRv2/components/opcard.vue'
 
 const routes = [
     { 
         path: '/:server', 
         component: server,
         children: [
-            { path: 'menu/:selected?', name:'menu', component: menupage },
+            { path: 'menu/:selected?', name:'menu', component: menupage,
+                children: [
+                    { path: 'char/:cid', name:'opcard', component: opcard },
+                ]
+            },
             { path: 'event/:event',name:'event', component: eventpage },
             { path: 'content',name:'content', component: contentpage },
             { path: 'export',name:'export', component: exportpage },
