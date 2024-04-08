@@ -1,7 +1,10 @@
 <template>
     <n-space vertical class="homepage" justify="center">
-        <!-- <n-alert type="info" title="ASTR正在寻找">
-        </n-alert> -->
+        <n-alert type="error" title="FIREFOX BROWSER ISSUE" v-if="isFirefox()">
+            We noticed there is a compatibility issue with Firefox browser. Please use Chrome, Edge or any Chronium based browser for better experience.
+            <br/><br/>
+            我们注意到火狐浏览器存在兼容性问题，请使用Chrome、Edge或任何基于Chromium的浏览器以获得更好的体验。
+        </n-alert>
         <br/>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br />
@@ -249,6 +252,17 @@
         </n-ol>
     </n-space>
 </template>
+
+<script>
+
+export default{
+    methods:{
+        isFirefox(){
+            return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+        }
+    }
+}
+</script>
 
 <style>
 .homepage {
