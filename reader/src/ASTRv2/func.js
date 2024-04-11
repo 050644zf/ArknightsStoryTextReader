@@ -60,7 +60,7 @@ export default {
     fontsize: fontsize,
     storyFile: storyFile,
     storyData: storyData,
-    intermezzi: ['act9d0', 'act18d0', 'act18d3','act17side','act25side'],
+    intermezzi: ['act9d0', 'act18d0', 'act18d3','act17side','act25side', 'act33side'],
     wversion: wversion,
     isOldversion: isOldversion,
     parseContent(content){
