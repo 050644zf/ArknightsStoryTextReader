@@ -53,7 +53,7 @@
                         </template>
                             <n-scrollbar style="max-height: 50vh;">
                                 <n-flex vertical align="center">
-                                    <n-image v-if="equip.type=='ADVANCED'" :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/equip/icon/'+equip.uniEquipId +'.png'" height="200"/>
+                                    <n-image v-if="equip.type=='ADVANCED'" :src="getEquipUrl(equip.uniEquipId)" height="200"/>
                                 <n-text v-html="parseContent(equip.uniEquipDesc)"></n-text>
                                 </n-flex>
 
@@ -97,6 +97,7 @@
 
 <script>
 import func from '../func.js'
+import source from '../source.js'
 import {ArrowForwardOutlined} from "@vicons/material"
 import i18n from '../i18n.json'
 export default {
@@ -126,6 +127,9 @@ export default {
             var fontcolor = "white";
             if(color=="yellow") fontcolor = "black";
             return {color:color, textColor:fontcolor};
+        },
+        getEquipUrl(uniEquipId){
+            return source.getEquipUrl(func.imageRepo, uniEquipId)
         }
     },
     components:{

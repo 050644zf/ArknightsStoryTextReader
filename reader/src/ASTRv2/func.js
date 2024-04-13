@@ -18,6 +18,7 @@ var inited = window.localStorage.getItem('inited');
 var mirror = window.localStorage.getItem('mirror');
 var fontsize = window.localStorage.getItem('fontsize');
 var margin = window.localStorage.getItem('margin');
+var imageRepo = window.localStorage.getItem('imageRepo');
 var storyFile = urlParams.get('f');
 var storyData = {eventName: "Loading..."};
 var isOldversion = false;
@@ -33,6 +34,7 @@ if(!hidetip){hidetip = false};
 if(!showDelay){showDelay = 'y'};
 if(!hideName){hideName = 'n'};
 if(!bgMode){bgMode = 'stripe'};
+if(!imageRepo){imageRepo = 'fexli'}
 if(!inited){inited = false};
 if(!mirror){mirror = 'origin'};
 if(!margin){margin = 4}
@@ -53,6 +55,7 @@ export default {
     showDelay: showDelay,
     bgMode: bgMode,
     bgModes: bgModes,
+    imageRepo: imageRepo,
     hideName: hideName,
     inited: inited,
     mirror: mirror,

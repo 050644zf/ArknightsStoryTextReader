@@ -1,11 +1,12 @@
 <template>
     <n-image
         :class="{images: imgtype=='images' || bgMode=='full', backgrounds:imgtype=='backgrounds'&&bgMode=='stripe'}"
-        :src="`https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avg/${imgtype}/${line.attributes.image}.png`" />
+        :src="getAvgUrl()" />
 </template>
 
 <script>
 import func from '../func'
+import source from '../source'
 export default {
     data() {
         return {
@@ -20,6 +21,12 @@ export default {
             type: Boolean,
             default: false
         }
+    },
+    methods: {
+        getAvgUrl(){
+            return source.getAvgUrl('fexli', this.imgtype, this.line.attributes.image);
+        }
+    
     }
 }
 </script>
