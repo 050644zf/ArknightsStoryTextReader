@@ -1,5 +1,5 @@
 <template>
-<div :class="line.prop" :style="{'text-align': line.attributes.alignment}" @mousemove="showLink=true" @mouseout="showLink=false" class="Subtitle">
+<div  :style="{'text-align': line.attributes.alignment}" @mousemove="showLink=true" @mouseout="showLink=false" :class="['Subtitle',{'whitebg':isFontBlack()},line.prop]">
     
     <n-popover trigger="manual"  :show-arrow="false" :show="copied">
             <template #trigger>
@@ -24,7 +24,8 @@ export default {
     data(){
         return{
             line: this.inputline,
-            showLink: false
+            showLink: false,
+            copied: false,
         }
     },
     props:{
@@ -44,6 +45,12 @@ export default {
                 this.copied = true;
                 setTimeout(()=>{this.copied = false}, 1000);
             });
+        },
+        isFontBlack(){
+            // check if the content has #000000
+            var parsed = this.parseContent(this.line.attributes.text);
+            // console.log(parsed);
+            if(parsed) return parsed.indexOf('#000000') > -1;
         }
     }
 }
@@ -57,6 +64,9 @@ export default {
     padding-bottom: 20px;
     padding: 10px;
     clear: both; */
+}
+.whitebg{
+    background-color: white;
 }
 .Subtitle .link {
     -webkit-user-select: none; /* Safari */
