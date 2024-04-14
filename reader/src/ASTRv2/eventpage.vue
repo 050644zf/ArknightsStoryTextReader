@@ -29,6 +29,7 @@
 
                             {{i18n.export2excel[currentLang]}}
                         </n-button>
+                        <OpenInGTL v-if="server=='zh_CN'"/>
                     </n-space>
                 </n-space>
                 <n-alert type="info" v-if="eventid=='act17side'">
@@ -96,6 +97,7 @@ import { MenuOpenFilled, ArrowForwardOutlined, DownloadOutlined, OpenInNewOutlin
 import i18n from "./i18n.json"
 import func from "./func.js"
 import openInNew from "./components/openInNewBtn.vue"
+import openInGTL from "./components/openInGTL.vue"
 export default {
     data() {
         return {
@@ -136,6 +138,7 @@ export default {
         ForwardIcon: OpenInNewOutlined,
         ExportIcon: DownloadOutlined,
         OpenInNew: openInNew,
+        OpenInGTL: openInGTL
     },
     methods: {
         exportAll() {

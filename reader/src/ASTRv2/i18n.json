@@ -92,5 +92,10 @@
                  "en_US": "Time Descending",
                  "ja_JP": "時間降順",
                  "ko_KR": "시간 내림차순",
-                 "zh_TW": "時間降序"}
+                 "zh_TW": "時間降序"},
+    "openInGoogleTL": {"zh_CN": "在谷歌翻译中打开",
+                       "en_US": "Open in Google Translate",
+                       "ja_JP": "Google翻訳で開く",
+                       "ko_KR": "Google 번역에서 열기",
+                       "zh_TW": "在谷歌翻譯中打開"}
 }

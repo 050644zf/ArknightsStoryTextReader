@@ -60,6 +60,7 @@
             </n-h4>
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
             <div v-else class="lines">
+                <OpenInGTL v-if="server=='zh_CN'"/>
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" 
                     class="line" :id="'line'+line.id" :style="{'margin-bottom':margin +'px'}">
@@ -97,6 +98,9 @@ import predicate from './content/predicate.vue';
 import delay from './content/delay.vue';
 import img from './content/img.vue';
 import paging from './content/paging.vue';
+
+import openInGTL from './components/openInGTL.vue'
+
 import {MenuOpenFilled, ArrowDropDownSharp,ChevronLeftOutlined,ChevronRightOutlined } from "@vicons/material"
 import {useLoadingBar,useDialog } from 'naive-ui'
 import { defineComponent, ref } from 'vue'
@@ -161,6 +165,7 @@ export default {
         Delay: delay,
         Showimg: img,
         Paging: paging,
+        OpenInGTL: openInGTL,
         MenuIcon: MenuOpenFilled,
         ArrowDropDown: ArrowDropDownSharp,
         LastStory: ChevronLeftOutlined,

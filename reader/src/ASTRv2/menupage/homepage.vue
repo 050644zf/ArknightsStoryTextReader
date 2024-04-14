@@ -95,6 +95,10 @@
                 <template #header>
                     点击展开 / Click to Unfold
                 </template>
+                <n-h4>v1.6.2</n-h4>
+                <n-oi>
+                    <n-li>New feature: Open in google tl.</n-li>
+                </n-oi>
                 <n-h4>v1.6.1</n-h4>
                 <n-oi>
                     <n-li>Fixed display issue of white background & black color font subtitle.</n-li>

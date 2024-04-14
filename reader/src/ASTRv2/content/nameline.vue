@@ -1,3 +1,21 @@
+<template>
+    <div class="textblock" @mousemove="showLink=true" @mouseout="showLink=false">
+        <span :class="{nameblock:true,figure:line.figure_art}">{{line.attributes.name}}</span>
+        <span class="contentblock" v-html="parseContent(line.attributes.content)"></span>
+        <n-popover trigger="manual"  :show-arrow="false" :show="copied">
+            <template #trigger>
+                <n-icon-wrapper  :size="32" color="#00000000" icon-color="#7f7f7f" class="link" v-show="showLink" @click="hyperlink2line(line.id)">
+                    <n-icon size="24">
+                        <LinkOutlined/>
+                    </n-icon>
+                </n-icon-wrapper>                
+            </template>
+            {{ i18n['copied'][currentLang] }}
+        </n-popover>
+
+    </div>
+</template>
+
 <script>
 import func from "../func";
 import i18n from "../i18n";
@@ -58,24 +76,6 @@ export default {
     }
 }
 </script>
-
-<template>
-    <div class="textblock" @mousemove="showLink=true" @mouseout="showLink=false">
-        <div :class="{nameblock:true,figure:line.figure_art}">{{line.attributes.name}}</div>
-        <div class="contentblock" v-html="parseContent(line.attributes.content)"></div>
-        <n-popover trigger="manual"  :show-arrow="false" :show="copied">
-            <template #trigger>
-                <n-icon-wrapper  :size="32" color="#00000000" icon-color="#7f7f7f" class="link" v-show="showLink" @click="hyperlink2line(line.id)">
-                    <n-icon size="24">
-                        <LinkOutlined/>
-                    </n-icon>
-                </n-icon-wrapper>                
-            </template>
-            {{ i18n['copied'][currentLang] }}
-        </n-popover>
-
-    </div>
-</template>
 
 <style>
 .textblock{
