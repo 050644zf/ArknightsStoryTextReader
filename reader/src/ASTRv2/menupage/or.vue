@@ -1,5 +1,5 @@
 <template>
-    <n-skeleton v-if="!loaded" :rows="10" />
+    <n-spin v-if="!loaded" size="large" />
     <n-flex v-else class="or" justify="center" vertical align="center">
 
         
@@ -26,14 +26,14 @@
             </n-flex>
         <n-rate clearable :count="6" v-model:value="filters.rarity" :color="rarity_colors[filters.rarity]"  />
         </n-flex>
-
+        <n-divider/>
         <n-flex class="oplist" justify="center" align="top">
             <TransitionGroup name="list">
                 <div v-for="(cdata, cidx) in getCharList" :key="cdata.charID">
                     <n-card class="optile" content-style="padding: 0px;" style="display: flex; justify: center; align-items: center;" hoverable @click="showCard(cdata.charID)" >
                         <template #cover>
                             <n-image 
-                            :src="'https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/'+cdata.charID+'.png'"
+                            :src="getAvatarUrl(cdata.charID)"
                             style="height: 72px;"
                             preview-disabled
                             />
@@ -57,6 +57,7 @@
 import { ArrowForwardOutlined, OpenInNewOutlined,AccessTimeFilled,ArticleRound, SortOutlined } from '@vicons/material'
 import i18n from '../i18n.json'
 import func from '../func'
+import source from '../source'
 import openInNew from "../components/openInNewBtn.vue"
 import opcard from "../components/opcard.vue"
 import {filter} from 'lodash-es'
@@ -156,6 +157,9 @@ export default{
         },
         showCard(charID){
             this.$router.push({name:'opcard', params:{server:this.server,selected:'or' ,cid:charID}});
+        },
+        getAvatarUrl(charID){
+            return source.getAvatarUrl(func.imageRepo,charID);
         }
     }
 }

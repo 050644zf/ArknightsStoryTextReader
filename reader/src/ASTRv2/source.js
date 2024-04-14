@@ -25,5 +25,13 @@ export default {
         else if(repo == 'fexli'){
             return `${IMAGES_SRC_REPOS[repo]}/equip/${uniEquipId}.png`
         }
+    },
+    getAvatarUrl(repo, charId){
+        if(repo == 'Aceship'){
+            return `${IMAGES_SRC_REPOS[repo]}/avatars/${charId}.png`
+        }
+        else if(repo == 'fexli'){
+            return `${IMAGES_SRC_REPOS[repo]}/avatar/ASSISTANT/${charId}.png`
+        }
     }
 }
