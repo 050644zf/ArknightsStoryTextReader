@@ -1,11 +1,19 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 const { resolve } = require('path')
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({command, mode}) => {
+
+  const env = loadEnv(mode, process.cwd(), '')
+  var base = env.VITE_BASE;
+  if(!base){
+    base = '/';
+  }
+
+  return{
   plugins: [vue()],
-  base: '/ArknightsStoryTextReader/',
+  base: base,
   build: {
     rollupOptions: {
       input: {
@@ -22,4 +30,4 @@ export default defineConfig({
       strict:false
     }
   }
-})
+}})
