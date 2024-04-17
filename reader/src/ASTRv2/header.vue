@@ -28,6 +28,17 @@
 
             <n-space justify="space-around" item-style="display: flex;" align="center">
                 <Warp v-if="loaded"/>
+                <n-tooltip trigger="hover" v-if="server!=UILang">
+                <template #trigger>
+                <n-button quaternary @click="openInGTL()">
+                    <n-icon size="24">
+                        <TranslateIcon/>
+                    </n-icon>
+                </n-button>                       
+                </template>
+                {{i18n.openInGoogleTL[UILang]}}
+                </n-tooltip>
+
                 <n-dropdown :options="serverOpts" @select="pushServer" class="serverSelect" role="button" :node-props="() => {return {'role': 'button'};}">
                     <n-button text>
                         <template #icon>
@@ -52,7 +63,7 @@
 </template>
 
 <script>
-import { LanguageRound, ArrowDropDownSharp, SettingsOutlined } from "@vicons/material";
+import { LanguageRound, ArrowDropDownSharp, SettingsOutlined,TranslateOutlined } from "@vicons/material";
 import i18n from './i18n.json';
 import func from './func.js';
 import settings from './settings.vue';
@@ -65,6 +76,7 @@ export default {
             i18n: i18n,
             showsettings: false,
             server: this.$route.params.server,
+            UILang: func.l
         }
     },
     props: ['loaded'],
@@ -82,6 +94,7 @@ export default {
         LangIcon:LanguageRound,
         ArrowDropDown:ArrowDropDownSharp,
         SettingsIcon:SettingsOutlined,
+        TranslateIcon:TranslateOutlined,
         Settings: settings,
         Warp: warp,
     },
@@ -102,6 +115,13 @@ export default {
         async pushServer(server){
             this.$emit('pushServer', {server: server});
         },
+        openInGTL(){
+            var target_lang = this.UILang.replace(/_/g, "-");
+            var server_lang = this.$route.params.server.replace(/_/g, "-");
+            if(target_lang== 'zh_CN') target_lang = 'en';
+            var url = `https://astr-pages-dev.translate.goog/?_x_tr_sl=${server_lang}&_x_tr_tl=${target_lang}&_x_tr_hl=${server_lang}&_x_tr_pto=wapp&_x_tr_hist=true#${this.$route.fullPath}`
+            window.open(url, '_blank');
+        }
     }
 }
 </script>

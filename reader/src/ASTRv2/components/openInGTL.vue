@@ -26,8 +26,9 @@ export default {
     methods:{
         openInGTL(){
             var target_lang = this.UILang.replace(/_/g, "-");
+            var server_lang = this.$route.params.server.replace(/_/g, "-");
             if(target_lang== 'zh_CN') target_lang = 'en';
-            var url = `https://050644zf-github-io.translate.goog/ArknightsStoryTextReader/?_x_tr_sl=zh-CN&_x_tr_tl=${target_lang}&_x_tr_hl=zh-CN&_x_tr_pto=wapp&_x_tr_hist=true#${this.$route.fullPath}`
+            var url = `https://astr-pages-dev.translate.goog/?_x_tr_sl=${server_lang}&_x_tr_tl=${target_lang}&_x_tr_hl=${target_lang}&_x_tr_pto=wapp&_x_tr_hist=true#${this.$route.fullPath}`
             window.open(url, '_blank');
         }
     }

@@ -5,6 +5,10 @@
             <br/><br/>
             我们注意到火狐浏览器存在兼容性问题，请使用Chrome、Edge或任何基于Chromium的浏览器以获得更好的体验。
         </n-alert>
+        <n-alert type="info" >
+            欢迎访问我们的新域名 / Welcome to our new domain:
+            <n-a href="https://astr.pages.dev">astr.pages.dev</n-a>
+        </n-alert>
         <br/>
         <n-h1 prefix="bar">
             欢迎访问明日方舟剧情文本阅读器！<br />

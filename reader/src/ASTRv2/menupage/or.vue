@@ -30,7 +30,7 @@
         <n-flex class="oplist" justify="center" align="top">
             <TransitionGroup name="list">
                 <div v-for="(cdata, cidx) in getCharList" :key="cdata.charID">
-                    <n-card class="optile" content-style="padding: 0px;" style="display: flex; justify: center; align-items: center;" hoverable @click="showCard(cdata.charID)" >
+                    <n-card class="optile" content-style="padding: 0px;" style="display: flex; justify: center; align-items: center;" hoverable  @click="showCard(cdata.charID)" >
                         <template #cover>
                             <n-image 
                             :src="getAvatarUrl(cdata.charID)"
@@ -199,6 +199,10 @@ export default{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.optile:hover{
+    box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
 }
 
 .optile .opcard-name{

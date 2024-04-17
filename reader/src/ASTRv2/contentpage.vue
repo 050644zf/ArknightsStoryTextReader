@@ -60,7 +60,7 @@
             </n-h4>
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
             <div v-else class="lines">
-                <OpenInGTL v-if="server=='zh_CN'"/>
+                <!-- <OpenInGTL v-if="server=='zh_CN'"/> -->
                 <Paging :storyIdx="storyIdx" :storyOpts="storyOpts" v-if="!loading"></Paging>
                 <div v-for="(line, lidx) in data.storyList" :key="line.id" 
                     class="line" :id="'line'+line.id" :style="{'margin-bottom':margin +'px'}">

@@ -156,6 +156,8 @@ export default {
     background-color: rgba(0,0,0,0.2);
 }
 
+
+
 .n-tag{
     font-family: sans-serif;
     font-weight: bold;
