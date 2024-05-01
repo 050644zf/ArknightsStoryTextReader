@@ -55,9 +55,9 @@
         <n-space veritical class="content" justify="center" warp="false">
 
 
-            <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
+            <!-- <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
                 {{i18n.optionTraceDisabled[currentLang]}}
-            </n-h4>
+            </n-h4> -->
             <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
             <div v-else class="lines">
                 <!-- <OpenInGTL v-if="server=='zh_CN'"/> -->
