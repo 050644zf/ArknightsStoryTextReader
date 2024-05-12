@@ -63,6 +63,7 @@
             <n-badge value="$50" type="error">Elaine &nbsp;</n-badge>, &nbsp;&nbsp;
             <n-badge value="$3" type="warning">Leonard &nbsp;</n-badge>, &nbsp;&nbsp;
             <n-badge value="$2" type="warning">Leon &nbsp;</n-badge>, &nbsp;&nbsp;
+            <n-badge value="$7" type="warning">Haser &nbsp;</n-badge>, &nbsp;&nbsp;
         </n-card>
 
         <n-text>

@@ -37,6 +37,7 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 > Syegen, 
 > Hikari Leafs, 
 > Elaine
+> Haser
 
 ## Development Info
 
