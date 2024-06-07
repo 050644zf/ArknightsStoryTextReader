@@ -39,7 +39,7 @@
       <n-gi>
       <n-card title="Main theme" hoverable @click="$router.push({name:'menu',params:{selected:'maintheme'}})">
         <template #cover>
-          <n-image src="/maintheme.png" preview-disabled/>
+          <n-image :src="maintheme_png" preview-disabled/>
         </template>
         <template #header-extra>
           <n-icon size="32"><ArrowForward /></n-icon>
@@ -50,7 +50,7 @@
       <n-gi>
       <n-card title="Operators" hoverable @click="$router.push({name:'menu',params:{selected:'or'}})">
         <template #cover>
-          <n-image src="/op.png" preview-disabled/>
+          <n-image :src="op_png" preview-disabled/>
         </template>
         <template #header-extra>
           <n-icon size="32"><ArrowForward /></n-icon>
@@ -61,7 +61,7 @@
       <n-gi>
       <n-card title="Wordcount" hoverable @click="$router.push({name:'analysis'})">
         <template #cover>
-          <n-image src="/analysis.png" preview-disabled/>
+          <n-image :src="analysis_png" preview-disabled/>
         </template>
         <template #header-extra>
           <n-icon size="32"><ArrowForward /></n-icon>
@@ -425,6 +425,10 @@
 
 <script>
 import {ArrowForwardOutlined} from '@vicons/material'
+import analysis_png from './banners/analysis.png'
+import maintheme_png from './banners/maintheme.png'
+import op_png from './banners/op.png'
+
 export default {
   data() {
     return {
@@ -433,6 +437,9 @@ export default {
         ? JSON.parse(window.sessionStorage.getItem("eventList"))
         : [],
       latestEvents: [],
+      analysis_png: analysis_png,
+      maintheme_png: maintheme_png,
+      op_png: op_png,
     };
   },
   mounted() {

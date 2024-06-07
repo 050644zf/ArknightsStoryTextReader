@@ -11,7 +11,7 @@
         <router-link to="/" #="{ navigate, href }" custom>
           <n-a :href="href" @click="navigate">
             <n-image
-              src="/favicon.png"
+              :src="favicon"
               style="width: 40px; height: 40px"
               preview-disabled
             />
@@ -25,7 +25,7 @@
           <router-link to="/" #="{ navigate, href }" custom>
             <n-a :href="href" @click="navigate">
               <n-image
-                src="/ASTReader.png"
+                :src="ASTReader"
                 style="height: 30px"
                 preview-disabled
                 class="astrtitle"
@@ -100,6 +100,9 @@ import func from "./func.js";
 import settings from "./settings.vue";
 import warp from "./warp.vue";
 
+import favicon from './assets/favicon.png'
+import ASTReader from './assets/ASTReader.png'
+
 export default {
   data() {
     return {
@@ -108,6 +111,8 @@ export default {
       showsettings: false,
       server: this.$route.params.server,
       UILang: func.l,
+      favicon: favicon,
+      ASTReader: ASTReader,
     };
   },
   props: ["loaded"],
