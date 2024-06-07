@@ -7,10 +7,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "d3": "^7.4.4",
+    "echarts": "^5.5.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "vue": "^3.2.16",
+    "vue-echarts": "^6.7.3",
     "vue-meta": "^3.0.0-alpha.10",
     "vue-router": "^4.0.12",
     "xlsx": "^0.17.5"
