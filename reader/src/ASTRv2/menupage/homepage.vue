@@ -215,7 +215,7 @@
         <template #header> 点击展开 / Click to Unfold </template>
         <n-h4>v1.7</n-h4>
         <n-oi>
-          <n-li>Migrate the data visulization frameword from d3 to echarts in wordcount.</n-li>
+          <n-li>Migrate the data visualization framework from d3 to echarts in wordcount.</n-li>
           <n-li>Adding navigation of frequent use features in homepage</n-li>
           <n-li>Prettify the codes</n-li>
         </n-oi>
