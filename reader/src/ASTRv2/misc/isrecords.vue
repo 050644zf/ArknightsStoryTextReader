@@ -64,6 +64,7 @@ import { MenuOpenFilled, MessageRound } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
 import i18n from "../i18n.json";
 import func from "../func.js";
+import source from "../source.js";
 import isdialog from "./isdialog.vue";
 export default {
   data() {
@@ -107,11 +108,7 @@ export default {
     },
     getCharAvatar(char_code) {
       //get the avatar of the character
-      return (
-        "https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/" +
-        char_code +
-        ".png"
-      );
+      return source.getAvatarUrl('fexli', char_code);
     },
   },
   components: {

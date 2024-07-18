@@ -213,6 +213,10 @@
     <n-collapse arrow-placement="right">
       <n-collapse-item>
         <template #header> 点击展开 / Click to Unfold </template>
+        <n-h4>v1,7.1</n-h4>
+        <n-oi>
+          <n-li>Fixed the is#4 monthly squad text.</n-li>
+        </n-oi>
         <n-h4>v1.7</n-h4>
         <n-oi>
           <n-li>Migrate the data visualization framework from d3 to echarts in wordcount.</n-li>

@@ -51,7 +51,7 @@
           </n-space>
           <n-space
             vertical
-            v-if="topic.id == 'rogue_2' || topic.id == 'rogue_3'"
+            v-else
           >
             <n-text v-html="rec"></n-text>
           </n-space>
@@ -105,7 +105,7 @@ export default {
         }
         if (this.topic.id == "rogue_1") {
           this.records["Record_" + i] = this.parseDialog(text);
-        } else if (this.topic.id == "rogue_2" || this.topic.id == "rogue_3") {
+        } else {
           this.records["Record_" + i] = text.replaceAll("\n", "<br/><br/>");
         }
         i++;
