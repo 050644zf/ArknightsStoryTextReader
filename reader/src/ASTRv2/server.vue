@@ -30,7 +30,6 @@
 <script>
 import Header from "./header.vue";
 import func from "./func.js";
-import i18n from "./i18n.json";
 import { computed } from "vue";
 import { useLoadingBar, useDialog } from "naive-ui";
 
@@ -38,11 +37,10 @@ export default {
   data() {
     return {
       server: this.$route.params.server,
-      serverName: i18n.server[this.server],
+      serverName: this.$t('header.'+this.$route.params.server) + this.$t('header.server'),
       intermezzi: func.intermezzi,
       loadingbar: useLoadingBar(),
       dialog: useDialog(),
-      i18n: i18n,
       isDataLoaded: false,
       loadingProgress: 0,
       isError: false,
@@ -52,7 +50,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: this.i18n.server[this.server] + " | Arknights Story Text Reader",
+      title: this.$t('header.'+this.$route.params.server) + this.$t('header.server') + " | Arknights Story Text Reader",
       meta: [
         { propoty: "og:type", content: "website" },
         {

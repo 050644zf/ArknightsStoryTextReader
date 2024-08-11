@@ -1,6 +1,6 @@
 <template>
   <n-auto-complete
-    :placeholder="i18n.warp[currentLang]"
+    :placeholder="$t('header.warp')"
     v-model:value="value"
     :options="options"
     @select="select"
@@ -16,14 +16,10 @@
 </template>
 
 <script>
-import i18n from "./i18n.json";
-import func from "./func.js";
 import { computed } from "vue";
 export default {
   data() {
     return {
-      i18n: i18n,
-      currentLang: func.l,
       eventList: window.sessionStorage.getItem("eventList")
         ? JSON.parse(window.sessionStorage.getItem("eventList"))
         : [],

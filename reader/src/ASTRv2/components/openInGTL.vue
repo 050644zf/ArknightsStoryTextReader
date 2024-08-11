@@ -3,19 +3,17 @@
     <template #icon>
       <TranslateIcon />
     </template>
-    {{ i18n.openInGoogleTL[UILang] }}
+    {{ $t('header.openInGoogleTL') }}
   </n-button>
 </template>
 
 <script>
-import i18n from "../i18n.json";
 import func from "../func.js";
 import { TranslateOutlined } from "@vicons/material";
 
 export default {
   data() {
     return {
-      i18n: i18n,
       currentLang: this.$route.params.server,
       UILang: func.l,
     };

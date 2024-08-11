@@ -1,4 +1,5 @@
 const langList = ["zh_CN", "en_US", "ko_KR", "ja_JP", "zh_TW"];
+const serverList = ["zh_CN", "en_US", "ko_KR", "ja_JP", "zh_TW"];
 const bgModes = ["full", "stripe", "off"];
 const professions = [
   "PIONEER",
@@ -106,6 +107,7 @@ export default {
   rarity_colors: rarity_colors,
   l: l,
   langList: langList,
+  serverList: serverList,
   server: server,
   doctor: doctor,
   hidetip: hidetip,

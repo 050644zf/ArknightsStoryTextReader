@@ -6,10 +6,10 @@
           @click="$router.push('/' + $route.params.server + '/menu')"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item>{{
-          i18n.export2excel[currentLang]
+          $t('eventpage.export2excel')
         }}</n-breadcrumb-item>
       </n-breadcrumb>
       <n-data-table
@@ -98,8 +98,6 @@
 
 <script>
 import xlsx from "xlsx";
-import i18n from "./i18n.json";
-import func from "./func";
 import {
   MenuOpenFilled,
   ClearAllOutlined,
@@ -113,7 +111,6 @@ export default {
       filename: "export",
       exportFile: null,
       logs: "=====导出日志/Export Logs=====\n",
-      i18n: i18n,
       cols: [
         { title: "Server", key: "server", width: 100 },
         { title: "Story Code", key: "storyCode", width: 100 },
@@ -121,7 +118,6 @@ export default {
         { title: "Story Name", key: "storyName" },
         { title: "Path", key: "path", ellipsis: { tooltip: true } },
       ],
-      currentLang: func.l,
       percentage: 0,
       processing: false,
     };

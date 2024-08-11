@@ -8,7 +8,7 @@
       :loading="loading"
     >
       <template #icon><MsgIcon /></template>
-      {{ i18n.loadDialog[currentLang] }}
+      {{ $t('isrecords.loadDialog') }}
     </n-button>
   </n-space>
   <n-space vertical v-if="rec_loaded">
@@ -17,8 +17,8 @@
         <UnfoldIcon v-if="!show" />
         <FoldIcon v-else />
       </template>
-      <n-text v-if="!show">{{ i18n.unfold[currentLang] }}</n-text>
-      <n-text v-else>{{ i18n.fold[currentLang] }}</n-text>
+      <n-text v-if="!show">{{ $t('isrecords.unfold') }}</n-text>
+      <n-text v-else>{{ $t('isrecords.fold') }}</n-text>
     </n-button>
     <n-collapse-transition v-show="show">
       <n-tabs type="segment">
@@ -68,14 +68,12 @@ import {
   UnfoldMoreOutlined,
   UnfoldLessOutlined,
 } from "@vicons/material";
-import i18n from "../i18n.json";
 import func from "../func.js";
 export default {
   data() {
     return {
       records: {},
       rec_loaded: false,
-      i18n: i18n,
       currentLang: func.l,
       show: false,
       loading: false,

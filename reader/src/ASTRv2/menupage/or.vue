@@ -70,7 +70,6 @@ import {
   ArticleRound,
   SortOutlined,
 } from "@vicons/material";
-import i18n from "../i18n.json";
 import func from "../func";
 import source from "../source";
 import openInNew from "../components/openInNewBtn.vue";
@@ -90,7 +89,6 @@ export default {
         ? JSON.parse(window.sessionStorage.getItem("wordCountData"))
         : {},
       charinfo: {},
-      i18n: i18n,
       loaded: false,
       server: this.$route.params.server,
       currentLang: func.l,

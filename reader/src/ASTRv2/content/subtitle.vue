@@ -20,7 +20,7 @@
           </n-icon>
         </n-icon-wrapper>
       </template>
-      {{ i18n["copied"][currentLang] }}
+      {{ $t("contentpage.copied") }}
     </n-popover>
     <div v-html="parseContent(line.attributes.text)"></div>
   </div>
@@ -28,7 +28,6 @@
 
 <script>
 import func from "../func";
-import i18n from "../i18n";
 import { LinkOutlined } from "@vicons/material";
 
 export default {

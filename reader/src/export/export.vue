@@ -47,7 +47,6 @@
 import xlsx from 'xlsx';
 import $ from 'jquery';
 import headerVue from '../ASTR/header.vue';
-import i18n from '../ASTR/i18n.json';
 import func from '../ASTR/func';
 
 export default {
@@ -57,7 +56,6 @@ export default {
             filename: 'export',
             exportFile:null,
             logs: '',
-            i18n: i18n,
             lang: func.l,
         }
     },

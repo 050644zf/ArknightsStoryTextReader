@@ -9,21 +9,17 @@
         </template>
       </n-button>
     </template>
-    {{ i18n.openInNew[currentLang] }}
+    {{ $t('eventpage.openInNew') }}
   </n-tooltip>
 </template>
 
 <script>
-import i18n from "../i18n.json";
-import func from "../func.js";
 import { OpenInNewOutlined } from "@vicons/material";
 export default {
   props: ["link"],
   data() {
     return {
-      i18n: i18n,
       server: this.$route.params.server,
-      currentLang: func.l,
     };
   },
   methods: {

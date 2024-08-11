@@ -7,7 +7,7 @@
         <n-icon>
           <MenuIcon />
         </n-icon>
-        {{ i18n.menu[currentLang] }}
+        {{ $t('eventpage.menu') }}
       </n-breadcrumb-item>
       <n-breadcrumb-item>{{ mdata[eventid]["name"] }}</n-breadcrumb-item>
     </n-breadcrumb>
@@ -21,7 +21,7 @@
       <n-space vertical class="content">
         <n-space item-style="display:flex;" align="center">
           <n-space>
-            <n-text>{{ i18n.showIntro[currentLang] }}</n-text>
+            <n-text>{{ $t('eventpage.showIntro') }}</n-text>
             <n-switch v-model:value="showIntro"></n-switch>
           </n-space>
           <n-divider vertical />
@@ -33,7 +33,7 @@
                 </n-icon>
               </template>
 
-              {{ i18n.export2excel[currentLang] }}
+              {{ $t('eventpage.export2excel') }}
             </n-button>
             <OpenInGTL v-if="server == 'zh_CN'" />
           </n-space>
@@ -45,7 +45,7 @@
             item-style="display:flex;"
           >
             <n-text>
-              {{ i18n.act17side_log[currentLang] }}
+              {{ $t('eventpage.act17side_log') }}
             </n-text>
             <n-button
               text
@@ -66,7 +66,7 @@
             item-style="display:flex;"
           >
             <n-text>
-              {{ i18n.act25side_log[currentLang] }}
+              {{ $t('eventpage.act25side_log') }}
             </n-text>
             <n-button
               text
@@ -87,7 +87,7 @@
             item-style="display:flex;"
           >
             <n-text>
-              {{ i18n.extra[currentLang] }}
+              {{ $t('eventpage.extra') }}
             </n-text>
             <n-button
               text
@@ -150,8 +150,6 @@ import {
   DownloadOutlined,
   OpenInNewOutlined,
 } from "@vicons/material";
-import i18n from "./i18n.json";
-import func from "./func.js";
 import openInNew from "./components/openInNewBtn.vue";
 import openInGTL from "./components/openInGTL.vue";
 export default {
@@ -164,8 +162,6 @@ export default {
       infodata: window.sessionStorage.getItem("infodata")
         ? JSON.parse(window.sessionStorage.getItem("infodata"))
         : {},
-      i18n: i18n,
-      currentLang: func.l,
       showIntro: false,
       server: this.$route.params.server,
     };

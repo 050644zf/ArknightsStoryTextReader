@@ -19,13 +19,12 @@
         </n-icon>
       </n-icon-wrapper>
     </template>
-    {{ i18n["copied"][currentLang] }}
+    {{ $t("contentpage.copied") }}
   </n-popover>
 </template>
 
 <script>
 import func from "../func";
-import i18n from "../i18n";
 import { LinkOutlined } from "@vicons/material";
 
 export default {
@@ -33,8 +32,6 @@ export default {
     return {
       line: this.inputline,
       hideName: func.hideName,
-      i18n: i18n,
-      currentLang: func.l,
       copied: false,
     };
   },

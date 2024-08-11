@@ -6,7 +6,7 @@
           @click="$router.push('/' + $route.params.server + '/menu')"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           >愚人号行动日志 | Stultifera Navis Operation Log</n-breadcrumb-item
@@ -53,7 +53,6 @@
 <script>
 import { MenuOpenFilled, MessageRound, MinusOutlined } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
-import i18n from "../i18n.json";
 import func from "../func.js";
 
 export default {
@@ -66,7 +65,6 @@ export default {
       log_entries: {},
       menu_options: [],
       log_data: {},
-      i18n: i18n,
       currentLang: func.l,
       current_Opt: {},
       current_Log: [],

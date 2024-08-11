@@ -16,7 +16,7 @@
           role="link"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           @click="
@@ -32,7 +32,7 @@
           v-else
           role="link"
         >
-          {{ i18n.extra[currentLang] }}
+          {{ $t('contentpage.extra') }}
         </n-breadcrumb-item>
         <br class="breadcrumbbreak" />
         <n-breadcrumb-item role="button">
@@ -76,7 +76,7 @@
 
     <n-space veritical class="content" justify="center" warp="false">
       <!-- <n-h4 prefix="bar" type="warning" v-if="!data.OPTIONTRACE && !loading">
-                {{i18n.optionTraceDisabled[currentLang]}}
+                {{$t('contentpage.optionTraceDisabled')}}
             </n-h4> -->
       <n-skeleton v-if="loading" :repeat="5"></n-skeleton>
       <div v-else class="lines">
@@ -152,7 +152,6 @@
 <script>
 import menuVue from "./menu.vue";
 import func from "./func.js";
-import i18n from "./i18n.json";
 import nameline from "./content/nameline.vue";
 import subtitle from "./content/subtitle.vue";
 import decision from "./content/decision.vue";
@@ -179,8 +178,6 @@ export default {
       data: {},
       eventid: "",
       server: this.$route.params.server,
-      i18n: i18n,
-      currentLang: func.l,
       showDelay: func.showDelay,
       bgMode: func.bgMode,
       fontsize: func.fontsize,

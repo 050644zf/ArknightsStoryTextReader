@@ -11,7 +11,7 @@
           <n-icon>
             <SettingsIcon />
           </n-icon>
-          <span>{{ i18n.setting[currentLang] }}</span>
+          <span>{{ $t('settings.setting') }}</span>
         </n-space>
       </template>
       <n-space vertical item-style="display: flex" justify="space-between">
@@ -19,7 +19,7 @@
           <n-icon>
             <LangIcon />
           </n-icon>
-          {{ i18n.currentLang[currentLang] }}:
+          {{ $t('settings.currentLang') }}:
           <n-radio-group v-model:value="currentLang">
             <n-radio-button v-for="lang in langOpts" :key="lang" :value="lang">
               {{ lang }}
@@ -31,7 +31,7 @@
           <n-icon>
             <MirrorIcon />
           </n-icon>
-          {{ i18n.mirror[currentLang] }}:
+          {{ $t('settings.mirror') }}:
           <n-switch
             v-model:value="mirror"
             checked-value="mirror"
@@ -43,7 +43,7 @@
           <n-icon>
             <DrNameIcon />
           </n-icon>
-          {{ i18n.dr[currentLang] }}:
+          {{ $t('settings.dr') }}:
           <n-space item-style="display:flex;" align="center" justify="end">
             Dr.
             <n-input
@@ -57,7 +57,7 @@
           <n-icon>
             <BlankIcon />
           </n-icon>
-          {{ i18n.showDelay[currentLang] }}:
+          {{ $t('settings.showDelay') }}:
           <n-switch
             v-model:value="showDelay"
             checked-value="y"
@@ -69,10 +69,10 @@
           <n-icon>
             <BGIcon />
           </n-icon>
-          {{ i18n.showbg[currentLang] }}:
+          {{ $t('settings.showbg') }}:
           <n-radio-group v-model:value="bgMode">
             <n-radio-button v-for="mode in bgModes" :key="mode" :value="mode">
-              {{ i18n["bg_" + mode][currentLang] }}
+              {{ $t('settings.bg_'+mode) }}
             </n-radio-button>
           </n-radio-group>
         </n-space>
@@ -81,7 +81,7 @@
           <n-icon>
             <FontSizeIcon />
           </n-icon>
-          {{ i18n.fontsize[currentLang] }}:
+          {{ $t('settings.fontsize') }}:
 
           <n-slider
             :default-value="14"
@@ -97,7 +97,7 @@
           <n-icon>
             <MarginIcon />
           </n-icon>
-          {{ i18n.margin[currentLang] }}:
+          {{ $t('settings.margin') }}:
 
           <n-slider
             :default-value="4"
@@ -137,7 +137,7 @@
                 <ResetIcon />
               </n-icon>
             </template>
-            {{ i18n.clear[currentLang] }}
+            {{ $t('settings.clear') }}
           </n-button>
           <n-button strong type="primary" @click="save()">
             <template #icon>
@@ -145,7 +145,7 @@
                 <SaveIcon />
               </n-icon>
             </template>
-            {{ i18n.save[currentLang] }}
+            {{ $t('settings.save') }}
           </n-button>
         </n-space>
       </template>
@@ -166,12 +166,10 @@ import {
   FormatSizeOutlined,
   HeightOutlined,
 } from "@vicons/material";
-import i18n from "./i18n.json";
 import func from "./func.js";
 export default {
   data() {
     return {
-      i18n: i18n,
       currentLang: func.l,
       langOpts: func.langList,
       doctor: func.doctor,

@@ -6,10 +6,10 @@
           @click="$router.push('/' + $route.params.server + '/menu')"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
-          >{{i18n.analysis[currentLang]}}</n-breadcrumb-item
+          >{{$t('misc.analysis')}}</n-breadcrumb-item
         >
       </n-breadcrumb>
       <n-flex justify="space-between" align="center">
@@ -23,7 +23,7 @@
             <n-text
               :style="{ 'background-color': colorMap[eType], padding: '2px' }"
             >
-              {{ i18n[eType][currentLang] }}
+              {{ $t('eventType.'+eType) }}
             </n-text>
           </n-checkbox>
         </n-space>
@@ -48,7 +48,6 @@
 
 <script>
 // import * as echarts from "echarts";
-import i18n from "../i18n.json";
 import func from "../func";
 import {
   MenuOpenFilled,
@@ -85,7 +84,6 @@ export default {
         ? JSON.parse(window.sessionStorage.getItem("wordCountData"))
         : {},
       data: [{ name: "测试", id: "test", type: "or", value: 15 }],
-      i18n: i18n,
       mdata: window.sessionStorage.getItem("menudata")
         ? JSON.parse(window.sessionStorage.getItem("menudata"))
         : {},
@@ -165,7 +163,7 @@ export default {
       var name = p[0].data.name;
       var value = p[0].data.value;
       var type = p[0].data.type;
-      return `<b>${name}</b> <br/> ${value} ${this.i18n[this.unit][this.currentLang]}`
+      return `<b>${name}</b> <br/> ${value} ${this.$t('wordCount.'+this.unit)}`;
     },
     getOption() {
       return {
@@ -209,7 +207,7 @@ export default {
               if(index)
                 return (value/1000).toFixed(0) + 'K';
               else
-                return  this.i18n.unit[this.currentLang] + ': ' + this.i18n[this.unit][this.currentLang];
+                return  this.$t('wordCount.unit') + ': ' + this.$t('wordCount.'+this.unit);
             },
             fontWeight: 'bold',
             fontSize: 14,

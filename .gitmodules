@@ -1,0 +1,3 @@
+[submodule "reader/src/ASTRv2/astr-i18n"]
+	path = reader/src/ASTRv2/astr-i18n
+	url = https://github.com/050644zf/astr-i18n

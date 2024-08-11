@@ -8,7 +8,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.analysis[currentLang] }}
+              {{ $t('misc.analysis') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -26,7 +26,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.isrecords[currentLang] }}
+              {{ $t('misc.isrecords') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -44,7 +44,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.act17side_log[currentLang] }}
+              {{ $t('misc.act17side_log') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -62,7 +62,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.act25side_log[currentLang] }}
+              {{ $t('misc.act25side_log') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -77,12 +77,12 @@
     </n-list>
     
     <n-divider dashed >已弃用 / Deprecated</n-divider>
-    <n-list>
+    <n-list class="list">
       <n-list-item @click="$router.push('/' + $route.params.server + '/stats')">
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.stats[currentLang] }}
+              {{ $t('misc.stats') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -100,7 +100,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.annual_report[currentLang] }}
+              {{ $t('misc.annual_report') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -116,7 +116,7 @@
         <n-space item-style="display:flex;" align="center">
           <n-space item-style="display:flex;" align="baseline">
             <n-h2 prefix="bar">
-              {{ i18n.extra[currentLang] }}
+              {{ $t('misc.extra') }}
             </n-h2>
           </n-space>
         </n-space>
@@ -135,14 +135,10 @@
 
 <script>
 import { ArrowForwardOutlined } from "@vicons/material";
-import i18n from "./i18n.json";
-import func from "./func.js";
 export default {
   props: ["eventype"],
   data() {
     return {
-      i18n: i18n,
-      currentLang: func.l,
     };
   },
   components: {

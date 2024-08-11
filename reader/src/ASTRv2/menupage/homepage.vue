@@ -105,6 +105,12 @@
       If you find ASTR helpful, consider buy me a coffee on
       <n-a href="https://www.patreon.com/m31nightsky">Patreon</n-a>!
       <br /><br />
+      如果您熟悉下方列出的语言，欢迎参与ASTR的本地化工作！<br />
+      If you are familiar with the languages listed below, welcome to join the localization of ASTR!
+      <a href="https://hosted.weblate.org/engage/astr-i18n/">
+      <img src="https://hosted.weblate.org/widget/astr-i18n/multi-auto.svg" alt="翻译状态" />
+      </a>
+      <br /><br />
       如果您想了解ASTR的开发进展，或者想要为ASTR贡献代码（万分感谢🙏），请访问
       <n-a href="https://github.com/users/050644zf/projects/1">ASTR路线图</n-a
       >查看最新的开发进展。<br />
@@ -213,7 +219,11 @@
     <n-collapse arrow-placement="right">
       <n-collapse-item>
         <template #header> 点击展开 / Click to Unfold </template>
-        <n-h4>v1,7.1</n-h4>
+        <n-h4>v1.8</n-h4>
+        <n-oi>
+          <n-li>Using Vue-i18n as i18n module.</n-li>
+        </n-oi>
+        <n-h4>v1.7.1</n-h4>
         <n-oi>
           <n-li>Fixed the is#4 monthly squad text.</n-li>
         </n-oi>

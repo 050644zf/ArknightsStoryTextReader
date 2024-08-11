@@ -6,7 +6,7 @@
           @click="$router.push('/' + $route.params.server + '/menu')"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           >月度小队记录 | Monthly Team Records</n-breadcrumb-item
@@ -62,7 +62,6 @@
 <script>
 import { MenuOpenFilled, MessageRound } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
-import i18n from "../i18n.json";
 import func from "../func.js";
 import source from "../source.js";
 import isdialog from "./isdialog.vue";
@@ -75,7 +74,6 @@ export default {
       idata_loaded: false,
       loadingbar: useLoadingBar(),
       server: this.$route.params.server,
-      i18n: i18n,
       currentLang: func.l,
     };
   },

@@ -16,7 +16,7 @@
             <InfoIcon />
           </n-icon>
           <n-text class="titletext">
-            &nbsp;{{ i18n.homepage[currentLang] }}
+            &nbsp;{{ $t('menupage.homepage') }}
           </n-text>
         </template>
         <n-space
@@ -40,7 +40,7 @@
             <div :class="item.icon"></div>
           </n-icon>
           <n-text class="titletext">
-            &nbsp;{{ i18n[item.title][currentLang] }}
+            &nbsp;{{ $t('menupage.'+item.title) }}
           </n-text>
         </template>
         <n-divider title-placement="center" class="eventtypetitle" dashed>
@@ -48,7 +48,7 @@
             <div :class="item.icon"></div>
           </n-icon>
           <n-text style="font-size: 24px" strong>
-            &nbsp;{{ i18n[item.title][currentLang] }}
+            &nbsp;{{ $t('menupage.'+item.title) }}
           </n-text>
         </n-divider>
         <n-space
@@ -70,7 +70,7 @@
             <AnalyticsIcon />
           </n-icon>
           <n-text class="titletext">
-            &nbsp;{{ i18n.misc[currentLang] }}
+            &nbsp;{{ $t('menupage.misc') }}
           </n-text>
         </template>
         <Misc class="menucontent"></Misc>
@@ -82,7 +82,7 @@
             <SearchIcon />
           </n-icon>
           <n-text class="titletext">
-            &nbsp;{{ i18n.search[currentLang] }}
+            &nbsp;{{ $t('menupage.search') }}
           </n-text>
         </template>
         <Search></Search>
@@ -98,7 +98,6 @@ import {
   SearchOutlined,
   AnalyticsOutlined,
 } from "@vicons/material";
-import i18n from "./i18n.json";
 import func from "./func.js";
 import maintheme from "./menupage/maintheme.vue";
 import events from "./menupage/events.vue";
@@ -117,7 +116,6 @@ export default {
         storyset: { icon: "terminal-storyset", title: "mini" },
         or: { icon: "terminal-record", title: "operator_data" },
       },
-      i18n: i18n,
       currentLang: func.l,
       selected: this.$route.params.selected || "home",
     };

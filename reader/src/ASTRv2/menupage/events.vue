@@ -27,10 +27,10 @@
             @change="sortEvent"
           >
             <n-radio-button value="ascend">{{
-              i18n.timeasc[currentLang]
+              $t('eventpage.timeasc')
             }}</n-radio-button>
             <n-radio-button value="descend">{{
-              i18n.timedesc[currentLang]
+              $t('eventpage.timedesc')
             }}</n-radio-button>
           </n-radio-group>
         </n-space>
@@ -88,7 +88,7 @@
                   <n-statistic v-if="eventype != 'or'">
                     <template #label>
                       <n-icon><AccessTimeFilled /></n-icon>
-                      {{ i18n.startTime[currentLang] }}
+                      {{ $t('eventpage.startTime') }}
                     </template>
                     <template #default>
                       <n-time :time="edata.startTime" format="yyyy-MM" unix />
@@ -97,7 +97,7 @@
                   <n-statistic>
                     <template #label>
                       <n-icon><ArticleRound /></n-icon>
-                      {{ i18n.length[currentLang] }}
+                      {{ $t('eventpage.length') }}
                     </template>
                     <template #suffix>
                       <n-text
@@ -105,7 +105,7 @@
                           font-size: medium;
                           color: rgba(255, 255, 255, 0.5);
                         "
-                        >{{ i18n[unit][currentLang] }}</n-text
+                        >{{ $t('eventpage.unit') }}</n-text
                       >
                     </template>
                     <template #default>
@@ -139,7 +139,6 @@ import {
   ArticleRound,
   SortOutlined,
 } from "@vicons/material";
-import i18n from "../i18n.json";
 import func from "../func";
 import openInNew from "../components/openInNewBtn.vue";
 export default {
@@ -155,7 +154,6 @@ export default {
       wordCount: window.sessionStorage.getItem("wordCountData")
         ? JSON.parse(window.sessionStorage.getItem("wordCountData"))
         : {},
-      i18n: i18n,
       server: this.$route.params.server,
       currentLang: func.l,
       unit: this.$route.params.server == "en_US" ? "wordCount" : "charCount",

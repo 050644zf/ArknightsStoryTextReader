@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import naive from 'naive-ui'
 import { createRouter,createWebHashHistory } from 'vue-router'
 import { createMetaManager, plugin as metaPlugin } from 'vue-meta'
+import { createI18n } from 'vue-i18n';
 
 
 import ASTR from './ASTRv2/ASTR.vue'
@@ -18,6 +19,22 @@ import act17side_log from './ASTRv2/misc/act17side_log.vue'
 import act25side_log from './ASTRv2/misc/act25side_log.vue'
 import extra from './ASTRv2/misc/extra.vue'
 import opcard from './ASTRv2/components/opcard.vue'
+
+import en_US from './ASTRv2/astr-i18n/en_US.json'
+import zh_CN from './ASTRv2/astr-i18n/zh_CN.json'
+import ja_JP from './ASTRv2/astr-i18n/ja_JP.json'
+import ko_KR from './ASTRv2/astr-i18n/ko_KR.json'
+import zh_TW from './ASTRv2/astr-i18n/zh_TW.json'
+
+import func from './ASTRv2/func.js'
+
+const messages = {
+    en_US: en_US,
+    zh_CN: zh_CN,
+    ja_JP: ja_JP,
+    ko_KR: ko_KR,
+    zh_TW: zh_TW,
+}
 
 const routes = [
     { 
@@ -51,11 +68,18 @@ const router = createRouter({
   })
 const metaManager = createMetaManager();
 
+const i18n = createI18n({
+    locale: func.l,
+    fallbackLocale: 'en_US',
+    messages: messages
+})
+
 const app = createApp(ASTR);
 app.use(naive);
 app.use(router);
 app.use(metaManager);
 app.use(metaPlugin);
+app.use(i18n);
 app.mount('#ASTR');
 
 

@@ -18,7 +18,9 @@ jobs:
       VITE_BASE: /ArknightsStoryTextReader/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
     - uses: actions/checkout@v2
       with:
         repository: 050644zf/ArknightsStoryTextReader

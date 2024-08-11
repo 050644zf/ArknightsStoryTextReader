@@ -53,7 +53,7 @@
               </n-icon>
             </n-button>
           </template>
-          {{ i18n.openInGoogleTL[UILang] }}
+          {{ $t('header.openInGoogleTL') }}
         </n-tooltip>
 
         <n-dropdown
@@ -74,7 +74,7 @@
               </n-icon>
             </template>
             <n-text class="servername">{{
-              i18n.server[$route.params.server]
+              $t('header.'+$route.params.server) + $t('header.server')
             }}</n-text>
             <n-icon size="24">
               <ArrowDropDown />
@@ -95,7 +95,6 @@ import {
   SettingsOutlined,
   TranslateOutlined,
 } from "@vicons/material";
-import i18n from "./i18n.json";
 import func from "./func.js";
 import settings from "./settings.vue";
 import warp from "./warp.vue";
@@ -107,7 +106,6 @@ export default {
   data() {
     return {
       serverOpts: this.getServerOpts(),
-      i18n: i18n,
       showsettings: false,
       server: this.$route.params.server,
       UILang: func.l,
@@ -138,11 +136,11 @@ export default {
   methods: {
     getServerOpts() {
       var opts = [];
-      for (var s in i18n.server) {
+      for (var s in func.serverList) {
         opts.push({
-          label: i18n.server[s],
-          key: s,
-          disabled: s == this.$route.params.server,
+          label: this.$t("header." + func.serverList[s]) + this.$t("header.server"),
+          key: func.serverList[s],
+          disabled: func.serverList[s] == this.$route.params.server,
         });
       }
       console.log(this.$route);

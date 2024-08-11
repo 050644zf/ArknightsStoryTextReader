@@ -6,7 +6,7 @@
           @click="$router.push('/' + $route.params.server + '/menu')"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ i18n.menu[currentLang] }}
+          {{ $t('eventpage.menu') }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           >明日方舟年度工作报告 | Arknight Annual Work Report</n-breadcrumb-item
@@ -598,7 +598,6 @@ import {
   MenuOpenFilled,
   OpenInNewOutlined,
 } from "@vicons/material";
-import i18n from "../i18n.json";
 import func from "../func";
 // import stats from './stats.json'
 // import story from './story.json'
@@ -607,7 +606,6 @@ import { h } from "vue";
 export default {
   data() {
     return {
-      i18n: i18n,
       currentLang: func.l,
       stats: {},
       // stats: stats.data,

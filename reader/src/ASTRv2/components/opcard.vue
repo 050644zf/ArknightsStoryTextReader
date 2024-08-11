@@ -23,7 +23,7 @@
       </template>
 
       <n-tabs type="line" animated>
-        <n-tab-pane name="archive" :tab="i18n.archive[currentLang]">
+        <n-tab-pane name="archive" :tab="$t('opcard.archive')">
           <n-scrollbar style="max-height: 70vh">
             <div v-for="(aline, aidx) in cdata.storyTextAudio" :key="aidx">
               <n-divider>{{ aline.storyTitle }}</n-divider>
@@ -41,7 +41,7 @@
               :value="cdata.equips.length"
               :offset="[6, 0]"
               class="font"
-              >{{ i18n.module[currentLang] }}</n-badge
+              >{{ $t('opcard.module') }}</n-badge
             >
           </template>
           <n-collapse accordion :default-expanded-names="[0]">
@@ -82,7 +82,7 @@
               :value="cdata.handbookAvgList.length"
               :offset="[6, 0]"
               class="font"
-              >{{ i18n.or[currentLang] }}</n-badge
+              >{{ $t('opcard.or') }}</n-badge
             >
           </template>
           <div v-for="(recs, ridx) in cdata.handbookAvgList" :key="ridx">
@@ -118,14 +118,12 @@
 import func from "../func.js";
 import source from "../source.js";
 import { ArrowForwardOutlined } from "@vicons/material";
-import i18n from "../i18n.json";
 export default {
   props: ["cdata"],
   data() {
     return {
       parseContent: func.parseContent,
       currentLang: func.l,
-      i18n: i18n,
     };
   },
   computed: {

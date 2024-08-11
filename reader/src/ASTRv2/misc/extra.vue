@@ -7,9 +7,9 @@
         <n-icon>
           <MenuIcon />
         </n-icon>
-        {{ i18n.menu[currentLang] }}
+        {{ $t('eventpage.menu') }}
       </n-breadcrumb-item>
-      <n-breadcrumb-item>{{ i18n.extra[currentLang] }}</n-breadcrumb-item>
+      <n-breadcrumb-item>{{ $t('misc.extra') }}</n-breadcrumb-item>
     </n-breadcrumb>
 
     <n-space
@@ -21,7 +21,7 @@
       <n-space vertical class="content">
         <n-space item-style="display:flex;" align="center">
           <n-space>
-            <n-text>{{ i18n.showIntro[currentLang] }}</n-text>
+            <n-text>{{ $t('eventpage.showIntro') }}</n-text>
             <n-switch v-model:value="showIntro"></n-switch>
           </n-space>
           <n-divider vertical />
@@ -71,12 +71,10 @@ import {
   DownloadOutlined,
 } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
-import i18n from "../i18n.json";
 import func from "../func.js";
 export default {
   data() {
     return {
-      i18n: i18n,
       currentLang: func.l,
       extraInfo: {},
       infodata: window.sessionStorage.getItem("infodata")
@@ -92,13 +90,13 @@ export default {
     //using event name as title
     return {
       title:
-        this.i18n.extra[this.currentLang] + " | Arknights Story Text Reader",
+        this.$t('misc.extra') + " | Arknights Story Text Reader",
       meta: [
         {
           vmid: "og:title",
           property: "og:title",
           content:
-            this.i18n.extra[this.currentLang] +
+          this.$t('misc.extra') +
             " | Arknights Story Text Reader",
         },
         {
