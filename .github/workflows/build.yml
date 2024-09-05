@@ -27,9 +27,10 @@ jobs:
         ref: gh-pages
         path: gh-pages
         token: ${{secrets.PAT}}
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4.0.3
       with:
         node-version: '20.9.0'
+        registry-url: 'http://registry.npmjs.org/'
     - run: |
         cd reader
         npm ci
