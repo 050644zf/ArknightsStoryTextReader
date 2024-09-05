@@ -30,7 +30,6 @@ jobs:
     - uses: actions/setup-node@v4.0.3
       with:
         node-version: '20.9.0'
-        registry-url: 'http://registry.npmjs.org/'
     - run: |
         cd reader
         npm ci
