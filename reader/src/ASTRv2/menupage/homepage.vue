@@ -219,6 +219,10 @@
     <n-collapse arrow-placement="right">
       <n-collapse-item>
         <template #header> 点击展开 / Click to Unfold </template>
+        <n-h4>v1.8.1</n-h4>
+        <n-oi>
+          <n-li>Add support for new property <n-text code>animtext</n-text>. <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/64">#64</n-a></n-li>
+        </n-oi>
         <n-h4>v1.8</n-h4>
         <n-oi>
           <n-li>Using Vue-i18n as i18n module.</n-li>

@@ -136,6 +136,11 @@
             :inputline="line"
             background
           ></Showimg>
+          <Animtext
+            v-if="strMatch(line.prop, 'animtext')"
+            :inputline="line"
+          ></Animtext>
+
 
           <!-- <div style="clear: both;"></div> -->
         </div>
@@ -158,6 +163,8 @@ import decision from "./content/decision.vue";
 import predicate from "./content/predicate.vue";
 import delay from "./content/delay.vue";
 import img from "./content/img.vue";
+import animtext from "./content/animtext.vue";
+
 import paging from "./content/paging.vue";
 
 import openInGTL from "./components/openInGTL.vue";
@@ -235,6 +242,7 @@ export default {
     Predicate: predicate,
     Delay: delay,
     Showimg: img,
+    Animtext: animtext,
     Paging: paging,
     OpenInGTL: openInGTL,
     MenuIcon: MenuOpenFilled,
