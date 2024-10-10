@@ -34,13 +34,11 @@
             if(this.line.attributes.name == "group_location_stamp"){
               var raw = this.line.attributes.content;
               // the raw string is in the format of "<p=1> title </><p=2> content </>"
-              // we need to extract the title and content
-              // we can do this by splitting the string by the "<p=1>" and "<p=2>" tags
-              // and then removing the closing tags "</>"
-              let parts = raw.split("<p=1>");
-              this.title = parts[1].split("</>")[0];
-              parts = parts[1].split("<p=2>");
-              this.content = parts[1].split("</>")[0];
+              // the p=1 or 2 is optional, but the closing tag is required
+              var title = raw.match(/<p=1>(.*?)<\/>/);
+              var content = raw.match(/<p=2>(.*?)<\/>/);
+              this.title = title ? title[1] : "";
+              this.content = content ? content[1] : "";
             }
         }
     }
