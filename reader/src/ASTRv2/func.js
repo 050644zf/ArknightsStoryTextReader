@@ -56,7 +56,7 @@ if (!server) {
   server = "zh_CN";
 }
 if (!alt) {
-  alt = null;
+  alt = 'none';
 }
 if (!l || l == "none" || l == "Default") {
   l = navigator.language.replace("-", "_");

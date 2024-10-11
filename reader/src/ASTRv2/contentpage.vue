@@ -265,7 +265,7 @@ export default {
         );
         let s = await res.json();
         let altserver = func.alt;
-        if (altserver){
+        if (altserver != "none"){
         try{
           
           let res2 = await fetch(

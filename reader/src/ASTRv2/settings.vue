@@ -34,7 +34,7 @@
           </n-icon>
           {{ $t('settings.altLang') }}:
           <n-radio-group v-model:value="altLang">
-            <n-radio-button :key="NULL" :value="null">
+            <n-radio-button :key="NULL" value="none">
               {{ $t('settings.none') }}
             </n-radio-button>
             <n-radio-button v-for="lang in langOpts" :key="lang" :value="lang">
