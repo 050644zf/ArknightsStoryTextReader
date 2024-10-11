@@ -16,7 +16,7 @@
           role="link"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ $t('eventpage.menu') }}
+          {{ $t("eventpage.menu") }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           @click="
@@ -32,7 +32,7 @@
           v-else
           role="link"
         >
-          {{ $t('contentpage.extra') }}
+          {{ $t("contentpage.extra") }}
         </n-breadcrumb-item>
         <br class="breadcrumbbreak" />
         <n-breadcrumb-item role="button">
@@ -140,7 +140,6 @@
             v-if="strMatch(line.prop, 'animtext')"
             :inputline="line"
           ></Animtext>
-
 
           <!-- <div style="clear: both;"></div> -->
         </div>
@@ -253,33 +252,61 @@ export default {
   methods: {
     async getStoryData() {
       this.loading = true;
-      fetch(
-        "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
-          this.server +
-          "/gamedata/story/" +
-          this.path +
-          ".json"
-      )
-        .then((res) => res.json())
-        .then((s) => {
-          this.data = s;
-          this.eventid = s.eventid;
-        })
-        .then(() => {
-          this.storyOpts = this.getStoryOpts();
-          this.loading = false;
-          this.loadingbar.finish();
-          this.scrollToHash();
-        })
-        .catch((e) => {
-          this.loadingbar.error();
-          console.log(e);
-          this.dialog.error({
-            title: "Fail to Load Story Data",
-            content:
-              "This maybe because the story is not availble in this server or the story is not exist. If you sure the story is exist in this server, please summit a issue. ",
-          });
+      // using await
+      try{
+        let res = await fetch(
+          "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
+            this.server +
+            "/gamedata/story/" +
+            this.path +
+            ".json"
+        );
+        let s = await res.json();
+        let altserver = 'en_US';
+        let res2 = await fetch(
+          "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
+            altserver +
+            "/gamedata/story/" +
+            this.path +
+            ".json"
+        );
+        this.altserverdata = await res2.json();
+        
+        
+        // merge the alt server data into the main data in data.storyList
+        let newStoryList = [];
+        for (let i in s.storyList.length > this.altserverdata.storyList.length ? s.storyList : this.altserverdata.storyList) {
+          if (s.storyList[i]) {
+            newStoryList.push(s.storyList[i]);
+          }
+          // merge if prop is 'nameline' or 'subtitle'
+          if (this.altserverdata.storyList[i]) {
+            const prop = this.altserverdata.storyList[i].prop;
+            if (this.strMatch(prop, 'name') || this.strMatch(prop, 'subtitle') || this.strMatch(prop, 'multiline') || this.strMatch(prop, 'decision') || this.strMatch(prop, 'animtext')) {
+              newStoryList.push(this.altserverdata.storyList[i]);
+            }
+          }
+        }
+        let newStoryList2 = newStoryList.filter(e => e );
+        s.storyList = newStoryList2;
+
+        this.data = s;
+
+        this.eventid = s.eventid;
+        this.storyOpts = this.getStoryOpts();
+        this.loading = false;
+        this.loadingbar.finish();
+        this.scrollToHash();
+      } catch (e) {
+        this.loadingbar.error();
+        console.log(e);
+        this.dialog.error({
+          title: "Fail to Load Story Data",
+          content:
+            "This maybe because the story is not availble in this server or the story is not exist. If you sure the story is exist in this server, please summit a issue. ",
         });
+      }
+
     },
     getStoryOpts() {
       var opts = [];
