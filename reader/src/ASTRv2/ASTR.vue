@@ -3,9 +3,9 @@
   <n-layout class="site">
     <n-config-provider :theme="rhineTheme">
       <n-loading-bar-provider>
-        <n-dialog-provider>
+        <n-dialog-provider><n-message-provider>
           <router-view></router-view>
-        </n-dialog-provider>
+        </n-message-provider></n-dialog-provider>
       </n-loading-bar-provider>
       <Footer></Footer>
     </n-config-provider>

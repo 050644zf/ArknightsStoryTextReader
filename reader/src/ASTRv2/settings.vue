@@ -27,6 +27,23 @@
           </n-radio-group>
         </n-space>
 
+        <n-space vertical item-style="display: flex" justify="space-between">
+        <n-space item-style="display:flex;" align="center">
+          <n-icon>
+            <LangIcon />
+          </n-icon>
+          {{ $t('settings.altLang') }}:
+          <n-radio-group v-model:value="altLang">
+            <n-radio-button :key="NULL" :value="null">
+              {{ $t('settings.none') }}
+            </n-radio-button>
+            <n-radio-button v-for="lang in langOpts" :key="lang" :value="lang">
+              {{ lang }}
+            </n-radio-button>
+          </n-radio-group>
+        </n-space>
+        </n-space>
+
         <n-space item-style="display:flex;" align="center">
           <n-icon>
             <MirrorIcon />
@@ -171,6 +188,7 @@ export default {
   data() {
     return {
       currentLang: func.l,
+      altLang: func.alt,
       langOpts: func.langList,
       doctor: func.doctor,
       showDelay: func.showDelay,
@@ -214,6 +232,7 @@ export default {
       window.localStorage.setItem("mirror", this.mirror);
       window.localStorage.setItem("hideName", this.hideName);
       window.localStorage.setItem("lang", this.currentLang);
+      window.localStorage.setItem("alt", this.altLang);
       window.localStorage.setItem("bgMode", this.bgMode);
       window.localStorage.setItem("fontsize", this.fontsize);
       window.localStorage.setItem("margin", this.margin);

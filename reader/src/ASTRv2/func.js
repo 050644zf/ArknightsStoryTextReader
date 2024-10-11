@@ -34,6 +34,7 @@ const rarity_colors = [
 var urlParams = new URLSearchParams(window.location.search);
 var server = urlParams.get("s");
 var l = window.localStorage.getItem("lang");
+var alt = window.localStorage.getItem("alt");
 var doctor = window.localStorage.getItem("doctor");
 var hidetip = window.localStorage.getItem("hidetip");
 var showDelay = window.localStorage.getItem("showDelay");
@@ -53,6 +54,9 @@ const currentwversion = 13;
 
 if (!server) {
   server = "zh_CN";
+}
+if (!alt) {
+  alt = null;
 }
 if (!l || l == "none" || l == "Default") {
   l = navigator.language.replace("-", "_");
@@ -106,6 +110,7 @@ export default {
   professions_aceship: professions_aceship,
   rarity_colors: rarity_colors,
   l: l,
+  alt: alt,
   langList: langList,
   serverList: serverList,
   server: server,

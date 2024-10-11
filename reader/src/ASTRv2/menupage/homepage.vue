@@ -219,6 +219,11 @@
     <n-collapse arrow-placement="right">
       <n-collapse-item>
         <template #header> 点击展开 / Click to Unfold </template>
+        <n-h4>v1.9</n-h4>
+        <n-oi>
+          <n-li>New Feature that can display alternative language when reading story. Now available in settings.</n-li>
+          <n-li>Add i18n keys for error.</n-li>
+        </n-oi>        
         <n-h4>v1.8.1</n-h4>
         <n-oi>
           <n-li>Add support for new property <n-text code>animtext</n-text>. <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/64">#64</n-a></n-li>
