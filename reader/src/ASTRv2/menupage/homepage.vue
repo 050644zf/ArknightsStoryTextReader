@@ -219,6 +219,10 @@
     <n-collapse arrow-placement="right">
       <n-collapse-item>
         <template #header> 点击展开 / Click to Unfold </template>
+        <n-h4>v1.9.1</n-h4>
+        <n-oi>
+          <n-li>Enable horizontal centering of img. Thanks to RieLCho's <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/pull/63">PR</n-a></n-li>
+        </n-oi>
         <n-h4>v1.9</n-h4>
         <n-oi>
           <n-li>New Feature that can display alternative language when reading story. Now available in settings.</n-li>
