@@ -1,11 +1,13 @@
 <template>
-  <n-image
-    :class="{
-      images: imgtype == 'images' || bgMode == 'full',
-      backgrounds: imgtype == 'backgrounds' && bgMode == 'stripe',
-    }"
-    :src="getAvgUrl()"
-  />
+  <div class="image-container">
+    <n-image
+      :class="{
+        images: imgtype == 'images' || bgMode == 'full',
+        backgrounds: imgtype == 'backgrounds' && bgMode == 'stripe',
+      }"
+      :src="getAvgUrl()"
+    />
+  </div>
 </template>
 
 <script>
@@ -39,6 +41,15 @@ export default {
 </script>
 
 <style>
+.image-container {
+  text-align: center;
+}
+
+.image-container n-image {
+  display: block;
+  margin: 0 auto;
+}
+
 .line .images img {
   max-width: 500px;
   max-height: 300px;
