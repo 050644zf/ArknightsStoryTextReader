@@ -43,13 +43,13 @@ export default {
   max-width: 500px;
   max-height: 300px;
   /*horizontal center*/
-  margin-left: calc(100vh / 7 * 2);
+  /* margin-left: calc(100vh/7*2); */
 }
 
 .line .backgrounds img {
   margin: 10px;
   /*horizontal center*/
-  margin-left: calc(100vh / 7 * 2);
+  /* margin-left: calc(100vh/7*2); */
   height: 150px;
   width: 700px;
   object-fit: none !important;
