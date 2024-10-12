@@ -17,12 +17,8 @@
             />
           </n-a>
         </router-link>
-
         <n-space item-style="display: flex;" align="center">
-          <!-- <n-h2 style="margin: 0px;padding:5px;" strong class="astrtitle">
-                        Arknights Story Text Reader
-                    </n-h2> -->
-          <router-link to="/" #="{ navigate, href }" custom>
+          <!-- <router-link to="/" #="{ navigate, href }" custom>
             <n-a :href="href" @click="navigate">
               <n-image
                 :src="ASTReader"
@@ -31,7 +27,7 @@
                 class="astrtitle"
               />
             </n-a>
-          </router-link>
+          </router-link> -->
           <n-text depth="3" class="astrversion">
             Arknights Story Text Reader <br />
             Version 1.9
