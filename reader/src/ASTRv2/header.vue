@@ -5,7 +5,7 @@
       justify="space-between"
       align="center"
       class="header"
-      style="flex-warp: nowarp"
+      style="flex-wrap: nowrap"
     >
       <n-space item-style="display: flex;" align="center">
         <router-link to="/" #="{ navigate, href }" custom>
