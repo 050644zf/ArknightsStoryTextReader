@@ -26,7 +26,7 @@
             <n-a :href="href" @click="navigate">
               <n-image
                 :src="ASTReader"
-                style="height: 30px"
+                style="width: 90.828px; height: 30px"
                 preview-disabled
                 class="astrtitle"
               />
