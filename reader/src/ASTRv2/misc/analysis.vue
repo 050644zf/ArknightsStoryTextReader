@@ -38,7 +38,7 @@
       </n-flex>
 
 
-      <v-chart id="main" :option="getOption()" :style="{'height': data.length * 20 + 100 + 'px'}" :autoresize="{'throttle':500}" @dblclick="warp2Event"/>
+      <v-chart id="main" :option="getOption()" :style="{'height': data.length * 15 + 500 + 'px'}" :autoresize="{'throttle':100}" @dblclick="warp2Event"/>
 
 
 
