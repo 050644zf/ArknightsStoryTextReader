@@ -30,4 +30,7 @@ export default {
       return `${IMAGES_SRC_REPOS[repo]}/avatar/ASSISTANT/${charId}.png`;
     }
   },
+  getCharAvgUrl(repo, charId){
+    return `${IMAGES_SRC_REPOS['Aceship']}/avg/characters/${charId}.png`;
+  }
 };
