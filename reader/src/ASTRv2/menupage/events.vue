@@ -105,8 +105,15 @@
                           font-size: medium;
                           color: rgba(255, 255, 255, 0.5);
                         "
-                        >{{ $t('eventpage.unit') }}</n-text
-                      >
+                        v-if="server == 'en_US'"
+                        >{{ $t('eventpage.wordCount') }}</n-text>
+                        <n-text
+                        style="
+                          font-size: medium;
+                          color: rgba(255, 255, 255, 0.5);
+                        "
+                        v-else
+                        >{{ $t('eventpage.charCount') }}</n-text>                        
                     </template>
                     <template #default>
                       <!-- <n-text>{{getEventWordCount(edata.id)}}</n-text> -->
