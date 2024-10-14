@@ -99,7 +99,6 @@ export default {
 
 <style>
 .footer {
-  margin: 5%;
   margin-top: -30px;
   padding: 20px;
   padding-top: 80px;
