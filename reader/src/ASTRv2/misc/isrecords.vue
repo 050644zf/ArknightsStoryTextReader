@@ -84,12 +84,8 @@ export default {
   methods: {
     async loadIsData() {
       try {
-        let idata = await fetch(
-          // "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-          //   this.server +
-          //   "/gamedata/excel/roguelike_topic_table.json"
-          source.getDataUrl("github", this.server, "/gamedata/excel/roguelike_topic_table.json")
-        ).then((res) => res.json());
+        let idata = await 
+          source.getData( this.server, "/gamedata/excel/roguelike_topic_table.json").then((res) => res.json());
         for (var topic in idata.topics) {
           this.topics.push({
             id: topic,

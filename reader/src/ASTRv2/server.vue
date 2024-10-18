@@ -113,38 +113,29 @@ export default {
       this.loadingProgress = 0;
       try {
         this.loadFont();
-        let menudata = await fetch(
-          source.getDataUrl("github", this.server, "/gamedata/excel/story_review_table.json")
-        ).then((res) => {
+        let menudata = await 
+          source.getData(this.server, "/gamedata/excel/story_review_table.json").then((res) => {
           this.loadingProgress = 10;
           return res.json();
         });
-        let chardict = await fetch(
-          // gamejson + this.server + "/chardict.json"
-          source.getDataUrl("github", this.server, "/chardict.json")
-        ).then((res) => {
+        let chardict = await source.getData(this.server, "/chardict.json")
+        .then((res) => {
           this.loadingProgress = 20;
           return res.json();
         });
         // let charinfo = await fetch(gamejson+this.server+'/charinfo.json').then(res => {this.loadingProgress = 25;return res.json()});
-        let infodata = await fetch(
-          // gamejson + this.server + "/storyinfo.json"
-          source.getDataUrl("github", this.server, "/storyinfo.json")
-        ).then((res) => {
+        let infodata = await source.getData(this.server, "/storyinfo.json")
+        .then((res) => {
           this.loadingProgress = 30;
           return res.json();
         });
-        let chapterdata = await fetch(
-          // gamedata + this.server + "/gamedata/excel/chapter_table.json"
-          source.getDataUrl("github", this.server, "/gamedata/excel/chapter_table.json")
-        ).then((res) => {
+        let chapterdata = await 
+          source.getData( this.server, "/gamedata/excel/chapter_table.json").then((res) => {
           this.loadingProgress = 40;
           return res.json();
         });
-        let wordCountData = await fetch(
-          // gamejson + this.server + "/wordcount.json"
-          source.getDataUrl("github", this.server, "/wordcount.json")
-        ).then((res) => {
+        let wordCountData = await source.getData(this.server, "/wordcount.json")
+        .then((res) => {
           this.loadingProgress = 50;
           return res.json();
         });

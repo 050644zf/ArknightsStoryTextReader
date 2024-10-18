@@ -12,6 +12,14 @@
           $t('eventpage.export2excel')
         }}</n-breadcrumb-item>
       </n-breadcrumb>
+
+      <n-alert type="warning" show-icon>
+        {{ $t('eventpage.export.warning') }} <br/>
+        <n-a href="https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=495279163">
+          <n-image src="https://github.com/codespaces/badge.svg" preview-disabled></n-image>
+        </n-a>
+      </n-alert>
+
       <n-data-table
         :columns="cols"
         :data="exportList"
@@ -103,6 +111,7 @@ import {
   ClearAllOutlined,
   FileDownloadOutlined,
 } from "@vicons/material";
+import source from "./source";
 
 export default {
   data() {
@@ -197,13 +206,7 @@ export default {
         " " +
         story.storyName +
         "\n";
-      let storyData = await fetch(
-        "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
-          story.server +
-          "/gamedata/story/" +
-          story.path +
-          ".json"
-      );
+      let storyData = await source.getData(story.server, "/gamedata/story/" + story.path + ".json");
       storyData = await storyData.json();
       let storyList = this.reader(storyData);
       let sheet = xlsx.utils.aoa_to_sheet(storyList);

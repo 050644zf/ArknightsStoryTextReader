@@ -29,14 +29,14 @@
               <template #cover>
                 <n-image
                   :src="
-                    'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/' +
+                    'https://r2.m31ns.top/img/icons/' +
                     eid +
                     '.png'
                   "
                   class="mainicon"
                   style="height: 100px; width: 100px; margin: auto"
                   preview-disabled
-                  fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/404.png"
+                  fallback-src="https://r2.m31ns.top/img/icons/404.png"
                 />
               </template>
               <n-text strong>{{ mdata[eid].name }}</n-text>

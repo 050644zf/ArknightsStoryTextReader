@@ -91,14 +91,7 @@ export default {
       console.log(chatData);
       var i = 1;
       for (var chatItem of chatData.clientChatItemData) {
-        // var path =
-        //   "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-        //   this.server +
-        //   "/gamedata/story/" +
-        //   chatItem.chatStoryId.toLowerCase() +
-        //   ".txt";
-        var path = source.getDataUrl("github", this.server, "/gamedata/story/" +chatItem.chatStoryId.toLowerCase() + ".txt");
-        var res = await fetch(path);
+        var res = await source.getData(this.server, "/gamedata/story/" +chatItem.chatStoryId.toLowerCase() + ".txt");
         var text = await res.text();
         if (text == "404: Not Found") {
           console.log("Not Found");

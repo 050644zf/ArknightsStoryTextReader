@@ -22,10 +22,10 @@
             })
             ">
           <template #cover>
-            <n-image :src="'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/' +
+            <n-image :src="'https://r2.m31ns.top/img/banners/' +
               latestEvents[0].id +
               '.png'
-              " fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/404.png"
+              " fallback-src="https://r2.m31ns.top/img/banners/404.png"
               preview-disabled />
           </template>
           <template #header-extra>

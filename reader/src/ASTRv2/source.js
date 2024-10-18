@@ -4,7 +4,8 @@ const IMAGES_SRC_REPOS = {
 };
 
 const GAME_DATA_REPOS = {
-  github: "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"
+  github: "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/",
+  m31ns: "https://r2.m31ns.top/"
 }
 
 export default {
@@ -35,9 +36,13 @@ export default {
       return `${IMAGES_SRC_REPOS[repo]}/avatar/ASSISTANT/${charId}.png`;
     }
   },
-  getDataUrl(repo, server, path) {
-    if (repo == "github") {
-      return `${GAME_DATA_REPOS[repo]}${server}${path}`;
+  async getData(server, path) {
+    try{
+      return await fetch(`${GAME_DATA_REPOS["m31ns"]}${server}${path}`);
     }
+    catch(e){
+      return await fetch(`${GAME_DATA_REPOS["github"]}${server}${path}`);
+    }
+    
   }
 };

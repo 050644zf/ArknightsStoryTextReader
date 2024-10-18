@@ -3,6 +3,10 @@
     <template #header>
       <n-h2 prefix="bar">Changelog</n-h2>
     </template>
+    <n-h4>v1.10</n-h4>
+    <n-oi>
+      <n-li>Migrate the ArknightsJson repo to Cloudflare R2 service. If the R2 is unavailable will fallback to githubusercontent.</n-li>
+    </n-oi>
     <n-h4>v1.9.2</n-h4>
     <n-oi>
       <n-li> Adding i18n keys for homepage. 
