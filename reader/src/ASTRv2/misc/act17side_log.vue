@@ -54,6 +54,7 @@
 import { MenuOpenFilled, MessageRound, MinusOutlined } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
 import func from "../func.js";
+import source from "../source.js";
 
 export default {
   data() {
@@ -79,19 +80,12 @@ export default {
     async loadLogData() {
       try {
         var mdata = {};
-        if (this.server == "zh_CN") {
           mdata = await fetch(
-            "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-              this.server +
-              "/gamedata/excel/story_review_meta_table.json"
+            // "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
+            //   this.server +
+            //   "/gamedata/excel/story_review_meta_table.json"
+            source.getDataUrl("github", this.server, "/gamedata/excel/story_review_meta_table.json")
           ).then((res) => res.json());
-        } else {
-          mdata = await fetch(
-            "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/" +
-              this.server +
-              "/gamedata/excel/story_review_meta_table.json"
-          ).then((res) => res.json());
-        }
 
         this.mdata = mdata;
         this.log_entries = this.mdata.actArchiveData.components.act17side.log;

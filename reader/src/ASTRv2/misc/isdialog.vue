@@ -69,6 +69,8 @@ import {
   UnfoldLessOutlined,
 } from "@vicons/material";
 import func from "../func.js";
+import source from "../source.js";
+
 export default {
   data() {
     return {
@@ -89,12 +91,13 @@ export default {
       console.log(chatData);
       var i = 1;
       for (var chatItem of chatData.clientChatItemData) {
-        var path =
-          "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-          this.server +
-          "/gamedata/story/" +
-          chatItem.chatStoryId.toLowerCase() +
-          ".txt";
+        // var path =
+        //   "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
+        //   this.server +
+        //   "/gamedata/story/" +
+        //   chatItem.chatStoryId.toLowerCase() +
+        //   ".txt";
+        var path = source.getDataUrl("github", this.server, "/gamedata/story/" +chatItem.chatStoryId.toLowerCase() + ".txt");
         var res = await fetch(path);
         var text = await res.text();
         if (text == "404: Not Found") {
@@ -144,11 +147,7 @@ export default {
     },
     getCharAvatar(char_code) {
       //get the avatar of the character
-      return (
-        "https://raw.githubusercontent.com/Aceship/Arknight-Images/main/avatars/" +
-        char_code +
-        ".png"
-      );
+      return source.getAvatarUrl('fexli', char_code);
     },
   },
   components: {

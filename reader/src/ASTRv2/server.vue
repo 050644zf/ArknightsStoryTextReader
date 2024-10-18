@@ -30,6 +30,7 @@
 <script>
 import Header from "./header.vue";
 import func from "./func.js";
+import source from "./source.js";
 import { computed } from "vue";
 import { useLoadingBar, useDialog } from "naive-ui";
 
@@ -110,43 +111,39 @@ export default {
     async initServerData() {
       this.loadingbar.start();
       this.loadingProgress = 0;
-      var gamedata =
-        "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/";
-      const gamejson =
-        "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/";
-      if (this.server != "zh_CN") {
-        gamedata =
-          "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData_YoStar/main/";
-      }
       try {
         this.loadFont();
         let menudata = await fetch(
-          gamedata + this.server + "/gamedata/excel/story_review_table.json"
+          source.getDataUrl("github", this.server, "/gamedata/excel/story_review_table.json")
         ).then((res) => {
           this.loadingProgress = 10;
           return res.json();
         });
         let chardict = await fetch(
-          gamejson + this.server + "/chardict.json"
+          // gamejson + this.server + "/chardict.json"
+          source.getDataUrl("github", this.server, "/chardict.json")
         ).then((res) => {
           this.loadingProgress = 20;
           return res.json();
         });
         // let charinfo = await fetch(gamejson+this.server+'/charinfo.json').then(res => {this.loadingProgress = 25;return res.json()});
         let infodata = await fetch(
-          gamejson + this.server + "/storyinfo.json"
+          // gamejson + this.server + "/storyinfo.json"
+          source.getDataUrl("github", this.server, "/storyinfo.json")
         ).then((res) => {
           this.loadingProgress = 30;
           return res.json();
         });
         let chapterdata = await fetch(
-          gamedata + this.server + "/gamedata/excel/chapter_table.json"
+          // gamedata + this.server + "/gamedata/excel/chapter_table.json"
+          source.getDataUrl("github", this.server, "/gamedata/excel/chapter_table.json")
         ).then((res) => {
           this.loadingProgress = 40;
           return res.json();
         });
         let wordCountData = await fetch(
-          gamejson + this.server + "/wordcount.json"
+          // gamejson + this.server + "/wordcount.json"
+          source.getDataUrl("github", this.server, "/wordcount.json")
         ).then((res) => {
           this.loadingProgress = 50;
           return res.json();

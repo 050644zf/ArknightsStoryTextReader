@@ -3,8 +3,13 @@ const IMAGES_SRC_REPOS = {
   fexli: "https://raw.githubusercontent.com/fexli/ArknightsResource/main",
 };
 
+const GAME_DATA_REPOS = {
+  github: "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/"
+}
+
 export default {
   IMAGES_SRC_REPOS: IMAGES_SRC_REPOS,
+  GAME_DATA_REPOS: GAME_DATA_REPOS,
   getAvgUrl(repo, imgtype, image) {
     if (repo == "Aceship") {
       return `${IMAGES_SRC_REPOS[repo]}/avg/${imgtype}/${image}.png`;
@@ -30,4 +35,9 @@ export default {
       return `${IMAGES_SRC_REPOS[repo]}/avatar/ASSISTANT/${charId}.png`;
     }
   },
+  getDataUrl(repo, server, path) {
+    if (repo == "github") {
+      return `${GAME_DATA_REPOS[repo]}${server}${path}`;
+    }
+  }
 };
