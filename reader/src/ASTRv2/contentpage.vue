@@ -267,7 +267,7 @@ export default {
         let res = await source.getData(this.server, "/gamedata/story/" + this.path + ".json");
         let s = await res.json();
         let altserver = func.alt;
-        if (altserver != "none"){
+        if (altserver != "none" && altserver != this.server){
         try{
           
           let res2 = await source.getData(altserver, "/gamedata/story/" + this.path + ".json");
