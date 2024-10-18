@@ -36,12 +36,16 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.8"
+
     - name: updater
       run: |
-        python ./jsonconvert.py 
-        cd ArknightsStoryJson
+        python ./jsonconvert.py --all
+
+    - name: push
+      working-directory: ./ArknightsStoryJson
+      run: |
         git push
-        
+
     - name: Install AWS CLI
       run: |
         sudo apt-get update
@@ -58,3 +62,4 @@ jobs:
         aws s3 sync . s3://${{ secrets.CLOUDFLARE_BUCKET_NAME }} --endpoint-url=https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com --delete --exclude ".git/*"        
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      working-directory: ./ArknightsStoryJson
