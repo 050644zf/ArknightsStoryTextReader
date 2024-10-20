@@ -12,6 +12,7 @@
     "lodash": "^4.17.21",
     "vue": "^3.2.16",
     "vue-echarts": "^6.7.3",
+    "vue-flex-waterfall": "^2.3.1",
     "vue-i18n": "^9.13.1",
     "vue-meta": "^3.0.0-alpha.10",
     "vue-router": "^4.0.12",

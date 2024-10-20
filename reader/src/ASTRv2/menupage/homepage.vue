@@ -1,5 +1,5 @@
 <template>
-  <n-space vertical class="homepage" justify="center">
+  <n-flex vertical class="homepage" justify="center">
     <n-alert type="error" title="FIREFOX BROWSER ISSUE" v-if="isFirefox()">
       We noticed there is a compatibility issue with Firefox browser. Please use
       Chrome, Edge or any Chronium based browser for better experience.
@@ -12,71 +12,71 @@
     </n-alert>
     <br />
 
-    <n-grid x-gap="12" y-gap="12" cols="2 800:4">
-      <n-gi>
-        <n-card :title="$t('homepage.recommend.latest')" class="recommend-card" v-if="latestEvents.length" hoverable
-          @click="
-            $router.push({
-              name: 'event',
-              params: { event: latestEvents[0].id },
-            })
+    <n-flex justify="center">
+      <n-grid x-gap="12" y-gap="12" cols="2 800:4" class="recommend-bar">
+        <n-gi>
+          <n-card :title="$t('homepage.recommend.latest')" class="recommend-card" v-if="latestEvents.length" hoverable
+            @click="
+              $router.push({
+                name: 'event',
+                params: { event: latestEvents[0].id },
+              })
+              ">
+            <template #cover>
+              <n-image :src="'https://r2.m31ns.top/img/banners/' +
+                latestEvents[0].id +
+                '.png'
+                " fallback-src="https://r2.m31ns.top/img/banners/404.png" preview-disabled />
+            </template>
+            <template #header-extra>
+              <n-icon size="32">
+                <ArrowForward />
+              </n-icon>
+            </template>
+          </n-card>
+        </n-gi>
+        <n-gi>
+          <n-card :title="$t('homepage.recommend.maintheme')" class="recommend-card" hoverable @click="
+            $router.push({ name: 'menu', params: { selected: 'maintheme' } })
             ">
-          <template #cover>
-            <n-image :src="'https://r2.m31ns.top/img/banners/' +
-              latestEvents[0].id +
-              '.png'
-              " fallback-src="https://r2.m31ns.top/img/banners/404.png"
-              preview-disabled />
-          </template>
-          <template #header-extra>
-            <n-icon size="32">
-              <ArrowForward />
-            </n-icon>
-          </template>
-        </n-card>
-      </n-gi>
-      <n-gi>
-        <n-card :title="$t('homepage.recommend.maintheme')" class="recommend-card" hoverable @click="
-          $router.push({ name: 'menu', params: { selected: 'maintheme' } })
-          ">
-          <template #cover>
-            <n-image :src="maintheme_png" preview-disabled />
-          </template>
-          <template #header-extra>
-            <n-icon size="32">
-              <ArrowForward />
-            </n-icon>
-          </template>
-        </n-card>
-      </n-gi>
-      <n-gi>
-        <n-card :title="$t('homepage.recommend.operator_data')" class="recommend-card" hoverable
-          @click="$router.push({ name: 'menu', params: { selected: 'or' } })">
-          <template #cover>
-            <n-image :src="op_png" preview-disabled />
-          </template>
-          <template #header-extra>
-            <n-icon size="32">
-              <ArrowForward />
-            </n-icon>
-          </template>
-        </n-card>
-      </n-gi>
-      <n-gi>
-        <n-card :title="$t('homepage.recommend.analysis')" class="recommend-card" hoverable
-          @click="$router.push({ name: 'analysis' })">
-          <template #cover>
-            <n-image :src="analysis_png" preview-disabled />
-          </template>
-          <template #header-extra>
-            <n-icon size="32">
-              <ArrowForward />
-            </n-icon>
-          </template>
-        </n-card>
-      </n-gi>
-    </n-grid>
-
+            <template #cover>
+              <n-image :src="maintheme_png" preview-disabled />
+            </template>
+            <template #header-extra>
+              <n-icon size="32">
+                <ArrowForward />
+              </n-icon>
+            </template>
+          </n-card>
+        </n-gi>
+        <n-gi>
+          <n-card :title="$t('homepage.recommend.operator_data')" class="recommend-card" hoverable
+            @click="$router.push({ name: 'menu', params: { selected: 'or' } })">
+            <template #cover>
+              <n-image :src="op_png" preview-disabled />
+            </template>
+            <template #header-extra>
+              <n-icon size="32">
+                <ArrowForward />
+              </n-icon>
+            </template>
+          </n-card>
+        </n-gi>
+        <n-gi>
+          <n-card :title="$t('homepage.recommend.analysis')" class="recommend-card" hoverable
+            @click="$router.push({ name: 'analysis' })">
+            <template #cover>
+              <n-image :src="analysis_png" preview-disabled />
+            </template>
+            <template #header-extra>
+              <n-icon size="32">
+                <ArrowForward />
+              </n-icon>
+            </template>
+          </n-card>
+        </n-gi>
+      </n-grid>
+    </n-flex>
     <n-divider />
 
     <n-h1 prefix="bar" v-t="'homepage.welcome'"></n-h1>
@@ -130,7 +130,7 @@
       </n-text>
     </n-text>
     <n-hr />
-    <n-h3 prefix="bar" type="info"> {{ $t("homepage.credits.credits") }} </n-h3>
+    <n-h2 prefix="bar" type="info"> {{ $t("homepage.credits.credits") }} </n-h2>
     <n-text>
       {{ $t("homepage.credits.contributors") }}
     </n-text>
@@ -188,24 +188,30 @@
       </n-li>
     </n-ul>
     <n-hr />
-    <n-h3 prefix="bar" type="info"> {{ $t("homepage.friendly_link") }}</n-h3>
+    <n-h2 prefix="bar" type="info"> {{ $t("homepage.friendly_link") }}</n-h2>
+    <!-- <n-grid x-gap="12" y-gap="12" cols="1 800:2" class="recommend-bar">
+       -->
+      <VueFlexWaterfall col="2" :break-at="{800:1}" class="recommend-bar">
+        <friend-link v-for="item in friend_data" :key="item.id" :data="item" />
+      </VueFlexWaterfall>
+    <!-- </n-grid> -->
     <n-ul>
-      <n-li><n-a href="https://arkntools.app/"> 明日方舟工具箱</n-a> by Tsuk1ko
-      </n-li>
       <n-li><n-a href="https://aceship.github.io/AN-EN-Tags/">Arknights Toolbox</n-a>
         by Aceship</n-li>
       <n-li><n-a href="https://theteamfuture.github.io/">Team Future</n-a> a.k.a.
         Future 攻坚组</n-li>
     </n-ul>
-  </n-space>
+  </n-flex>
 </template>
 
 <script>
 import { ArrowForwardOutlined, InfoOutlined } from "@vicons/material";
+import { VueFlexWaterfall } from 'vue-flex-waterfall';
 import analysis_png from "./banners/analysis.png";
 import maintheme_png from "./banners/maintheme.png";
 import op_png from "./banners/op.png";
 import changelog from "./changelog.vue";
+import friendlink from "./friendlink.vue";
 
 export default {
   data() {
@@ -219,15 +225,19 @@ export default {
       maintheme_png: maintheme_png,
       op_png: op_png,
       showChangelog: false,
+      friend_data: []
     };
   },
   mounted() {
     this.loadData();
+    this.loadFriendLinksData();
   },
   components: {
     ArrowForward: ArrowForwardOutlined,
     InfoOutlined: InfoOutlined,
     Changelog: changelog,
+    FriendLink: friendlink,
+    VueFlexWaterfall
   },
   methods: {
     isFirefox() {
@@ -253,6 +263,21 @@ export default {
       this.latestEvents = data.slice(0, 5);
       console.log(this.latestEvents);
     },
+    async loadFriendLinksData() {
+      var myHeaders = new Headers();
+      myHeaders.append("User-Agent", "Apifox/1.0.0 (https://apifox.com)");
+
+      var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+      let response = await fetch("https://server-cdn.ceobecanteen.top/api/v1/cdn/operate/toolLink/list", requestOptions);
+      let data = await response.json();
+      console.log(data);
+      this.friend_data = data.data;
+    },
     getContributor() {
       window.open("https://github.com/050644zf/ArknightsStoryTextReader/graphs/contributors", "_blank");
     }
@@ -265,6 +290,10 @@ export default {
   margin: 3% 15%;
   min-width: 800px;
   width: 100%;
+}
+
+.recommend-bar {
+  max-width: 1200px;
 }
 
 .recommend-card {
