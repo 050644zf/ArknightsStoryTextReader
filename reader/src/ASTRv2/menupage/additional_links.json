@@ -1,0 +1,68 @@
+{
+    "data":[
+        {
+            "id": "future",
+            "localized_name": {
+                "zh_CN": "FUTURE攻坚组",
+                "en_US": "TEAM FUTURE"
+            },
+            "localized_description": {
+                "zh_CN": "",
+                "en_US": ""
+            },
+            "localized_slogan": {
+                "zh_CN": "We create puzzles, we reveal puzzles",
+                "en_US": "We create puzzles, we reveal puzzles"
+            },
+            "localized_tags": {
+                "zh_CN": [
+                    "明日方舟谜题",
+                    "饭制谜题"
+                ],
+                "en_US": [
+                    "Arknights Args Hunt",
+                    "Fan-made Puzzles"
+                ]
+            },
+            "icon_url": "https://theteamfuture.github.io/favicon.svg",
+            "links": [
+                {
+                    "primary": true,
+                    "regionality": "EXCEPT_CHINA_MAINLAND",
+                    "localized_name": {
+                        "zh_CN": "官方网站",
+                        "en_US": "Official Website"
+                    },
+                    "url": "https://theteamfuture.github.io/"
+                },
+                {
+                    "primary": false,
+                    "regionality": "CHINA_MAINLAND",
+                    "localized_name": {
+                        "zh_CN": "森空岛",
+                        "en_US": "Skland"
+                    },
+                    "url": "https://www.skland.com/"
+                },
+                {
+                    "primary": false,
+                    "regionality": "CHINA_MAINLAND",
+                    "localized_name": {
+                        "zh_CN": "Bilibili",
+                        "en_US": "Bilibili"
+                    },
+                    "url": "https://space.bilibili.com/1795756019"
+                },
+                {
+                    "primary": false,
+                    "regionality": "CHINA_MAINLAND",
+                    "localized_name": {
+                        "zh_CN": "新浪微博",
+                        "en_US": "Weibo"
+                    },
+                    "url": "https://weibo.com/u/7917542342"
+                }
+            ]
+        }
+    ]
+}

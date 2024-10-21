@@ -3,6 +3,11 @@
     <template #header>
       <n-h2 prefix="bar">Changelog</n-h2>
     </template>
+    <n-h4>v1.10.1</n-h4>
+    <n-oi>
+      <n-li>Adding connection of FriendLink API provided by Ceobe Canteen.</n-li>
+      <n-li>Fix some layout issue in homepage.</n-li>
+    </n-oi>
     <n-h4>v1.10</n-h4>
     <n-oi>
       <n-li>Migrate the ArknightsJson repo to Cloudflare R2 service. If the R2 is unavailable will fallback to githubusercontent.</n-li>

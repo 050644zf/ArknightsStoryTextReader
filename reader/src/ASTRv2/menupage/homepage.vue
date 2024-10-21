@@ -189,29 +189,23 @@
     </n-ul>
     <n-hr />
     <n-h2 prefix="bar" type="info"> {{ $t("homepage.friendly_link") }}</n-h2>
-    <!-- <n-grid x-gap="12" y-gap="12" cols="1 800:2" class="recommend-bar">
-       -->
-      <VueFlexWaterfall col="2" :break-at="{800:1}" class="recommend-bar">
-        <friend-link v-for="item in friend_data" :key="item.id" :data="item" />
-      </VueFlexWaterfall>
-    <!-- </n-grid> -->
-    <n-ul>
-      <n-li><n-a href="https://aceship.github.io/AN-EN-Tags/">Arknights Toolbox</n-a>
-        by Aceship</n-li>
-      <n-li><n-a href="https://theteamfuture.github.io/">Team Future</n-a> a.k.a.
-        Future 攻坚组</n-li>
-    </n-ul>
+    <n-grid x-gap="12" y-gap="12" cols="1 800:2" class="recommend-bar">
+      <n-gi v-for="item in friend_data" :key="item.id">
+        <friend-link  :data="item" />
+      </n-gi>  
+    </n-grid>
   </n-flex>
 </template>
 
 <script>
 import { ArrowForwardOutlined, InfoOutlined } from "@vicons/material";
-import { VueFlexWaterfall } from 'vue-flex-waterfall';
 import analysis_png from "./banners/analysis.png";
 import maintheme_png from "./banners/maintheme.png";
 import op_png from "./banners/op.png";
 import changelog from "./changelog.vue";
 import friendlink from "./friendlink.vue";
+
+import additional_links from "./additional_links.json";
 
 export default {
   data() {
@@ -225,7 +219,7 @@ export default {
       maintheme_png: maintheme_png,
       op_png: op_png,
       showChangelog: false,
-      friend_data: []
+      friend_data: additional_links.data
     };
   },
   mounted() {
@@ -237,7 +231,6 @@ export default {
     InfoOutlined: InfoOutlined,
     Changelog: changelog,
     FriendLink: friendlink,
-    VueFlexWaterfall
   },
   methods: {
     isFirefox() {
@@ -275,8 +268,11 @@ export default {
 
       let response = await fetch("https://server-cdn.ceobecanteen.top/api/v1/cdn/operate/toolLink/list", requestOptions);
       let data = await response.json();
-      console.log(data);
-      this.friend_data = data.data;
+      
+      for(var i in data.data){
+        this.friend_data.push(data.data[i]);
+      }
+      
     },
     getContributor() {
       window.open("https://github.com/050644zf/ArknightsStoryTextReader/graphs/contributors", "_blank");
