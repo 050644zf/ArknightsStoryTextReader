@@ -2,7 +2,14 @@
   <n-space class="maintheme" justify="center">
     <n-steps vertical>
       <template #finish-icon></template>
-      <n-step v-for="(chapter, cidx) in cdata" :key="cidx">
+      <n-step v-for="(chapter, cid, cidx) in cdata" :key="cid">
+        <template #icon>
+          <n-flex justify="center" align="center">
+            <n-text strong style="color: black">{{ cidx }}</n-text>
+          </n-flex>
+          
+          
+        </template>
         <template v-slot:title>
           <n-space>
             <n-h3 strong style="margin: 0px">

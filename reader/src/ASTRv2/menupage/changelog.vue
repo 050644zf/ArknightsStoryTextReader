@@ -7,6 +7,7 @@
     <n-oi>
       <n-li>Adding connection of FriendLink API provided by Ceobe Canteen.</n-li>
       <n-li>Fix some layout issue in homepage.</n-li>
+      <n-li>Fix the index of Main theme chapters.</n-li>
     </n-oi>
     <n-h4>v1.10</n-h4>
     <n-oi>
