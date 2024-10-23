@@ -151,10 +151,8 @@ export default {
   },
   methods: {
     async loadCharInfo() {
-      const gamejson =
-        "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/";
       try {
-        let cdata = await fetch(gamejson + this.server + "/charinfo.json").then(
+        let cdata = await source.getData(this.server,'/charinfo.json').then(
           (res) => {
             return res.json();
           }

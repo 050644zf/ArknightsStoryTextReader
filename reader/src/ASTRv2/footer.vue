@@ -47,6 +47,7 @@
 
 <script>
 import { Github, Discord, Patreon } from "@vicons/fa";
+import source from "./source";
 
 export default {
   data() {
@@ -60,9 +61,10 @@ export default {
     Patreon,
   },
   created() {
-    fetch(
-      "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/log.json"
-    )
+    // fetch(
+    //   "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/log.json"
+    // )
+    source.getData("", "log.json")
       .then((r) => r.json())
       .then((s) => {
         this.latestUpdate = s["latestCommitTime"];
@@ -99,7 +101,6 @@ export default {
 
 <style>
 .footer {
-  margin: 5%;
   margin-top: -30px;
   padding: 20px;
   padding-top: 80px;

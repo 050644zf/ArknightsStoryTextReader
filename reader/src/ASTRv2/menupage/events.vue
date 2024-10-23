@@ -49,11 +49,11 @@
               <n-image
                 v-if="eventype != 'or'"
                 :src="
-                  'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/' +
+                  'https://r2.m31ns.top/img/banners/' +
                   edata.id +
                   '.png'
                 "
-                fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/banners/404.png"
+                fallback-src="https://r2.m31ns.top/img/banners/404.png"
                 preview-disabled
               />
               <n-image
@@ -66,7 +66,7 @@
                   '.png'
                 "
                 style="height: 64px"
-                fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/404.png"
+                fallback-src="https://r2.m31ns.top/img/icons/404.png"
                 preview-disabled
               />
               <n-flex vertical justify="space-around">
@@ -105,8 +105,15 @@
                           font-size: medium;
                           color: rgba(255, 255, 255, 0.5);
                         "
-                        >{{ $t('eventpage.unit') }}</n-text
-                      >
+                        v-if="server == 'en_US'"
+                        >{{ $t('eventpage.wordCount') }}</n-text>
+                        <n-text
+                        style="
+                          font-size: medium;
+                          color: rgba(255, 255, 255, 0.5);
+                        "
+                        v-else
+                        >{{ $t('eventpage.charCount') }}</n-text>                        
                     </template>
                     <template #default>
                       <!-- <n-text>{{getEventWordCount(edata.id)}}</n-text> -->

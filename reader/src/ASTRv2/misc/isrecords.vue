@@ -37,7 +37,7 @@
                     <img
                       v-for="(charId, cidx) in team.teamChars"
                       :key="cidx"
-                      :src="getCharAvatar(charId)"
+                      :src="getCharAvatar(charId.teamCharId)"
                       style="width: 48px"
                     />
                   </n-space>
@@ -84,11 +84,8 @@ export default {
   methods: {
     async loadIsData() {
       try {
-        let idata = await fetch(
-          "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-            this.server +
-            "/gamedata/excel/roguelike_topic_table.json"
-        ).then((res) => res.json());
+        let idata = await 
+          source.getData( this.server, "/gamedata/excel/roguelike_topic_table.json").then((res) => res.json());
         for (var topic in idata.topics) {
           this.topics.push({
             id: topic,
@@ -106,6 +103,7 @@ export default {
     },
     getCharAvatar(char_code) {
       //get the avatar of the character
+      console.log(char_code);
       return source.getAvatarUrl('fexli', char_code);
     },
   },

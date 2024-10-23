@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import source from './source';
+
 export default {
   data() {
     return {
@@ -23,16 +25,17 @@ export default {
   },
   methods: {
     async loadData() {
-      this.data = await fetch(
-        "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
-          this.server +
-          "/gamedata/excel/story_review_table.json"
-      ).then((res) => res.json());
-      this.chardict = await fetch(
-        "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
-          this.server +
-          "/chardict.json"
-      ).then((res) => res.json());
+      // this.data = await fetch(
+      //   "https://raw.githubusercontent.com/Kengxxiao/ArknightsGameData/master/" +
+      //     this.server +
+      //     "/gamedata/excel/story_review_table.json"
+      this.data = await source.getData(this.server, "/gamedata/excel/story_review_table.json").then((res) => res.json());
+      // this.chardict = await fetch(
+      //   "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
+      //     this.server +
+      //     "/chardict.json"
+      // ).then((res) => res.json());
+      this.chardict = await source.getData("050644zf", "/chardict.json").then((res) => res.json());
       this.eventList = await this.getEventList(this.data, this.chardict);
     },
     async getEventList(reviewData, chardict) {

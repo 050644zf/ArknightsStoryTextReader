@@ -2,7 +2,14 @@
   <n-space class="maintheme" justify="center">
     <n-steps vertical>
       <template #finish-icon></template>
-      <n-step v-for="(chapter, cidx) in cdata" :key="cidx">
+      <n-step v-for="(chapter, cid, cidx) in cdata" :key="cid">
+        <template #icon>
+          <n-flex justify="center" align="center">
+            <n-text strong style="color: black">{{ cidx }}</n-text>
+          </n-flex>
+          
+          
+        </template>
         <template v-slot:title>
           <n-space>
             <n-h3 strong style="margin: 0px">
@@ -29,14 +36,14 @@
               <template #cover>
                 <n-image
                   :src="
-                    'https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/' +
+                    'https://r2.m31ns.top/img/icons/' +
                     eid +
                     '.png'
                   "
                   class="mainicon"
                   style="height: 100px; width: 100px; margin: auto"
                   preview-disabled
-                  fallback-src="https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/img/icons/404.png"
+                  fallback-src="https://r2.m31ns.top/img/icons/404.png"
                 />
               </template>
               <n-text strong>{{ mdata[eid].name }}</n-text>

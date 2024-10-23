@@ -177,6 +177,7 @@ import {
 } from "@vicons/material";
 import { useLoadingBar, useDialog, useMessage, messageDark } from "naive-ui";
 import { defineComponent, ref } from "vue";
+import source from "./source.js";
 
 export default {
   data() {
@@ -256,25 +257,20 @@ export default {
       this.loading = true;
       // using await
       try{
-        let res = await fetch(
-          "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
-            this.server +
-            "/gamedata/story/" +
-            this.path +
-            ".json"
-        );
+        // let res = await fetch(
+        //   "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
+        //     this.server +
+        //     "/gamedata/story/" +
+        //     this.path +
+        //     ".json"
+        // );
+        let res = await source.getData(this.server, "/gamedata/story/" + this.path + ".json");
         let s = await res.json();
         let altserver = func.alt;
-        if (altserver != "none"){
+        if (altserver != "none" && altserver != this.server){
         try{
           
-          let res2 = await fetch(
-            "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
-              altserver +
-              "/gamedata/story/" +
-              this.path +
-              ".json"
-          );
+          let res2 = await source.getData(altserver, "/gamedata/story/" + this.path + ".json");
           this.altserverdata = await res2.json();
 
 

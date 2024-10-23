@@ -72,6 +72,7 @@ import {
 } from "@vicons/material";
 import { useLoadingBar, useDialog } from "naive-ui";
 import func from "../func.js";
+import source from "../source.js";
 export default {
   data() {
     return {
@@ -119,11 +120,7 @@ export default {
   methods: {
     async loadExtraInfo() {
       try {
-        let mdata = await fetch(
-          "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/master/" +
-            this.server +
-            "/extrastory.json"
-        ).then((res) => res.json());
+        let mdata = await source.getData(this.server, "/extrastory.json").then((res) => res.json());
         this.extraInfo = mdata.extra;
         this.isExtraInfoLoaded = true;
         console.log(this.extraInfo);

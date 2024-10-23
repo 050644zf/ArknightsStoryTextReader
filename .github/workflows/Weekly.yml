@@ -38,8 +38,30 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.8"
+
     - name: updater
       run: |
         python ./jsonconvert.py --all
-        cd ArknightsStoryJson 
+
+    - name: push
+      working-directory: ./ArknightsStoryJson
+      run: |
         git push
+
+    - name: Install AWS CLI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y awscli        
+
+    - name: Configure AWS CLI for Cloudflare R2
+      run: |
+        aws configure set aws_access_key_id ${{ secrets.CLOUDFLARE_ACCESS_KEY_ID }}
+        aws configure set aws_secret_access_key ${{ secrets.CLOUDFLARE_SECRET_ACCESS_KEY }}
+        aws configure set default.region auto        
+
+    - name: Sync repository to Cloudflare R2
+      run: |
+        aws s3 sync . s3://${{ secrets.CLOUDFLARE_BUCKET_NAME }} --endpoint-url=https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com --delete --exclude ".git/*"        
+      env:
+        CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      working-directory: ./ArknightsStoryJson

@@ -134,6 +134,7 @@ export default {
     "act17side",
     "act25side",
     "act33side",
+    "act37side"
   ],
   wversion: wversion,
   isOldversion: isOldversion,
