@@ -91,8 +91,19 @@ export default {
       });
     },
     getCharAvgUrl() {
-      console.log(source.getCharAvgUrl("fexli", this.line.figure_art));
-      return source.getCharAvgUrl("fexli", this.line.figure_art);
+      // console.log(source.getCharAvgUrl("fexli", this.line.figure_art));
+      // return source.getCharAvgUrl("fexli", this.line.figure_art);
+      const match_charId_re = /([\w]+)(#\w+)?(\$?\w+)?/;
+      const charId = this.line.figure_art.match(match_charId_re)[1];
+      if (charId) {
+        // replace the '#' and '$' in figure_art with %23 and %24
+        let artId = this.line.figure_art.replace("#", "%23").replace("$", "%24");
+        let url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${charId}/${artId}.png`;
+        console.log(url);
+        return url;
+      } else {
+        return "https://r2.m31ns.top/img/icons/404.png";
+      }
     },
   },
 };
