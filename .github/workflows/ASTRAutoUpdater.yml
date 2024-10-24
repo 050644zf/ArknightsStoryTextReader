@@ -39,7 +39,7 @@ jobs:
 
     - name: updater
       run: |
-        python ./jsonconvert.py --all
+        python ./jsonconvert.py
 
     - name: push
       working-directory: ./ArknightsStoryJson
