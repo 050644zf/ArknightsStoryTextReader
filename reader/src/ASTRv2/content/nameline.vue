@@ -6,7 +6,7 @@
           line.attributes.name
         }}</span>
       </template>
-      <n-image :src="getCharAvgUrl()" width="100"></n-image>
+      <n-image :src="getCharAvgUrl()" width="100" @error="is_in_folder=false"></n-image>
     </n-tooltip>
 
     <span class="contentblock" v-html="parseContent(line.attributes.content)"></span>
@@ -37,6 +37,7 @@ export default {
       showLink: false,
       currentLang: func.l,
       copied: false,
+      is_in_folder: true,
     };
   },
   // mounted(){
@@ -98,7 +99,11 @@ export default {
       if (charId) {
         // replace the '#' and '$' in figure_art with %23 and %24
         let artId = this.line.figure_art.replace("#", "%23").replace("$", "%24");
-        let url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${charId}/${artId}.png`;
+        let url = "";
+        if(this.is_in_folder)
+          url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${charId}/${artId}.png`;
+        else
+          url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${artId}.png`;
         console.log(url);
         return url;
       } else {
@@ -159,5 +164,9 @@ export default {
 
 .textblock .link:hover {
   color: yellow !important;
+}
+
+.textblock .figure{
+  text-decoration: underline;
 }
 </style>
