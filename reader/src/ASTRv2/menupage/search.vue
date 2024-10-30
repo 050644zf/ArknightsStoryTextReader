@@ -115,7 +115,7 @@ export default {
         this.searchvalue +
         "&server=" +
         this.server +
-        "/gamedata";
+        "/gamedata/story";
       $.getJSON(requestURL)
         .done((s) => {
           this.result = {};
@@ -126,7 +126,7 @@ export default {
           var resultlist = [];
           var r;
           for (r in s["items"]) {
-            console.log(s["items"][r]["path"].match(ptre)[1]);
+            console.log(s["items"][r]["path"]);
             resultlist.push(s["items"][r]["path"].match(ptre)[1]);
             resultitem.push(s["items"][r]["text_matches"]);
           }
