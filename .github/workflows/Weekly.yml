@@ -39,14 +39,18 @@ jobs:
       with:
         python-version: "3.8"
 
-    - name: updater
+    - name: Updater
       run: |
-        python ./jsonconvert.py --all
+        python ./jsonconvert.py -q --all
 
-    - name: push
+    - name: Push
       working-directory: ./ArknightsStoryJson
       run: |
         git push
+
+    - name: Copy diff to tmp folder
+      run: |
+        bash ./copy_diff.sh
 
     - name: Install AWS CLI
       run: |
@@ -61,7 +65,7 @@ jobs:
 
     - name: Sync repository to Cloudflare R2
       run: |
-        aws s3 sync . s3://${{ secrets.CLOUDFLARE_BUCKET_NAME }} --endpoint-url=https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com --delete --exclude ".git/*"        
+        aws s3 sync . s3://${{ secrets.CLOUDFLARE_BUCKET_NAME }} --endpoint-url=https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com --exclude ".git/*"
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      working-directory: ./ArknightsStoryJson
+      working-directory: ./tmp
