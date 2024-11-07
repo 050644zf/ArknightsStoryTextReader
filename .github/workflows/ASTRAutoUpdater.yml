@@ -49,11 +49,6 @@ jobs:
           python ./jsonconvert.py -q --all
         fi
 
-    - name: Push
-      working-directory: ./ArknightsStoryJson
-      run: |
-        git push
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
@@ -83,3 +78,8 @@ jobs:
       env:
         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       working-directory: ./tmp
+
+    - name: Push
+      working-directory: ./ArknightsStoryJson
+      run: |
+        git push
