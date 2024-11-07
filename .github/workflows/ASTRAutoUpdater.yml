@@ -18,23 +18,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 050644zf/ASTR-Script
         token: ${{secrets.PAT}}
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: Kengxxiao/ArknightsGameData
         path: ArknightsGameData
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: Kengxxiao/ArknightsGameData_YoStar
         path: ArknightsGameData_YoStar
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 050644zf/ArknightsStoryJson
         path: ArknightsStoryJson
         token: ${{secrets.PAT}}
+        fetch-depth: 0
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -54,7 +55,7 @@ jobs:
         git push
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: changes-and-deletion
         path: |
