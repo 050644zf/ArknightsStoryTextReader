@@ -6,7 +6,10 @@ name: ASTR Auto Updater
 on:
   repository_dispatch:
     type: [update]
-
+  schedule:
+  - cron: 0 0 * * 1
+  # add manual trigger
+  workflow_dispatch:
     
 
 jobs:
@@ -39,12 +42,24 @@ jobs:
 
     - name: Updater
       run: |
-        python ./jsonconvert.py -q
+        if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+          python ./jsonconvert.py -q
+        else
+          python ./jsonconvert.py -q --all
+        fi
 
     - name: Push
       working-directory: ./ArknightsStoryJson
       run: |
         git push
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: changes-and-deletion
+        path: |
+          ./changes.txt
+          ./deletion.txt
 
     - name: Copy diff to tmp folder
       run: |
