@@ -1,17 +1,28 @@
 <template>
   <div :class="line.prop">
     <div
-      v-for="(option, index) in line.attributes.values.split(';')"
+      v-for="(option, index) in line.attributes.options.split(';')"
       :key="option"
       class="option"
-      @click="jumpTo(line.targetLine['option' + option])"
+      @click="
+        jumpTo(line.targetLine['option' + (
+            line.attributes.values.split(';')[index] || 
+            line.attributes.values.split(';').pop()
+          )])
+      "
       @mouseover="
-        addClass(line.targetLine['option' + option], 'PredicateFocused')
+        addClass(line.targetLine['option' + (
+            line.attributes.values.split(';')[index] || 
+            line.attributes.values.split(';').pop()
+          )], 'PredicateFocused')
       "
       @mouseout="
-        removeClass(line.targetLine['option' + option], 'PredicateFocused')
+        removeClass(line.targetLine['option' + (
+            line.attributes.values.split(';')[index] || 
+            line.attributes.values.split(';').pop()
+          )], 'PredicateFocused')
       "
-      v-html="parseContent(line.attributes.options.split(';')[index])"
+      v-html="parseContent(option)"
     ></div>
   </div>
 </template>
