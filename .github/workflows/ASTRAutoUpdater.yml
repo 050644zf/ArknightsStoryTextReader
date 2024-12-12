@@ -61,10 +61,10 @@ jobs:
       run: |
         bash ./copy_diff.sh
         
-    - name: Install AWS CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y awscli        
+    # - name: Install AWS CLI
+    #   run: |
+    #     sudo apt-get update
+    #     sudo apt-get install -y awscli        
 
     - name: Configure AWS CLI for Cloudflare R2
       run: |
