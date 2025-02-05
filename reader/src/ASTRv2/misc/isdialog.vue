@@ -90,7 +90,11 @@ export default {
       var chatData = this.adata[this.topic.id]["chat"]["chat"][this.chatid];
       console.log(chatData);
       var i = 1;
-      for (var chatItem of chatData.clientChatItemData) {
+      var chatItems = chatData.clientChatItemData;
+      if (!chatItems) {
+        chatItems = chatData.chatItemList;
+      }
+      for (var chatItem of chatItems) {
         var res = await source.getData(this.server, "/gamedata/story/" +chatItem.chatStoryId.toLowerCase() + ".txt");
         var text = await res.text();
         if (text == "404: Not Found") {

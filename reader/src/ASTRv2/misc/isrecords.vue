@@ -103,7 +103,7 @@ export default {
     },
     getCharAvatar(char_code) {
       //get the avatar of the character
-      console.log(char_code);
+      // console.log(char_code);
       return source.getAvatarUrl('fexli', char_code);
     },
   },
