@@ -146,16 +146,18 @@
       <n-badge value="$7" type="warning">Bo Yi-bo &nbsp;</n-badge>, &nbsp;&nbsp;
       <n-badge value="$4" type="warning">wangxu &nbsp;</n-badge>, &nbsp;&nbsp;
       <n-badge value="$1" type="info">Syegen &nbsp;</n-badge>, &nbsp;&nbsp;
-      <n-badge value="$3" type="warning">Hikari Leafs &nbsp;</n-badge>,
+      <n-badge value="$3" type="info">Hikari Leafs &nbsp;</n-badge>,
       &nbsp;&nbsp; <n-badge value="$50" type="error">Elaine &nbsp;</n-badge>,
-      &nbsp;&nbsp; <n-badge value="$3" type="warning">Leonard &nbsp;</n-badge>,
-      &nbsp;&nbsp; <n-badge value="$2" type="warning">Leon &nbsp;</n-badge>,
+      &nbsp;&nbsp; <n-badge value="$3" type="info">Leonard &nbsp;</n-badge>,
+      &nbsp;&nbsp; <n-badge value="$2" type="info">Leon &nbsp;</n-badge>,
       &nbsp;&nbsp; <n-badge value="$7" type="warning">Haser &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$1" type="info">우유 녹차 &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$6" type="warning">sh1ver &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$1" type="info">寒月 &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$1" type="info">冥王星的雪 &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$1" type="info">ZUNGoeng &nbsp;</n-badge>, 
+      &nbsp;&nbsp;<n-badge value="$2" type="info">IssacTheMouse &nbsp;</n-badge>, 
+      &nbsp;&nbsp;<n-badge value="$1" type="info">Rainiar &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$14" type="error">PUZZLE_BD &nbsp;</n-badge>
     </n-card>
 
