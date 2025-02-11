@@ -153,7 +153,10 @@
       &nbsp;&nbsp; <n-badge value="$7" type="warning">Haser &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$1" type="info">우유 녹차 &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$6" type="warning">sh1ver &nbsp;</n-badge>,
-      &nbsp;&nbsp;<n-badge value="$1" type="info">寒月 &nbsp;</n-badge>
+      &nbsp;&nbsp;<n-badge value="$1" type="info">寒月 &nbsp;</n-badge>,
+      &nbsp;&nbsp;<n-badge value="$1" type="info">冥王星的雪 &nbsp;</n-badge>, 
+      &nbsp;&nbsp;<n-badge value="$1" type="info">ZUNGoeng &nbsp;</n-badge>, 
+      &nbsp;&nbsp;<n-badge value="$14" type="error">PUZZLE_BD &nbsp;</n-badge>
     </n-card>
 
     <n-text>
