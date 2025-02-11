@@ -152,7 +152,8 @@
       &nbsp;&nbsp; <n-badge value="$2" type="warning">Leon &nbsp;</n-badge>,
       &nbsp;&nbsp; <n-badge value="$7" type="warning">Haser &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$1" type="info">우유 녹차 &nbsp;</n-badge>, 
-      &nbsp;&nbsp;<n-badge value="$6" type="warning">sh1ver &nbsp;</n-badge>
+      &nbsp;&nbsp;<n-badge value="$6" type="warning">sh1ver &nbsp;</n-badge>,
+      &nbsp;&nbsp;<n-badge value="$1" type="info">寒月 &nbsp;</n-badge>
     </n-card>
 
     <n-text>
