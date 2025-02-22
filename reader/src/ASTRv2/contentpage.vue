@@ -16,7 +16,7 @@
           role="link"
         >
           <n-icon><MenuIcon /></n-icon>
-          {{ $t('eventpage.menu') }}
+          {{ $t("eventpage.menu") }}
         </n-breadcrumb-item>
         <n-breadcrumb-item
           @click="
@@ -32,7 +32,7 @@
           v-else
           role="link"
         >
-          {{ $t('contentpage.extra') }}
+          {{ $t("contentpage.extra") }}
         </n-breadcrumb-item>
         <br class="breadcrumbbreak" />
         <n-breadcrumb-item role="button">
@@ -140,7 +140,11 @@
             v-if="strMatch(line.prop, 'animtext')"
             :inputline="line"
           ></Animtext>
-          <div class="blank" v-if="strMatch(line.prop, '__blank')" style="height: 15px"></div>
+          <div
+            class="blank"
+            v-if="strMatch(line.prop, '__blank')"
+            style="height: 15px"
+          ></div>
 
           <!-- <div style="clear: both;"></div> -->
         </div>
@@ -256,7 +260,7 @@ export default {
     async getStoryData() {
       this.loading = true;
       // using await
-      try{
+      try {
         // let res = await fetch(
         //   "https://raw.githubusercontent.com/050644zf/ArknightsStoryJson/main/" +
         //     this.server +
@@ -264,34 +268,53 @@ export default {
         //     this.path +
         //     ".json"
         // );
-        let res = await source.getData(this.server, "/gamedata/story/" + this.path + ".json");
+        let res = await source.getData(
+          this.server,
+          "/gamedata/story/" + this.path + ".json"
+        );
         let s = await res.json();
         let altserver = func.alt;
-        if (altserver != "none" && altserver != this.server){
-        try{
-          
-          let res2 = await source.getData(altserver, "/gamedata/story/" + this.path + ".json");
-          this.altserverdata = await res2.json();
+        if (altserver !== "none" && altserver !== this.server) {
+          try {
+            let res2 = await source.getData(
+              altserver,
+              "/gamedata/story/" + this.path + ".json"
+            );
+            this.altserverdata = await res2.json();
 
-
-          // merge the alt server data into the main data in data.storyList
-          let newStoryList = [];
-          for (let i in s.storyList.length > this.altserverdata.storyList.length ? s.storyList : this.altserverdata.storyList) {
-            if (s.storyList[i]) {
-              newStoryList.push(s.storyList[i]);
-            }
-            // merge if prop is 'nameline' or 'subtitle'
-            if (this.altserverdata.storyList[i]) {
-              const prop = this.altserverdata.storyList[i].prop;
-              if (this.strMatch(prop, 'name') || this.strMatch(prop, 'subtitle')|| this.strMatch(prop, 'sticker') || this.strMatch(prop, 'multiline') || this.strMatch(prop, 'decision') || this.strMatch(prop, 'animtext')) {
-                newStoryList.push(this.altserverdata.storyList[i]);
-                newStoryList.push({ id: -1, prop: '__blank' });
+            // Build a map for alt server records by record id, only for text types to be merged.
+            let altMap = new Map();
+            for (let record of this.altserverdata.storyList) {
+              const prop = record.prop.toLowerCase();
+              if (
+                this.strMatch(prop, "name") ||
+                this.strMatch(prop, "subtitle") ||
+                this.strMatch(prop, "sticker") ||
+                this.strMatch(prop, "multiline") ||
+                this.strMatch(prop, "decision") ||
+                this.strMatch(prop, "animtext")
+              ) {
+                altMap.set(record.id, record);
               }
             }
 
-          }
-          let newStoryList2 = newStoryList.filter(e => e );
-          s.storyList = newStoryList2;
+            // Merge the main server storyList with corresponding alt records based on id.
+            let newStoryList = [];
+            for (let mainRecord of s.storyList) {
+              newStoryList.push({ ...mainRecord });
+              if (altMap.has(mainRecord.id)) {
+                newStoryList.push({ ...altMap.get(mainRecord.id) });
+                // Insert a blank record for separation.
+                newStoryList.push({ id: -1, prop: "__blank" });
+                altMap.delete(mainRecord.id);
+              }
+            }
+            // Append any alt records that did not match any main record.
+            for (let altRecord of altMap.values()) {
+              newStoryList.push({ ...altRecord });
+              newStoryList.push({ id: -1, prop: "__blank" });
+            }
+            s.storyList = newStoryList;
           } catch (e) {
             this.message.error(this.$t("contentpage.altLangLoadFail"));
           }
@@ -308,11 +331,9 @@ export default {
         console.log(e);
         this.dialog.error({
           title: this.$t("contentpage.dataLoadFail"),
-          content:
-            this.$t("contentpage.dataLoadFailDesc"),
+          content: this.$t("contentpage.dataLoadFailDesc"),
         });
       }
-
     },
     getStoryOpts() {
       var opts = [];
