@@ -12,7 +12,7 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ja_JP/menu">JP</a> |
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ko_KR/menu">KR</a> |
     <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/en_US/menu">EN</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_TW/menu">TW</a> 
+    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_TW/menu">TW</a>
 </p>
 
 <p align="center">
@@ -31,11 +31,11 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 
 ## Thanks to the Generous Support from Sponsors!
 
-> Thymewarp, 
-> Bo Yi-bo, 
+> Thymewarp,
+> Bo Yi-bo,
 > wangxu,
-> Syegen, 
-> Hikari Leafs, 
+> Syegen,
+> Hikari Leafs,
 > Elaine
 > Haser
 > sh1ver
@@ -64,23 +64,34 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 
 [Aceship/Arknight-Images](https://github.com/Aceship/Arknight-Images) : Providing images.
 
-### Building ASTR
+### Installation
 
-```bash
-cd reader
-npm install
-npm run build
-```
+1. **Clone**
 
-### Hosting ASTR Locally for Development
+   ```bash
+   git clone https://github.com/050644zf/ArknightsStoryTextReader.git
+   git submodule update --init --recursive
+   cd ArknightsStoryTextReader
+   ```
 
-```bash
-cd reader
-npm install
-npm run dev
-```
+2. **Install Dependencies**
+   Navigate to the `reader` directory and install Node dependencies:
 
-### ASTRv2  Explained
+   ```bash
+   cd reader
+   npm install
+   ```
+
+3. **Build**
+   To build for production:
+
+   ```bash
+   npm run build
+   ```
+
+This will create a production-ready build in the `dist` folder inside `reader`.
+
+### ASTRv2 Explained
 
 1. Entrance Script: `reader\src\main2.js`
 2. Load server data in `reader\src\ASTRv2\server.vue` into session storage, including `story_review_table.json` (events and stories index), `chardict.json` (character id -> character name), `storyinfo.json` (story path -> story info), `chapter_table.json` (maintheme index) and `wordcount.json` (words/chars countings of stories).
