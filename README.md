@@ -8,11 +8,10 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 </p>
 
 <p align="center">
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_CN/menu">CN</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ja_JP/menu">JP</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/ko_KR/menu">KR</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/en_US/menu">EN</a> |
-    <a href="https://050644zf.github.io/ArknightsStoryTextReader/index2.html#/zh_TW/menu">TW</a>
+    <a href="https://astr.pages.dev/#/zh_CN/menu">CN</a> |
+    <a href="https://astr.pages.dev/#/ja_JP/menu">JP</a> |
+    <a href="https://astr.pages.dev/#/ko_KR/menu">KR</a> |
+    <a href="https://astr.pages.dev/#/en_US/menu">EN</a>
 </p>
 
 <p align="center">
@@ -22,7 +21,7 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
     <img src="https://github.com/050644zf/ArknightsStoryTextReader/actions/workflows/ASTRAutoUpdater.yml/badge.svg"/>
 </p>
 
-[Arknights Story Text Reader](https://050644zf.github.io/ArknightsStoryTextReader/index2.html) is a website that help you view stories text in mobile game Arknights with following features:
+[Arknights Story Text Reader](https://astr.pages.dev/) is a website that help you view stories text in mobile game Arknights with following features:
 
 - Browsing Stories in all Arknights Servers (CN/JP/KR/EN/TW), and easily switch to different server in events, stories or anywhere else at upper right corner(if corresponding event exist).
 - Providing settings for configuring interface language and doctor's name in story
