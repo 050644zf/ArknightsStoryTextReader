@@ -3,6 +3,10 @@
     <template #header>
       <n-h2 prefix="bar">Changelog</n-h2>
     </template>
+    <n-h4>v1.10.2</n-h4>
+    <n-oi>
+      <n-li>Fix the alt language misalignment issue, thanks to a322655's <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/81">PR</n-a></n-li>
+    </n-oi>
     <n-h4>v1.10.1</n-h4>
     <n-oi>
       <n-li>Adding connection of FriendLink API provided by Ceobe Canteen.</n-li>
