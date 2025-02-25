@@ -136,7 +136,15 @@
     </n-text>
     <n-card @click="getContributor()" hoverable>
       <n-image width="200" src="https://contributors-img.web.app/image?repo=050644zf/ArknightsStoryTextReader"
-        preview-disabled /></n-card>
+        preview-disabled />
+    </n-card>
+    <n-text>
+      {{ $t("homepage.credits.translators") }}
+    </n-text>
+    <n-card @click="getContributor()" hoverable>
+      <n-image width="200" src="https://contributors-img.web.app/image?repo=050644zf/astr-i18n"
+        preview-disabled />
+    </n-card>    
 
     <n-text>
       {{ $t("homepage.credits.sponsors") }}
@@ -283,6 +291,9 @@ export default {
     },
     getContributor() {
       window.open("https://github.com/050644zf/ArknightsStoryTextReader/graphs/contributors", "_blank");
+    },
+    getTranslator() {
+      window.open("https://github.com/050644zf/astr-i18n/graphs/contributors", "_blank");
     }
   },
 };
