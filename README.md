@@ -28,17 +28,6 @@ The python scripts for this repository have been move to [ASTR-Script](https://g
 - Pretty formatted story text, selecting option will navigate to corresponding line (in most stories)
 - More interesting features in misc
 
-## Thanks to the Generous Support from Sponsors!
-
-> Thymewarp,
-> Bo Yi-bo,
-> wangxu,
-> Syegen,
-> Hikari Leafs,
-> Elaine
-> Haser
-> sh1ver
-
 ## Development Info
 
 ### File Structure

@@ -166,7 +166,9 @@
       &nbsp;&nbsp;<n-badge value="$1" type="info">ZUNGoeng &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$2" type="info">IssacTheMouse &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$1" type="info">Rainiar &nbsp;</n-badge>, 
-      &nbsp;&nbsp;<n-badge value="$14" type="error">PUZZLE_BD &nbsp;</n-badge>
+      &nbsp;&nbsp;<n-badge value="$14" type="error">PUZZLE_BD &nbsp;</n-badge>,
+      &nbsp;&nbsp;<n-badge value="$2" type="info">别枝惊鹊 &nbsp;</n-badge>, 
+      &nbsp;&nbsp;<n-badge value="$2" type="info">1639 &nbsp;</n-badge>, 
     </n-card>
 
     <n-text>
