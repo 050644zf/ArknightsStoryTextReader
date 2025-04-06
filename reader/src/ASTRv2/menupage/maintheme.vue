@@ -81,13 +81,13 @@ export default {
 .maintheme {
   margin: 20px 20px;
 }
-.episode {
+.maintheme .episode {
   text-align: center;
   font-weight: bold;
   box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
   transition: box-shadow 0.5s;
 }
-.episode:hover {
+.maintheme .episode:hover {
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
 }
 </style>

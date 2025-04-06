@@ -31,6 +31,14 @@ const rarity_colors = [
   "#FFAE00",
   "#FF6600",
 ];
+
+const server_epoch = {
+  zh_CN: 2019,
+  en_US: 2020,
+  ko_KR: 2020,
+  ja_JP: 2020,
+}
+
 var urlParams = new URLSearchParams(window.location.search);
 var server = urlParams.get("s");
 var l = window.localStorage.getItem("lang");
@@ -114,6 +122,7 @@ export default {
   langList: langList,
   serverList: serverList,
   server: server,
+  server_epoch: server_epoch[server],
   doctor: doctor,
   hidetip: hidetip,
   showDelay: showDelay,
