@@ -60,6 +60,7 @@
         >
           <Maintheme v-if="itemName == 'maintheme'"></Maintheme>
           <Or v-else-if="itemName == 'or'"></Or>
+          <MusicScore v-else-if="itemName == 'ms'"></MusicScore>
           <Events :eventype="itemName" v-else></Events>
         </n-space>
       </n-tab-pane>
@@ -105,17 +106,25 @@ import or from "./menupage/or.vue";
 import homepage from "./menupage/homepage.vue";
 import search from "./menupage/search.vue";
 import misc from "./misc.vue";
+import ms from "./menupage/ms.vue";
 
 export default {
   data() {
     return {
-      navi: {
+      server: this.$route.params.server,
+      navi_old: {
         maintheme: { icon: "terminal-maintheme", title: "main" },
         intermezzi: { icon: "terminal-intermezzi", title: "intermezzi" },
         sidestory: { icon: "terminal-sidestory", title: "ss" },
         storyset: { icon: "terminal-storyset", title: "mini" },
         or: { icon: "terminal-record", title: "operator_data" },
       },
+      navi_new: {
+        ms: { icon: "terminal-maintheme", title: "music_score" },
+        or: { icon: "terminal-record", title: "operator_data" },
+      },
+      
+
       currentLang: func.l,
       selected: this.$route.params.selected || "home",
     };
@@ -130,7 +139,13 @@ export default {
       }
     );
   },
-
+  computed: {
+    navi() {
+      return this.server == "zh_CN"
+        ? this.navi_new
+        : this.navi_old;
+    },
+  },
   components: {
     InfoIcon: InfoOutlined,
     SearchIcon: SearchOutlined,
@@ -141,6 +156,7 @@ export default {
     Homepage: homepage,
     Search: search,
     Misc: misc,
+    MusicScore: ms,
   },
 };
 </script>

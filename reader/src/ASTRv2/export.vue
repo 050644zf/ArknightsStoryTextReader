@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import xlsx from "xlsx";
+import * as xlsx from 'xlsx';
 import {
   MenuOpenFilled,
   ClearAllOutlined,

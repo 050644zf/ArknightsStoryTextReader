@@ -22,7 +22,16 @@
           @click="
             $router.push('/' + $route.params.server + '/event/' + data.eventid)
           "
-          v-if="data.eventid"
+          v-if="data.eventid && server != 'zh_CN'"
+          role="link"
+        >
+          {{ data.eventName }}
+        </n-breadcrumb-item>
+        <n-breadcrumb-item
+          @click="
+            $router.push('/' + $route.params.server + '/menu/ms/event/' + data.eventid)
+          "
+          v-else-if="data.eventid && server == 'zh_CN'"
           role="link"
         >
           {{ data.eventName }}

@@ -19,6 +19,7 @@ import act17side_log from './ASTRv2/misc/act17side_log.vue'
 import act25side_log from './ASTRv2/misc/act25side_log.vue'
 import extra from './ASTRv2/misc/extra.vue'
 import opcard from './ASTRv2/components/opcard.vue'
+import event_card from './ASTRv2/menupage/event_card.vue';
 
 import en_US from './ASTRv2/astr-i18n/en_US.json'
 import zh_CN from './ASTRv2/astr-i18n/zh_CN.json'
@@ -44,6 +45,7 @@ const routes = [
             { path: 'menu/:selected?', name:'menu', component: menupage,
                 children: [
                     { path: 'char/:cid', name:'opcard', component: opcard },
+                    { path: 'event/:eid', name:'event_card', component: event_card },
                 ]
             },
             { path: 'event/:event',name:'event', component: eventpage },

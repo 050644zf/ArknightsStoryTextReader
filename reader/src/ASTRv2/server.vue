@@ -139,6 +139,11 @@ export default {
           this.loadingProgress = 50;
           return res.json();
         });
+        let stageData = await source.getData(this.server, "/gamedata/excel/stage_table.json").then((res) => {
+          this.loadingProgress = 60;
+          return res.json();
+        });
+
         let eventList = await this.getEventList(menudata, chardict);
         chapterdata = await this.getMainthemeData(chapterdata, eventList);
         window.sessionStorage.setItem("server", this.server);
@@ -155,6 +160,8 @@ export default {
           "wordCountData",
           JSON.stringify(wordCountData)
         );
+        window.sessionStorage.setItem("storylines", JSON.stringify(stageData.storylines));
+        window.sessionStorage.setItem("storylineStorySets", JSON.stringify(stageData.storylineStorySets));
         this.loadingProgress = 100;
         this.loadingbar.finish();
         this.isDataLoaded = true;
