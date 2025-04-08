@@ -145,6 +145,11 @@ export default {
     "act33side",
     "act37side"
   ],
+  collab: [
+    "act17d0",
+    "act13mini",
+    "act32side"
+  ],
   wversion: wversion,
   isOldversion: isOldversion,
   parseContent(content) {

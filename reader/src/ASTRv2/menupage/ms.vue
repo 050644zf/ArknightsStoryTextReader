@@ -9,7 +9,7 @@
         :color="badgeStyle[type].bgcolor"
         :ghost="!eventTypeFilter[type]"
         @click="eventTypeFilter[type] = !eventTypeFilter[type]"
-        style="color: white;"
+        :style="{color: 'white'}"
         round
 
       >
@@ -32,7 +32,7 @@
           {{ $t('menupage.calendar') }}
         </n-flex>  
     </n-radio-button>
-      <n-radio-button value="storyline">
+      <n-radio-button value="storyline" disabled>
         <n-flex justify="center" align="center">
           <n-icon size="24"><ViewIcon /></n-icon>
           {{ $t('menupage.storyline') }} (WIP)
@@ -48,17 +48,23 @@
       <n-step v-for="(yearGroup, year) in groupedEvents" :key="year">
         <template #icon>
           <n-flex justify="center" align="center">
-            <n-text strong style="color: black">{{
-              year - serverEpoch
-            }}</n-text>
+            <n-text strong style="color: black" v-if="year>=0">
+              {{year}}
+            </n-text>
+            <n-text strong style="color: black" v-else>
+              ?
+            </n-text>
           </n-flex>
         </template>
-        <template v-slot:title>
-          <n-h3 strong style="margin: 0px">
-            YEAR - {{ year - serverEpoch }}
+        <template #title >
+          <n-h3 strong style="margin: 0px" v-if="year>=0">
+            YEAR - {{ year }}
           </n-h3>
+          <n-h3 strong style="margin: 0px" v-else>
+            COLLABRATIONS
+          </n-h3>          
         </template>
-        <n-flex vertical>
+        <n-flex >
           <n-space item-style="display: flex;" align="center">
             <TransitionGroup name="episode" tag="div" class="episode-container">
               <n-card
@@ -137,6 +143,11 @@ export default {
       wordCount: window.sessionStorage.getItem("wordCountData")
       ? JSON.parse(window.sessionStorage.getItem("wordCountData"))
       : {},
+      storylines: window.sessionStorage.getItem("storylines")
+        ? JSON.parse(window.sessionStorage.getItem("storylines"))
+        : {},
+      storylineStorySets: window.sessionStorage.getItem("storylineStorySets")
+        ? JSON.parse(window.sessionStorage.getItem("storylineStorySets")):{},
       eventType: this.$route.params.eventType,
       eventID: this.$route.params.eventID,
       eventIdx: this.$route.params.eventIdx,
@@ -174,31 +185,65 @@ export default {
         name: "event_card",
         params: { server: this.$route.params.server, selected: "ms", eid: eventId },
       })
-    }
+    },
+    getEid(storyset){
+      if(storyset.storySetId == 'setId_mainline_3_1') return 'main_15';
+      if(storyset.storySetType == 'MAINLINE') return storyset.mainlineData.zoneId;
+      return storyset.relevantActivityId;
+    },
   },
   computed: {
-    sortedEvents() {
-      // Flatten all events from different types
-      let allEvents = [];
+
+    groupedEvents() {
+      let allEvents = {};
       for (const eventType in this.eventList) {
         if (Array.isArray(this.eventList[eventType])) {
-          allEvents = allEvents.concat(this.eventList[eventType]);
+          for (const event of this.eventList[eventType]) {
+              allEvents[event.id] = event;
+          }
         }
       }
-      // Sort by startTime
-      return allEvents.sort((a, b) => a.startTime - b.startTime);
-    },
-    groupedEvents() {
-      const groups = {};
-      this.sortedEvents.forEach((event) => {
-        if (!event.startTime || !this.eventTypeFilter[event.entryType]) return;
-        const date = new Date(event.startTime * 1000);
-        const year = date.getFullYear();
-        if (!groups[year]) {
-          groups[year] = [];
+      let storysetgroups = {};
+      for(const storysetid in this.storylineStorySets) {
+        var storyset = this.storylineStorySets[storysetid];
+        const year = storyset.sortByYear;
+        if (!storysetgroups[year]) {
+          storysetgroups[year] = [];
         }
-        groups[year].push(event);
-      });
+        storysetgroups[year].push(storyset);
+      }
+      // Sort events within each year by sortWithinYear
+
+      let groups = {};
+      for (const year in storysetgroups) {
+        storysetgroups[year].sort((a, b) => {
+          const aSort = a.sortWithinYear || 0;
+          const bSort = b.sortWithinYear || 0;
+          return aSort - bSort;
+        });
+        for (const storyset of storysetgroups[year]) {
+          
+          const edata = allEvents[this.getEid(storyset)];
+          if (this.eventTypeFilter[edata.entryType]) {
+            if (!groups[year]) {
+              groups[year] = [];
+            }
+            groups[year].push(edata);
+          }
+        }
+      }
+
+      
+      for(const collab_event of func.collab){
+        const collab_event_data = allEvents[collab_event];
+        if (this.eventTypeFilter[collab_event_data.entryType]) {
+          if (!groups[-1]) {
+            groups[-1] = [];
+          }
+          groups[-1].push(collab_event_data);
+        }
+      }
+      console.log(groups)
       return groups;
     },
     getEdata(){
@@ -262,18 +307,20 @@ export default {
 .music_score .episode .eventname {
   position: relative; 
   top:-10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.581);
+  padding: 0px 10px 0px 10px;
 }
 
 .music_score .episode .banner {
   top:-20px;
-  padding: 0px 10px 0px 10px;
+
 }
 
 .episode-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  align-items: center;
   gap: 16px;
 }
 

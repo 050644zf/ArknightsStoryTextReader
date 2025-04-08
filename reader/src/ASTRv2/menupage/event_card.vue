@@ -14,7 +14,7 @@
             class="mainicon"
             style="height: 100px; width: 100px"
             preview-disabled
-            fallback-src="https://r2.m31ns.top/img/banners/404.png"
+            fallback-src="https://r2.m31ns.top/img/icons/404.png"
             object-fit="cover"
           />
           <n-image
@@ -78,7 +78,7 @@
             <n-text>{{ $t('eventpage.showIntro') }}</n-text>
             <n-switch v-model:value="showIntro"></n-switch>
           </n-flex>
-          <n-divider dashed></n-divider>
+          <n-divider></n-divider>
           <n-list hoverable clickable>
             <n-scrollbar style="max-height: 70vh">
             <n-list-item

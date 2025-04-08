@@ -36,9 +36,25 @@
           </n-card>
         </n-gi>
         <n-gi>
+          <n-card :title="$t('homepage.recommend.music_score')" class="recommend-card" hoverable @click="
+            $router.push({ name: 'menu', params: { selected: 'ms' } })
+            "
+            v-if="server=='zh_CN'"
+            >
+            <template #cover>
+              <n-image :src="maintheme_png" preview-disabled />
+            </template>
+            <template #header-extra>
+              <n-icon size="32">
+                <ArrowForward />
+              </n-icon>
+            </template>
+          </n-card>
           <n-card :title="$t('homepage.recommend.maintheme')" class="recommend-card" hoverable @click="
             $router.push({ name: 'menu', params: { selected: 'maintheme' } })
-            ">
+            "
+            v-else
+            >
             <template #cover>
               <n-image :src="maintheme_png" preview-disabled />
             </template>
@@ -236,7 +252,8 @@ export default {
       maintheme_png: maintheme_png,
       op_png: op_png,
       showChangelog: false,
-      friend_data: additional_links.data
+      friend_data: additional_links.data,
+      server: this.$route.params.server,
     };
   },
   mounted() {
