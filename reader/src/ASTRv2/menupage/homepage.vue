@@ -291,12 +291,9 @@ export default {
       console.log(this.latestEvents);
     },
     async loadFriendLinksData() {
-      var myHeaders = new Headers();
-      myHeaders.append("User-Agent", "Apifox/1.0.0 (https://apifox.com)");
 
       var requestOptions = {
         method: 'GET',
-        headers: myHeaders,
         redirect: 'follow'
       };
 
