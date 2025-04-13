@@ -3,12 +3,14 @@
     <template #header>
       <n-h2 prefix="bar">Changelog</n-h2>
     </template>
+    <n-h4>v1.11.1</n-h4>
+    <n-oi>
+      <n-li>Added gray color to alt language. <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/88">#88</n-a></n-li>
+    </n-oi>
     <n-h4>v1.11</n-h4>
     <n-oi>
       <n-li>Add basic music score support in CN server.</n-li>
       <n-li>Event now presented in modal card instead of pages. (CN server only so far)</n-li>
-      
-
     </n-oi>
     <n-h4>v1.10.2</n-h4>
     <n-oi>
