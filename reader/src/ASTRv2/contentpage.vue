@@ -98,7 +98,7 @@
         <div
           v-for="(line, lidx) in data.storyList"
           :key="line.id"
-          class="line"
+          :class="{line:true, altlang: line.__alt}"
           :id="'line' + line.id"
           :style="{ 'margin-bottom': margin + 'px' }"
         >
@@ -295,6 +295,7 @@ export default {
             let altMap = new Map();
             for (let record of this.altserverdata.storyList) {
               const prop = record.prop.toLowerCase();
+              record.__alt = true; // Mark as alt server record.
               if (
                 this.strMatch(prop, "name") ||
                 this.strMatch(prop, "subtitle") ||
@@ -447,6 +448,10 @@ export default {
 
 .contentpage .highlight {
   background-color: rgb(85, 85, 0);
+}
+
+.contentpage .altlang {
+  color: gray;
 }
 
 @media (max-width: 700px) {
