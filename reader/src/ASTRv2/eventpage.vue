@@ -123,8 +123,7 @@
                 >
               </n-space>
               <n-collapse-transition :show="showIntro">
-                <n-text depth="2">
-                  {{ infodata[story["storyTxt"]] }}
+                <n-text depth="2" v-html="parseContent(infodata[story['storyTxt']])">
                 </n-text>
               </n-collapse-transition>
             </n-space>
@@ -152,6 +151,7 @@ import {
 } from "@vicons/material";
 import openInNew from "./components/openInNewBtn.vue";
 import openInGTL from "./components/openInGTL.vue";
+import func from "./func.js";
 export default {
   data() {
     return {
@@ -224,6 +224,9 @@ export default {
       });
       window.localStorage.setItem("exportList", JSON.stringify(exportList));
       this.$router.push({ path: "/" + this.server + "/export" });
+    },
+    parseContent(content) {
+      return func.parseContent(content);
     },
   },
 };
