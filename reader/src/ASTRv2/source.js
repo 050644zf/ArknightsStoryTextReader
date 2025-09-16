@@ -36,6 +36,9 @@ export default {
       return `${IMAGES_SRC_REPOS[repo]}/avatar/ASSISTANT/${charId}.png`;
     }
   },
+  getCharAvgUrl(repo, charId){
+    return `${IMAGES_SRC_REPOS['Aceship']}/avg/characters/${charId}.png`;
+  },
   async getData(server, path) {
     try{
       return await fetch(`${GAME_DATA_REPOS["m31ns"]}${server}${path}`);
@@ -43,6 +46,5 @@ export default {
     catch(e){
       return await fetch(`${GAME_DATA_REPOS["github"]}${server}${path}`);
     }
-    
   }
 };

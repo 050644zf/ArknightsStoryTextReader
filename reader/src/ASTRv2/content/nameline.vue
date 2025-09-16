@@ -1,26 +1,19 @@
 <template>
-  <div
-    class="textblock"
-    @mousemove="showLink = true"
-    @mouseout="showLink = false"
-  >
-    <span :class="{ nameblock: true, figure: line.figure_art }">{{
-      line.attributes.name
-    }}</span>
-    <span
-      class="contentblock"
-      v-html="parseContent(line.attributes.content)"
-    ></span>
+  <div class="textblock" @mousemove="showLink = true" @mouseout="showLink = false">
+    <n-tooltip trigger="hover" :disabled="!line.figure_art">
+      <template #trigger>
+        <span :class="{ nameblock: true, figure: line.figure_art }">{{
+          line.attributes.name
+        }}</span>
+      </template>
+      <n-image :src="getCharAvgUrl()" width="100" @error="is_in_folder=false"></n-image>
+    </n-tooltip>
+
+    <span class="contentblock" v-html="parseContent(line.attributes.content)"></span>
     <n-popover trigger="manual" :show-arrow="false" :show="copied">
       <template #trigger>
-        <n-icon-wrapper
-          :size="32"
-          color="#00000000"
-          icon-color="#7f7f7f"
-          class="link"
-          v-show="showLink"
-          @click="hyperlink2line(line.id)"
-        >
+        <n-icon-wrapper :size="32" color="#00000000" icon-color="#7f7f7f" class="link" v-show="showLink"
+          @click="hyperlink2line(line.id)">
           <n-icon size="24">
             <LinkOutlined />
           </n-icon>
@@ -33,6 +26,7 @@
 
 <script>
 import func from "../func";
+import source from "../source";
 import { LinkOutlined } from "@vicons/material";
 
 export default {
@@ -43,6 +37,7 @@ export default {
       showLink: false,
       currentLang: func.l,
       copied: false,
+      is_in_folder: true,
     };
   },
   // mounted(){
@@ -96,6 +91,25 @@ export default {
         }, 1000);
       });
     },
+    getCharAvgUrl() {
+      // console.log(source.getCharAvgUrl("fexli", this.line.figure_art));
+      // return source.getCharAvgUrl("fexli", this.line.figure_art);
+      const match_charId_re = /([\w]+)(#\w+)?(\$?\w+)?/;
+      const charId = this.line.figure_art.match(match_charId_re)[1];
+      if (charId) {
+        // replace the '#' and '$' in figure_art with %23 and %24
+        let artId = this.line.figure_art.replace("#", "%23").replace("$", "%24");
+        let url = "";
+        if(this.is_in_folder)
+          url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${charId}/${artId}.png`;
+        else
+          url = `https://raw.githubusercontent.com/ArknightsAssets/ArknightsAssets/refs/heads/cn/assets/torappu/dynamicassets/avg/characters/${artId}.png`;
+        console.log(url);
+        return url;
+      } else {
+        return "https://r2.m31ns.top/img/icons/404.png";
+      }
+    },
   },
 };
 </script>
@@ -105,6 +119,7 @@ export default {
   margin: 4px;
   display: flex;
 }
+
 .textblock .nameblock {
   display: flex;
   flex: 1.5 70px;
@@ -117,6 +132,7 @@ export default {
   font-weight: bold;
   color: #7f7f7f;
 }
+
 .textblock .contentblock {
   display: block;
   flex: 6 300px;
@@ -124,14 +140,20 @@ export default {
 
   margin: 2px;
 }
+
 .textblock .hideName {
   color: rgba(0, 0, 0, 0);
 }
+
 .textblock .link {
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Generic */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Generic */
 
   position: absolute;
   margin-left: -40px;
@@ -139,7 +161,12 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .textblock .link:hover {
   color: yellow !important;
+}
+
+.textblock .figure{
+  text-decoration: underline;
 }
 </style>
