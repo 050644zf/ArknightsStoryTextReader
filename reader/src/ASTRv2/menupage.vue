@@ -141,9 +141,10 @@ export default {
   },
   computed: {
     navi() {
-      return this.server == "zh_CN"
-        ? this.navi_new
-        : this.navi_old;
+      // return this.server == "zh_CN"
+      //   ? this.navi_new
+      //   : this.navi_old;
+      return this.navi_new;
     },
   },
   components: {

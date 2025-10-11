@@ -291,6 +291,7 @@ export default {
       console.log(this.latestEvents);
     },
     async loadFriendLinksData() {
+      this.friend_data = [];
       var myHeaders = new Headers();
       myHeaders.append("User-Agent", "Apifox/1.0.0 (https://apifox.com)");
 

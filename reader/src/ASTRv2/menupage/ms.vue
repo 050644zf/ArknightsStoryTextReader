@@ -187,7 +187,10 @@ export default {
       })
     },
     getEid(storyset){
-      if(storyset.storySetId == 'setId_mainline_3_1') return 'main_15';
+      if(storyset.storySetId == 'setId_mainline_3_1') return "main_15";
+      if(storyset.storySetId == 'setId_mainline_3_2') return "main_16";
+      if(storyset.storySetId == 'setId_mainline_3_3') return "main_17";
+      if(storyset.storySetId == 'setId_mainline_3_4') return "main_18";
       if(storyset.storySetType == 'MAINLINE') return storyset.mainlineData.zoneId;
       return storyset.relevantActivityId;
     },
