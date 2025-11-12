@@ -185,6 +185,8 @@
       &nbsp;&nbsp;<n-badge value="$14" type="error">PUZZLE_BD &nbsp;</n-badge>,
       &nbsp;&nbsp;<n-badge value="$2" type="info">别枝惊鹊 &nbsp;</n-badge>, 
       &nbsp;&nbsp;<n-badge value="$2" type="info">1639 &nbsp;</n-badge>, 
+      &nbsp;&nbsp; <n-badge value="$60+" type="error">sh1ver &nbsp;</n-badge>,
+      &nbsp;&nbsp; <n-badge value="$7" type="warning">Ggana &nbsp;</n-badge>,
     </n-card>
 
     <n-text>
