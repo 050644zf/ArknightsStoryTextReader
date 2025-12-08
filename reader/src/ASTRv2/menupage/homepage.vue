@@ -1,5 +1,11 @@
 <template>
   <n-flex vertical class="homepage" justify="center">
+    <n-alert type="error" show-icon>
+      ASTR 已转入维护阶段，仅提供必要的错误修复和数据更新。感谢您一直以来的支持！<br/>
+      ASTR has entered maintenance stage, providing only essential bug fixes and data updates. Thank you for your continued support!
+    </n-alert>
+
+    <br />
     <n-alert type="error" title="FIREFOX BROWSER ISSUE" v-if="isFirefox()">
       We noticed there is a compatibility issue with Firefox browser. Please use
       Chrome, Edge or any Chromium based browser for better experience.
@@ -112,34 +118,8 @@
 
       <p v-t="'homepage.intro'"></p>
 
-      <i18n-t keypath="homepage.issue" tag="p" for="homepage.here">
-        <n-a href="https://github.com/050644zf/ArknightsStoryTextReader/issues/new">{{ $t("homepage.here") }}</n-a>
-      </i18n-t>
+      
 
-      <p> {{ $t('homepage.star') }} &nbsp;&nbsp; <n-a href="https://github.com/050644zf/ArknightsStoryTextReader">
-          <n-icon>
-            <img src="https://img.shields.io/github/stars/050644zf/ArknightsStoryTextReader?style=social" />
-          </n-icon>
-        </n-a>
-      </p>
-
-
-      <i18n-t keypath="homepage.sponsoring" tag="p" for="homepage.patreon">
-        <n-a href="https://www.patreon.com/m31nightsky">
-          {{ $t("homepage.patreon") }}
-        </n-a>
-      </i18n-t>
-
-      <p v-t="'homepage.i18n_help'"></p>
-      <a href="https://hosted.weblate.org/engage/astr-i18n/">
-        <img src="https://hosted.weblate.org/widget/astr-i18n/multi-auto.svg" alt="翻译状态" />
-      </a>
-      <br /><br />
-      <i18n-t keypath="homepage.progress" tag="p" for="homepage.roadmap">
-        <n-a href="https://github.com/users/050644zf/projects/1">{{
-          $t("homepage.roadmap")
-        }}</n-a>
-      </i18n-t>
 
       <n-text strong type="warning">
         {{ $t("homepage.copyright_claim") }}
