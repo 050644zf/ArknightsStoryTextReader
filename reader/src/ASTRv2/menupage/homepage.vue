@@ -1,16 +1,16 @@
 <template>
   <n-flex vertical class="homepage" justify="center">
-    <n-alert type="error" show-icon>
+    <n-alert type="warning" show-icon>
       ASTR 已转入维护阶段，仅提供必要的错误修复和数据更新。感谢您一直以来的支持！<br/>
       ASTR has entered maintenance stage, providing only essential bug fixes and data updates. Thank you for your continued support!
     </n-alert>
 
     <br />
     <n-alert type="error" title="FIREFOX BROWSER ISSUE" v-if="isFirefox()">
-      We noticed there is a compatibility issue with Firefox browser. Please use
+      We noticed there is a compatibility issue with Firefox and Safari browser. Please use
       Chrome, Edge or any Chromium based browser for better experience.
       <br /><br />
-      我们注意到火狐浏览器存在兼容性问题，请使用Chrome、Edge或任何基于Chromium的浏览器以获得更好的体验。
+      我们注意到火狐、Safari浏览器存在兼容性问题，请使用Chrome、Edge或任何基于Chromium的浏览器以获得更好的体验。
     </n-alert>
     <n-alert type="info">
       欢迎访问我们的新域名 / Welcome to our new domain:
@@ -250,7 +250,7 @@ export default {
   },
   methods: {
     isFirefox() {
-      return navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+      return navigator.userAgent.toLowerCase().indexOf("firefox") || navigator.userAgent.toLowerCase().indexOf("safari") > -1;
     },
     loadData() {
       var data = [];
