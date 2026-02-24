@@ -43,21 +43,6 @@
           <n-card :title="$t('homepage.recommend.music_score')" class="recommend-card" hoverable @click="
             $router.push({ name: 'menu', params: { selected: 'ms' } })
             "
-            v-if="server=='zh_CN'"
-            >
-            <template #cover>
-              <n-image :src="maintheme_png" preview-disabled />
-            </template>
-            <template #header-extra>
-              <n-icon size="32">
-                <ArrowForward />
-              </n-icon>
-            </template>
-          </n-card>
-          <n-card :title="$t('homepage.recommend.maintheme')" class="recommend-card" hoverable @click="
-            $router.push({ name: 'menu', params: { selected: 'maintheme' } })
-            "
-            v-else
             >
             <template #cover>
               <n-image :src="maintheme_png" preview-disabled />
