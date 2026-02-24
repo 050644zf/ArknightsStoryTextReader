@@ -24,12 +24,8 @@ jobs:
         token: ${{secrets.PAT}}
     - uses: actions/checkout@v4
       with:
-        repository: Kengxxiao/ArknightsGameData
+        repository: ArknightsAssets/ArknightsGamedata
         path: ArknightsGameData
-    - uses: actions/checkout@v4
-      with:
-        repository: Kengxxiao/ArknightsGameData_YoStar
-        path: ArknightsGameData_YoStar
     - uses: actions/checkout@v4
       with:
         repository: 050644zf/ArknightsStoryJson

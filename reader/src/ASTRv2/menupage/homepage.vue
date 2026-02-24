@@ -4,8 +4,6 @@
       ASTR 已转入维护阶段，仅提供必要的错误修复和数据更新。感谢您一直以来的支持！<br/>
       ASTR has entered maintenance stage, providing only essential bug fixes and data updates. Thank you for your continued support!
     </n-alert>
-
-    <br />
     <n-alert type="error" title="FIREFOX BROWSER ISSUE" v-if="isFirefox()">
       We noticed there is a compatibility issue with Firefox and Safari browser. Please use
       Chrome, Edge or any Chromium based browser for better experience.
@@ -174,7 +172,10 @@
     </n-text>
     <n-ul>
       <n-li>数据资源&更新自动化支持 / Data Source & Auto Update Support:
+        <n-text delete>
         <n-a href="https://github.com/Kengxxiao/ArknightsGameData">Kengxxiao/ArknightsGameData</n-a>
+        </n-text>, 
+        <n-a href="https://github.com/ArknightsAssets/ArknightsGamedata">ArknightsAssets/ArknightsGamedata</n-a>
       </n-li>
       <n-li>
         剧情&干员图片资源 / Stories&Operators' Images Source:
